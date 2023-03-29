@@ -8,4 +8,4 @@ Course is available at:
 
 GitHub repo is available at:
 
-* https://dbwebb-se.github.io/mvc
+* https://github.com/idaloof/mvc
