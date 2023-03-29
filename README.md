@@ -1,4 +1,4 @@
-# mvc
+# My personal mvc repo
 
 My repo for the course MVC at BTH.
 
