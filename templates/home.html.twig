@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+    <div class="home-container">
+        <div class="home-heading">
+            <h1>Home</h1>
+        </div>
+        <div class="home this-is-me">
+            <h3 class="home-links small">moi</h3>
+            <img src="{{ asset('img/me.jpg') }}" width="150" alt="martin">
+        </div>
+        <div class="home music">
+            <h3 class="home-links">Musik</h3>
+            <img src="{{ asset('img/music.jpg') }}" width="200" alt="music note">
+        </div>
+        <div class="home food">
+            <h3 class="home-links">Käka</h3>
+            <img src="{{ asset('img/food.jpg') }}" width="200" alt="food plate">
+        </div>
+        <div class="home code">
+            <h3 class="home-links">Myskoda</h3>
+            <img src="{{ asset('img/code.jpg') }}" width="200" alt="php code">
+        </div>
+        <div class="home relax">
+            <h3 class="home-links">Chilla</h3>
+            <img src="{{ asset('img/relax.jpg') }}" width="200" alt="beach relax">
+        </div>
+    </div>
+
+{% endblock %}

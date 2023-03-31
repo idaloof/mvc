@@ -1,0 +1,15 @@
+/* Main style sheet for my Symfony application */
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+@import 'variables';
+@import 'basic';
+@import 'typography';
+@import 'report';
+@import 'about';
+@import 'home';
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');

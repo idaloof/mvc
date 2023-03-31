@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block main %}
+    <div class="about-container">
+        <div class="about-heading">
+            <h1>About</h1>
+        </div>
+        <div class="about-text">
+            <p>
+                I kursen mvc får vi som studenter fortsätta stärka vår förmåga att tillämpa
+                den objektorienterade programmeringsparadigmen.
+            </p>
+            <p>
+                Målet är att vi självständigt
+                ska kunna utveckla och driftsätta en webbapplikation där objektorienterad
+                programmering och ramverk tillsammans med databaser står i fokus.
+            </p>
+
+            <p>
+                Den här webbapplikationen är byggd med php-ramverket Symfony.
+            </p>
+        </div>
+        <div class="image-container">
+            <img src="{{ asset('img/php.jpg') }}" alt="php elephant" width="300">
+            <figcaption><em>PHP-elefanten</em></figcaption>
+        </div>
+        <div class="about-links">
+            <div class="link-heading">
+                <h3 class="links">Bra länkar</h3>
+            </div>
+            <div class="github">
+                <p class="underline">Kursens repo</p>
+                <a href="https://github.com/dbwebb-se/mvc">
+                    <i class="fa-brands fa-github fa-2xl" style="color: #333333;"></i>
+                </a>
+            </div>
+            <div class="myrepo">
+                <p class="underline">Mitt repo</p>
+                <a href="https://github.com/idaloof/mvc">
+                    <i class="fa-brands fa-square-github fa-2xl" style="color: #333333;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+/* SPACING */
+$base-line-height: 1.4;
+$base-font-size: 1.1em;
+$magic-number: $base-line-height * $base-font-size;
+
+/* BACKGROUND COLORS */
+$bg-body: #5b4e45;
+$bg-main: #fdf0ce;
+$bg-footer: #97a0a2;
+
+/* FONT COLORS */
+$font-color-nav: #faebd7;
+$font-color-rest: #333333;
+
+/* BOX SHADOW */
+$box-shadow-main: 5px 10px 8px 4px #000000;
+$box-shadow-header: 5px 7px 8px 4px #000000;
+
+/* BORDER RADIUS */
+$border-radius-standard: 20px;
+
+/* BORDERS */
+$border-footer: 4px solid #333;
+
+/* FONT FAMILIES */
+$font-family-heading: 'Josefin Sans', 'sans-serif';
+$font-family-paragraph: 'Open Sans', sans-serif;

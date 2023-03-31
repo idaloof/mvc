@@ -1,0 +1,103 @@
+/* Style sheet home page */
+
+.home-container {
+    display: grid;
+    max-width: 64rem;
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 5px;
+    margin: 0 auto;
+}
+
+.home-heading {
+    grid-column: 1 / 8;
+    grid-row: 1 / 2;
+}
+
+.this-is-me {
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+    justify-self: center;
+    align-content: center;
+}
+
+.music {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+    justify-self: center;
+    transition: all 3s ease-in-out;
+}
+
+.food {
+    grid-column: 5 / 6;
+    grid-row: 3 / 4;
+    justify-self: center;
+    transition: all 3s ease-in-out;
+}
+
+.code {
+    grid-column: 4 / 5;
+    grid-row: 4 / 5;
+    justify-self: center;
+}
+
+.relax {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    justify-self: center;
+}
+
+.home {
+    align-self: center;
+
+    img {
+        border-radius: 50%;
+        box-shadow: $box-shadow-main;
+        filter: grayscale(40%);
+    }
+}
+
+.home-links {
+    font-size: $base-font-size * 1.4;
+    margin-bottom: 5px;
+}
+
+// @keyframes music-moves {
+//     from {
+//         grid-column: 2 / 3;
+//         grid-row: 2 / 3;
+//     }
+
+//     to {
+//         grid-column: 3 / 4;
+//         grid-row: 3 / 4;
+//     }
+// }
+
+// @keyframes food-moves {
+//     from {
+//         grid-column: 3 / 4;
+//         grid-row: 3 / 4;
+//     }
+
+//     to {
+//         grid-column: 2 / 3;
+//         grid-row: 2 / 3;
+//     }
+// }
+
+// .music {
+//     animation-duration: 3s;
+//     animation-name: music-moves;
+//     animation-iteration-count: infinite;
+//     animation-direction: alternate;
+//     animation-timing-function: ease-in-out;
+// }
+
+// .food {
+//     animation-duration: 3s;
+//     animation-name: food-moves;
+//     animation-iteration-count: infinite;
+//     animation-direction: alternate;
+//     animation-timing-function: ease-in-out;
+// }
