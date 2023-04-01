@@ -9,7 +9,7 @@ use DateTimeZone;
 
 class Quote
 {
-    #[Route("/api/quote")]
+    #[Route("/api/quote", name: 'quote')]
     public function jsonNumber(): JsonResponse
     {
         $quote = [
