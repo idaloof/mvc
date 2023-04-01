@@ -27,7 +27,7 @@ class Quote
         $data = [
             'quote' => $quote[$index],
             'datum' => date("Y-m-d"),
-            'klockslag' => $date->format("h:i:s"),
+            'klockslag' => $date->format("H:i:s"),
         ];
 
         $response = new JsonResponse($data);
