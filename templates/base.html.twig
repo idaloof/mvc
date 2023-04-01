@@ -24,10 +24,11 @@
             <div class="nav-container">
                 <nav>
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/report">Report</a></li>
-                        <li><a href="/lucky">Lucky</a></li>
+                        <li><a href="{{ path('/') }}">Home</a></li>
+                        <li><a href="{{ path('about') }}">About</a></li>
+                        <li><a href="{{ path('report') }}">Report</a></li>
+                        <li><a href="{{ path('lucky') }}">Lucky</a></li>
+                        <li><a href="{{ path('quote') }}">Quotes</a></li>
                     </ul>
                 </nav>
             </div>
