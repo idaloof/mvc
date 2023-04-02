@@ -17,12 +17,12 @@
 
     <div class="page-container">
 
-        <header class="header" style="background-image: url({{ asset('img/site-header.jpg') }})">
+        <header id="header" class="header" style="background-image: url({{ asset('img/site-header.jpg') }})">
             <div class="logo-container">
                 <img src="{{ asset('img/logo.jpg') }}" alt="logo" width="200"/>
             </div>
             <div class="nav-container">
-                <nav>
+                <nav id="nav">
                     <ul>
                         <li><a href="{{ path('/') }}">Home</a></li>
                         <li><a href="{{ path('about') }}">About</a></li>
