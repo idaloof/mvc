@@ -1,13 +1,49 @@
 /* Style sheet report page */
 
-// .kmom01 {
-//     section {
-//         z-index: 1;
-//     }
+.report-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
 
-//     img {
-//         position: absolute;
-//         z-index: 0;
-//         margin-left: 17vw;
-//     }
-// }
+.report-text {
+    width: 70%;
+    margin: $magic-number;
+}
+
+.report-links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 20%;
+    margin: $magic-number * 0.6;
+}
+
+.report-link {
+    display: flex;
+    flex-direction: column;
+    margin: $magic-number;
+    border-left: 1px solid #333;
+
+    a {
+        color: $font-color-rest;
+        font-family: $font-family-paragraph;
+    }
+}
+
+@keyframes section {
+    0%   {color:#ef3550;}
+    12.5%  {color:#f48fb1;}
+    25%  {color:#7e57c2;}
+    37.5%  {color:#2196f3;}
+    50%  {color:#26c6da;}
+    62.5%  {color:#43a047;}
+    75%  {color:#eeff41;}
+    87.5%  {color:#f9a825;}
+    100% {color:#ff5722;}
+}
+
+.sections {
+    animation: section 3s linear infinite;
+    font-size: $base-font-size * 1.5;
+}
