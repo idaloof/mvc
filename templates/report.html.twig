@@ -4,32 +4,104 @@
 
 {% block main %}
     <h1>Report</h1>
-    <section id="kmom01">
-        <h2>Kmom01</h2>
-        <p>Text</p>
-    </section>
-    <section id="kmom02">
-        <h2>Kmom02</h2>
-        <p>Text</p>
-    </section>
-    <section id="kmom03">
-        <h2>Kmom03</h2>
-        <p>Text</p>
-    </section>
-    <section id="kmom04">
-        <h2>Kmom04</h2>
-        <p>Text</p>
-    </section>
-    <section id="kmom05">
-        <h2>Kmom05</h2>
-        <p>Text</p>
-    </section>
-    <section id="kmom06">
-        <h2>Kmom06</h2>
-        <p>Text</p>
-    </section>
-    <section id="kmom10">
-        <h2>Kmom10</h2>
-        <p>Text</p>
-    </section>
+    <div class="report-container">
+        <div class="report-text">
+            <section id="kmom01">
+                <h2>Kmom01</h2>
+                <p>
+                    Jag kom i kontakt med objektorienterad programmering först i slutet av JS-kursen
+                    och därefter mer på djupet i oopython-kursen. Det som jag uppskattar mest med
+                    objektorienterad programmering är att det finns stora möjligheter till strukturerad kod
+                    och möjligheter att återanvända kod. Det jag har med mig från tidigare kurser är att
+                    jag kan skapa klasser av vilka jag kan instansiera objekt som har tillgång till
+                    klassens medlemsvariabler och medlemsmetoder. I den här kursen och i ramverket Symfony
+                    (med php som bas) har jag förstått att vi, genom autoloader och namespaces,
+                    får tillgång till klasser/funktioner/filer utan att skriva include överallt.
+                    Nyckelordet "use" är din kamrat.
+                </p>
+                <p>
+                    För att skapa en klass behövs inte mer än nyckelordet "class" och måsvingar.
+                    Inuti klassen, precis som andra programmeringsspråk jag har stött på, kan vi
+                    definiera variabler och metoder som tillhör klassen. Vill man instansiera ett objekt
+                    av klassen deklarerar man en variabel och tilldelar variabeln en ny instans av klassen,
+                    med nyckelordet "new" följt av klassnamnet. Vill man att koden ska vara tillgänglig utifrån
+                    sätter vi nyckelordet "public" framför en metod eller variabel, medan "protected" och "privat"
+                    är av mer skyddande karaktär, där "protected" tillåter arv klasser emellan.
+                </p>
+                <p>
+                    Ju mer jag har suttit med koden, desto mer har jag förstått den, naturligtvis.
+                    Jag skapar klasser som förlängningar av redan skapade klasser för att skapa routes.
+                    Med hjälp av AbstractController-klassen kan jag förlänga en egenskapad klass,
+                    i vilken jag har möjlighet att använda mig av AbstractController-klassens render-metod.
+                    Med denna metod kan jag rendera innehåll till twig-templates. Mina klasser har jag placerat
+                    i olika controller-filer i src-mappen (C:et i MVC). Template-filerna som jag renderar innehåll
+                    till är placerade i templates-mappen. Under assets-mappen finns mina style sheets och även
+                    applikationens huvudsakliga js-fil (app.js). Jag tycker att strukturen inte är helt olik
+                    den strukturen jag jobbade med i design-kursen när vi arbetade i pico och även hur vi
+                    arbetade i webtec-kursen med vyer och controllers. Detsamma gäller väl även oopython-kursen och
+                    databas-kursen måste jag väl ändå tillägga. Ja, nu förstår jag såklart att upplägget med den här
+                    typen av struktur är återkommande. Det är inte exakt samma struktur men det finns en tydlig
+                    struktur. 
+                </p>
+                <p>
+                    Jag har inte hunnit läsa hela PHP: The Right Way, utan bara skannat av den på ytan. Däremot
+                    är det inte svårt att utifrån rubrikerna se en hel del intressanta områden. Två av områdena
+                    som jag kommer fördjupa mig i är "Security" och "Servers and Deployment". Vi har än så länge
+                    pratat ytligt om säkerhet, bland annat i jämförelsen GET vs. POST, användandet av frågetecken
+                    i SQL-frågor i värdspråk (såsom just PHP och JavaScript) samt i jämförelsen mellan ett flat
+                    file cms jämfört med en databas. Här skulle jag vilja fördjupa mina kunskaper för att kunna
+                    skapa säkra betalningslösningar och inloggningslösningar i applikationer. 
+                    Nu har vi snart läst halva utbildningen och vi har jobbat lokalt och mot studentservern. Hur
+                    gör vi när vi ska deploya IRL, dvs. utan hjälp av dbwebb och studentservern? Det vill jag lära
+                    mig snarast.
+                </p>
+                <p>
+                    Min TIL för den här veckan är vad klassen AbstractController bidrar med. Än så länge har jag/vi
+                    använt den för att få tillgång till metoden render().
+                </p>
+                <p>
+                    Tack för den här veckan /Martin
+                </p>
+            </section>
+            <section id="kmom02">
+                <h2>Kmom02</h2>
+                <p>Text</p>
+            </section>
+            <section id="kmom03">
+                <h2>Kmom03</h2>
+                <p>Text</p>
+            </section>
+            <section id="kmom04">
+                <h2>Kmom04</h2>
+                <p>Text</p>
+            </section>
+            <section id="kmom05">
+                <h2>Kmom05</h2>
+                <p>Text</p>
+            </section>
+            <section id="kmom06">
+                <h2>Kmom06</h2>
+                <p>Text</p>
+            </section>
+            <section id="kmom10">
+                <h2>Kmom10</h2>
+                <p>Text</p>
+            </section>
+            <a href="{{ path('report') }}#header">
+                <h3>Upp till toppen</h3>
+            </a>
+        </div>
+        <div class="report-links">
+            <h3 class="sections">Avsnitt</h3>
+            <div class="report-link">
+                <a href="{{ path('report') }}#kmom01">kmom01</a>
+                <a href="{{ path('report') }}#kmom02">kmom02</a>
+                <a href="{{ path('report') }}#kmom03">kmom03</a>
+                <a href="{{ path('report') }}#kmom04">kmom04</a>
+                <a href="{{ path('report') }}#kmom05">kmom05</a>
+                <a href="{{ path('report') }}#kmom06">kmom06</a>
+                <a href="{{ path('report') }}#kmom10">kmom10</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
