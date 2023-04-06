@@ -89,7 +89,7 @@ class Deck
     }
 
     /**
-     * Picks one random card from the deck
+     * Draws one random card from the deck
      *
      * @return array with card information
      */
