@@ -36,7 +36,8 @@ class CardController extends AbstractController
     #[Route("/card/deck/shuffle", name: "deck_shuffle")]
     public function cardDeckShuffle(
         SessionInterface $session
-    ): Response {
+    ): Response
+    {
         $session->invalidate();
         $card = new Card();
         $card->shuffleImages();
@@ -53,17 +54,15 @@ class CardController extends AbstractController
     #[Route("/card/deck/draw/init", name: "deck_draw_init")]
     public function cardDeckDrawInit(
         SessionInterface $session
-    ): Response {
+    ): Response
+    {
         if ($session->has("cards")) {
-            $images = $session->get("cards");
-            $card = new Card($images);
+            $cards = $session->get("cards");
         } else {
-            $card = new Card();
+            $cards = new Card();
         }
 
-        $cardImages = $card->getImages();
-        $session->set("cards", $cardImages);
-        $session->set("count", count($card->getImages()));
+        $session->set("cards", $cards);
 
         return $this->redirectToRoute('deck_draw');
     }
@@ -72,13 +71,14 @@ class CardController extends AbstractController
     #[Route("/card/deck/draw", name: "deck_draw")]
     public function cardDeckDraw(
         SessionInterface $session
-    ): Response {
-        $images = $session->get("cards");
-        if (count($images) > 0) {
-            $card = new Card($images);
-            $oneCard = $card->drawOneCard();
-            $cardsLeft = count($card->getImages());
-            $session->set("cards", $card->getImages());
+    ): Response
+    {
+        $cards = $session->get("cards");
+        $cardCount = $cards->countCards();
+        if ($cardCount > 0) {
+            $oneCard = $cards->drawOneCard();
+            $cardsLeft = $cards->countCards();
+            $session->set("cards", $cards);
 
             $data = [
                 'image' => $oneCard,
@@ -97,7 +97,8 @@ class CardController extends AbstractController
         int $number,
         SessionInterface $session,
         Request $request
-    ): Response {
+    ): Response
+    {
         if ($request->isMethod('POST')) {
             $number = $request->request->get('draw_count');
             return $this->redirectToRoute('deck_draw_number', ['number' => $number]);
@@ -105,26 +106,29 @@ class CardController extends AbstractController
 
         if ($session->has("cards")) {
             $cards = $session->get("cards");
-            $card = new Card($cards);
         } else {
-            $card = new Card();
-            $cards = $card->getImages();
+            $cards = new Card();
+            $session->set("cards", $cards);
         }
+
+        $cardCount = $cards->countCards();
 
         if ($number === 0) {
-            $data = [];
+            $data = [
+                'count' => $cardCount,
+                'number' => $number
+            ];
         }
 
-        if (count($cards) > 0 && $number <= count($cards)) {
-            $card = new Card($cards);
+        if ($cardCount > 0 && $number <= $cardCount) {
             $manyCards = [];
             for ($i = 1; $i <= $number; $i++) {
-                $oneCard = $card->drawOneCard();
-                $manyCards [] = $oneCard;
+                $oneCard = $cards->drawOneCard();
+                array_push($manyCards, $oneCard);
             }
 
-            $cardsLeft = count($card->getImages());
-            $session->set("cards", $card->getImages());
+            $cardsLeft = $cards->countCards();
+            $session->set("cards", $cards);
 
             $data = [
                 'cards' => $manyCards,
@@ -132,8 +136,8 @@ class CardController extends AbstractController
                 'number' => $number
             ];
 
-        } elseif ($number > count($cards)) {
-            $count = count($cards);
+        } elseif ($number > $cardCount) {
+            $count = $cardCount;
             $data = [
                 'message' => "You tried to draw {$number} cards. There are only {$count} cards left.",
                 'count' => $count
@@ -150,7 +154,8 @@ class CardController extends AbstractController
         int $players,
         SessionInterface $session,
         Request $request
-    ): Response {
+    ): Response
+    {
         if ($request->isMethod('POST')) {
             $cards = $request->request->get('draw_count');
             $players = $request->request->get('player_count');
