@@ -12,7 +12,7 @@ class Card
 {
     /**
      * @var Deck  $deck     Deck of cards
-     * @var array  $images   Card images
+     * @var array $images   Card images
      */
     private Deck $deck;
     private array $images;
@@ -48,23 +48,29 @@ class Card
     }
 
     /**
+     * Counts card in deck
+     *
+     * @return int number of cards
+     */
+    public function countCards()
+    {
+        return count($this->deck->getDeck());
+    }
+
+    /**
      * Picks one random card from array of images
      *
      * @return string|null Image of drawn card
      */
     public function drawOneCard()
     {
-        if (empty($this->images)) {
-            return null;
-        }
+        $drawnCard = $this->deck->drawOneCard();
+        $image = $drawnCard['image'];
 
-        $randomIndex = array_rand($this->images, 1);
+        unset($this->images[$image]);
 
-        $drawnCard = $this->images[$randomIndex];
+        return $image;
 
-        unset($this->images[$randomIndex]);
-
-        return $drawnCard;
     }
 
     /**
