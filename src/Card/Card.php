@@ -60,7 +60,7 @@ class Card
     /**
      * Picks one random card from array of images
      *
-     * @return string|null Image of drawn card
+     * @return string Image of drawn card
      */
     public function drawOneCard()
     {
