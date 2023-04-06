@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{% block title %}API{% endblock %}
+
+{% block main %}
+    <div class="api-container">
+        <div class="api-heading">
+            <h1>API</h1>
+        </div>
+        <div class="api-links">
+            <form class="api-form" method="" action="">
+                <div class="api-quote">
+                    <button class="button" name="quote"
+                        onClick="this.form.action='{{ quoteUrl }}';">
+                        Quote</button>
+
+                    <figcaption class="api-fig">Returnerar ett Json-response med ett random citat, dagens datum och tid.</figcaption>
+                </div>
+                <div class="api-deck">
+                    <button class="button"
+                        onClick="this.form.action='{{ deckUrl }}';this.form.method='get';">
+                        Deck</button>
+
+                    <figcaption class="api-fig">Returnerar ett Json-response med en klassisk kortlek.</figcaption>
+                </div>
+                <div class="api-shuffle">
+                    <button class="button"
+                        onClick="this.form.action='{{ shuffleUrl }}';this.form.method='post';">
+                        Shuffle</button>
+                    <figcaption class="api-fig">Returnerar ett Json-response med en blandad kortlek.</figcaption>
+                </div>
+                <div class="api-draw">
+                    <button class="button"
+                        onClick="this.form.action='{{ drawUrl }}';this.form.method='post';">
+                        Draw</button>
+                    <figcaption class="api-fig">Returnerar ett Json-response med ett random kort.</figcaption>
+                </div>
+            </form>
+            <div>
+                <form id="number-form" class="api-form" method="post" action="{{ drawNumberUrl }}">
+                    <div class="api-draw-number">
+                        <button class="button" type="submit">Draw Number</button>
+                            <input class="input-draw" type="number" name="draw_count" min="1" value="1">
+                        <figcaption class="api-fig">Returnerar ett Json-response med ett valt antal random kort.</figcaption>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
