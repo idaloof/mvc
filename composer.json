@@ -97,12 +97,10 @@
             "@auto-scripts"
         ],
         "csfix": [
-            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
-            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src tests"
+            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src"
         ],
         "csfix:dry": [
-            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run -v",
-            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src tests --dry-run -v"
+            "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run -v"
         ]
     },
     "conflict": {
