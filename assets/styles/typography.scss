@@ -160,3 +160,29 @@ h3 {
     text-decoration: underline;
     margin-bottom: 5px;
 }
+
+.input {
+    font-family: $font-family-paragraph;
+    font-size: $base-font-size;
+    margin: 10px 0;
+}
+
+.input-draw {
+    font-family: $font-family-paragraph;
+    font-size: $base-font-size;
+    margin: 0 10px 0 0;
+    width: 3em;
+}
+
+label {
+    font-family: $font-family-paragraph;
+    font-size: $base-font-size;
+}
+
+.button {
+    font-family: $font-family-paragraph;
+    font-size: $base-font-size;
+    background-color: $bg-body;
+    color: $font-color-nav;
+    width: fit-content;
+}
