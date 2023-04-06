@@ -1,0 +1,18 @@
+/* Style sheet for card landing page */
+
+.card-links ul {
+    display: flex;
+    flex-direction: column;
+    padding: $magic-number;
+
+    li {
+        a {
+            font-size: $base-font-size * 1.2;
+            color: $font-color-rest;
+            font-family: $font-family-paragraph;
+        }
+
+        list-style: none;
+        margin-bottom: $magic-number;
+    }
+}
