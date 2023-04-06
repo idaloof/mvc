@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Deck Shuffle{% endblock %}
+
+{% block main %}
+    <div class="deck-container">
+        <div class="deck-heading">
+            <h1>Deck Shuffle</h1>
+        </div>
+        <div class="deck">
+            {% for image in images %}
+                <img class="one-card" src="{{ asset('img/cards/' ~ image ~ '.png') }}">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

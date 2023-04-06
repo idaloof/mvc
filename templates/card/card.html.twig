@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block main %}
+    <div class="card-container">
+        <div class="card-heading">
+            <h1>Card</h1>
+        </div>
+        <div class="card-links">
+            <ul>
+                <li><a href="{{ path('deck') }}">Deck</a></li>
+                <li><a href="{{ path('deck_shuffle') }}">Deck Shuffle</a></li>
+                <li><a href="{{ path('deck_draw_init') }}">Deck Draw</a></li>
+                <li><a href="{{ path('deck_draw_number', {number: 0}) }}">Deck Draw Number</a></li>
+                <li><a href="{{ path('deck_deal', {'players': 0, 'cards': 0}) }}">Deck Deal</a></li>
+            </ul>
+        </div>
+        <div class="card-text">
+            <p>
+                På din landningssida, berätta kort om strukturen på dina klasser,
+                vilka klasser du har och hur de är relaterade till varandra.
+                Rita ett UML klass diagram och visa på sidan.
+            </p>
+        </div>
+    </div>
+{% endblock %}

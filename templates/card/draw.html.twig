@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Deck Draw{% endblock %}
+
+{% block main %}
+    <div class="deck-container">
+        <div class="deck-heading">
+            <h1>Deck Draw</h1>
+        </div>
+        {% if image is defined %}
+            <div class="draw-count">
+                <p>Cards left: {{ count }}</p>
+            </div>
+            <div class="deck-draw">
+                <img class="draw-card" src="{{ asset('img/cards/' ~ image ~ '.png') }}">
+            </div>
+        {% else %}
+            <p class="deck-draw">No more cards to draw.</p>
+        {% endif %}
+    </div>
+{% endblock %}

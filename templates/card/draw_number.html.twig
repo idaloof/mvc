@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Deck Draw{% endblock %}
+
+{% block main %}
+    <div class="deck-container">
+        <div class="deck-heading">
+            <h1>Deck Draw Number</h1>
+        </div>
+        {% if message is defined %}
+            <div class="draw-count">
+                <p>Cards left: {{ count }}</p>
+            </div>
+            <div class="message">
+                <p>{{ message }}</p>
+            </div>
+        {% elseif number is same as(0) %}
+            <div class="draw-count">
+                <p>Cards left: {{ count }}</p>
+            </div>
+            <div class="draw-count">
+                <p>Number of cards to draw:</p>
+                <form method="post" action"{{ path('deck_draw_number', {'number': number}) }}">
+                    <input class="input-draw" type="number" name="draw_count" min="0" value="{{ number }}">
+                    <button class="button" type="submit">Draw</button>
+                </form>
+            </div>
+        {% elseif cards is defined %}
+            <div class="draw-count">
+                <p>Cards left: {{ count }}</p>
+            </div>
+            <div class="draw-count">
+                <p>Number of cards to draw:</p>
+                <form method="post" action"{{ path('deck_draw_number', {'number': number}) }}">
+                    <input class="input-draw" type="number" name="draw_count" min="0" value="{{ number }}">
+                    <button class="button" type="submit">Draw</button>
+                </form>
+            </div>
+            <div class="deck-draw">
+                {% for card in cards %}
+                    <img class="draw-number-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="deck-draw">No more cards to draw.</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Deck Deal{% endblock %}
+
+{% block main %}
+    <div class="deck-container">
+        <div class="deck-heading">
+            <h1>Deck Deal</h1>
+        </div>
+        {% if message is defined %}
+            <div class="draw-count">
+                <p>Cards left: {{ count }}</p>
+            </div>
+            <div class="message">
+                <p>{{ message }}</p>
+            </div>
+        {% elseif cards is same as(0) and players is same as(0)%}
+            <div class="draw-count">
+                <p>Cards left: {{ count }}</p>
+            </div>
+            <div class="deal-container">
+                <form class="deal-form" method="post" action"{{ path('deck_deal', {'players': players, 'cards': cards}) }}">
+
+                    <label for="player_count">Number of players</label>
+                    <input class="input" type="number" name="player_count" min="0" value="{{ players }}">
+
+                    <label for="draw_count">Number of cards per player</label>
+                    <input class="input" type="number" name="draw_count" min="0" value="{{ cards }}">
+
+                    <button class="button" type="submit">Draw</button>
+                </form>
+            </div>
+        {% elseif (cards > 0) and (players > 0) %}
+            <div class="draw-count">
+                <p>Cards left: {{ count }}</p>
+            </div>
+            <div class="deal-container">
+                <form class="deal-form" method="post" action"{{ path('deck_deal', {'players': players, 'cards': cards}) }}">
+
+                    <label for="player_count">Number of players</label>
+                    <input class="input" type="number" name="player_count" min="0" value="{{ players }}">
+
+                    <label for="draw_count">Number of cards per player</label>
+                    <input class="input" type="number" name="draw_count" min="0" value="{{ cards }}">
+
+                    <button class="button" type="submit">Draw</button>
+                </form>
+            </div>
+            <div class="deck-deal">
+                {% for playerHand in allCards %}
+                    <div class="player">
+                        {% for card in playerHand %}
+                            <img class="draw-number-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% elseif ((cards is same as(0) and players > 0) or (players is same as(0)) and cards > 0) %}
+            <div class="message">
+                <p>Amount of players or cards can't equal to zero.</p>
+                <a href="{{ path('deck_deal', {'players': 0, 'cards': 0}) }}">
+                    Try again.
+                </a>
+            </div>
+        {% elseif count is same as(0) %}
+            <p class="deck-draw">No more cards to draw.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{# /{players<\d+>}/{cards<\d+>} #}
