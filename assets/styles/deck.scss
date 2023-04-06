@@ -1,0 +1,20 @@
+/* Style sheet for deck page */
+
+.deck-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.deck {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: $magic-number;
+}
+
+.one-card {
+    width: 6em;
+    margin: 5px;
+    filter: grayscale(15%);
+}
