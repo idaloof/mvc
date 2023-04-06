@@ -1,0 +1,37 @@
+/* Style sheet for deck deal page */
+
+.deal-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.deal-form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.deck-deal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.player {
+    border: 2px solid #333;
+    width: fit-content;
+    padding: $magic-number * 0.6;
+}
+
+.message a {
+    color: $font-color-rest;
+    font-family: $font-family-paragraph;
+    font-size: $base-font-size;
+}
