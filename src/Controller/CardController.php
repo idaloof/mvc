@@ -168,17 +168,18 @@ class CardController extends AbstractController
         $deck = new Card();
 
         if ($session->has('remaining')) {
-            $deck->updateDeck($session->get('remaining'));
+            $deck = $session->get('remaining');
         }
 
-        $allCards = $deck->getImages();
         $drawnCards = [];
 
         if ($cards === 0 || $players === 0) {
-            $data = [];
-        }
-
-        if ($players * $cards <= count($allCards)) {
+            $data = [
+                'cards' => $cards,
+                'players' => $players,
+                'count' => $deck->countCards()
+            ];
+        } elseif ($players * $cards <= $deck->countCards()) {
             for ($i = 1; $i <= $players; $i++) {
                 $aPlayer = [];
                 for ($j = 1; $j <= $cards; $j++) {
@@ -188,20 +189,20 @@ class CardController extends AbstractController
                 array_push($drawnCards, $aPlayer);
             }
 
-            $session->set('remaining', $deck->getImages());
+            $session->set('remaining', $deck);
 
             $data = [
                 'allCards' => $drawnCards,
-                'count' => count($deck->getImages()),
+                'count' => $deck->countCards(),
                 'cards' => $cards,
                 'players' => $players
             ];
         } else {
-            $max = count($deck->getImages());
+            $max = $deck->countCards();
             $requested = $players * $cards;
             $data = [
                 'message' => "You tried to draw {$requested} cards. There are only {$max} cards left.",
-                'count' => count($deck->getImages())
+                'count' => $max
             ];
         }
 
