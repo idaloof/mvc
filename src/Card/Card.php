@@ -60,17 +60,19 @@ class Card
     /**
      * Picks one random card from array of images
      *
-     * @return string Image of drawn card
+     * @return string|null Image of drawn card or null
      */
     public function drawOneCard()
     {
         $drawnCard = $this->deck->drawOneCard();
+
         $image = $drawnCard['image'];
+
+        echo($drawnCard['image']);
 
         unset($this->images[$image]);
 
         return $image;
-
     }
 
     /**
