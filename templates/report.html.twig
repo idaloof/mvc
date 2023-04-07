@@ -65,7 +65,47 @@
             </section>
             <section id="kmom02">
                 <h2>Kmom02</h2>
-                <p>Text</p>
+                <p>
+                    Inom objektorientering används begreppen arv (inheritance), komposition, interface och
+                    trait. Arv handlar om att en klass ärver (extends) en annan klass, dvs. har tillgång
+                    till dess egenskaper (properties) och beteenden (methods). Komposition handlar om att en
+                    klass har/använder sig av en annan klass, det kan iscensättas med nyckelordet use.
+                    Interface är som ett kontrakt av metoder, där klasser som implementerar interfacet förbinder
+                    åtar sig att hedra kontraktet och implementera just de metoder interfacet beskriver.
+                    Interfacet konstruerar inga metoder, utan listar dem bara kan man säga. Ett trait mer som en klass
+                    som innehåller deklarerade variabler och metoder som andra klasser kan använda. Ett trait
+                    skapas för att återanvända kod, likt en modul eller en klass. Fördelen med trait är att det går
+                    att en klass kan använda flera traits, medan en klass, i PHP, endast kan ärva från EN annan klass.
+                </p>
+                <p>
+                    Jag är inte nöjd med min implementation av uppgiften. Jag krånglade till det för mycket.
+                    Mina routes är belamrade med kod, inte snygg kod alls. Jag fastnade mycket i logiken och alla
+                    olika håll som koden kunde ta vägen. Det slutade med en rörig logik och inte stabil applikation.
+                    Jag tar gärna emot konstruktiv kritik på koden.
+                    Jag tänkte att jag har en Deck-klass och en Card-klass.
+                    Card-klassen använder Deck-klassen för att skapa en kortlek.
+                    Klassernas metoder är snarlika (kanske skulle använt trait eller extendat?).
+                    Card-klassens metoder används i Card-controllern,
+                    medan Deck-klassens metoder används i Api-controllern. Det blev alltså en struktur
+                    av det men jag har redan lagt ner för mycket tid på det och känner att jag behöver
+                    gå vidare. Jag får dra mina lärdomar av detta som jag beskriver i kommande stycken.
+                </p>
+                <p>
+                    Den goda idén att jobba med flödesschema glömde jag helt. Jag skrev pseudokod och
+                    lyckades med det tillvägagångssättet lösa uppgiften. Nu i efterhand hade säkert
+                    ett flödesschema hjälpt mycket i att inte skapa en djungel i mina controllers.
+                    Det känns som att för mycket av logiken i mina spel hamnar i controllern. Kanske
+                    hade varit bättre att skapa fler metoder eller åtminstone förfina dem för att slippa
+                    ha så mycket kod i router-funktionerna/-metoderna.
+                </p>
+                <p>
+                    Min TIL för detta kursmoment är att rita, skissa och ta ett helhetsgrepp på koden med
+                    hjälp av pseudokod och flödesschema innan jag börjar koda. Det var ett tufft kmom
+                    vars innehåll jag verkligen vill bemästra framöver. Kampen fortsätter.
+                </p>
+                <p>
+                    Mvh Martin
+                </p>
             </section>
             <section id="kmom03">
                 <h2>Kmom03</h2>
