@@ -68,8 +68,6 @@ class Card
 
         $image = $drawnCard['image'];
 
-        echo($drawnCard['image']);
-
         unset($this->images[$image]);
 
         return $image;
