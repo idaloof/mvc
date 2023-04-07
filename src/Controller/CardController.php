@@ -36,8 +36,7 @@ class CardController extends AbstractController
     #[Route("/card/deck/shuffle", name: "deck_shuffle")]
     public function cardDeckShuffle(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $session->invalidate();
         $card = new Card();
         $card->shuffleImages();
@@ -54,8 +53,7 @@ class CardController extends AbstractController
     #[Route("/card/deck/draw/init", name: "deck_draw_init")]
     public function cardDeckDrawInit(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         if ($session->has("cards")) {
             $cards = $session->get("cards");
         } else {
@@ -71,8 +69,7 @@ class CardController extends AbstractController
     #[Route("/card/deck/draw", name: "deck_draw")]
     public function cardDeckDraw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $cards = $session->get("cards");
         $cardCount = $cards->countCards();
         if ($cardCount > 0) {
@@ -97,8 +94,7 @@ class CardController extends AbstractController
         int $number,
         SessionInterface $session,
         Request $request
-    ): Response
-    {
+    ): Response {
         if ($request->isMethod('POST')) {
             $number = $request->request->get('draw_count');
             return $this->redirectToRoute('deck_draw_number', ['number' => $number]);
@@ -154,8 +150,7 @@ class CardController extends AbstractController
         int $players,
         SessionInterface $session,
         Request $request
-    ): Response
-    {
+    ): Response {
         if ($request->isMethod('POST')) {
             $cards = $request->request->get('draw_count');
             $players = $request->request->get('player_count');
