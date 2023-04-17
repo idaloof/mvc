@@ -1,4 +1,6 @@
 {
+    "name": "martin/mvc",
+    "description": "symphony project for school course mvc 2023",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -90,6 +92,8 @@
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
+        "phpmd": "tools/phpmd/vendor/bin/phpmd . text phpmd.xml || true",
+        "phpstan": "tools/phpstan/vendor/bin/phpstan || true",
         "post-install-cmd": [
             "@auto-scripts"
         ],
@@ -101,6 +105,11 @@
         ],
         "csfix:dry": [
             "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run -v"
+        ],
+        "lint": [
+            "@phpmd",
+            "@phpstan",
+            "@csfix"
         ]
     },
     "conflict": {
