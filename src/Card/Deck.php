@@ -9,9 +9,9 @@ namespace App\Card;
 class Deck
 {
     /**
-     * @var array  $values     Card values
-     * @var array  $suits      Card kinds
-     * @var array  $deck       Complete deck
+     * @var array   $values     Card values
+     * @var array   $suits      Card suits
+     * @var array   $deck       Complete deck
      */
     private array $values = [
         'A' => 'Ace',
@@ -57,9 +57,9 @@ class Deck
     /**
      * Get the images.
      *
-     * @return array of images.
+     * @return array<string> of images.
      */
-    public function getDeckImages()
+    public function getDeckImages(): array
     {
         $images = [];
         foreach ($this->deck as $card) {
@@ -71,9 +71,9 @@ class Deck
     /**
      * Get the complete deck
      *
-     * @return array of cards.
+     * @return array<string> of cards.
      */
-    public function getDeck()
+    public function getDeck(): array
     {
         return $this->deck;
     }
@@ -83,7 +83,7 @@ class Deck
      *
      * @return void
      */
-    public function shuffleDeck()
+    public function shuffleDeck(): void
     {
         shuffle($this->deck);
     }
@@ -91,9 +91,9 @@ class Deck
     /**
      * Draws one random card from the deck
      *
-     * @return array with card information
+     * @return array<string> with card information
      */
-    public function drawOneCard()
+    public function drawOneCard(): array
     {
         if (empty($this->deck)) {
             return ["No more cards to draw."];
