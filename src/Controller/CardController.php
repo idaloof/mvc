@@ -54,11 +54,9 @@ class CardController extends AbstractController
     public function cardDeckDrawInit(
         SessionInterface $session
     ): Response {
-        if ($session->has("cards")) {
-            $cards = $session->get("cards");
-        } else {
-            $cards = new Card();
-        }
+        $cards = $session->has("cards")
+            ? $session->get("cards")
+            : new Card();
 
         $session->set("cards", $cards);
 
@@ -100,14 +98,15 @@ class CardController extends AbstractController
             return $this->redirectToRoute('deck_draw_number', ['number' => $number]);
         }
 
-        if ($session->has("cards")) {
-            $cards = $session->get("cards");
-        } else {
-            $cards = new Card();
-            $session->set("cards", $cards);
-        }
+        $cards = $session->has("cards")
+            ? $session->get("cards")
+            : new Card();
+
+        $session->set("cards", $cards);
 
         $cardCount = $cards->countCards();
+
+        $data = [];
 
         if ($number === 0) {
             $data = [
@@ -174,6 +173,8 @@ class CardController extends AbstractController
                 'players' => $players,
                 'count' => $deck->countCards()
             ];
+
+            return $this->render('card/deal.html.twig', $data);
         } elseif ($players * $cards <= $deck->countCards()) {
             for ($i = 1; $i <= $players; $i++) {
                 $aPlayer = [];
@@ -192,14 +193,16 @@ class CardController extends AbstractController
                 'cards' => $cards,
                 'players' => $players
             ];
-        } else {
-            $max = $deck->countCards();
-            $requested = $players * $cards;
-            $data = [
-                'message' => "You tried to draw {$requested} cards. There are only {$max} cards left.",
-                'count' => $max
-            ];
+
+            return $this->render('card/deal.html.twig', $data);
         }
+
+        $max = $deck->countCards();
+        $requested = $players * $cards;
+        $data = [
+            'message' => "You tried to draw {$requested} cards. There are only {$max} cards left.",
+            'count' => $max
+        ];
 
         return $this->render('card/deal.html.twig', $data);
     }
