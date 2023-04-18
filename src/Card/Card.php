@@ -12,10 +12,8 @@ class Card
 {
     /**
      * @var Deck  $deck     Deck of cards
-     * @var array $images   Card images
      */
     private Deck $deck;
-    private array $images;
 
     /**
      * Class constructor
@@ -23,18 +21,18 @@ class Card
     public function __construct()
     {
         $this->deck = new Deck();
-        $this->images = $this->deck->getDeckImages();
 
     }
 
     /**
      * Get the images.
      *
-     * @return array of images.
+     * @return array<string> of images.
      */
     public function getImages()
     {
-        return $this->images;
+        $images = $this->deck->getDeckImages();
+        return $images;
     }
 
     /**
@@ -44,7 +42,7 @@ class Card
      */
     public function shuffleImages()
     {
-        shuffle($this->images);
+        $this->deck->shuffleDeck();
     }
 
     /**
@@ -68,18 +66,6 @@ class Card
 
         $image = $drawnCard['image'];
 
-        unset($this->images[$image]);
-
         return $image;
-    }
-
-    /**
-     * Updates the images array
-     *
-     * @return void
-     */
-    public function updateDeck($images)
-    {
-        $this->images = $images;
     }
 }
