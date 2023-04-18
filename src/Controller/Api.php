@@ -61,11 +61,9 @@ class Api extends AbstractController
     public function jsonDeckShuffle(
         SessionInterface $session
     ): JsonResponse {
-        if ($session->has('all')) {
-            $deck = $session->get('all');
-        } else {
-            $deck = new Deck();
-        }
+        $deck = $session->has('all')
+            ? $session->get('all')
+            : new Deck();
 
         $deck->shuffleDeck();
 
@@ -78,14 +76,11 @@ class Api extends AbstractController
 
    #[Route("/api/deck/draw", name: 'api_draw', methods: ['POST'])]
     public function jsonDeckDraw(
-        SessionInterface $session,
-        Request $request
+        SessionInterface $session
     ): JsonResponse {
-        if ($session->has('remainder') && count($session->get('remainder')->getDeckImages()) > 0) {
-            $deck = $session->get('remainder');
-        } else {
-            $deck = new Deck();
-        }
+        $deck = $session->has('remainder') && count($session->get('remainder')->getDeckImages()) > 0
+                ? $session->get('remainder')
+                : new Deck();
 
         $drawnCard = $deck->drawOneCard();
 
@@ -114,11 +109,10 @@ class Api extends AbstractController
             return $this->redirectToRoute('api_draw_number', ['number' => $number]);
         }
 
-        if ($session->has('remainder') && count($session->get('remainder')->getDeckImages()) > 0) {
-            $deck = $session->get('remainder');
-        } else {
-            $deck = new Deck();
-        }
+        $deck = $session->has('remainder') && count($session->get('remainder')->getDeckImages()) > 0
+            ? $session->get('remainder')
+            : new Deck();
+
         $drawnCards = [];
 
         for ($i = 1; $i <= $number; $i++) {
