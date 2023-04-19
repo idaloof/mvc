@@ -6,8 +6,6 @@
 
 namespace App\Card;
 
-use App\Card\Points;
-
 class Rules
 {
     /**
