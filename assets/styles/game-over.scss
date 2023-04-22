@@ -1,0 +1,28 @@
+@keyframes winner-text {
+    0%   {color:#ef3550;}
+    12.5%  {color:#f48fb1;}
+    25%  {color:#7e57c2;}
+    37.5%  {color:#2196f3;}
+    50%  {color:#26c6da;}
+    62.5%  {color:#43a047;}
+    75%  {color:#eeff41;}
+    87.5%  {color:#f9a825;}
+    100% {color:#ff5722;}
+}
+
+.over-heading {
+    color: rgb(178, 32, 32);
+}
+
+.game-over.text {
+    text-align: center;
+    font-size: larger;
+    animation: winner-text 10s linear infinite;
+    font-size: $base-font-size * 1.5;
+    border-bottom: 1px solid #333;
+    line-height: 0.6rem;
+}
+
+.human-container.game-over {
+    margin-top: $magic-number;
+}
