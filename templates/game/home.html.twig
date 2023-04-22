@@ -42,12 +42,15 @@
                 är mindre än 17. När banken stannat, avgörs vinnaren.
             </p>
         </div>
+        <div class="game-home doc">
+            <h2>Dokumentation</h2>
+            <p>
+                Läs mer om spelets dokumentation
+                    <a href="{{ path('game_doc') }}">här</a>.
+            </p>
+        </div>
         <form action="{{ path('game_init') }}" method="post">
             <input type="submit" class="button" value="Starta spelet">
         </form>
     </div>
 {% endblock %}
-
-{# I din landningssida, inled med en kort beskrivning av ditt 
-kortspel och reglerna för hur det fungerar.
-Placera en knapp eller länk som leder till att spelet börjar. #}
