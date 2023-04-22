@@ -1,4 +1,4 @@
-Klasser (kmom03)
+Klasser (kmom03) (utkast)
 ===========
 
 Deck
