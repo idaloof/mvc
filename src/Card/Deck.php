@@ -9,9 +9,7 @@ namespace App\Card;
 class Deck
 {
     /**
-     * @var array   $values     Card values
-     * @var array   $suits      Card suits
-     * @var array   $deck       Complete deck
+     * @var array<mixed, string> $values Card values
      */
     private array $values = [
         'A' => 'Ace',
@@ -28,12 +26,20 @@ class Deck
         'Q' => 'Queen',
         'K' => 'King',
     ];
+
+    /**
+     * @var array<string, string> $suits Card suits
+     */
     private array $suits = [
         'S' => 'spades',
         'H' => 'hearts',
         'C' => 'clubs',
         'D' => 'diamonds'
     ];
+
+    /**
+     * @var array<string,array<string,string>> $deck Complete deck
+     */
     private array $deck = [];
 
     /**
@@ -71,7 +77,7 @@ class Deck
     /**
      * Get the complete deck
      *
-     * @return array<string> of cards.
+     * @return array<string,array<string,string>> of cards.
      */
     public function getDeck(): array
     {
@@ -104,6 +110,22 @@ class Deck
         $drawnCard = $this->deck[$randomIndex];
 
         unset($this->deck[$randomIndex]);
+
+        return $drawnCard;
+    }
+
+    /**
+     * Draws first card from deck
+     *
+     * @return array<mixed,string> with card information
+     */
+    public function drawSingle(): array
+    {
+        if (empty($this->deck)) {
+            return ["No more cards to draw."];
+        }
+
+        $drawnCard = array_shift($this->deck);
 
         return $drawnCard;
     }
