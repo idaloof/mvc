@@ -1,0 +1,51 @@
+.game-arena {
+    background-color: rgb(188, 210, 189);
+    border-radius: $border-radius-standard;
+    padding: $magic-number;
+    margin-top: $magic-number;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #333;
+    box-shadow: $box-shadow-main;
+}
+
+.small {
+    border-bottom: none !important;
+    font-size: 1.6rem;
+}
+
+.bank-container,
+.human-container {
+    height: 20vh;
+    padding-bottom: 2vh;
+    margin-bottom: 2vh;
+}
+
+.bank-container {
+    border-bottom: 1px solid #333;
+}
+
+.bank-points,
+.human-points {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15vw;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-card {
+    width: 60px;
+}
+
+.game-play.button-container {
+    display: flex;
+    flex-direction: row;
+
+    form {
+        margin-right: 30px;
+    }
+}
