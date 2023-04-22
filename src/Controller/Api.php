@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\Deck;
 use DateTime;
 use DateTimeZone;
+use App\Card\Game;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,6 +62,10 @@ class Api extends AbstractController
     public function jsonDeckShuffle(
         SessionInterface $session
     ): JsonResponse {
+
+        /**
+         * @var Deck The deck of cards
+         */
         $deck = $session->has('all')
             ? $session->get('all')
             : new Deck();
@@ -78,7 +83,13 @@ class Api extends AbstractController
     public function jsonDeckDraw(
         SessionInterface $session
     ): JsonResponse {
-        $deck = $session->has('remainder') && count($session->get('remainder')->getDeckImages()) > 0
+
+        /** @var int $count */
+        $count = ($session->has("remainder")) ?
+            count($session->get("remainder")->getDeckImages()) : 0;
+
+        /** @var Deck $deck */
+        $deck = $session->has('remainder') && $count > 0
                 ? $session->get('remainder')
                 : new Deck();
 
@@ -126,6 +137,42 @@ class Api extends AbstractController
         ];
 
         $session->set('remainder', $deck);
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+   #[Route("/api/game", name: 'api_game', methods: ['GET'])]
+    public function jsonGame(
+        SessionInterface $session
+    ): JsonResponse {
+        if ($session->has("game")) {
+            $game = $session->get('game');
+
+            $standings = $game->getGameStandings();
+
+            $data = [
+                "humanCards" => $standings["human"]["cards"],
+                "humanPoints" => $standings["human"]["points"],
+                "bankCards" => $standings["bank"]["cards"],
+                "bankPoints" => $standings["bank"]["points"],
+                "isWinnerDecided" => $standings["winner_decided"],
+                "winner" => $standings["winner"]
+            ];
+
+            $response = new JsonResponse($data);
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
+        }
+
+        $data = [
+            "notice" => "No game started yet.",
+        ];
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
