@@ -9,6 +9,13 @@
         </div>
         <div class="api-links">
             <form class="api-form" method="" action="">
+                <div class="api-game">
+                    <button class="button"
+                        onClick="this.form.action='{{ gameUrl }}';this.form.method='get';">
+                        Game</button>
+
+                    <figcaption class="api-fig">Returnerar ställningen i pågående kortspel.</figcaption>
+                </div>
                 <div class="api-quote">
                     <button class="button"
                         onClick="this.form.action='{{ quoteUrl }}';">
