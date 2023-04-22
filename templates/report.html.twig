@@ -109,7 +109,54 @@
             </section>
             <section id="kmom03">
                 <h2>Kmom03</h2>
-                <p>Text</p>
+                <p>
+                    Jag tyckte att flödesdiagrammet och pseudokoden, trots att jag gjorde dem ganska
+                    ytliga, var till stor hjälp i att hitta en struktur för mitt spel.
+                    Det som också hjälpte mig var att skriva upp följande flöde: ett spel har en kortlek,
+                    spelare, regler och spellogik. En spelare har ett namn, poäng och en hand (med kort).
+                    En hand har kort. Det gjorde att jag snabbt kunde identifiera klasserna som spelet
+                    behövde enligt mig. Även om flödesdiagrammet och pseudokoden inte är av bästa
+                    kvalitet, tycker jag att det hjälpte mig att starta igång processen att problemlösa
+                    fram spelet. Det blev som en gnista, som hjälpte spelet att växa.
+                </p>
+                <p>
+                    Utifrån mina tankar, som jag beskriver ovan, kunde jag börja skapa mina klasser.
+                    Jag började med att skapa klasserna för reglerna, spelaren, handen och poängen. Poäng-klassen
+                    spenderade jag mest tid på (förutom själva spel-klassen). Det var inte helt klart
+                    från början hur jag skulle lösa beräkningen av ess på hand och hur jag skulle
+                    visa poängen (höga och låga poäng) live under spelets gång. Jag skrev en lång switch
+                    case-sats med möjliga utfall för essen, men kunde se ett mönster i det som gjorde att
+                    jag kunde korta ner koden avsevärt. När alla klasser var klara, kände jag att det även
+                    behövdes en Bank-klass som var en förlängning av Player-klassen, med en extrametod för att
+                    kolla om banken hamnat över 17 poäng. Game-klassen följde därefter med spelets logik.
+                    Utifrån koden jag tidigare skrivit i övriga klasser, kunde jag hitta ett ok flöde i
+                    Game-klassen. Jag är ganska nöjd ändå, med tanke på att det var det första objektorienterade
+                    programmet som jag skapat från grunden och utan tips på klasser och metoder (som vi fick i
+                    projektet i oopython-kursen). Förbättringspotentialen jag ser rör definitivt Game-klassen
+                    och spellogiken. Det blev inte det där fina flödet som jag hade sett framför mig från
+                    start. Det jag däremot är nöjd med är standings-variabeln i Game-klassen som håller all
+                    information om spelet. Med bland annat hjälp av den kunde jag hålla koden i controllern
+                    till ett minimum. Mina twig-filer kunde jag också hålla rätt smala, men där finns säkert
+                    förbättringspotential, även om den mesta av logiken sköts i klasserna.
+                </p>
+                <p>
+                    Jag förknippar ramverk bara med positiva saker, än så länge. Jag tycker att det är
+                    tryggt att jobba med tydliga ramar som gör att jag inte behöver ta beslut om
+                    till exempel hur mappstrukturen för min applikation ska se ut. Jag får allt med några
+                    enkla knapptryck och kan dessutom fylla min composer.json med fler dependencies för
+                    att göra appplikationen än mer vass.
+                </p>
+                <p>
+                    Min TIL för detta kursmoment är hur phpstan fungerar. Jag tog mig ända upp till level
+                    8, vilket jag är stolt över. Level 9 innebar en hel del förändringar på saker som jag
+                    hade arbetat undan på tidigare nivåer. En lärdom att dra är att ha bättre koll på vad
+                    jag kommer att stöta på i valideringen med composer lint för att försöka minimera
+                    valideringsfelen samt validera oftare för att inte behöva ändra om för mycket i
+                    min kod med risken att skapa följdfel/-problem.
+                </p>
+                <p>
+                    Tack för den här omgången, Mvh Martin
+                </p>
             </section>
             <section id="kmom04">
                 <h2>Kmom04</h2>
