@@ -9,48 +9,46 @@ namespace App\Card;
 class Player
 {
     /**
-     * @var Hand    $hand       Hand with cards
-     * @var bool    $stop       Boolean whether player has stopped or not
-     * @var string  $name       Name of player
-     * @var Points  $points     Points class
+     * @var Hand    $hand       Hand with cards.
+     * @var string  $name       Player name.
+     * @var Points  $points     Points class.
      */
     protected Hand $hand;
-    protected bool $stop;
     protected string $name;
     protected Points $points;
 
     /**
      * Class constructor
      *
-     * @param string    $name   Name of player
      * @param Hand      $hand   Hand with cards
      * @param Points    $points Points class with player points.
      *
      */
-    public function __construct(string $name, Hand $hand, Points $points)
+    public function __construct(Hand $hand, Points $points)
     {
-        $this->name = $name;
+        $this->name = "human";
         $this->hand = $hand;
         $this->points = $points;
-        $this->stop = false;
     }
 
     /**
-     * Sets property stop to true
+     * Gets name of player.
+     *
+     * @return string name of player.
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Sets name of player.
      *
      * @return void
      */
-    public function setStop() : void {
-        $this->stop = true;
-    }
-
-    /**
-     * Gets bool value of property stop.
-     *
-     * @return bool player has stopped or not.
-     */
-    public function getStop() : bool {
-        return $this->stop;
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
     /**
@@ -58,7 +56,8 @@ class Player
      *
      * @return void
      */
-    public function calculatePlayerPoints() : void {
+    public function calculatePlayerPoints(): void
+    {
         $this->points->calculatePoints($this->hand);
     }
 
@@ -67,7 +66,8 @@ class Player
      *
      * @return void
      */
-    public function setPlayerDefinitivePoints() : void {
+    public function setPlayerDefinitivePoints(): void
+    {
         $this->points->setBestHandPoints();
     }
 
@@ -76,34 +76,60 @@ class Player
      *
      * @return int with best points possible.
      */
-    public function getPlayerDefinitivePoints() : int {
+    public function getPlayerDefinitivePoints(): int
+    {
         return $this->points->getBestHandPoints();
     }
 
     /**
      * Sets player's best points for hand of cards.
      *
-     * @return int|array with player's points.
+     * @return int|array<string,int> with player's points.
      */
-    public function getPlayerPoints() : int|array {
+    public function getPlayerPoints(): int|array
+    {
         return $this->points->getPoints();
     }
 
     /**
      * Adds card to player hand.
      *
+     * @param array<mixed,string> $card Card to be added to hand.
+     *
      * @return void
      */
-    public function addCardToPlayerHand($card) : void {
+    public function addCardToPlayerHand($card): void
+    {
         $this->hand->addCard($card);
     }
 
     /**
      * Get player card images.
      *
-     * @return array with player card images.
+     * @return array<string> with player card images.
      */
-    public function getPlayerCardImages() : array {
+    public function getPlayerCardImages(): array
+    {
         return $this->hand->getCardImages();
+    }
+
+    /**
+     * Get player card values.
+     *
+     * @return array<string> with player card images.
+     */
+    public function getPlayerCardValues(): array
+    {
+        return $this->hand->getCardValues();
+    }
+
+    /**
+     * Checks if player holds ace.
+     *
+     * @return bool whether player holds ace or not.
+     */
+    public function holdsAce(): bool
+    {
+        return $this->hand->hasAce();
     }
 }
