@@ -9,27 +9,45 @@ namespace App\Card;
 class Hand
 {
     /**
-     * @var array $cards    Cards in hand.
+     * @var array<string, array<string, string>> $cards     Cards in hand.
      */
-    private array $cards;
+    private array $cards = [];
 
     /**
      * Adds card to hand.
      *
-     * @param array $card Array with information about card.
+     * @param array<string> $card Array with information about card.
      *
      * @return void
      */
-    public function addCard(array $card) : void {
+    public function addCard(array $card): void
+    {
         array_push($this->cards, $card);
+    }
+
+    /**
+     * Checks if hand has ace.
+     *
+     * @return bool whether hand has ace or not.
+     */
+    public function hasAce(): bool
+    {
+        foreach ($this->cards as $card) {
+            if ($card["value"] === "A") {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
      * Get card values.
      *
-     * @return array with card values.
+     * @return array<string> with card values.
      */
-    public function getCardValues() : array {
+    public function getCardValues(): array
+    {
         $cardValues = [];
 
         foreach ($this->cards as $card) {
@@ -42,9 +60,10 @@ class Hand
     /**
      * Get card images.
      *
-     * @return array with card images.
+     * @return array<string> with card images.
      */
-    public function getCardImages() : array {
+    public function getCardImages(): array
+    {
         $cardImages = [];
 
         foreach ($this->cards as $card) {
