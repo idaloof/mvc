@@ -1,0 +1,14 @@
+Array
+(
+    [name] => Eight of spades
+    [value] => 8
+    [suit] => spades
+    [image] => 8S
+)
+Array
+(
+    [name] => Five of clubs
+    [value] => 5
+    [suit] => clubs
+    [image] => 5C
+)
