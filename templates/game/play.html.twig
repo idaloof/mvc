@@ -1,0 +1,65 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game play{% endblock %}
+
+{% block main %}
+    <div class="game-play container">
+        <div class="game-play heading">
+            <h1>Game is on!</h1>
+        </div>
+        <div class="game-arena">
+            <div class="bank-container">
+                <div class="player-heading">
+                    <h1 class="small">Bank</h1>
+                </div>
+                <div class="player-container">
+                    <div class="bank-points">
+                        <h2>Poäng</h2>
+                        <p>Poäng: {{ bank["points"] }}</p>
+                    </div>
+                    <div class="bank-cards">
+                        <h2>Kort</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="human-container">
+                <div class="player-heading">
+                    <h1 class="small">Du</h1>
+                </div>
+                <div class="player-container">
+                    <div class="human-points">
+                        <h2>Poäng</h2>
+                        {% if human["highAndLow"] %}
+                            <div class="points">
+                                <p>Poäng (lågt): {{ human["low"] }}</p>
+                            </div>
+                            <div class="points">
+                                <p>Poäng (högt): {{ human["high"] }}</p>
+                            </div>
+                        {% else %}
+                            <div class="points">
+                                <p>Poäng: {{ human["points"] }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="human-cards">
+                        <h2>Kort</h2>
+                        {% if human["cards"]|default %}
+                            {% for card in human["cardImages"] %}
+                                <img class="game-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="game-play button-container">
+                <form action="{{ path('game_hit') }}" method="post">
+                    <input class="button" type="submit" value="Dra kort">
+                </form>
+                <form action="{{ path('game_stop_post') }}" method="post">
+                    <input class="button" type="submit" value="Stanna">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game{% endblock %}
+
+{% block main %}
+    <div class="game-home container">
+        <div class="game-home heading">
+            <h1>Game of 21 (special)</h1>
+        </div>
+        <div class="game-home text">
+            <h2>Spelet</h2>
+            <p>
+                Det här är en variant av det klassiska kortspelet 21. Jag har skapat spelet
+                utifrån de traditionella reglerna, men har fusionerat det med kortspelet
+                Black Jack. Nedan följer reglerna för min variant av spelet.
+            </p>
+            <h2>Målsättning</h2>
+            <p>
+                Målet är att få 21 poäng eller komma så nära 21 poäng som möjligt och samtidigt
+                ha högre poäng än banken, utan att gå över 21 poäng.
+                Banken vinner om:
+            </p>
+            <ul>
+                <li>du får mer än 21 poäng.</li>
+                <li>det blir lika.</li>
+                <li>om banken har högre poäng.</li>
+            </ul>
+            <h2>Poäng</h2>
+            <p>
+                Sifferkort är värda sin siffra i poäng, utom ess. Ett ess kan vara värt
+                1 eller 11 poäng (precis som i Black Jack). Klädda kort är värda 10 poäng.
+                Programmet hjälper dig att beräkna poängen.
+            </p>
+            <h2>Spelordning</h2>
+            <p>
+                Du som spelare börjar dra kort och kan dra kort så länge du inte får mer än 21 poäng.
+                Får du mer än 21 poäng förlorar du spelet automatiskt,
+                även om banken också får över 21 poäng.
+            </p>
+            <p>
+                När du har valt att stanna, är det bankens tur. Banken drar kort så länge dens poäng
+                är mindre än 17. När banken stannat, avgörs vinnaren.
+            </p>
+        </div>
+        <form action="{{ path('game_init') }}" method="post">
+            <input type="submit" class="button" value="Starta spelet">
+        </form>
+    </div>
+{% endblock %}
+
+{# I din landningssida, inled med en kort beskrivning av ditt 
+kortspel och reglerna för hur det fungerar.
+Placera en knapp eller länk som leder till att spelet börjar. #}

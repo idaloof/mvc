@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game over{% endblock %}
+
+{% block main %}
+    <div class="game-over container">
+        <div class="game-over heading">
+            <h1 class="over-heading">Game is over!</h1>
+        </div>
+        <div class="game-arena">
+            <div class="bank-container">
+                <div class="player-heading">
+                    <h1 class="small">Bank</h1>
+                </div>
+                <div class="player-container">
+                    <div class="bank-points">
+                        <h2>Poäng</h2>
+                        <p>Poäng: {{ bank["points"] }}</p>
+                    </div>
+                    <div class="bank-cards">
+                        <h2>Kort</h2>
+                        {% if bank["cards"]|default %}
+                            {% for card in bank["cardImages"] %}
+                                <img class="game-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="game-over text">
+                <p>{{ winner }} is the winner!</p>
+                <p>{{ message }}</p>
+            </div>
+            <div class="human-container game-over">
+                <div class="player-heading">
+                    <h1 class="small">Du</h1>
+                </div>
+                <div class="player-container">
+                    <div class="human-points">
+                        <h2>Poäng</h2>
+                        <p>Poäng: {{ human["points"] }}</p>
+                    </div>
+                    <div class="human-cards">
+                        <h2>Kort</h2>
+                        {% if human["cards"]|default %}
+                            {% for card in human["cardImages"] %}
+                                <img class="game-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="game-over button-container">
+                <form action="{{ path('game_init') }}" method="post">
+                    <input class="button" type="submit" value="Spela igen">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
