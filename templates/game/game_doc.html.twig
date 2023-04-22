@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game Documentation{% endblock %}
+
+{% block main %}
+    <div class="game-doc container">
+        <div class="game-doc heading">
+            <h1>Spelets dokumentation</h1>
+        </div>
+        <div class="game-doc flow">
+            <h2 class="small">Flödesschema</h2>
+            <img src="{{ asset('img/flow.png') }}" width="500" alt="game flow chart">
+        </div>
+        <div class="game-doc flow">
+            <h2 class="small">Pseudokod</h2>
+            <img src="{{ asset('img/pseudo.png') }}" width="500" alt="pseudo code">
+        </div>
+        <div class="game-doc classes">
+            <h2 class="small">Spelet</h2>
+            <h2 class="class">Game-klassen</h2>
+            <p>
+                Klassen tillhandahåller spellogik och innehåller
+                klasserna Deck, Player, Bank och Rules.
+            </p>
+            <h2 class="class">Deck-klassen</h2>
+            <p>
+                Klassen skapar kortleken, håller information
+                om respektive kort och kan förändra kortleken.
+            </p>
+            <h2 class="class">Player-klassen</h2>
+            <p>
+                Klassen håller spelarinformation, såsom kort på
+                hand och poäng.
+            </p>
+            <h2 class="class">Bank-klassen</h2>
+            <p>
+                Klassen extendar Player-klassen och har
+                dessutom en metod för att kolla om banken
+                nått högre än 17 poäng.
+            </p>
+            <h2 class="class">Hand-klassen</h2>
+            <p>
+                Klassen håller spelarens kort.
+            </p>
+            <h2 class="class">Points-klassen</h2>
+            <p>
+                Klassen beräknar poäng och sätter låg, hög och
+                bästa poäng.
+            </p>
+            <h2 class="class">Rules-klassen</h2>
+            <p>
+                Klassen håller de få regler som finns, dvs. om
+                en spelare är tjock, om banken är över 17, vem
+                som har vunnit.
+            </p>
+        </div>
+    </div>
+{% endblock %}
