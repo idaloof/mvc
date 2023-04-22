@@ -11,13 +11,13 @@ class Bank extends Player
     /**
      * Class constructor
      *
-     * @param string    $name   Name of player
      * @param Hand      $hand   Hand with cards
      * @param Points    $points Points class with player points.
      *
      */
-    public function __construct(string $name, Hand $hand, Points $points) {
-        parent::__construct($name, $hand, $points);
+    public function __construct(Hand $hand, Points $points)
+    {
+        parent::__construct($hand, $points);
     }
 
     /**
@@ -25,7 +25,8 @@ class Bank extends Player
      *
      * @return bool whether bank is over 17 or not.
      */
-    public function checkOverSeventeen() : bool {
+    public function checkOverSeventeen(): bool
+    {
         $rules = new Rules();
 
         return $rules->overSeventeen($this->getPlayerDefinitivePoints());
