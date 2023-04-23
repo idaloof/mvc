@@ -8,6 +8,8 @@ namespace App\Card;
 
 class Game
 {
+    use ProbabilityTrait;
+
     /**
      * @var Deck            $deck       Deck of cards.
      * @var Player          $human      Human player.
@@ -31,7 +33,8 @@ class Game
             "stop" => false,
             "highAndLow" => false,
             "points" => 0,
-            "cards" => []
+            "cards" => [],
+            "probability" => 0.0
         ],
         "bank" => [
             "bust" => false,
@@ -121,7 +124,8 @@ class Game
                 ...$this->standings[$player],
                 "highAndLow" => true,
                 "low" => $playerPoints["low"],
-                "high" => $playerPoints["high"]
+                "high" => $playerPoints["high"],
+                "points" => $playerPoints["low"]
             ];
 
             $this->setPlayerCardInfo();
@@ -133,6 +137,25 @@ class Game
             "points" => $playerPoints,
             "highAndLow" => false
         ];
+
+
+
+        $this->calculateBustProbability();
+    }
+
+    /**
+     * Calculates probability for bust.
+     *
+     * @return void
+     */
+    public function calculateBustProbability(): void
+    {
+        $probability = $this->calculateProbability($this->deck, $this->standings);
+
+        $this->standings["human"] = [
+                ...$this->standings["human"],
+                "probability" => $probability
+            ];
 
         $this->setPlayerCardInfo();
     }
