@@ -51,9 +51,9 @@ class Rules
     public function decideWinner(int $pointsHuman, int $pointsBank)
     {
         if ($pointsHuman > $pointsBank) {
-            return "Player";
+            return "Du";
         }
 
-        return "Bank";
+        return "Banken";
     }
 }

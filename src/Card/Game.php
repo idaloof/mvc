@@ -255,22 +255,22 @@ class Game
         $this->standings["winner_decided"] = "Yes.";
 
         if ($this->standings["human"]["bust"]) {
-            $this->standings["winner"] = "Bank";
-            $this->standings["message"] = "Player went bust.";
+            $this->standings["winner"] = "Banken";
+            $this->standings["message"] = "Du blev tjock.";
             return;
         } elseif ($this->standings["bank"]["bust"]) {
-            $this->standings["winner"] = "Player";
-            $this->standings["message"] = "Bank went bust.";
+            $this->standings["winner"] = "Du";
+            $this->standings["message"] = "Banken blev tjock.";
             return;
         }
 
         $winner = $this->rules->decideWinner($humanPoints, $bankPoints);
 
         $this->standings["winner"] = $winner;
-        $this->standings["message"] = "$winner has more points.";
+        $this->standings["message"] = "$winner har mer poäng.";
 
         if ($humanPoints === $bankPoints) {
-            $this->standings["message"] = "Draw benefits the Bank.";
+            $this->standings["message"] = "Lika gynnar banken.";
         }
     }
 
