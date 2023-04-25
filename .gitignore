@@ -29,3 +29,4 @@ yarn-error.log
 tools/
 .php-cs-fixer.cache
 phpstan.neon
+.phpdoc/
