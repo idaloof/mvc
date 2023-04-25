@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Card\Card;
+use App\Card\Deck;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,8 +22,8 @@ class CardController extends AbstractController
     #[Route("/card/deck", name: "deck")]
     public function cardDeck(): Response
     {
-        $card = new Card();
-        $cardImages = $card->getImages();
+        $deck = new Deck();
+        $cardImages = $deck->getDeckImages();
 
         $data = [
             'images' => $cardImages
@@ -38,9 +38,9 @@ class CardController extends AbstractController
         SessionInterface $session
     ): Response {
         $session->invalidate();
-        $card = new Card();
-        $card->shuffleImages();
-        $cardImages = $card->getImages();
+        $deck = new Deck();
+        $deck->shuffleDeck();
+        $cardImages = $deck->getDeckImages();
 
         $data = [
             'images' => $cardImages
@@ -54,11 +54,11 @@ class CardController extends AbstractController
     public function cardDeckDrawInit(
         SessionInterface $session
     ): Response {
-        $cards = $session->has("cards")
-            ? $session->get("cards")
-            : new Card();
+        $deck = $session->has("deck")
+            ? $session->get("deck")
+            : new Deck();
 
-        $session->set("cards", $cards);
+        $session->set("deck", $deck);
 
         return $this->redirectToRoute('deck_draw');
     }
@@ -68,12 +68,13 @@ class CardController extends AbstractController
     public function cardDeckDraw(
         SessionInterface $session
     ): Response {
-        $cards = $session->get("cards");
-        $cardCount = $cards->countCards();
+        $deck = $session->get("deck");
+        $cardCount = count($deck->getDeck());
         if ($cardCount > 0) {
-            $oneCard = $cards->drawOneCard();
-            $cardsLeft = $cards->countCards();
-            $session->set("cards", $cards);
+            $oneCardInfo = $deck->drawOneCard();
+            $oneCard = $oneCardInfo["image"];
+            $cardsLeft = count($deck->getDeck());
+            $session->set("deck", $deck);
 
             $data = [
                 'image' => $oneCard,
@@ -98,13 +99,13 @@ class CardController extends AbstractController
             return $this->redirectToRoute('deck_draw_number', ['number' => $number]);
         }
 
-        $cards = $session->has("cards")
-            ? $session->get("cards")
-            : new Card();
+        $deck = $session->has("deck")
+            ? $session->get("deck")
+            : new Deck();
 
-        $session->set("cards", $cards);
+        $session->set("deck", $deck);
 
-        $cardCount = $cards->countCards();
+        $cardCount = count($deck->getDeck());
 
         $data = [];
 
@@ -118,12 +119,13 @@ class CardController extends AbstractController
         if ($cardCount > 0 && $number <= $cardCount) {
             $manyCards = [];
             for ($i = 1; $i <= $number; $i++) {
-                $oneCard = $cards->drawOneCard();
+                $oneCardInfo = $deck->drawOneCard();
+                $oneCard = $oneCardInfo["image"];
                 array_push($manyCards, $oneCard);
             }
 
-            $cardsLeft = $cards->countCards();
-            $session->set("cards", $cards);
+            $cardsLeft = count($deck->getDeck());
+            $session->set("deck", $deck);
 
             $data = [
                 'cards' => $manyCards,
@@ -159,11 +161,13 @@ class CardController extends AbstractController
             ]);
         }
 
-        $deck = new Card();
+        $deck = new Deck();
 
         if ($session->has('remaining')) {
             $deck = $session->get('remaining');
         }
+
+        $cardCount = count($deck->getDeck());
 
         $drawnCards = [];
 
@@ -171,15 +175,16 @@ class CardController extends AbstractController
             $data = [
                 'cards' => $cards,
                 'players' => $players,
-                'count' => $deck->countCards()
+                'count' => $cardCount
             ];
 
             return $this->render('card/deal.html.twig', $data);
-        } elseif ($players * $cards <= $deck->countCards()) {
+        } elseif ($players * $cards <= $cardCount) {
             for ($i = 1; $i <= $players; $i++) {
                 $aPlayer = [];
                 for ($j = 1; $j <= $cards; $j++) {
-                    $oneCard = $deck->drawOneCard();
+                    $oneCardInfo = $deck->drawOneCard();
+                    $oneCard = $oneCardInfo["image"];
                     array_push($aPlayer, $oneCard);
                 }
                 array_push($drawnCards, $aPlayer);
@@ -187,9 +192,11 @@ class CardController extends AbstractController
 
             $session->set('remaining', $deck);
 
+            $cardCount = count($deck->getDeck());
+
             $data = [
                 'allCards' => $drawnCards,
-                'count' => $deck->countCards(),
+                'count' => $cardCount,
                 'cards' => $cards,
                 'players' => $players
             ];
@@ -197,7 +204,7 @@ class CardController extends AbstractController
             return $this->render('card/deal.html.twig', $data);
         }
 
-        $max = $deck->countCards();
+        $max = count($deck->getDeck());
         $requested = $players * $cards;
         $data = [
             'message' => "You tried to draw {$requested} cards. There are only {$max} cards left.",
