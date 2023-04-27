@@ -3,7 +3,7 @@
 /**
  * Probability Trait
  * Calculates probability for going bust,
- * which depends on player current points and cards left in deck.
+ * which depends on player current points and the cards left in deck.
  */
 
 namespace App\Card;
