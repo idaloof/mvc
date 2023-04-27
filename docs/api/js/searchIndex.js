@@ -16,41 +16,6 @@ Search.appendIndex(
             "summary": "Checks\u0020if\u0020bank\u0020is\u0020over\u002017\u0020points.",
             "url": "classes/App-Card-Bank.html#method_checkOverSeventeen"
         },                {
-            "fqsen": "\\App\\Card\\Card",
-            "name": "Card",
-            "summary": "",
-            "url": "classes/App-Card-Card.html"
-        },                {
-            "fqsen": "\\App\\Card\\Card\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Class\u0020constructor",
-            "url": "classes/App-Card-Card.html#method___construct"
-        },                {
-            "fqsen": "\\App\\Card\\Card\u003A\u003AgetImages\u0028\u0029",
-            "name": "getImages",
-            "summary": "Get\u0020the\u0020images.",
-            "url": "classes/App-Card-Card.html#method_getImages"
-        },                {
-            "fqsen": "\\App\\Card\\Card\u003A\u003AshuffleImages\u0028\u0029",
-            "name": "shuffleImages",
-            "summary": "Shuffles\u0020array\u0020of\u0020images",
-            "url": "classes/App-Card-Card.html#method_shuffleImages"
-        },                {
-            "fqsen": "\\App\\Card\\Card\u003A\u003AcountCards\u0028\u0029",
-            "name": "countCards",
-            "summary": "Counts\u0020card\u0020in\u0020deck",
-            "url": "classes/App-Card-Card.html#method_countCards"
-        },                {
-            "fqsen": "\\App\\Card\\Card\u003A\u003AdrawOneCard\u0028\u0029",
-            "name": "drawOneCard",
-            "summary": "Picks\u0020one\u0020random\u0020card\u0020from\u0020array\u0020of\u0020images",
-            "url": "classes/App-Card-Card.html#method_drawOneCard"
-        },                {
-            "fqsen": "\\App\\Card\\Card\u003A\u003A\u0024deck",
-            "name": "deck",
-            "summary": "",
-            "url": "classes/App-Card-Card.html#property_deck"
-        },                {
             "fqsen": "\\App\\Card\\Hand",
             "name": "Hand",
             "summary": "",
@@ -60,11 +25,6 @@ Search.appendIndex(
             "name": "addCard",
             "summary": "Adds\u0020card\u0020to\u0020hand.",
             "url": "classes/App-Card-Hand.html#method_addCard"
-        },                {
-            "fqsen": "\\App\\Card\\Hand\u003A\u003AhasAce\u0028\u0029",
-            "name": "hasAce",
-            "summary": "Checks\u0020if\u0020hand\u0020has\u0020ace.",
-            "url": "classes/App-Card-Hand.html#method_hasAce"
         },                {
             "fqsen": "\\App\\Card\\Hand\u003A\u003AgetCardValues\u0028\u0029",
             "name": "getCardValues",
