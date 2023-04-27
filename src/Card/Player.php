@@ -124,12 +124,22 @@ class Player
     }
 
     /**
-     * Checks if player holds ace.
+     * Get player's low points.
      *
-     * @return bool whether player holds ace or not.
+     * @return int with low points.
      */
-    public function holdsAce(): bool
+    public function getPlayerLowPoints(): int
     {
-        return $this->hand->hasAce();
+        return $this->points->getLowPoints();
+    }
+
+    /**
+     * Get player's high points.
+     *
+     * @return int with high points.
+     */
+    public function getPlayerHighPoints(): int
+    {
+        return $this->points->getHighPoints();
     }
 }
