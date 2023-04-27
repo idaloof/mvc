@@ -152,7 +152,9 @@ class Game
      */
     public function calculateBustProbability(): void
     {
-        $probability = $this->calculateProbability($this->deck, $this->standings);
+        $deck = $this->deck->getDeck();
+        $points = $this->standings["human"]["points"];
+        $probability = $this->calculateProbability($deck, $points);
 
         $this->standings["human"] = [
                 ...$this->standings["human"],
