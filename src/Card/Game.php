@@ -29,6 +29,8 @@ class Game
      */
     private array $standings = [
         "human" => [
+            "low" => 0,
+            "high" => 0,
             "bust" => false,
             "stop" => false,
             "highAndLow" => false,
@@ -38,6 +40,8 @@ class Game
             "probability" => 0.0
         ],
         "bank" => [
+            "low" => 0,
+            "high" => 0,
             "bust" => false,
             "stop" => false,
             "highAndLow" => false,
@@ -66,6 +70,7 @@ class Game
         $this->bank = $bank;
         $this->bank->setName("bank");
         $this->rules = $rules;
+        $this->turn = $this->human;
     }
 
     /**
@@ -132,7 +137,7 @@ class Game
                 "points" => $playerPoints["low"]
             ];
 
-            $this->setPlayerCardInfo();
+            $this->calculateBustProbability();
             return;
         }
 
@@ -306,12 +311,12 @@ class Game
              */
             "turn"              => $this->turn, //setTurn
             "deckCount"         => $this->deck->getDeckCount(), //startTurn
-            "humanLowPoints"    => $this->human->getPlayerLowPoints(), // calculatePoints
-            "humanHighPoints"   => $this->human->getPlayerHighPoints(), // calculatePoints
-            "humanPoints"       => $this->human->getPlayerDefinitivePoints(), // calculatePoints
-            "bankLowPoints"     => $this->bank->getPlayerLowPoints(), // calculatePoints
-            "bankHighPoints"    => $this->bank->getPlayerHighPoints(), // calculatePoints
-            "bankPoints"        => $this->bank->getPlayerDefinitivePoints(), // calculatePoints
+            "humanLowPoints"    => $this->standings["human"]["low"], // calculatePoints
+            "humanHighPoints"   => $this->standings["human"]["high"], // calculatePoints
+            "humanPoints"       => $this->standings["human"]["points"], // calculatePoints
+            "bankLowPoints"     => $this->standings["bank"]["low"], // calculatePoints
+            "bankHighPoints"    => $this->standings["bank"]["high"], // calculatePoints
+            "bankPoints"        => $this->standings["bank"]["points"], // calculatePoints
             "bustProbability"   => $this->standings["human"]["probability"], //calculateBustProbability
             "humanCards"        => $this->standings["human"]["cards"], //setPlayerCardInfo
             "humanCardImages"   => $this->standings["human"]["cardImages"], //setPlayerCardInfo
