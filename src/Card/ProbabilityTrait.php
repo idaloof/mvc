@@ -41,9 +41,10 @@ trait ProbabilityTrait
     {
         $playerPoints = $standings["human"]["points"];
         $neededForBust = 22 - $playerPoints;
-        /** @var array<string, array<string, string>> $deckOfCards */
+
         $deckOfCards = $deck->getDeck();
         $nrOfCardsInDeck = count($deckOfCards);
+
         $bustCards = 0;
 
         foreach ($deckOfCards as $card) {
