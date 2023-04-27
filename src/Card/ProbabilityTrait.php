@@ -32,22 +32,21 @@ trait ProbabilityTrait
     /**
      * Calculates probability for going bust and returns probability
      *
-     * @param Deck                  $deck       Current deck.
-     * @param array<string, mixed>  $standings  Game standings.
+     * @param array<string,array<string,string>>    $deck       Current deck.
+     * @param int                                   $points     Player points
      *
      * @return float probability value
      */
-    public function calculateProbability(Deck $deck, array $standings): float
+    public function calculateProbability($deck, array $standings): float
     {
         $playerPoints = $standings["human"]["points"];
         $neededForBust = 22 - $playerPoints;
 
-        $deckOfCards = $deck->getDeck();
-        $nrOfCardsInDeck = count($deckOfCards);
+        $nrOfCardsInDeck = count($deck);
 
         $bustCards = 0;
 
-        foreach ($deckOfCards as $card) {
+        foreach ($deck as $card) {
             $cardValue = $card["value"];
             $cardPoint = $this->cardIntValues[$cardValue];
 
