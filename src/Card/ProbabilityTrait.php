@@ -37,10 +37,9 @@ trait ProbabilityTrait
      *
      * @return float probability value
      */
-    public function calculateProbability($deck, array $standings): float
+    public function calculateProbability($deck, int $points): float
     {
-        $playerPoints = $standings["human"]["points"];
-        $neededForBust = 22 - $playerPoints;
+        $neededForBust = 22 - $points;
 
         $nrOfCardsInDeck = count($deck);
 
