@@ -20,14 +20,14 @@ class GameTest extends TestCase
      */
     protected function setUp(): void
     {
-        $humanHand      = $this->createMock(Hand::class);
-        $humanPoints    = $this->createMock(Points::class);
-        $bankHand       = $this->createMock(Hand::class);
-        $bankPoints     = $this->createMock(Points::class);
-        $deck           = $this->createMock(Deck::class);
+        $humanHand      = new Hand();
+        $humanPoints    = new Points();
+        $bankHand       = new Hand();
+        $bankPoints     = new Points();
+        $deck           = new Deck();
         $human          = new Player($humanHand, $humanPoints);
         $bank           = new Bank($bankHand, $bankPoints);
-        $rules          = $this->createMock(Rules::class);
+        $rules          = new Rules();
         $this->game     = new Game($deck, $human, $bank, $rules);
     }
 
