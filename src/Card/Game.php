@@ -34,6 +34,7 @@ class Game
             "highAndLow" => false,
             "points" => 0,
             "cards" => [],
+            "cardImages" => [],
             "probability" => 0.0
         ],
         "bank" => [
@@ -41,10 +42,13 @@ class Game
             "stop" => false,
             "highAndLow" => false,
             "points" => 0,
-            "cards" => []
+            "cards" => [],
+            "cardImages" => [],
+            "overSeventeen" => false
         ],
         "winner" => "",
-        "winner_decided" => "No."
+        "winner_decided" => "No.",
+        "message" => ""
     ];
 
     /**
@@ -138,8 +142,6 @@ class Game
             "highAndLow" => false
         ];
 
-
-
         $this->calculateBustProbability();
     }
 
@@ -216,7 +218,7 @@ class Game
     }
 
     /**
-     * Checks if player hand is bust.
+     * Checks if bank hand is over 17 points.
      *
      * @return void
      */
@@ -225,6 +227,10 @@ class Game
         if ($this->bank->checkOverSeventeen()) {
             $points = $this->bank->getPlayerDefinitivePoints();
             $player = $this->bank->getName();
+            $this->standings[$player] = [
+                    ...$this->standings[$player],
+                    "overSeventeen" => true
+                ];
 
             if ($this->rules->bust($points)) {
                 $this->standings[$player] = [
@@ -282,5 +288,43 @@ class Game
     public function getGameStandings(): array
     {
         return $this->standings;
+    }
+
+    /**
+     * Get state of game.
+     *
+     * @return array<string, mixed> with game state.
+     */
+    public function getGameState(): array
+    {
+        $state = [
+            /**
+             * Comments contain game class methods
+             * that change part of state array
+             */
+            "turn"              => $this->turn, //setTurn
+            "deckCount"         => $this->deck->getDeckCount(), //startTurn
+            "humanLowPoints"    => $this->human->getPlayerLowPoints(), // calculatePoints
+            "humanHighPoints"   => $this->human->getPlayerHighPoints(), // calculatePoints
+            "humanPoints"       => $this->human->getPlayerDefinitivePoints(), // calculatePoints
+            "bankLowPoints"     => $this->bank->getPlayerLowPoints(), // calculatePoints
+            "bankHighPoints"    => $this->bank->getPlayerHighPoints(), // calculatePoints
+            "bankPoints"        => $this->bank->getPlayerDefinitivePoints(), // calculatePoints
+            "bustProbability"   => $this->standings["human"]["probability"], //calculateBustProbability
+            "humanCards"        => $this->standings["human"]["cards"], //setPlayerCardInfo
+            "humanCardImages"   => $this->standings["human"]["cardImages"], //setPlayerCardInfo
+            "bankCards"         => $this->standings["bank"]["cards"], //setPlayerCardInfo
+            "bankCardImages"    => $this->standings["bank"]["cardImages"], //setPlayerCardInfo
+            "humanBestHand"     => $this->human->getPlayerDefinitivePoints(), // setPlayerBestHand
+            "bankBestHand"      => $this->bank->getPlayerDefinitivePoints(), // setPlayerBestHand
+            "humanBust"         => $this->standings["human"]["bust"], //checkIfBust
+            "bankBust"          => $this->standings["bank"]["bust"], //checkIfBust
+            "bankOverSeventeen" => $this->standings["bank"]["overSeventeen"], //checkBankOverSeventeen
+            "winnerDecided"     => $this->standings["winner_decided"], //decideWinner
+            "winner"            => $this->standings["winner"], //decideWinner
+            "message"           => $this->standings["message"], //decideWinner
+        ];
+
+        return $state;
     }
 }
