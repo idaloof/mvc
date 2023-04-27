@@ -149,4 +149,24 @@ class Points
 
         return $this->handPoints;
     }
+
+    /**
+     * Returns int with player's low points.
+     *
+     * @return int with player low points.
+     */
+    public function getLowPoints(): int
+    {
+        return $this->handPoints["low"];
+    }
+
+    /**
+     * Returns int with player's high points.
+     *
+     * @return int with player high points.
+     */
+    public function getHighPoints(): int
+    {
+        return $this->handPoints["high"];
+    }
 }
