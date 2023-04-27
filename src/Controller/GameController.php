@@ -135,10 +135,8 @@ class GameController extends AbstractController
      * Game documentation route
      */
     #[Route("/game/doc", name: "game_doc")]
-    public function gameDoc(
-        SessionInterface $session
-    ): Response {
-
+    public function gameDoc(): Response
+    {
         return $this->render('game/game_doc.html.twig');
     }
 }
