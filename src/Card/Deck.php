@@ -86,11 +86,16 @@ class Deck
 
     /**
      * Shuffle deck
+     * @param int $seed The seed value for the random number generator
      *
      * @return void
      */
-    public function shuffleDeck(): void
+    public function shuffleDeck(int $seed = null): void
     {
+        if ($seed !== null) {
+            mt_srand($seed);
+        }
+
         shuffle($this->deck);
     }
 
@@ -128,5 +133,15 @@ class Deck
         $drawnCard = array_shift($this->deck);
 
         return $drawnCard;
+    }
+
+    /**
+     * Gets deck count.
+     *
+     * @return int with number of cards in deck.
+     */
+    public function getDeckCount(): int
+    {
+        return count($this->deck);
     }
 }
