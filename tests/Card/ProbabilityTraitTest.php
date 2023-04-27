@@ -9,15 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProbabilityTraitTest extends TestCase
 {
-    /**
-     * @var array $standings Array with current game standings
-     */
-    private array $standings;
-
-    /**
-     * @var Deck $deck Deck of cards
-     */
-    private Deck $deck;
+    use ProbabilityTrait;
 
     /**
      * @var array<mixed, int> $cardIntValues Array of points for each card except ace.
@@ -39,24 +31,53 @@ class ProbabilityTraitTest extends TestCase
     ];
 
     /**
-     * Test that probability for bust is zero percent
+     * Test that probability for bust is zero percent when only two cards are drawn.
      */
-    public function testProbabilityZero()
+    public function testProbabilityZero() : void
     {
-        $this->deck = $this->createMock(Deck::class);
+        $deck = new Deck();
+        $deck->shuffleDeck(3);
         $nrOfCards = 2;
 
-        $this->standings = [
-            "human" => [
-                "points" => 0
-            ]
-        ];
+        $points = 0;
 
         for($i = 1; $i <= $nrOfCards; $i++) {
-            $aCard = $this->deck->drawSingle();
+            $aCard = $deck->drawSingle();
             $cardValue = $aCard["value"];
             $cardPoints = $this->cardIntValues[$cardValue];
-            $this->standings["human"]["points"] += $cardPoints;
+            $points += $cardPoints;
         }
+
+        $cardDeck = $deck->getDeck();
+
+        $probability = $this->calculateProbability($cardDeck, $points);
+
+        $this->assertEquals(0, $probability);
+    }
+
+    /**
+     * Test that probability for bust is not zero,
+     * when points is above 11.
+     */
+    public function testProbabilityNotZero() : void
+    {
+        $deck = new Deck();
+        $deck->shuffleDeck(3); //Seed let's me know that the first three cards are A, 8 and 9.
+        $nrOfCards = 3;
+
+        $points = 0;
+
+        for($i = 1; $i <= $nrOfCards; $i++) {
+            $aCard = $deck->drawSingle();
+            $cardValue = $aCard["value"];
+            $cardPoints = $this->cardIntValues[$cardValue];
+            $points += $cardPoints;
+        }
+
+        $cardDeck = $deck->getDeck();
+
+        $probability = $this->calculateProbability($cardDeck, $points);
+
+        $this->assertNotEquals(0, $probability);
     }
 }
