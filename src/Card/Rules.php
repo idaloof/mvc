@@ -48,7 +48,7 @@ class Rules
      *
      * @return string with winner
      */
-    public function decideWinner(int $pointsHuman, int $pointsBank)
+    public function decideWinner(int $pointsHuman, int $pointsBank): string
     {
         if ($pointsHuman > $pointsBank) {
             return "Du";
