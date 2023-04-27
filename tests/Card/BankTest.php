@@ -12,7 +12,7 @@ class BankTest extends TestCase
     /**
      * @var Bank $bank Class representing the bank player.
      */
-    private bank $bank;
+    private Bank $bank;
 
     /**
      * Set up run before every test case
@@ -27,7 +27,7 @@ class BankTest extends TestCase
     /**
      * Verify that a bank object is instantiated.
      */
-    public function testCreateBankObject()
+    public function testCreateBankObject() : void
     {
         $hand = new Hand();
         $points = new Points();
@@ -39,7 +39,7 @@ class BankTest extends TestCase
     /**
      * Verify that overSeventeen method returns bool.
      */
-    public function testBankOverSeventeenBool()
+    public function testBankOverSeventeenBool() : void
     {
         $deck = new Deck();
         $deck->shuffleDeck(3);
