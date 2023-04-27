@@ -37,7 +37,14 @@ class DeckTest extends TestCase
     public function testGetDeckCount() : void
     {
         $expected = 52;
-        $nrOfCards = count($this->deck->getDeck());
+        $nrOfCards = $this->deck->getDeckCount();
+
+        $this->assertEquals($expected, $nrOfCards);
+
+        $expected = 50;
+        $this->deck->drawSingle();
+        $this->deck->drawSingle();
+        $nrOfCards = $this->deck->getDeckCount();
 
         $this->assertEquals($expected, $nrOfCards);
     }
@@ -60,7 +67,7 @@ class DeckTest extends TestCase
     /**
      * Tests if shuffleDeck method rearranges cards in deck.
      */
-    public function testShuffleDeck() : void
+    public function testShuffleDeckWithoutSeed() : void
     {
         $beforeShuffle = $this->deck->getDeckImages();
 
@@ -69,6 +76,19 @@ class DeckTest extends TestCase
         $afterShuffle = $this->deck->getDeckImages();
 
         $this->assertNotEquals($beforeShuffle, $afterShuffle);
+    }
+
+    /**
+     * Tests if shuffleDeck method with seed works correctly.
+     */
+    public function testShuffleDeckWithSeed() : void
+    {
+        $this->deck->shuffleDeck(234);
+
+        $card = $this->deck->drawSingle();
+        $cardImage = $card["image"];
+
+        $this->assertEquals("KS", $cardImage);
     }
 
     /**
