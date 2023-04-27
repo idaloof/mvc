@@ -39,7 +39,7 @@ class CardController extends AbstractController
     ): Response {
         $session->invalidate();
         $deck = new Deck();
-        $deck->shuffleDeck();
+        $deck->shuffleDeck(3);
         $cardImages = $deck->getDeckImages();
 
         $data = [
