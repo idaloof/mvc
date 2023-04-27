@@ -26,22 +26,6 @@ class Hand
     }
 
     /**
-     * Checks if hand has ace.
-     *
-     * @return bool whether hand has ace or not.
-     */
-    public function hasAce(): bool
-    {
-        foreach ($this->cards as $card) {
-            if ($card["value"] === "A") {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * Get card values.
      *
      * @return array<string> with card values.
