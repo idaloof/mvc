@@ -160,7 +160,62 @@
             </section>
             <section id="kmom04">
                 <h2>Kmom04</h2>
-                <p>Text</p>
+                <p>
+                    Så, dags att lämna in kmom04. Jag inser när jag skriver testerna och när
+                    jag läser litteraturen kring testning att det är viktigt och hur det kan
+                    förebygga massiv huvudbry längre fram i projekt. Jag tycker att det var lätt
+                    att sätta mig in i PHPUnit och det liknade det vi gjorde i oopython-kursen
+                    väldigt mycket. Ingen större skillnad egentligen. Det var även lätt att skapa
+                    min egen konfiguration i xml-filen, där jag exkluderade vissa kataloger och
+                    filer.
+                <p>
+                </p>
+                    Jag lyckades nå över 90% kodtäckning men jag skulle inte säga att jag har
+                    lyckats väl. Dels är min kod inte särskilt testbar (inte enligt mig själv i
+                    alla fall), i Game-klassen är nästan samtliga metoder ihopkedjade, dvs. en
+                    metod anropas och den anropar i sin tur nästa metod, som anropar nästa osv.
+                    Jag hade väldigt svårt att hitta ett sätt att isolera metoderna och jag satt
+                    länge och funderade och försökte bygga om koden.
+                </p>
+                    Upplever du din egen kod som “testbar kod” eller finns det delar i
+                    koden som är mer eller mindre testbar och finns det saker som kan
+                    göras för att förbättra kodens testbarhet?
+                    Som jag skrev, tycker jag inte att huvudparten av min kod är testbar kod.
+                    Självklart finns det delar som går att förbättra. Jag hade kunnat
+                    placera mer kod i min game-controller. På så vis hade jag byggt upp en kodbas där
+                    metoder inte är ihopkedjade, utan där varje metod gör en return. Det hade blivit
+                    en renare approach rent testmässigt, även om controllern hade blivit fetare.
+                <p>
+                </p>
+                    Jag skrev om min kod på vissa ställen, la till några metoder. Till exempel i
+                    game-klassen skapade jag en getGameState-metod (enligt tips från mos), som
+                    jag använde när jag testade metoderna i game-klassen. "Problemet" med game-
+                    klassen var ju dock att flera metoder anropades även om jag bara ville testa
+                    en av dem. getGameState-metoden fyllde ett visst syfte, men jag vet inte om
+                    hela test-suiten bara blev ett korthus, ett fejkat test för att nå högre
+                    kodtäckning. En sak jag gjorde för att ändå få lite mindre variation i
+                    testningen var att uppdatera shuffle-metoden i Deck-klassen med en
+                    optionell parameter "seed" som gjorde att kortleken alltid blandades på exakt
+                    samma sätt så länge seed-värdet var samma. På så vis kunde jag också lätt
+                    simulera ess på hand och andra metoder i övriga klasser.
+                <p>
+                </p>
+                    Testbar kod kan absolut vara en markör för snygg och ren kod.
+                    Genom att till exempel inte chaina mina metoder i game-klassen och
+                    låta dem utföra sitt arbete och därefter returnera ett värde eller uppdatera
+                    en property, hade det varit lättare att testa koden och det hade varit lättare
+                    också att se vart koden leder.
+                <p>
+                </p>
+                    Min TIL för detta kmom är följande: I framtiden vill jag för projekt eller
+                    uppgifter (kod) som behöver testas skriva testfall innan jag börjar skriva
+                    själva koden. Det hade, för mig, varit en bättre approach om jag hade jobbat
+                    TDD redan från början. Nu tog jag mig inte tiden, av olika anledningar, att
+                    arbeta om min kod. Det hade i och för sig varit en bra läxa, men i brist av tid
+                    valde jag att inte lägga något krut på det. Må hända att jag får Ux på grund av
+                    mina bristfälliga test suites och då får jag helt enkelt tänka om.
+                <p>
+                </p>
             </section>
             <section id="kmom05">
                 <h2>Kmom05</h2>
