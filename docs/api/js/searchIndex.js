@@ -16,6 +16,61 @@ Search.appendIndex(
             "summary": "Checks\u0020if\u0020bank\u0020is\u0020over\u002017\u0020points.",
             "url": "classes/App-Card-Bank.html#method_checkOverSeventeen"
         },                {
+            "fqsen": "\\App\\Card\\Deck",
+            "name": "Deck",
+            "summary": "",
+            "url": "classes/App-Card-Deck.html"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor\u0020to\u0020initiate\u0020the\u0020deck.",
+            "url": "classes/App-Card-Deck.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AgetDeckImages\u0028\u0029",
+            "name": "getDeckImages",
+            "summary": "Get\u0020the\u0020images.",
+            "url": "classes/App-Card-Deck.html#method_getDeckImages"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AgetDeck\u0028\u0029",
+            "name": "getDeck",
+            "summary": "Get\u0020the\u0020complete\u0020deck",
+            "url": "classes/App-Card-Deck.html#method_getDeck"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AshuffleDeck\u0028\u0029",
+            "name": "shuffleDeck",
+            "summary": "Shuffle\u0020deck",
+            "url": "classes/App-Card-Deck.html#method_shuffleDeck"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AdrawOneCard\u0028\u0029",
+            "name": "drawOneCard",
+            "summary": "Draws\u0020one\u0020random\u0020card\u0020from\u0020the\u0020deck",
+            "url": "classes/App-Card-Deck.html#method_drawOneCard"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AdrawSingle\u0028\u0029",
+            "name": "drawSingle",
+            "summary": "Draws\u0020first\u0020card\u0020from\u0020deck",
+            "url": "classes/App-Card-Deck.html#method_drawSingle"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AgetDeckCount\u0028\u0029",
+            "name": "getDeckCount",
+            "summary": "Gets\u0020deck\u0020count.",
+            "url": "classes/App-Card-Deck.html#method_getDeckCount"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003A\u0024values",
+            "name": "values",
+            "summary": "",
+            "url": "classes/App-Card-Deck.html#property_values"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003A\u0024suits",
+            "name": "suits",
+            "summary": "",
+            "url": "classes/App-Card-Deck.html#property_suits"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003A\u0024deck",
+            "name": "deck",
+            "summary": "",
+            "url": "classes/App-Card-Deck.html#property_deck"
+        },                {
             "fqsen": "\\App\\Card\\Hand",
             "name": "Hand",
             "summary": "",

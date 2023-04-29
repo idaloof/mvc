@@ -9,7 +9,7 @@ namespace App\Card;
 class Deck
 {
     /**
-     * @var array<mixed, string> $values Card values
+     * @var array<string> $values Card values
      */
     private array $values = [
         'A' => 'Ace',
@@ -122,7 +122,7 @@ class Deck
     /**
      * Draws first card from deck
      *
-     * @return array<mixed,string> with card information
+     * @return array<string> with card information
      */
     public function drawSingle(): array
     {
