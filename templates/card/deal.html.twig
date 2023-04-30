@@ -19,7 +19,7 @@
                 <p>Cards left: {{ count }}</p>
             </div>
             <div class="deal-container">
-                <form class="deal-form" method="post" action"{{ path('deck_deal', {'players': players, 'cards': cards}) }}">
+                <form class="deal-form" method="post" action="{{ path('deck_deal', {'players': players, 'cards': cards}) }}">
 
                     <label for="player_count">Number of players</label>
                     <input class="input" type="number" name="player_count" min="0" value="{{ players }}">
@@ -35,7 +35,7 @@
                 <p>Cards left: {{ count }}</p>
             </div>
             <div class="deal-container">
-                <form class="deal-form" method="post" action"{{ path('deck_deal', {'players': players, 'cards': cards}) }}">
+                <form class="deal-form" method="post" action="{{ path('deck_deal', {'players': players, 'cards': cards}) }}">
 
                     <label for="player_count">Number of players</label>
                     <input class="input" type="number" name="player_count" min="0" value="{{ players }}">

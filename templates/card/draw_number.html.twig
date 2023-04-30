@@ -20,7 +20,7 @@
             </div>
             <div class="draw-count">
                 <p>Number of cards to draw:</p>
-                <form method="post" action"{{ path('deck_draw_number', {'number': number}) }}">
+                <form method="post" action="{{ path('deck_draw_number', {'number': number}) }}">
                     <input class="input-draw" type="number" name="draw_count" min="0" value="{{ number }}">
                     <button class="button" type="submit">Draw</button>
                 </form>
@@ -31,7 +31,7 @@
             </div>
             <div class="draw-count">
                 <p>Number of cards to draw:</p>
-                <form method="post" action"{{ path('deck_draw_number', {'number': number}) }}">
+                <form method="post" action="{{ path('deck_draw_number', {'number': number}) }}">
                     <input class="input-draw" type="number" name="draw_count" min="0" value="{{ number }}">
                     <button class="button" type="submit">Draw</button>
                 </form>
