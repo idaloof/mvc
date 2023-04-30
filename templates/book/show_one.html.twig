@@ -22,12 +22,12 @@
             <p>{{ book.author }}</p>
         </div>
         <div class="book-update">
-            <a href="{{ url('book_update', {'id': book.id})}}">
+            <a href="{{ url('book_update', {'anId': book.id})}}">
                 <button class="button book">Update book</button>
             </a>
         </div>
         <div class="book-delete">
-            <a href="{{ url('book_delete', {'id': book.id})}}">
+            <a href="{{ url('book_delete', {'anId': book.id})}}">
                 <button class="button book red">Delete book</button>
             </a>
         </div>

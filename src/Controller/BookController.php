@@ -154,7 +154,7 @@ class BookController extends AbstractController
         return $this->render('book/delete.html.twig', ['book' => $book]);
     }
 
-    #[Route('/book/delete/confirm/{id}', name: 'book_delete_confirm')]
+    #[Route('/book/delete/confirm/{anId}', name: 'book_delete_confirm')]
     public function deleteBookConfirm(
         BookRepository $bookRepository,
         int $anId
