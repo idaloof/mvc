@@ -9,6 +9,20 @@
         </div>
         <div class="api-links">
             <form class="api-form" method="" action="">
+                <div class="api-library-books">
+                    <button class="button"
+                        onClick="this.form.action='{{ booksUrl }}';this.form.method='get';">
+                        All books</button>
+
+                    <figcaption class="api-fig">Returnerar böckerna i biblioteket.</figcaption>
+                </div>
+                <div class="api-library-book">
+                    <button class="button"
+                        onClick="this.form.action='{{ bookUrl }}';this.form.method='get';">
+                        Book by ISBN</button>
+
+                    <figcaption class="api-fig">Returnerar en bok utifrån dess ISBN-nummer (Ozzy).</figcaption>
+                </div>
                 <div class="api-game">
                     <button class="button"
                         onClick="this.form.action='{{ gameUrl }}';this.form.method='get';">
