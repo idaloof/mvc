@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All books{% endblock %}
+
+{% block main %}
+<h1>All books</h1>
+<div class="books-container">
+    {% for book in books %}
+        <a href='/book/read-one/{{ book.id }}'>
+            <div class="book-container">
+                <img class="book-image" src="{{ asset('img/books/' ~ book.image) }}">
+            </div>
+        </a>
+    {% endfor %}
+</div>
+{% endblock %}

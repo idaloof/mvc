@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Delete book{% endblock %}
+
+{% block main %}
+<h1>Book with id: {{ book.id }}</h1>
+<div class="one-book-container">
+    <div class="book-image-container delete">
+        <img class="book-image-one delete" src="{{ asset('img/books/' ~ book.image) }}">
+    </div>
+    <div class="book-info">
+        <div class="book-title">
+            <h2>TITLE</h2>
+            <p>{{ book.title }}</p>
+        </div>
+        <div class="book-isbn">
+            <h2>ISBN</h2>
+            <p>{{ book.isbn }}</p>
+        </div>
+        <div class="book-author">
+            <h2>AUTHOR</h2>
+            <p>{{ book.author }}</p>
+        </div>
+        <div class="book-update">
+            <a href="{{ url('book_delete_confirm', {'id': book.id})}}">
+                <button class="button book">Delete book</button>
+            </a>
+        </div>
+        <div class="goto-all-books">
+            <a href="{{ url('book_read_many')}}">
+                <button class="button book">Go to all books</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create book{% endblock %}
+
+{% block main %}
+    <div class="create-container">
+        <h1>Add book to library</h1>
+        <div class="form-container">
+            <form id="book-form" action="{{ path('book_create_post') }}" method="post">
+                <fieldset>
+                    <legend class="form-legend">Create book</legend>
+                    <div class="input">
+                        <label for="title" class="form-label book">Book Title:</label>
+                        <input required="required" id="title" class="form-input book" type="text" name="title">
+                    </div>
+                    <div class="input">
+                        <label for="isbn" class="form-label book">Book ISBN:</label>
+                        <input required="required" id="isbn" class="form-input book" type="number" name="isbn">
+                    </div>
+                    <div class="input">
+                        <label for="author" class="form-label book">Book Author:</label>
+                        <input required="required" id="author" class="form-input book" type="text" name="author">
+                    </div>
+                    <div class="input">
+                        <label for="image" class="form-label book">Book Image:</label>
+                        <input required="required" id="image" class="form-input book" type="text" name="image">
+                    </div>
+                    <div class="input">
+                        <input class="button" type="submit" value="Create">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
