@@ -84,8 +84,8 @@ class PageController extends AbstractController
             'createBookUrl' => $this->generateUrl('book_create'),
             'showOneBookUrl' => $this->generateUrl('book_by_id', ['id' => 1]),
             'showAllBooksUrl' => $this->generateUrl('book_read_many'),
-            'updateBookUrl' => $this->generateUrl('book_update', ['id' => 1]),
-            'deleteBookUrl' => $this->generateUrl('book_delete', ['id' => 1])
+            'updateBookUrl' => $this->generateUrl('book_update', ['anId' => 1]),
+            'deleteBookUrl' => $this->generateUrl('book_delete', ['anId' => 1])
         ];
 
         return $this->render('library.html.twig', $data);
