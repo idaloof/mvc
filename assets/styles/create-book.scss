@@ -1,0 +1,24 @@
+/* Style sheet for create books page */
+
+.form-legend {
+    font-family: $font-family-heading;
+    font-size: $base-font-size * 1.4;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.input {
+    width: 43%;
+    padding: 5px;
+}
+
+.form-input.book {
+    float: right;
+    width: 45%;
+    height: 20px;
+    margin-left: 20px;
+}

@@ -1,0 +1,65 @@
+/* Style sheet for all books page */
+
+.one-book-container {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.book-image-one {
+    width: 300px;
+    box-shadow: $box-shadow-header;
+}
+
+.book-image-container {
+    align-self: center;
+    border: 2px solid #333;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: $magic-number * 2;
+}
+
+.button.book {
+    margin-bottom: 30px;
+}
+
+.book-title h2 {
+    text-align: left !important;
+}
+
+.book-isbn h2 {
+    text-align: left !important;
+}
+
+.book-author h2 {
+    text-align: left !important;
+}
+
+.button.book {
+    font-family: $font-family-paragraph;
+    font-size: $base-font-size;
+    background-color: rgb(226, 174, 77);
+    color: #000;
+    border: 1px solid #333 !important;
+    width: fit-content;
+}
+
+.button.book.red {
+    background-color: rgb(226, 77, 77);
+}
+
+.book-prev-next {
+    margin-top: $magic-number;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button.book.prevnext {
+    background-color: #3a577b;
+    color: $font-color-nav;
+}

@@ -1,0 +1,23 @@
+/* Style sheet for all books page */
+
+.books-container {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: #e19699;
+    margin-top: $magic-number;
+    padding: $magic-number;
+    border: 2px double #333;
+    justify-content: space-around;
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px;
+}
+
+.book-image {
+    width: 200px;
+    box-shadow: $box-shadow-header;
+}
