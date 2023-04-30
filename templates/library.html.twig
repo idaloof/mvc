@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Library{% endblock %}
+
+{% block main %}
+    <div class="api-container">
+        <div class="api-heading">
+            <h1>Library</h1>
+        </div>
+        <div class="library-links">
+            <form class="library-form" method="" action="">
+                <div class="api-game">
+                    <button class="button"
+                        onClick="this.form.action='{{ createBookUrl }}';this.form.method='get';">
+                        Create book</button>
+
+                    <figcaption class="api-fig">Fill out a form to create a new book.</figcaption>
+                </div>
+                <div class="api-quote">
+                    <button class="button"
+                        onClick="this.form.action='{{ showOneBookUrl }}';">
+                        Show one book</button>
+
+                    <figcaption class="api-fig">Shows one book from the library. Change the id in the URL to show another book.</figcaption>
+                </div>
+                <div class="api-deck">
+                    <button class="button"
+                        onClick="this.form.action='{{ showAllBooksUrl }}';this.form.method='get';">
+                        Show all books</button>
+
+                    <figcaption class="api-fig">Show all books from the library.</figcaption>
+                </div>
+                <div class="api-shuffle">
+                    <button class="button"
+                        onClick="this.form.action='{{ updateBookUrl }}';this.form.method='post';">
+                        Update a book</button>
+                    <figcaption class="api-fig">Fill out a form to update a book. Change the id in the URL to update another book.</figcaption>
+                </div>
+                <div class="api-draw">
+                    <button class="button"
+                        onClick="this.form.action='{{ deleteBookUrl }}';this.form.method='post';">
+                        Delete a book</button>
+                    <figcaption class="api-fig">This route let's you start the process of deleting a book. Change the id in the URL to change the book to delete.</figcaption>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
