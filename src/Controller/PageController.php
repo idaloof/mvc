@@ -69,9 +69,25 @@ class PageController extends AbstractController
             'shuffleUrl' => $this->generateUrl('api_deck_shuffle'),
             'drawUrl' => $this->generateUrl('api_draw'),
             'drawNumberUrl' => $this->generateUrl('api_draw_number', ['number' => 1]),
-            'gameUrl' => $this->generateUrl('api_game')
+            'gameUrl' => $this->generateUrl('api_game'),
+            'booksUrl' => $this->generateUrl('api_library_books'),
+            'bookUrl' => $this->generateUrl('api_library_book_isbn', ['isbn' => 9780446569903])
         ];
 
         return $this->render('api.html.twig', $data);
+    }
+
+    #[Route("/library", name: 'library')]
+    public function library(): Response
+    {
+        $data = [
+            'createBookUrl' => $this->generateUrl('book_create'),
+            'showOneBookUrl' => $this->generateUrl('book_by_id', ['id' => 1]),
+            'showAllBooksUrl' => $this->generateUrl('book_read_many'),
+            'updateBookUrl' => $this->generateUrl('book_update', ['id' => 1]),
+            'deleteBookUrl' => $this->generateUrl('book_delete', ['id' => 1])
+        ];
+
+        return $this->render('library.html.twig', $data);
     }
 }
