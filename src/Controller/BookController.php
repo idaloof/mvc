@@ -189,4 +189,85 @@ class BookController extends AbstractController
 
         return $this->redirectToRoute('book/show_all.html.twig');
     }
+
+    #[Route("/library/reset", name: 'library_reset')]
+    public function resetDatabase(
+        ManagerRegistry $doctrine
+    ): Response {
+        $entityManager = $doctrine->getManager();
+
+        $sql = [
+            'DROP TABLE IF EXISTS book;',
+            'CREATE TABLE book (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            title VARCHAR(255) NOT NULL,
+            isbn INTEGER NOT NULL,
+            author VARCHAR(255) NOT NULL,
+            image VARCHAR(255) NOT NULL);'
+        ];
+
+        foreach ($sql as $query) {
+            $connection = $doctrine->getConnection();
+            $statement = $connection->prepare($query);
+            $statement->executeStatement();
+        }
+
+        $books = [
+            [
+                "The More Beautiful World Our Hearts Know Is Possible",
+                9781583947241,
+                "Charles Eisenstein",
+                "Charles.jpg"
+            ],
+            [
+                "438 days",
+                9789185279258,
+                "Johan Persson, Martin Schibbye",
+                "438.jpg"
+            ],
+            [
+                "Faster than Lightning: My Autobiography",
+                9780007371426,
+                "Usain Bolt",
+                "Usain.jpg"
+            ],
+            [
+                "I Am Ozzy",
+                9780446569903,
+                "Ozzy Ousborne",
+                "Ozzy.jpg"
+            ],
+            [
+                "Darwin's Pharmacy",
+                9780295990958,
+                "Richard M. Doyle",
+                "Darwin.jpg"
+            ],
+            [
+                "Steve Jobs",
+                9780349140438,
+                "Walter Isaacson",
+                "Steve.jpg"
+            ],
+            [
+                "Open",
+                9780007281435,
+                "Andre Agassi",
+                "Andre.jpg"
+            ]
+        ];
+
+        foreach ($books as $book) {
+            $aBook = new Book();
+            $aBook->setTitle($book[0]);
+            $aBook->setIsbn($book[1]);
+            $aBook->setAuthor($book[2]);
+            $aBook->setImage($book[3]);
+
+            $entityManager->persist($aBook);
+        }
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('library');
+    }
 }
