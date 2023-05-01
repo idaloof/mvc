@@ -42,6 +42,12 @@
                         Delete a book</button>
                     <figcaption class="api-fig">This route let's you start the process of deleting a book. Change the id in the URL to change the book to delete.</figcaption>
                 </div>
+                <div class="library-reset">
+                    <button class="button"
+                        onClick="this.form.action='{{ resetLibraryUrl }}';this.form.method='get';">
+                        Reset library</button>
+                    <figcaption class="api-fig">Reset the database to its original state.</figcaption>
+                </div>
             </form>
         </div>
     </div>
