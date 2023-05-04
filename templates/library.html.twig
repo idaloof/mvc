@@ -32,19 +32,19 @@
                 </div>
                 <div class="api-shuffle">
                     <button class="button"
-                        onClick="this.form.action='{{ updateBookUrl }}';this.form.method='post';">
+                        onClick="this.form.action='{{ updateBookUrl }}';this.form.method='get';">
                         Update a book</button>
                     <figcaption class="api-fig">Fill out a form to update a book. Change the id in the URL to update another book.</figcaption>
                 </div>
                 <div class="api-draw">
                     <button class="button"
-                        onClick="this.form.action='{{ deleteBookUrl }}';this.form.method='post';">
+                        onClick="this.form.action='{{ deleteBookUrl }}';this.form.method='get';">
                         Delete a book</button>
                     <figcaption class="api-fig">This route let's you start the process of deleting a book. Change the id in the URL to change the book to delete.</figcaption>
                 </div>
                 <div class="library-reset">
                     <button class="button"
-                        onClick="this.form.action='{{ resetLibraryUrl }}';this.form.method='get';">
+                        onClick="this.form.action='{{ resetLibraryUrl }}';this.form.method='post';">
                         Reset library</button>
                     <figcaption class="api-fig">Reset the database to its original state.</figcaption>
                 </div>
