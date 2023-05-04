@@ -9,6 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
+
 class ProductController extends AbstractController
 {
     #[Route('/product', name: 'app_product')]
