@@ -4,6 +4,18 @@
 
 {% block main %}
 <h1>All books</h1>
+<div class="button-container">
+    <div class="goto-main-menu">
+        <a href="{{ url('library')}}">
+            <button class="button book">&#x21A4 Main menu</button>
+        </a>
+    </div>
+    <div class="goto-create-book">
+        <a href="{{ url('book_create')}}">
+            <button class="button book">&oplus; Add book &oplus;</button>
+        </a>
+    </div>
+</div>
 <div class="books-container">
     {% for book in books %}
         <a href='/book/read-one/{{ book.id }}'>

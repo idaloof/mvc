@@ -4,6 +4,14 @@
 
 {% block main %}
 <h1>Book with id: {{ book.id }}</h1>
+<div class="book-prev-next">
+    <a href="{{ url('book_by_id', {'anId': prevBook.id})}}">
+        <button class="button book prevnext">Previous book</button>
+    </a>
+    <a href="{{ url('book_by_id', {'anId': nextBook.id})}}">
+        <button class="button book prevnext">Next book</button>
+    </a>
+</div>
 <div class="one-book-container">
     <div class="book-image-container">
         <img class="book-image-one" src="{{ asset('img/books/' ~ book.image) }}">
@@ -21,29 +29,23 @@
             <h2>AUTHOR</h2>
             <p>{{ book.author }}</p>
         </div>
+    </div>
+    <div class="buttons-container">
         <div class="book-update">
             <a href="{{ url('book_update', {'anId': book.id})}}">
-                <button class="button book">Update book</button>
+                <button class="button book">&#x21BA Update book &#x21BA</button>
             </a>
         </div>
         <div class="book-delete">
-            <a href="{{ url('book_delete', {'anId': book.id})}}">
-                <button class="button book red">Delete book</button>
+            <a href="{{ url('book_delete_confirm', {'anId': book.id})}}">
+                <button class="button book red">&#9760 Delete book &#9760</button>
             </a>
         </div>
         <div class="goto-all-books">
             <a href="{{ url('book_read_many')}}">
-                <button class="button book">Go to all books</button>
+                <button class="button book">&#128214; Go to all books &#128214;</button>
             </a>
         </div>
     </div>
-</div>
-<div class="book-prev-next">
-    <a href="{{ url('book_by_id', {'id': prevBook.id})}}">
-        <button class="button book prevnext">Previous book</button>
-    </a>
-    <a href="{{ url('book_by_id', {'id': nextBook.id})}}">
-        <button class="button book prevnext">Next book</button>
-    </a>
 </div>
 {% endblock %}
