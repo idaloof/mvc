@@ -7,11 +7,11 @@
 <div class="confirm-delete">
     <p>Are you sure you want to delete this book?</p>
 </div>
-<div class="one-book-container">
+<div class="one-book-container delete">
     <div class="book-image-container delete">
         <img class="book-image-one delete" src="{{ asset('img/books/' ~ book.image) }}">
     </div>
-    <div class="book-info">
+    <div class="book-info delete">
         <div class="book-title">
             <h2>TITLE</h2>
             <p>{{ book.title }}</p>
@@ -24,16 +24,26 @@
             <h2>AUTHOR</h2>
             <p>{{ book.author }}</p>
         </div>
-        <div class="book-update">
-            <a href="{{ url('book_delete_post', {'anId': book.id})}}">
-                <button class="button book">Confirm delete</button>
-            </a>
+    </div>
+    <div class="confirm-delete-buttons">
+        <div class="book-confirm-delete">
+            <form action="{{ url('book_delete_post', {'anId': book.id})}}" method="post">
+                <input type="submit" class="button book red" value="&#9760 Confirm delete &#9760">
+            </form>
         </div>
         <div class="goto-all-books">
             <a href="{{ url('book_read_many')}}">
-                <button class="button book">Go to all books</button>
+                <button class="button book">&#128214; Go to all books &#128214;</button>
             </a>
         </div>
     </div>
+</div>
+<div class="book-prev-next">
+    <a href="{{ url('book_delete_confirm', {'anId': prevBook.id})}}">
+        <button class="button book prevnext">Previous book</button>
+    </a>
+    <a href="{{ url('book_delete_confirm', {'anId': nextBook.id})}}">
+        <button class="button book prevnext">Next book</button>
+    </a>
 </div>
 {% endblock %}
