@@ -82,10 +82,10 @@ class PageController extends AbstractController
     {
         $data = [
             'createBookUrl' => $this->generateUrl('book_create'),
-            'showOneBookUrl' => $this->generateUrl('book_by_id', ['id' => 1]),
+            'showOneBookUrl' => $this->generateUrl('book_by_id', ['anId' => 1]),
             'showAllBooksUrl' => $this->generateUrl('book_read_many'),
             'updateBookUrl' => $this->generateUrl('book_update', ['anId' => 1]),
-            'deleteBookUrl' => $this->generateUrl('book_delete', ['anId' => 1]),
+            'deleteBookUrl' => $this->generateUrl('book_delete_confirm', ['anId' => 1]),
             'resetLibraryUrl' => $this->generateUrl('library_reset'),
         ];
 
