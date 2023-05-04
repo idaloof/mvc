@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Repository\BookRepository;
+use Doctrine\DBAL\Connection;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ class BookController extends AbstractController
         ]);
     }
 
-    #[Route('/book/create', name: 'book_create')]
+    #[Route('/book/create', name: 'book_create', methods: ['GET'])]
     public function createBook(): Response
     {
         return $this->render('book/create.html.twig');
@@ -57,33 +58,42 @@ class BookController extends AbstractController
         return $this->redirectToRoute('book_create');
     }
 
-    #[Route('/book/read-one/{id}', name: 'book_by_id')]
+    #[Route('/book/read-one/{anId}', name: 'book_by_id', methods: ['GET'])]
     public function showOneBook(
         BookRepository $bookRepository,
-        int $id
+        int $anId
     ): Response {
-        $book = $bookRepository->find($id);
+        $book = $bookRepository->find($anId);
         $books = $bookRepository->findAll();
 
-        $nrOfBooks = count($books);
-        $nextBook = $bookRepository->find($id + 1);
-        $prevBook = $bookRepository->find($id - 1);
+        $prevBook = (Book::class);
+        $nextBook = (Book::class);
 
-        if ($id === $nrOfBooks) {
-            $nextBook = $bookRepository->find(1);
-        }
+        foreach ($books as $oneBook) {
+            if ($oneBook->getId() === $anId) {
+                $bookIndex = array_search($oneBook, $books);
 
-        if ($id === 1) {
-            $prevBook = $bookRepository->find($nrOfBooks);
+                $nextBook = ($bookIndex === array_key_last($books)) ?
+                    $nextBook = $books[0] :
+                    $books[(int) $bookIndex + 1];
+
+                $prevBook = ($bookIndex === 0) ?
+                    $books[array_key_last($books)] :
+                    $prevBook = $books[(int) $bookIndex - 1];
+            }
         }
 
         $data = [
             'book' => $book,
-            'books' => $books,
-            'nrOfBooks' => $nrOfBooks,
-            'nextBook' => $nextBook,
-            'prevBook' => $prevBook
+            'prevBook' => $prevBook,
+            'nextBook' => $nextBook
         ];
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '. $anId
+            );
+        }
 
         return $this->render('book/show_one.html.twig', $data);
     }
@@ -97,68 +107,54 @@ class BookController extends AbstractController
         return $this->render('book/show_all.html.twig', ['books' => $books]);
     }
 
-    #[Route('/book/update/{anId}', name: 'book_update')]
+    #[Route('/book/update/{anId}', name: 'book_update', methods: ['GET'])]
     public function updateBook(
         BookRepository $bookRepository,
         int $anId
     ): Response {
         $book = $bookRepository->find($anId);
+        $books = $bookRepository->findAll();
+
+        $prevBook = (Book::class);
+        $nextBook = (Book::class);
+
+        foreach ($books as $oneBook) {
+            if ($oneBook->getId() === $anId) {
+                $bookIndex = array_search($oneBook, $books);
+
+                $nextBook = ($bookIndex === array_key_last($books)) ?
+                    $nextBook = $books[0] :
+                    $books[(int) $bookIndex + 1];
+
+                $prevBook = ($bookIndex === 0) ?
+                    $books[array_key_last($books)] :
+                    $prevBook = $books[(int) $bookIndex - 1];
+            }
+        }
+
+        $data = [
+            'book' => $book,
+            'prevBook' => $prevBook,
+            'nextBook' => $nextBook
+        ];
 
         if (!$book) {
             throw $this->createNotFoundException(
-                'No book found for id '.$anId
+                'No book found for id '. $anId
             );
         }
 
-        return $this->render('book/update.html.twig', ['book' => $book]);
+        return $this->render('book/update.html.twig', $data);
     }
 
     #[Route('/book/update/post/{anId}', name: 'book_update_post', methods: ['POST'])]
     public function updateBookPost(
         ManagerRegistry $doctrine,
+        BookRepository $bookRepository,
         Request $request,
         int $anId
     ): Response {
         $entityManager = $doctrine->getManager();
-        $book = $entityManager->getRepository(Book::class)->find($anId);
-
-        $bookTitle  = $request->request->get('title');
-        $bookIsbn   = $request->request->get('isbn');
-        $bookAuthor = $request->request->get('author');
-        $bookImage  = $request->request->get('image');
-
-        $book->setTitle($bookTitle);
-        $book->setIsbn($bookIsbn);
-        $book->setAuthor($bookAuthor);
-        $book->setImage($bookImage);
-
-        $entityManager->persist($book);
-
-        $entityManager->flush();
-        return $this->redirectToRoute("book_by_id", ['id' => $anId]);
-    }
-
-    #[Route('/book/delete/{anId}', name: 'book_delete')]
-    public function deleteBook(
-        BookRepository $bookRepository,
-        int $anId
-    ): Response {
-        $book = $bookRepository->find($anId);
-
-        if (!$book) {
-            throw $this->createNotFoundException(
-                'No book found for id '.$anId
-            );
-        }
-
-        return $this->render('book/delete.html.twig', ['book' => $book]);
-    }
-
-    #[Route('/book/delete/confirm/{anId}', name: 'book_delete_confirm')]
-    public function deleteBookConfirm(
-        BookRepository $bookRepository,
-        int $anId
-    ): Response {
         $book = $bookRepository->find($anId);
 
         if (!$book) {
@@ -167,10 +163,63 @@ class BookController extends AbstractController
             );
         }
 
-        return $this->render('book/delete_confirm.html.twig', ['book' => $book]);
+        $bookTitle  = $request->request->get('title');
+        $bookIsbn   = $request->request->get('isbn');
+        $bookAuthor = $request->request->get('author');
+        $bookImage  = $request->request->get('image');
+
+        $book->setTitle((string) $bookTitle);
+        $book->setIsbn((int) $bookIsbn);
+        $book->setAuthor((string) $bookAuthor);
+        $book->setImage((string) $bookImage);
+
+        $entityManager->persist($book);
+
+        $entityManager->flush();
+        return $this->redirectToRoute("book_by_id", ['id' => $anId]);
     }
 
-    #[Route('/book/delete/post/{anId}', name: 'book_delete_post')]
+    #[Route('/book/delete/confirm/{anId}', name: 'book_delete_confirm', methods: ['GET'])]
+    public function deleteBookConfirm(
+        BookRepository $bookRepository,
+        int $anId
+    ): Response {
+        $book = $bookRepository->find($anId);
+        $books = $bookRepository->findAll();
+
+        $prevBook = (Book::class);
+        $nextBook = (Book::class);
+
+        foreach ($books as $oneBook) {
+            if ($oneBook->getId() === $anId) {
+                $bookIndex = array_search($oneBook, $books);
+
+                $nextBook = ($bookIndex === array_key_last($books)) ?
+                    $nextBook = $books[0] :
+                    $books[(int) $bookIndex + 1];
+
+                $prevBook = ($bookIndex === 0) ?
+                    $books[array_key_last($books)] :
+                    $prevBook = $books[(int) $bookIndex - 1];
+            }
+        }
+
+        $data = [
+            'book' => $book,
+            'prevBook' => $prevBook,
+            'nextBook' => $nextBook
+        ];
+
+        if (!$book) {
+            throw $this->createNotFoundException(
+                'No book found for id '. $anId
+            );
+        }
+
+        return $this->render('book/delete_confirm.html.twig', $data);
+    }
+
+    #[Route('/book/delete/post/{anId}', name: 'book_delete_post', methods: ['POST'])]
     public function deleteBookPost(
         ManagerRegistry $doctrine,
         int $anId
@@ -187,12 +236,13 @@ class BookController extends AbstractController
         $entityManager->remove($book);
         $entityManager->flush();
 
-        return $this->redirectToRoute('book/show_all.html.twig');
+        return $this->redirectToRoute('book_read_many');
     }
 
-    #[Route("/library/reset", name: 'library_reset')]
+    #[Route("/library/reset", name: 'library_reset', methods: ['POST'])]
     public function resetDatabase(
-        ManagerRegistry $doctrine
+        ManagerRegistry $doctrine,
+        Connection $connection
     ): Response {
         $entityManager = $doctrine->getManager();
 
@@ -206,7 +256,6 @@ class BookController extends AbstractController
         ];
 
         foreach ($sql as $query) {
-            $connection = $doctrine->getConnection();
             $statement = $connection->prepare($query);
             $statement->executeStatement();
         }
