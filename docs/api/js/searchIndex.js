@@ -326,11 +326,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-BookController.html#method_updateBookPost"
         },                {
-            "fqsen": "\\App\\Controller\\BookController\u003A\u003AdeleteBook\u0028\u0029",
-            "name": "deleteBook",
-            "summary": "",
-            "url": "classes/App-Controller-BookController.html#method_deleteBook"
-        },                {
             "fqsen": "\\App\\Controller\\BookController\u003A\u003AdeleteBookConfirm\u0028\u0029",
             "name": "deleteBookConfirm",
             "summary": "",
@@ -340,6 +335,11 @@ Search.appendIndex(
             "name": "deleteBookPost",
             "summary": "",
             "url": "classes/App-Controller-BookController.html#method_deleteBookPost"
+        },                {
+            "fqsen": "\\App\\Controller\\BookController\u003A\u003AresetDatabase\u0028\u0029",
+            "name": "resetDatabase",
+            "summary": "",
+            "url": "classes/App-Controller-BookController.html#method_resetDatabase"
         },                {
             "fqsen": "\\App\\Controller\\ProductController",
             "name": "ProductController",
@@ -525,6 +525,16 @@ Search.appendIndex(
             "name": "findBookByIsbn",
             "summary": "",
             "url": "classes/App-Repository-BookRepository.html#method_findBookByIsbn"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AfindPreviousBook\u0028\u0029",
+            "name": "findPreviousBook",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method_findPreviousBook"
+        },                {
+            "fqsen": "\\App\\Repository\\BookRepository\u003A\u003AfindNextBook\u0028\u0029",
+            "name": "findNextBook",
+            "summary": "",
+            "url": "classes/App-Repository-BookRepository.html#method_findNextBook"
         },                {
             "fqsen": "\\App\\Repository\\ProductRepository",
             "name": "ProductRepository",
