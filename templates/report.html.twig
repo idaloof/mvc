@@ -219,7 +219,53 @@
             </section>
             <section id="kmom05">
                 <h2>Kmom05</h2>
-                <p>Text</p>
+                <p>
+                    Ja, det gick bra att genomföra övningen. Jag tyckte det var lätt att sätta sig
+                    in i tack vare databas-kursen. Jag reagerade inte över någonting särskilt, mer
+                    än att det var väldigt lätt att skapa en tabell (entity) och tabell-kolumnerna
+                    med terminal-kommandon.
+                </p>
+                <p>
+                    Jag skapade en landningssida (library) från vilken samtliga sidor i appen
+                    är tillgängliga. Precis som i tidigare kursmoment, genererade jag url till
+                    sidan för att använda dem i ett formulär med en knapp för varje sida i appen.
+                    Jag tänkte att det ska vara enkelt att komma åt olika sidor och funktioner
+                    inuti sidorna. Där skapade jag knappar för att komma till alla böcker,
+                    landningssidan (main menu) och för att klicka sig mellan böcker (previous och
+                    next-knappar). Jag tyckte att det behövdes en confirm delete-sida för att ge
+                    användaren en chans att ångra sig innan en bok tas bort. Gränssnittet i övrigt
+                    liknar resten av min symfony-applikation där mycket av stylingen är
+                    återkommande. Jag hittade även unicode-karaktärer som jag använde mig av
+                    i knapparnas text.
+                </p>
+                <p>
+                    Jag tycker att det gick bra att jobba med ORM (CRUD). Nu valde jag att placera
+                    all kod i min BookController. Snyggast, enligt mig, hade varit att placera
+                    en del av koden i andra klasser eller bookrepot, t.ex. koden som ändrar
+                    i databasen hade kunnat placeras i bookrepot och koden som jag återanvänder
+                    för att fastställa föregående och nästa bok hade kunnat placeras i en egen
+                    klass eller trait. CRUD i ORM var smidigt då Book-entityn automatiskt skapat
+                    metoder för att "getta" och "setta" värden i tabellen. Om jag jämför det med
+                    databas-kursen och webtec-kursen, fick vi skriva alla förfrågningar mot databasen
+                    från grunden. ORM-approachen kapar en del mellansteg, vilket skapar en effektivare
+                    process. Om jag vill ha fler metoder än de som erbjuds i entity-klassen eller
+                    repot, kan jag enkelt lägga till dem.
+                </p>
+                <p>
+                    ORM verkar kanon än så länge och det ska bli kul att lära sig mer om det i
+                    prjektet! All kod vi behövde skriva i databas-kursen (både sql och javascript),
+                    är ju klart minimerat tack vare ORM-sättet att arbeta med en databas. Jag ville
+                    verkligen lyckas kicka igång mariadb istället för sqlite, men jag fick inte riktigt
+                    till det. Tycker att sqlite fungerade tillräckligt bra för den här rundan.
+                </p>
+                <p>
+                    Min TIL för den här veckan är doctrine/orm och förståelsen för hur alla auto-
+                    magiskt skapade filer hänger ihop. Det var även kul att skapa logiken bakom
+                    previous och next book.
+                </p>
+                <p>
+                    Mvh Martin
+                </p>
             </section>
             <section id="kmom06">
                 <h2>Kmom06</h2>
