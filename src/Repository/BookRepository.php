@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @extends ServiceEntityRepository<Book>
@@ -44,7 +45,7 @@ class BookRepository extends ServiceEntityRepository
     /**
      * @return Book
      */
-    public function findBookByIsbn(int $isbn): array
+    public function findBookByIsbn(int $isbn): Book
     {
         $entityManager = $this->getEntityManager();
 
@@ -55,6 +56,58 @@ class BookRepository extends ServiceEntityRepository
         )->setParameter('isbn', $isbn);
 
         return $query->getResult();
+    }
+
+    /**
+     * @return Book
+     */
+    public function findPreviousBook(int $anId): Book
+    {
+        $books = $this->findAll();
+
+        $prevBook = null;
+
+        foreach ($books as $oneBook) {
+            if ($oneBook->getId() === $anId) {
+                $bookIndex = array_search($oneBook, $books);
+
+                $prevBook = ($bookIndex === 0) ?
+                    $books[array_key_last($books)] :
+                    $prevBook = $books[(int) $bookIndex - 1];
+            }
+        }
+
+        if ($prevBook === null) {
+            throw new NotFoundHttpException('No previous book found');
+        }
+
+        return $prevBook;
+    }
+
+    /**
+     * @return Book
+     */
+    public function findNextBook(int $anId): Book
+    {
+        $books = $this->findAll();
+
+        $nextBook = null;
+
+        foreach ($books as $oneBook) {
+            if ($oneBook->getId() === $anId) {
+                $bookIndex = array_search($oneBook, $books);
+
+                $nextBook = ($bookIndex === array_key_last($books)) ?
+                    $nextBook = $books[0] :
+                    $books[(int) $bookIndex + 1];
+            }
+        }
+
+        if ($nextBook === null) {
+            throw new NotFoundHttpException('No previous book found');
+        }
+
+        return $nextBook;
     }
 
 //    /**
