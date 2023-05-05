@@ -64,24 +64,9 @@ class BookController extends AbstractController
         int $anId
     ): Response {
         $book = $bookRepository->find($anId);
-        $books = $bookRepository->findAll();
 
-        $prevBook = (Book::class);
-        $nextBook = (Book::class);
-
-        foreach ($books as $oneBook) {
-            if ($oneBook->getId() === $anId) {
-                $bookIndex = array_search($oneBook, $books);
-
-                $nextBook = ($bookIndex === array_key_last($books)) ?
-                    $nextBook = $books[0] :
-                    $books[(int) $bookIndex + 1];
-
-                $prevBook = ($bookIndex === 0) ?
-                    $books[array_key_last($books)] :
-                    $prevBook = $books[(int) $bookIndex - 1];
-            }
-        }
+        $prevBook = $bookRepository->findPreviousBook($anId);
+        $nextBook = $bookRepository->findNextBook($anId);
 
         $data = [
             'book' => $book,
@@ -113,24 +98,9 @@ class BookController extends AbstractController
         int $anId
     ): Response {
         $book = $bookRepository->find($anId);
-        $books = $bookRepository->findAll();
 
-        $prevBook = (Book::class);
-        $nextBook = (Book::class);
-
-        foreach ($books as $oneBook) {
-            if ($oneBook->getId() === $anId) {
-                $bookIndex = array_search($oneBook, $books);
-
-                $nextBook = ($bookIndex === array_key_last($books)) ?
-                    $nextBook = $books[0] :
-                    $books[(int) $bookIndex + 1];
-
-                $prevBook = ($bookIndex === 0) ?
-                    $books[array_key_last($books)] :
-                    $prevBook = $books[(int) $bookIndex - 1];
-            }
-        }
+        $prevBook = $bookRepository->findPreviousBook($anId);
+        $nextBook = $bookRepository->findNextBook($anId);
 
         $data = [
             'book' => $book,
@@ -185,24 +155,9 @@ class BookController extends AbstractController
         int $anId
     ): Response {
         $book = $bookRepository->find($anId);
-        $books = $bookRepository->findAll();
 
-        $prevBook = (Book::class);
-        $nextBook = (Book::class);
-
-        foreach ($books as $oneBook) {
-            if ($oneBook->getId() === $anId) {
-                $bookIndex = array_search($oneBook, $books);
-
-                $nextBook = ($bookIndex === array_key_last($books)) ?
-                    $nextBook = $books[0] :
-                    $books[(int) $bookIndex + 1];
-
-                $prevBook = ($bookIndex === 0) ?
-                    $books[array_key_last($books)] :
-                    $prevBook = $books[(int) $bookIndex - 1];
-            }
-        }
+        $prevBook = $bookRepository->findPreviousBook($anId);
+        $nextBook = $bookRepository->findNextBook($anId);
 
         $data = [
             'book' => $book,
