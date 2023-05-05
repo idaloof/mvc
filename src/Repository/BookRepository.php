@@ -42,7 +42,7 @@ class BookRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Book[]
+     * @return Book
      */
     public function findBookByIsbn(int $isbn): array
     {
