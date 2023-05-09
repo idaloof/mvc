@@ -126,7 +126,7 @@ class Game
         $player = $this->turn->getName();
         $playerPoints = $this->turn->getPlayerPoints();
 
-        if (is_array($playerPoints)) {
+        if (!is_numeric($playerPoints)) {
             $playerPoints = (array) $playerPoints;
             $this->standings[$player] =
             [
