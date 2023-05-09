@@ -31,10 +31,7 @@ class GameController extends AbstractController
     #[Route("/game/init", name: "game_init", methods: ['POST'])]
     public function gameInit(
         SessionInterface $session,
-        Game $game,
         Deck $deck,
-        Player $human,
-        Bank $bank,
         Rules $rules
     ): Response {
         $human = new Player(new Hand(), new Points());
