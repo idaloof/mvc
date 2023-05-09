@@ -112,7 +112,8 @@
             "@phpmd",
             "@phpstan",
             "@csfix"
-        ]
+        ],
+        "phpmetrics": "tools/phpmetrics/vendor/bin/phpmetrics --config=phpmetrics.json"
     },
     "conflict": {
         "symfony/symfony": "*"
