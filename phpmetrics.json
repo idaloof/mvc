@@ -3,7 +3,7 @@
         "src"
     ],
     "exclude": [
-      "test[s]?",
+      "tests",
       "src/Controller",
       "src/Entity",
       "src/Repository"
