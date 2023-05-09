@@ -2,9 +2,14 @@ imports:
     - php
 
 filter:
-    excluded_paths: [vendor/*, test/*, src/Kernel.php]
+    excluded_paths:
+        - vendor/
+        - tests/
     
-    dependency_paths: [src/Entity, src/Repository]
+    dependency_paths:
+        - src/Entity/
+        - src/Repository/
+        - src/Kernel.php
 
 build:
     image: default-bionic
