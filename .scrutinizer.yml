@@ -5,6 +5,7 @@ filter:
     excluded_paths: [vendor/*, test/*, src/Controller, src/Entity, src/Repository]
 
 build:
+    image: default-bionic
     nodes:
         my-tests:
             environment:
