@@ -1,0 +1,19 @@
+{
+    "includes": [
+        "src"
+    ],
+    "exclude": [
+      "test[s]?",
+      "src/Controller",
+      "src/Entity",
+      "src/Repository"
+    ],
+    "report": {
+        "html": "docs/metrics"
+    },
+    "plugins": {
+        "git": {
+            "binary": "git"
+        }
+    }
+}
