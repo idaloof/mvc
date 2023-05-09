@@ -5,6 +5,7 @@ filter:
     excluded_paths:
         - vendor/
         - tests/
+        - .php-cs-fixer.dist.php
     
     dependency_paths:
         - src/Entity/
