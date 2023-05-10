@@ -43,9 +43,9 @@ class BookRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Book
+     * @return array<string, string>
      */
-    public function findBookByIsbn(int $isbn): Book
+    public function findBookByIsbn(string $isbn): array
     {
         $entityManager = $this->getEntityManager();
 
