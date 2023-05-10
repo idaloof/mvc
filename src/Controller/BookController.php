@@ -34,7 +34,7 @@ class BookController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $bookTitle = (string) $request->request->get("title");
-        $bookIsbn = (int) $request->request->get("isbn");
+        $bookIsbn = (string) $request->request->get("isbn");
         $bookAuthor = (string) $request->request->get("author");
         $bookImage = (string) $request->request->get("image");
 
@@ -139,7 +139,7 @@ class BookController extends AbstractController
         $bookImage  = $request->request->get('image');
 
         $book->setTitle((string) $bookTitle);
-        $book->setIsbn((int) $bookIsbn);
+        $book->setIsbn((string) $bookIsbn);
         $book->setAuthor((string) $bookAuthor);
         $book->setImage((string) $bookImage);
 
