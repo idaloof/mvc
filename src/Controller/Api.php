@@ -207,7 +207,7 @@ class Api extends AbstractController
     #[Route('/api/library/book/{isbn}', name: 'api_library_book_isbn', methods: ['GET'])]
     public function jsonOneBook(
         BookRepository $bookRepository,
-        int $isbn
+        string $isbn
     ): JsonResponse {
         $book = $bookRepository->findBookByIsbn($isbn);
 
