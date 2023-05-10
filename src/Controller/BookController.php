@@ -218,43 +218,43 @@ class BookController extends AbstractController
         $books = [
             [
                 "The More Beautiful World Our Hearts Know Is Possible",
-                9781583947241,
+                "9781583947241",
                 "Charles Eisenstein",
                 "Charles.jpg"
             ],
             [
                 "438 days",
-                9789185279258,
+                "9789185279258",
                 "Johan Persson, Martin Schibbye",
                 "438.jpg"
             ],
             [
                 "Faster than Lightning: My Autobiography",
-                9780007371426,
+                "9780007371426",
                 "Usain Bolt",
                 "Usain.jpg"
             ],
             [
                 "I Am Ozzy",
-                9780446569903,
+                "9780446569903",
                 "Ozzy Ousborne",
                 "Ozzy.jpg"
             ],
             [
                 "Darwin's Pharmacy",
-                9780295990958,
+                "9780295990958",
                 "Richard M. Doyle",
                 "Darwin.jpg"
             ],
             [
                 "Steve Jobs",
-                9780349140438,
+                "9780349140438",
                 "Walter Isaacson",
                 "Steve.jpg"
             ],
             [
                 "Open",
-                9780007281435,
+                "9780007281435",
                 "Andre Agassi",
                 "Andre.jpg"
             ]
