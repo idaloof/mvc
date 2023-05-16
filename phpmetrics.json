@@ -4,9 +4,7 @@
     ],
     "exclude": [
       "tests",
-      "src/Controller",
-      "src/Entity",
-      "src/Repository"
+      "src/Controller"
     ],
     "report": {
         "html": "docs/metrics"
