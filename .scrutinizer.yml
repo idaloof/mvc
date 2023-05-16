@@ -9,8 +9,8 @@ filter:
     
     # dependency_paths:
     #     - src/Entity/
-    #     - src/Repository/
-    #     - src/Kernel.php
+        - src/Repository/
+        - src/Kernel.php
 
 build:
     image: default-bionic
