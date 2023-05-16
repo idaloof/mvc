@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block main %}
+    <div class="metrics-container">
+        <div class="metrics-heading">
+            <h1 class="metrics-h1">Metrics</h1>
+        </div>
+        <div class="lucky-text">
+            <p>Uppdatera sidan och se om du lyckas ändra elefantens färg till din favoritfärg.</p>
+            <p>Om du har otur kan elefanten bli utmattad.</p>
+        </div>
+        <div class="lucky-image">
+            <img class={{ class }} src="{{ asset('img/php.jpg') }}" alt="php elephant" width="300">
+        </div>
+        {% if (class is same as "lose") %}
+            <div class="dead">
+                <p>Enough säger elefanten... *snyft</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
