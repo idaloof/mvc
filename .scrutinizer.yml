@@ -7,10 +7,10 @@ filter:
         - tests/
         - .php-cs-fixer.dist.php
     
-    dependency_paths:
-        - src/Entity/
-        - src/Repository/
-        - src/Kernel.php
+    # dependency_paths:
+    #     - src/Entity/
+    #     - src/Repository/
+    #     - src/Kernel.php
 
 build:
     image: default-bionic
