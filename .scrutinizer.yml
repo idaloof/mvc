@@ -9,7 +9,7 @@ filter:
     
     # dependency_paths:
     #     - src/Entity/
-        - src/Repository/
+        # - src/Repository/
         - src/Kernel.php
 
 build:
