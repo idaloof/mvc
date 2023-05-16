@@ -7,17 +7,58 @@
         <div class="metrics-heading">
             <h1 class="metrics-h1">Metrics</h1>
         </div>
-        <div class="lucky-text">
-            <p>Uppdatera sidan och se om du lyckas ändra elefantens färg till din favoritfärg.</p>
-            <p>Om du har otur kan elefanten bli utmattad.</p>
+        <div class="metrics-introduction">
+            <h2>Introduktion</h2>
+            <p>Börja med en rubrik “Introduktion” där du förklarar de sex C:na och
+            hur de kan påverka kodens kvalitet. Exemplifiera, där det passar, med några
+            mätvärden som är kopplad till din egen kod och ge en kort förklaring av
+            mätvärdet relaterat till kodkvalitet.</p>
+            <h3 class="left">Codestyle</h3>
+            <p></p>
+            <h3 class="left">Coverage</h3>
+            <p></p>
+            <h3 class="left">Complexity</h3>
+            <p></p>
+            <h3 class="left">Cohesion</h3>
+            <p></p>
+            <h3 class="left">Coupling</h3>
+            <p></p>
+            <h3 class="left">CRAP</h3>
+            <p></p>
         </div>
-        <div class="lucky-image">
-            <img class={{ class }} src="{{ asset('img/php.jpg') }}" alt="php elephant" width="300">
-        </div>
-        {% if (class is same as "lose") %}
-            <div class="dead">
-                <p>Enough säger elefanten... *snyft</p>
+        <h2>PHPMetrics</h2>
+        <p>Skapa en rubrik “Phpmetrics” och analysera dess rapport för din kod.
+        Använd mätvärdena för att hitta flaskhalsar och svaga punkter i din kod (minst 3 stycken).
+        Du vill hitta kod som har förbättringspotential. Visualisera med någon representativ bild
+        från rapporten.</p>
+        <h2>Scrutinizer</h2>
+        <p>Här syns Scrutinizer-badges innan större åtgärder.</p>
+        <div class="scrutinizer-badges">
+            <div class="badge scrutinizer">
+                <img
+                    src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/quality-score.png?b=main"
+                    alt="Scrutinizer score" width="100"
+                >
             </div>
-        {% endif %}
+            <div class="badge coverage">
+                <img
+                    src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/coverage.png?b=main"
+                    alt="Coverage score" width="100"
+                >
+            </div>
+            <div class="badge build">
+                <img
+                    src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/build.png?b=main"
+                    alt="Build score" width="86.5"
+                >
+            </div>
+        </div>
     </div>
 {% endblock %}
+
+{#
+Coverage
+Complexity
+Cohesion
+Coupling
+CRAP #}
