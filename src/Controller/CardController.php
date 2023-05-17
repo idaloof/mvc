@@ -110,8 +110,6 @@ class CardController extends AbstractController
 
         $data = [];
 
-        $cardCount = count($deck->getDeck());
-
         try {
             $manyCards = $deck->drawMany($number);
             $data['cards'] = $manyCards;
@@ -148,53 +146,31 @@ class CardController extends AbstractController
         }
 
         $deck = new Deck();
+        $deck->shuffleDeck();
 
-        if ($session->has('remaining')) {
-            $deck = $session->get('remaining');
+        if ($session->has('deck')) {
+            $deck = $session->get('deck');
+        }
+
+        $data = [];
+
+        try {
+            $drawnCards = $deck->drawManyCardsAndPlayers($cards, $players);
+
+            $data['allCards'] = $drawnCards;
+        } catch (\Exception $e) {
+            $data['message'] = $e->getMessage();
         }
 
         $cardCount = count($deck->getDeck());
 
-        $drawnCards = [];
+        $session->set('deck', $deck);
 
-        if ($cards === 0 || $players === 0) {
-            $data = [
-                'cards' => $cards,
-                'players' => $players,
-                'count' => $cardCount
-            ];
-
-            return $this->render('card/deal.html.twig', $data);
-        } elseif ($players * $cards <= $cardCount) {
-            for ($i = 1; $i <= $players; $i++) {
-                $aPlayer = [];
-                for ($j = 1; $j <= $cards; $j++) {
-                    $oneCardInfo = $deck->drawOneCard();
-                    $oneCard = $oneCardInfo["image"];
-                    array_push($aPlayer, $oneCard);
-                }
-                array_push($drawnCards, $aPlayer);
-            }
-
-            $session->set('remaining', $deck);
-
-            $cardCount = count($deck->getDeck());
-
-            $data = [
-                'allCards' => $drawnCards,
-                'count' => $cardCount,
-                'cards' => $cards,
-                'players' => $players
-            ];
-
-            return $this->render('card/deal.html.twig', $data);
-        }
-
-        $max = count($deck->getDeck());
-        $requested = $players * $cards;
         $data = [
-            'message' => "You tried to draw {$requested} cards. There are only {$max} cards left.",
-            'count' => $max
+            ...$data,
+            'count' => $cardCount,
+            'cards' => $cards,
+            'players' => $players
         ];
 
         return $this->render('card/deal.html.twig', $data);
