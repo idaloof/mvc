@@ -20,7 +20,9 @@ class CardController extends AbstractController
 
     /* Deck Route */
     #[Route("/card/deck", name: "deck")]
-    public function cardDeck(): Response
+    public function cardDeck(
+        SessionInterface $session
+    ): Response
     {
         $deck = new Deck();
         $cardImages = $deck->getDeckImages();
@@ -37,14 +39,15 @@ class CardController extends AbstractController
     public function cardDeckShuffle(
         SessionInterface $session
     ): Response {
-        $session->invalidate();
         $deck = new Deck();
-        $deck->shuffleDeck(3);
+        $deck->shuffleDeck();
         $cardImages = $deck->getDeckImages();
 
         $data = [
             'images' => $cardImages
         ];
+
+        $session->set("deck", $deck);
 
         return $this->render('card/shuffle.html.twig', $data);
     }
@@ -105,41 +108,24 @@ class CardController extends AbstractController
 
         $session->set("deck", $deck);
 
-        $cardCount = count($deck->getDeck());
-
         $data = [];
 
-        if ($number === 0) {
-            $data = [
-                'count' => $cardCount,
-                'number' => $number
-            ];
+        $cardCount = count($deck->getDeck());
+
+        try {
+            $manyCards = $deck->drawMany($number);
+            $data['cards'] = $manyCards;
+        } catch (\Exception $e) {
+            $data["message"] = $e->getMessage();
         }
 
-        if ($cardCount > 0 && $number <= $cardCount) {
-            $manyCards = [];
-            for ($i = 1; $i <= $number; $i++) {
-                $oneCardInfo = $deck->drawOneCard();
-                $oneCard = $oneCardInfo["image"];
-                array_push($manyCards, $oneCard);
-            }
+        $cardCount = count($deck->getDeck());
 
-            $cardsLeft = count($deck->getDeck());
-            $session->set("deck", $deck);
-
-            $data = [
-                'cards' => $manyCards,
-                'count' => $cardsLeft,
-                'number' => $number
-            ];
-
-        } elseif ($number > $cardCount) {
-            $count = $cardCount;
-            $data = [
-                'message' => "You tried to draw {$number} cards. There are only {$count} cards left.",
-                'count' => $count
-            ];
-        }
+        $data = [
+            ...$data,
+            'count' => $cardCount,
+            'number' => $number,
+        ];
 
         return $this->render('card/draw_number.html.twig', $data);
     }
