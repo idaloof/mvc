@@ -2,10 +2,8 @@
     "includes": [
         "src"
     ],
-    "exclude": [
-      "tests",
-      "src/Entity",
-      "src/Repository"
+    "excludes": [
+      "tests"
     ],
     "report": {
         "html": "docs/metrics"
