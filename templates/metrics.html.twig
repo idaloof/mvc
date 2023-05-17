@@ -214,7 +214,7 @@
                 class="analysis-image"
                 src="{{ asset('img/code_analysis/complexity.jpg') }}"
                 width="80%"
-                alt="api cohesion">
+                alt="cardcontroller complexity">
         </div>
         <p>
             Hoppas även på att kunna öka maintainability index från 55 till över 65 åtminstone.
@@ -225,6 +225,32 @@
         </blockquote>
         <p>
             Efter genomförda förbättringar ser komplexitetsvärdena för klassen och metoderna ut så här:
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/cardcontroller-fix.jpg') }}"
+                width="80%"
+                alt="cardcontroller improved stats">
+        </div>
+        <p>
+            Metoderna har minskat i storlek från 40 och 32, till 20 och 25. Komplexiteten har minskat
+            från 8 till 4. Jag gjorde mig av med en massa if-satser och använde ett try-catch-block
+            istället och fångade exceptionet från Deck-klassen i catch-blocket.
+            Dessutom flyttade jag en del kod till nya metoder i Deck-klassen som jag skrev tester
+            för i Deck-testsuiten.
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/cardcontroller-class-complex.jpg') }}"
+                width="50%"
+                alt="cardcontroller improved complexity">
+        </div>
+        <p>
+            I bilden ovan ser vi hur komplexiteten för CardControllern har minskat (från 17) till 9.
+            En förbättring mot tidigare, även om jag helst hade velat se ett maintainability index
+            på över 65. Gott nog.
         </p>
         <h3 class="left">API-controllern</h3>
         <p>
