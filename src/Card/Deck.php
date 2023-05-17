@@ -5,6 +5,7 @@
  */
 
 namespace App\Card;
+
 use Exception;
 
 class Deck
@@ -165,7 +166,7 @@ class Deck
      * @param int $number Number of cards per player
      * @param int $players Number of players
      *
-     * @return array<string> with card information
+     * @return array<int, array<string>> with card information
      */
     public function drawManyCardsAndPlayers(int $number, int $players): array
     {
