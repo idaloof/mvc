@@ -291,6 +291,32 @@
         <p>
             Efter genomförda förbättringar ser cohesion- och coupling-värdena för klassen ut så här:
         </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/api-coupling-fix.jpg') }}"
+                width="60%"
+                alt="api coupling decrease in EC">
+        </div>
+        <p>
+            Genom att helt enkelt fördela API-controllerns routes på flera controllers lyckades jag
+            minska EC-värdet från 11 till max 6 (ApiLibraryController) och minimum 3 (ApiGameController).
+            Detta innebär kort och gott att varje controller nu har ett mindre ansvarsområde än den
+            tidigare supercontrollern Api hade.
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/api-cohesion-fix.jpg') }}"
+                width="80%"
+                alt="api cohesion fix">
+        </div>
+        <p>
+            Tacksam förbättring. Ovan bild visar att API-controllern inte längre finns med i listan över
+            "Class Violations", inte så konstigt med tanke på att jag har ersatt den med mindre
+            ApiControllers. Det roliga är dock att ingen av dessa är med i listan heller. Inget högt
+            LCOM-värde kvar och ingen av klasserna anses vara allvetande/god-object.
+        </p>
         <h3 class="left">BookRepository</h3>
         <p>
             Två metoder i BookRepository-klassen får höga CRAP-scores, nämligen 30. Dessa är
