@@ -139,6 +139,8 @@ class Deck
     /**
      * Draws many cards from deck
      *
+     * @param int $number Number of cards to be drawn
+     *
      * @return array<string> with card information
      */
     public function drawMany(int $number): array
@@ -152,6 +154,29 @@ class Deck
             $oneCardInfo = $this->drawSingle();
             $oneCard = $oneCardInfo["image"];
             array_push($manyCards, $oneCard);
+        }
+
+        return $manyCards;
+    }
+
+    /**
+     * Draws many cards for many players from deck
+     *
+     * @param int $number Number of cards per player
+     * @param int $players Number of players
+     *
+     * @return array<string> with card information
+     */
+    public function drawManyCardsAndPlayers(int $number, int $players): array
+    {
+        if ($number * $players > $this->getDeckCount()) {
+            throw new Exception("You tried to draw too many cards.");
+        }
+
+        $manyCards = [];
+        for ($i = 1; $i <= $players; $i++) {
+            $aPlayer = $this->drawMany($number);
+            array_push($manyCards, $aPlayer);
         }
 
         return $manyCards;
