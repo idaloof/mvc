@@ -104,7 +104,7 @@ class BookRepository extends ServiceEntityRepository
         }
 
         if ($nextBook === null) {
-            throw new NotFoundHttpException('No previous book found');
+            throw new NotFoundHttpException('No next book found');
         }
 
         return $nextBook;
