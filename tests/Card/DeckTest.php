@@ -140,5 +140,54 @@ class DeckTest extends TestCase
         $message = $this->deck->drawSingle();
         $this->assertEquals(["No more cards to draw."], $message);
     }
-}
 
+    /**
+     * Tests if drawMany method returns correct amount of cards
+     */
+    public function testDrawMany() : void
+    {
+        $cards = $this->deck->drawMany(2);
+
+
+        $expected = 2;
+        $result = count($cards);
+
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Tests if drawMany method throws exception when user tries to draw too many cards
+     */
+    public function testDrawManyException() : void
+    {
+        $this->expectException(\Exception::class);
+        $this->deck->drawMany(53);
+    }
+
+    /**
+     * Tests if drawManyCardsAndPlayers method returns correct amount of cards and players
+     */
+    public function testDrawManyCardsAndPlayers() : void
+    {
+        $allPlayersAndCards = $this->deck->drawManyCardsAndPlayers(2, 2);
+
+        $result = count($allPlayersAndCards);
+
+        $expected = 2;
+        $this->assertEquals($expected, $result);
+
+        $result = count($allPlayersAndCards[0]);
+
+        $expected = 2;
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Tests if drawManyCardsAndPlayers method throws exception when user tries to draw too many cards
+     */
+    public function testDrawManyCardsAndPlayersException() : void
+    {
+        $this->expectException(\Exception::class);
+        $this->deck->drawManyCardsAndPlayers(5, 12);
+    }
+}
