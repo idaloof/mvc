@@ -5,6 +5,7 @@
  */
 
 namespace App\Card;
+use Exception;
 
 class Deck
 {
@@ -133,6 +134,27 @@ class Deck
         $drawnCard = array_shift($this->deck);
 
         return $drawnCard;
+    }
+
+    /**
+     * Draws many cards from deck
+     *
+     * @return array<string> with card information
+     */
+    public function drawMany(int $number): array
+    {
+        if ($number > $this->getDeckCount()) {
+            throw new Exception("You tried to draw too many cards.");
+        }
+
+        $manyCards = [];
+        for ($i = 1; $i <= $number; $i++) {
+            $oneCardInfo = $this->drawSingle();
+            $oneCard = $oneCardInfo["image"];
+            array_push($manyCards, $oneCard);
+        }
+
+        return $manyCards;
     }
 
     /**
