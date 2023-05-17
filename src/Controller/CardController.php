@@ -20,9 +20,7 @@ class CardController extends AbstractController
 
     /* Deck Route */
     #[Route("/card/deck", name: "deck")]
-    public function cardDeck(
-        SessionInterface $session
-    ): Response
+    public function cardDeck(): Response
     {
         $deck = new Deck();
         $cardImages = $deck->getDeckImages();
