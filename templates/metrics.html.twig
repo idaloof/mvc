@@ -5,15 +5,13 @@
 {% block main %}
     <div class="metrics-container">
         <div class="metrics-heading">
-            <h1 class="metrics-h1">Metrics</h1>
+            <h1 class="metrics-h1">Metrics - en rapport om kodkvalitet</h1>
         </div>
         <div class="metrics-introduction">
-            <h2>Introduktion</h2>
+            <h2 class="wider">Introduktion</h2>
             <p>
-                Börja med en rubrik “Introduktion” där du förklarar de sex C:na och
-                hur de kan påverka kodens kvalitet. Exemplifiera, där det passar, med några
-                mätvärden som är kopplad till din egen kod och ge en kort förklaring av
-                mätvärdet relaterat till kodkvalitet.
+                Som en introduktion till den här analysen, gör jag ett försök att förklara
+                6C - codestyle, coverage, complexity, cohesion, coupling och CRAP.
             </p>
             <h3 class="left">Codestyle</h3>
             <p>
@@ -27,44 +25,264 @@
             <p>
                 Nästa C, Coverage, handlar om hur väl din kod täcks av tester. En hög kodtäckningsgrad
                 är inte nödvändigtvis en indikator på att koden är vältestad, utan kan bero på att
-                dina metoder passerar testerna på ett eller annat sätt. 
+                dina metoder passerar testerna på ett eller annat sätt. I skrivande stund är min
+                kodtäckning på 74% för hela min src-katalog. Anledningen till detta är att jag inte
+                har kodtäckning för entity- eller repository-katalogerna.
             </p>
+            <div class="analysis image">
+                <img
+                    class="analysis-image"
+                    src="{{ asset('img/code_analysis/coverage_dir.jpg') }}"
+                    width="80%"
+                    alt="dir coverage">
+            </div>
             <h3 class="left">Complexity</h3>
-            <p></p>
+            <p>
+                Complexity är, som det låter, ett mått på hur komplex koden är. Komplexiteten mäts
+                med hur mycket koden är intabbad. Ju fler vägar din kod kan ta i en och samma metod,
+                desto mer komplex blir koden. Den blir inte bara svårare att förstå, utan den blir
+                också mer svårtestad då samma metod måste förses med flera tester för att en ska
+                minimera riskerna att missa buggar.
+            </p>
+            <p>
+                I min kod finns en klass som sticker ut med sin komplexitet, nämligen CardControllern.
+                Den har en komplexitet på 17 och en metod inom klassen som sticker ut med en
+                komplexitet på 8. Värt att titta på.
+            </p>
+            <div class="analysis image">
+                <img
+                    class="analysis-image"
+                    src="{{ asset('img/code_analysis/complexity.jpg') }}"
+                    width="80%"
+                    alt="api cohesion">
+            </div>
             <h3 class="left">Cohesion</h3>
-            <p></p>
+            <p>
+                Cohesion är ett annat mått på kodkvalitet. Saker och ting som hör ihop ska också
+                existera ihop. Hög cohesion är negativt i den bemärkelsen att klassen eller metoden
+                ifråga har mer än ett ansvarsområde. Single responsibility, som är ett motto när
+                en jobbar mot renare och snyggare kod, innebär att klasser och metoder bara ska
+                ha ett ansvarsområde. Klasser och metoder med hög cohesion är svårare att återanvända
+                och svårare att underhålla samt svårare att testa.
+            </p>
+            <p>
+                Min API-controller har det högsta cohesion-värdet, LCOM 8. Den anses dessutom vara
+                ett blob-/god-objekt som vet mycket och har för många ansvarsområden.
+            </p>
+            <div class="analysis image">
+                <img
+                    class="analysis-image"
+                    src="{{ asset('img/code_analysis/api_cohesion.jpg') }}"
+                    width="80%"
+                    alt="api cohesion">
+            </div>
             <h3 class="left">Coupling</h3>
-            <p></p>
+            <p>
+                Coupling handlar om hur beroende en klass är av andra klasser eller hur beroende
+                andra klasser är av klassen ifråga. Detta mått har två mätvärden, nämligen:
+            </p>
+
+            <ul>
+                <li>Afferent coupling - andra klassers beroende av klassen ifråga.</li>
+                <li>Efferent coupling - klassens beroende av andra klasser.</li>
+            </ul>
+
+            <p>
+                Ett lägre värde på coupling innebär att klassen är oberoende av andra klasser
+                och/eller tvärtom. Ju mer vi kan minska beroendet mellan klasser, desto bättre
+                för möjligheterna att lätt underhålla koden.
+            </p>
+            <p>
+                Återigen ser vi att det finns jobb att göra i API-controllern. Den är beroende av
+                elva andra klasser.
+            </p>
+            <div class="analysis image">
+                <img
+                    class="analysis-image"
+                    src="{{ asset('img/code_analysis/api_coupling.jpg') }}"
+                    width="80%"
+                    alt="api coupling">
+            </div>
             <h3 class="left">CRAP</h3>
-            <p></p>
+            <p>
+                CRAP är det sista C:et. Måttet hjälper oss att förstå vilka delar av koden som är
+                mer känsliga för förändringar. Ju mer komplex koden är och ju mer sammankopplad
+                metoden eller klassen är med andra delar av koden, desto högre blir CRAP-värdet.
+                Vill jag ändra koden där CRAP-värdet är högt riskerar jag att introducera buggar
+                i andra delar av koden.
+            </p>
+            <p>
+                I min kod är det två metoder som sticker ut med sina CRAP-värden (på 30 vardera).
+            </p>
+            <div class="analysis image">
+                <img
+                    class="analysis-image"
+                    src="{{ asset('img/code_analysis/book_crap.jpg') }}"
+                    width="80%"
+                    alt="CRAP score">
+            </div>
         </div>
-        <h2>PHPMetrics</h2>
-        <p>Skapa en rubrik “Phpmetrics” och analysera dess rapport för din kod.
-        Använd mätvärdena för att hitta flaskhalsar och svaga punkter i din kod (minst 3 stycken).
-        Du vill hitta kod som har förbättringspotential. Visualisera med någon representativ bild
-        från rapporten.</p>
-        <h2>Scrutinizer</h2>
-        <p>Här syns Scrutinizer-badges innan större åtgärder.</p>
+        <h2 class="wider">PHP Metrics</h2>
+        <p>
+            Utifrån metrics-rapporten har jag valt ut tre stycken mått att titta
+            närmare på (se bilder ovan):
+        </p>
+
+        <ul>
+            <li>
+                Komplexiteten och maintainability i CardControllern
+                (17 i cyclomatic complexity
+                och 55.12 i maintainability index)
+            </li>
+            <li>Cohesion i API-controllern (8 i LCOM)</li>
+            <li>Coupling i API-controllern (11 i EC, efferent coupling)</li>
+        </ul>
+
+        <h2 class="wider">Scrutinizer</h2>
         <div class="scrutinizer-badges">
             <div class="badge scrutinizer">
                 <img
-                    src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/quality-score.png?b=main"
-                    alt="Scrutinizer score" width="100"
+                    src="{{ asset('img/code_analysis/quality-score.svg') }}"
+                    alt="quality score badge"
+                    width="140"
                 >
             </div>
             <div class="badge coverage">
                 <img
-                    src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/coverage.png?b=main"
-                    alt="Coverage score" width="100"
+                    src="{{ asset('img/code_analysis/coverage.svg') }}"
+                    alt="coverage badge"
+                    width="140"
                 >
             </div>
             <div class="badge build">
                 <img
-                    src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/build.png?b=main"
-                    alt="Build score" width="86.5"
+                    src="{{ asset('img/code_analysis/build.svg') }}"
+                    alt="build badge"
+                    width="118"
                 >
             </div>
         </div>
+        <figcaption><em>Badges före åtgärder (klickbara finns längre ner)</em></figcaption>
+        <p>
+            I scrutinizer-rapporten har jag hittat två stora svaga punkter och två major issues.
+        </p>
+
+        <ul>
+            <li>Kodtäckningen ligger endast på 74% (se badges)</li>
+            <li>CRAP-måtten för två metoder i bookrepository ligger på 30 (se bild ovan)</li>
+            <li>
+                Två major issues i två repositories kopplat till type hinting
+                (Inte kopplat till 6C direkt, vad jag kan se.)
+            </li>
+        </ul>
+        <h2 class="wider">Förbättringar</h2>
+        <p>
+            De förbättringar som jag kommer att fokusera på är att följande 3:
+        </p>
+        <ol>
+            <li>
+                Minska komplexiteten i CardControllern - fokus på två metoder
+                (till att börja med)
+            </li>
+            <li>Dela upp API-controllern i flera mindre controller-klasser</li>
+            <li>Minska CRAP-score för två metoder i bookrepository-klassen</li>
+        </ol>
+        <h3 class="left">CardControllern</h3>
+        <p>
+            I CardControllern finns två metoder som är stora och komplexa, nämligen
+            cardDeckDrawNumber och cardDeckDeal. Båda har en komplexitet på 8, vilket innebär
+            att koden i metoderna kan ta många vägar, med andra ord många if-satser och for-loopar.
+        </p>
+        <p>
+            Dessa metoder är för övrigt de enda metoderna i scrutinizer-rapporten som får ett sämre
+            betyg än A.
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/card-complexity.jpg') }}"
+                width="80%"
+                alt="CRAP score">
+        </div>
+        <p>
+            Anledningen till att jag fokuserar på dessa metoder är att CardControllern fick i särklass
+            högst komplexitet, 17. Mitt mål är att sänka komplexiteten i metoderna och som följd
+            även i hela CardController-klassen.
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/complexity.jpg') }}"
+                width="80%"
+                alt="api cohesion">
+        </div>
+        <p>
+            Efter genomförda förbättringar ser komplexitetsvärdena för klassen och metoderna ut så här:
+        </p>
+        <h3 class="left">API-controllern</h3>
+        <p>
+            API-controllern har ett väldigt stort ansvarsområde. Det en är beroende av väldigt många
+            klasser och utför väldigt många operationer. Tanken med denna förbättring är att minska
+            beroendet till andra klasser genom att dela upp controllern i flera controller-klasser,
+            där varje ny controller har ett eget ansvarsområde.
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/api_cohesion.jpg') }}"
+                width="80%"
+                alt="api cohesion">
+        </div>
+        <p>
+            Anledningen till att jag fokuserar på den här klassen är att den lyser rött i Scrutinizer,
+            den anses vara ett god-objekt (allvetande). API-controllern har dessutom väldigt många
+            publika metoder och kan därmed delas upp i flera klasser istället. Här hoppas jag att
+            den inte längre ska ses som allvetande och därmed minska LCOM värdet på 8.
+        </p>
+        <p>
+            Jag tror dessutom att EC-värdet på 11 för klassen kommer att minska med den här
+            åtgärden, eftersom en uppdelning av controllern i flera mindre naturligt skapar
+            färre kopplingar.
+        </p>
+        <p>
+            Jag hoppas också att instabiliteten på 1 också ska påverkas i positiv riktning med mina
+            förändringar.
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/api_coupling.jpg') }}"
+                width="80%"
+                alt="api coupling">
+        </div>
+        <p>
+            Efter genomförda förbättringar ser cohesion- och coupling-värdena för klassen ut så här:
+        </p>
+        <h3 class="left">BookRepository</h3>
+        <p>
+            Två metoder i BookRepository-klassen får höga CRAP-scores, nämligen 30. Dessa är
+            metoder för att hitta nästa och föregående bok i databasen, beroende på vilken bok
+            användaren tittar på i biblioteksapplikationen. Min tanke är att försöka minska komplexiteten
+            i metoderna och prova att skriva testfall för dem för att se om CRAP-värdet för dem
+            minskar.
+        </p>
+        <p>
+            Metoderna är snarlika och resultatet av åtgärderna för en av metoderna kan lätt överföras
+            till den andra metoden. Tacksamt alltså.
+        </p>
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/book_crap.jpg') }}"
+                width="80%"
+                alt="api cohesion">
+        </div>
+        <p>
+            Efter genomförda förbättringar ser CRAP-värdena för metoderna ut så här:
+        </p>
+            Implementera sedan förbättringarna.
+            Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
+            Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
     </div>
 {% endblock %}
 
