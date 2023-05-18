@@ -334,14 +334,84 @@
                 class="analysis-image"
                 src="{{ asset('img/code_analysis/book_crap.jpg') }}"
                 width="80%"
-                alt="api cohesion">
+                alt="bookrepository crap score">
         </div>
         <p>
             Efter genomförda förbättringar ser CRAP-värdena för metoderna ut så här:
         </p>
-            Implementera sedan förbättringarna.
-            Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.
-            Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.
+        <div class="analysis image">
+            <img
+                class="analysis-image"
+                src="{{ asset('img/code_analysis/book-crap-fix.jpg') }}"
+                width="80%"
+                alt="bookrepository crap score">
+        </div>
+        <p>
+            Med några smärre förändringar har jag lyckats sänka CRAP-värdet för båda metoderna,
+            från 30 till 20. Fortfarande höga värden och det kan bero på fortsatt komplexitet i kombination
+            med att det (ännu) inte finns några testfall för BookRepository-klassen som metoderna
+            är del av. CRAP-värdena är ju ett mått på risk, vilket en hög komplexitet och en avsaknad av
+            tester kan bidra till.
+        </p>
+        <div class="scrutinizer-badges">
+            <div class="badge scrutinizer">
+                <a href="https://scrutinizer-ci.com/g/idaloof/mvc/?branch=main">
+                    <img
+                        src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/quality-score.png?b=main"
+                        alt="quality score badge"
+                        width="140"
+                    >
+                </a>
+            </div>
+           <div class="badge coverage">
+                <a href="https://scrutinizer-ci.com/g/idaloof/mvc/?branch=main">
+                    <img
+                        src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/coverage.png?b=main"
+                        alt="coverage badge"
+                        width="140"
+                    >
+                </a>
+            </div>
+            <div class="badge build">
+                <a href="https://scrutinizer-ci.com/g/idaloof/mvc/?branch=main">
+                    <img
+                        src="https://scrutinizer-ci.com/g/idaloof/mvc/badges/build.png?b=main"
+                        alt="build badge"
+                        width="118"
+                    >
+                </a>
+            </div>
+        </div>
+        <figcaption><em>Badges efter åtgärder</em></figcaption>
+        <h2 class="wider">Diskussion</h2>
+        <p>
+            Detta var en upplevelse. Jag tror att jag har lärt mig en del om kodanalys och renare kod
+            i och med detta kursmoment och jag skulle säga att jag är ganska nöjd med resultaten ändå.
+        </p>
+        <p>
+            Jag tycker att detta sätt att jobba på fungerar för att hitta dålig kod och svagheter/risker
+            med ens projekt. Det är nog inte verktyg som en ska förlita sig på till 100%, i alla fall
+            inte enskilda analysverktyg. Scrutinizer visar 10 i kodkvalitet medan det fortfarande
+            lyser väldigt rött på sina ställen i PHPMetrics. De tittar båda på kodkvalitet men
+            visar olika mått. Hade jag bara jobbat med Scrutinizer-rapporten hade jag kanske inte gjort
+            alla ändringar som jag genomfört.
+        </p>
+        <p>
+            En stor fördel med detta sätt att jobba på är hur enkelt vi kan få vår kod analyserad. Det
+            skulle ta väldigt lång tid för en annan person att sätta sig in i hela min kodbas. Med hjälp
+            av dessa verktyg kan vi åtminstone få en snabbt genomförd analys. Vad vi gör med den
+            informationen är helt upp till oss själva.
+        </p>
+        <p>
+            Ett annat sätt att arbeta med ren kod är att redan från början ha koll på vissa enkla
+            strategier och tillvägagångssätt. Som jag skrev i tidigare kursmoment hade jag gärna arbetat
+            med tester redan från början, det vill säga en testdriven approach. Om jag hade gjort det
+            hade min kod varit renare, mina tester varit mer on point och mitt projekt hade haft en
+            lägre komplexitet, läsbarhet och risk.
+        </p>
+        <p>
+            Martin Fooladi
+        </p>
     </div>
 {% endblock %}
 
