@@ -51,6 +51,16 @@ Search.appendIndex(
             "summary": "Draws\u0020first\u0020card\u0020from\u0020deck",
             "url": "classes/App-Card-Deck.html#method_drawSingle"
         },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AdrawMany\u0028\u0029",
+            "name": "drawMany",
+            "summary": "Draws\u0020many\u0020cards\u0020from\u0020deck",
+            "url": "classes/App-Card-Deck.html#method_drawMany"
+        },                {
+            "fqsen": "\\App\\Card\\Deck\u003A\u003AdrawManyCardsAndPlayers\u0028\u0029",
+            "name": "drawManyCardsAndPlayers",
+            "summary": "Draws\u0020many\u0020cards\u0020for\u0020many\u0020players\u0020from\u0020deck",
+            "url": "classes/App-Card-Deck.html#method_drawManyCardsAndPlayers"
+        },                {
             "fqsen": "\\App\\Card\\Deck\u003A\u003AgetDeckCount\u0028\u0029",
             "name": "getDeckCount",
             "summary": "Gets\u0020deck\u0020count.",
@@ -115,51 +125,6 @@ Search.appendIndex(
             "name": "decideWinner",
             "summary": "Compares\u0020points\u0020between\u0020human\u0020and\u0020bank\u0020and\u0020returns\u0020winner",
             "url": "classes/App-Card-Rules.html#method_decideWinner"
-        },                {
-            "fqsen": "\\App\\Controller\\Api",
-            "name": "Api",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonQuote\u0028\u0029",
-            "name": "jsonQuote",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonQuote"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonDeck\u0028\u0029",
-            "name": "jsonDeck",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonDeck"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonDeckShuffle\u0028\u0029",
-            "name": "jsonDeckShuffle",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonDeckShuffle"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonDeckDraw\u0028\u0029",
-            "name": "jsonDeckDraw",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonDeckDraw"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonDeckDrawNumber\u0028\u0029",
-            "name": "jsonDeckDrawNumber",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonDeckDrawNumber"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonGame\u0028\u0029",
-            "name": "jsonGame",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonGame"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonAllBooks\u0028\u0029",
-            "name": "jsonAllBooks",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonAllBooks"
-        },                {
-            "fqsen": "\\App\\Controller\\Api\u003A\u003AjsonOneBook\u0028\u0029",
-            "name": "jsonOneBook",
-            "summary": "",
-            "url": "classes/App-Controller-Api.html#method_jsonOneBook"
         },                {
             "fqsen": "\\App\\Controller\\CardController",
             "name": "CardController",
@@ -280,6 +245,11 @@ Search.appendIndex(
             "name": "library",
             "summary": "",
             "url": "classes/App-Controller-PageController.html#method_library"
+        },                {
+            "fqsen": "\\App\\Controller\\PageController\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-PageController.html#method_metrics"
         },                {
             "fqsen": "\\App\\Kernel",
             "name": "Kernel",
@@ -560,6 +530,81 @@ Search.appendIndex(
             "name": "findAllLessThanId",
             "summary": "",
             "url": "classes/App-Repository-ProductRepository.html#method_findAllLessThanId"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiDeckController",
+            "name": "ApiDeckController",
+            "summary": "",
+            "url": "classes/App-Controller-ApiDeckController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiDeckController\u003A\u003AjsonDeck\u0028\u0029",
+            "name": "jsonDeck",
+            "summary": "",
+            "url": "classes/App-Controller-ApiDeckController.html#method_jsonDeck"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiDrawController",
+            "name": "ApiDrawController",
+            "summary": "",
+            "url": "classes/App-Controller-ApiDrawController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiDrawController\u003A\u003AjsonDeckDraw\u0028\u0029",
+            "name": "jsonDeckDraw",
+            "summary": "",
+            "url": "classes/App-Controller-ApiDrawController.html#method_jsonDeckDraw"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiDrawNumberController",
+            "name": "ApiDrawNumberController",
+            "summary": "",
+            "url": "classes/App-Controller-ApiDrawNumberController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiDrawNumberController\u003A\u003AjsonDeckDrawNumber\u0028\u0029",
+            "name": "jsonDeckDrawNumber",
+            "summary": "",
+            "url": "classes/App-Controller-ApiDrawNumberController.html#method_jsonDeckDrawNumber"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameController",
+            "name": "ApiGameController",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiGameController\u003A\u003AjsonGame\u0028\u0029",
+            "name": "jsonGame",
+            "summary": "",
+            "url": "classes/App-Controller-ApiGameController.html#method_jsonGame"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiLibraryController",
+            "name": "ApiLibraryController",
+            "summary": "",
+            "url": "classes/App-Controller-ApiLibraryController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiLibraryController\u003A\u003AjsonAllBooks\u0028\u0029",
+            "name": "jsonAllBooks",
+            "summary": "",
+            "url": "classes/App-Controller-ApiLibraryController.html#method_jsonAllBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiLibraryController\u003A\u003AjsonOneBook\u0028\u0029",
+            "name": "jsonOneBook",
+            "summary": "",
+            "url": "classes/App-Controller-ApiLibraryController.html#method_jsonOneBook"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiQuoteController",
+            "name": "ApiQuoteController",
+            "summary": "",
+            "url": "classes/App-Controller-ApiQuoteController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiQuoteController\u003A\u003AjsonQuote\u0028\u0029",
+            "name": "jsonQuote",
+            "summary": "",
+            "url": "classes/App-Controller-ApiQuoteController.html#method_jsonQuote"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiShuffleController",
+            "name": "ApiShuffleController",
+            "summary": "",
+            "url": "classes/App-Controller-ApiShuffleController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiShuffleController\u003A\u003AjsonDeckShuffle\u0028\u0029",
+            "name": "jsonDeckShuffle",
+            "summary": "",
+            "url": "classes/App-Controller-ApiShuffleController.html#method_jsonDeckShuffle"
         },                {
             "fqsen": "\\",
             "name": "\\",
