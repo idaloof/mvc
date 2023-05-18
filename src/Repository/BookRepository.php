@@ -59,10 +59,14 @@ class BookRepository extends ServiceEntityRepository
     }
 
     /**
+     *
+     * @param int $anId Id of book to find next book for
+     * @param array<Book> $books Array of books from database
+     *
      * @return Book
      */
     public function findPreviousBook(int $anId, array $books): Book
-        {
+    {
         foreach ($books as $bookIndex => $book) {
             if ($book->getId() === $anId) {
                 $previousIndex = ($bookIndex === 0) ? count($books) - 1 : $bookIndex - 1;
@@ -74,6 +78,10 @@ class BookRepository extends ServiceEntityRepository
     }
 
     /**
+     *
+     * @param int $anId Id of book to find next book for
+     * @param array<Book> $books Array of books from database
+     *
      * @return Book
      */
     public function findNextBook(int $anId, array $books): Book
