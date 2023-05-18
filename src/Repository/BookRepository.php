@@ -61,53 +61,32 @@ class BookRepository extends ServiceEntityRepository
     /**
      * @return Book
      */
-    public function findPreviousBook(int $anId): Book
-    {
-        $books = $this->findAll();
-
-        $prevBook = null;
-
-        foreach ($books as $oneBook) {
-            if ($oneBook->getId() === $anId) {
-                $bookIndex = array_search($oneBook, $books);
-
-                $prevBook = ($bookIndex === 0) ?
-                    $books[array_key_last($books)] :
-                    $prevBook = $books[(int) $bookIndex - 1];
+    public function findPreviousBook(int $anId, array $books): Book
+        {
+        foreach ($books as $bookIndex => $book) {
+            if ($book->getId() === $anId) {
+                $previousIndex = ($bookIndex === 0) ? count($books) - 1 : $bookIndex - 1;
+                return $books[$previousIndex];
             }
         }
 
-        if ($prevBook === null) {
-            throw new NotFoundHttpException('No previous book found');
-        }
-
-        return $prevBook;
+        throw new NotFoundHttpException('No previous book found');
     }
 
     /**
      * @return Book
      */
-    public function findNextBook(int $anId): Book
+    public function findNextBook(int $anId, array $books): Book
     {
-        $books = $this->findAll();
-
-        $nextBook = null;
-
-        foreach ($books as $oneBook) {
-            if ($oneBook->getId() === $anId) {
-                $bookIndex = array_search($oneBook, $books);
-
-                $nextBook = ($bookIndex === array_key_last($books)) ?
-                    $nextBook = $books[0] :
-                    $books[(int) $bookIndex + 1];
+        foreach ($books as $bookIndex => $book) {
+            if ($book->getId() === $anId) {
+                $nextIndex = ($bookIndex === count($books) - 1) ? 0 : $bookIndex + 1;
+                return $books[$nextIndex];
             }
         }
 
-        if ($nextBook === null) {
-            throw new NotFoundHttpException('No next book found');
-        }
+        throw new NotFoundHttpException('No next book found');
 
-        return $nextBook;
     }
 
 //    /**
