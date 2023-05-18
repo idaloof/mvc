@@ -148,7 +148,7 @@ class BookController extends AbstractController
         $entityManager->persist($book);
 
         $entityManager->flush();
-        return $this->redirectToRoute("book_by_id", ['id' => $anId]);
+        return $this->redirectToRoute("book_by_id", ['anId' => $anId]);
     }
 
     #[Route('/book/delete/confirm/{anId}', name: 'book_delete_confirm', methods: ['GET'])]
