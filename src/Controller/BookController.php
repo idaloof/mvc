@@ -64,9 +64,10 @@ class BookController extends AbstractController
         int $anId
     ): Response {
         $book = $bookRepository->find($anId);
+        $books = $bookRepository->findAll();
 
-        $prevBook = $bookRepository->findPreviousBook($anId);
-        $nextBook = $bookRepository->findNextBook($anId);
+        $prevBook = $bookRepository->findPreviousBook($anId, $books);
+        $nextBook = $bookRepository->findNextBook($anId, $books);
 
         $data = [
             'book' => $book,
@@ -98,9 +99,10 @@ class BookController extends AbstractController
         int $anId
     ): Response {
         $book = $bookRepository->find($anId);
+        $books = $bookRepository->findAll();
 
-        $prevBook = $bookRepository->findPreviousBook($anId);
-        $nextBook = $bookRepository->findNextBook($anId);
+        $prevBook = $bookRepository->findPreviousBook($anId, $books);
+        $nextBook = $bookRepository->findNextBook($anId, $books);
 
         $data = [
             'book' => $book,
@@ -155,9 +157,10 @@ class BookController extends AbstractController
         int $anId
     ): Response {
         $book = $bookRepository->find($anId);
+        $books = $bookRepository->findAll();
 
-        $prevBook = $bookRepository->findPreviousBook($anId);
-        $nextBook = $bookRepository->findNextBook($anId);
+        $prevBook = $bookRepository->findPreviousBook($anId, $books);
+        $nextBook = $bookRepository->findNextBook($anId, $books);
 
         $data = [
             'book' => $book,
