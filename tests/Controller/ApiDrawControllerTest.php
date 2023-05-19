@@ -34,6 +34,7 @@ class ApiDrawControllerTest extends TestCase
 
         $controller = new ApiDrawController();
         $response = $controller->jsonDeckDraw($session);
+        $response = $controller->jsonDeckDraw($session);
 
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($response->getContent(), true);
