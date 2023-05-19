@@ -29,7 +29,7 @@ class ApiDeckControllerTest extends TestCase
     }
 
     /**
-     * Verifies that response status for DeckController is ok
+     * Verifies that response from api returns data set with 52 cards and first card is ace of spades
      */
     public function testJsonDeckData(): void
     {
