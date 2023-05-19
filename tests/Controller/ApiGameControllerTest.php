@@ -6,8 +6,6 @@
 
 namespace App\Controller;
 
-use App\Card\Deck;
-use App\Card\Rules;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;

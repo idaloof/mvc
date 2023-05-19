@@ -4,8 +4,10 @@
  * Test class for ApiDeckController
  */
 
+
 namespace App\Controller;
 
+use App\Controller\ApiDeckController;
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
