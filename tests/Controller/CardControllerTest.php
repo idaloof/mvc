@@ -27,6 +27,6 @@ class CardControllerTest extends WebTestCase
         $crawler = $client->request('GET', "/card/deck");
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Card');
+        $this->assertSelectorTextContains('h1', 'Deck');
     }
 }
