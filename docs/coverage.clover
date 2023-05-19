@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684492060">
-  <project timestamp="1684492060">
+<coverage generated="1684511984">
+  <project timestamp="1684511984">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -16,27 +16,27 @@
       <class name="App\Card\Deck" namespace="global">
         <metrics complexity="19" methods="9" coveredmethods="9" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="43" elements="52" coveredelements="52"/>
       </class>
-      <line num="50" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="53"/>
-      <line num="52" type="stmt" count="53"/>
-      <line num="53" type="stmt" count="53"/>
-      <line num="54" type="stmt" count="53"/>
-      <line num="55" type="stmt" count="53"/>
-      <line num="56" type="stmt" count="53"/>
-      <line num="57" type="stmt" count="53"/>
-      <line num="58" type="stmt" count="53"/>
-      <line num="59" type="stmt" count="53"/>
-      <line num="60" type="stmt" count="53"/>
+      <line num="50" type="method" name="__construct" visibility="public" complexity="3" crap="3" count="54"/>
+      <line num="52" type="stmt" count="54"/>
+      <line num="53" type="stmt" count="54"/>
+      <line num="54" type="stmt" count="54"/>
+      <line num="55" type="stmt" count="54"/>
+      <line num="56" type="stmt" count="54"/>
+      <line num="57" type="stmt" count="54"/>
+      <line num="58" type="stmt" count="54"/>
+      <line num="59" type="stmt" count="54"/>
+      <line num="60" type="stmt" count="54"/>
       <line num="70" type="method" name="getDeckImages" visibility="public" complexity="2" crap="2" count="4"/>
       <line num="72" type="stmt" count="4"/>
       <line num="73" type="stmt" count="4"/>
       <line num="74" type="stmt" count="4"/>
       <line num="76" type="stmt" count="4"/>
-      <line num="84" type="method" name="getDeck" visibility="public" complexity="1" crap="1" count="16"/>
-      <line num="86" type="stmt" count="16"/>
-      <line num="95" type="method" name="shuffleDeck" visibility="public" complexity="2" crap="2" count="39"/>
-      <line num="97" type="stmt" count="39"/>
+      <line num="84" type="method" name="getDeck" visibility="public" complexity="1" crap="1" count="17"/>
+      <line num="86" type="stmt" count="17"/>
+      <line num="95" type="method" name="shuffleDeck" visibility="public" complexity="2" crap="2" count="40"/>
+      <line num="97" type="stmt" count="40"/>
       <line num="98" type="stmt" count="38"/>
-      <line num="101" type="stmt" count="39"/>
+      <line num="101" type="stmt" count="40"/>
       <line num="109" type="method" name="drawOneCard" visibility="public" complexity="2" crap="2" count="4"/>
       <line num="111" type="stmt" count="4"/>
       <line num="112" type="stmt" count="1"/>
@@ -469,45 +469,45 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Controller/ApiQuoteController.php">
       <class name="App\Controller\ApiQuoteController" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="20" coveredelements="0"/>
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="20" coveredelements="20"/>
       </class>
-      <line num="13" type="method" name="jsonQuote" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="16" type="stmt" count="0"/>
-      <line num="17" type="stmt" count="0"/>
-      <line num="18" type="stmt" count="0"/>
-      <line num="19" type="stmt" count="0"/>
-      <line num="20" type="stmt" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="24" type="stmt" count="0"/>
-      <line num="26" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <metrics loc="41" ncloc="41" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="0" elements="20" coveredelements="0"/>
+      <line num="13" type="method" name="jsonQuote" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="16" type="stmt" count="2"/>
+      <line num="17" type="stmt" count="2"/>
+      <line num="18" type="stmt" count="2"/>
+      <line num="19" type="stmt" count="2"/>
+      <line num="20" type="stmt" count="2"/>
+      <line num="21" type="stmt" count="2"/>
+      <line num="22" type="stmt" count="2"/>
+      <line num="24" type="stmt" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="28" type="stmt" count="2"/>
+      <line num="29" type="stmt" count="2"/>
+      <line num="30" type="stmt" count="2"/>
+      <line num="31" type="stmt" count="2"/>
+      <line num="32" type="stmt" count="2"/>
+      <line num="34" type="stmt" count="2"/>
+      <line num="35" type="stmt" count="2"/>
+      <line num="36" type="stmt" count="2"/>
+      <line num="37" type="stmt" count="2"/>
+      <line num="38" type="stmt" count="2"/>
+      <metrics loc="41" ncloc="41" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="20" coveredelements="20"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Controller/ApiShuffleController.php">
       <class name="App\Controller\ApiShuffleController" namespace="global">
-        <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
+        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
       </class>
-      <line num="13" type="method" name="jsonDeckShuffle" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="21" type="stmt" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="25" type="stmt" count="0"/>
-      <line num="27" type="stmt" count="0"/>
-      <line num="28" type="stmt" count="0"/>
-      <line num="29" type="stmt" count="0"/>
-      <line num="30" type="stmt" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <metrics loc="34" ncloc="31" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
+      <line num="13" type="method" name="jsonDeckShuffle" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="21" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="29" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <metrics loc="34" ncloc="31" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="10" coveredelements="10"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Controller/BookController.php">
       <class name="App\Controller\BookController" namespace="global">
@@ -914,6 +914,6 @@
       <line num="114" type="stmt" count="0"/>
       <metrics loc="117" ncloc="111" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="0" elements="42" coveredelements="0"/>
     </file>
-    <metrics files="20" loc="2187" ncloc="1756" classes="20" methods="98" coveredmethods="54" conditionals="0" coveredconditionals="0" statements="695" coveredstatements="314" elements="793" coveredelements="368"/>
+    <metrics files="20" loc="2187" ncloc="1756" classes="20" methods="98" coveredmethods="56" conditionals="0" coveredconditionals="0" statements="695" coveredstatements="342" elements="793" coveredelements="398"/>
   </project>
 </coverage>
