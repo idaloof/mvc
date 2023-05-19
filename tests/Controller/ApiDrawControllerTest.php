@@ -37,7 +37,6 @@ class ApiDrawControllerTest extends TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $data = json_decode($response->getContent(), true);
-        var_dump($session->get("remainder"));
 
         $count = count($data);
 
