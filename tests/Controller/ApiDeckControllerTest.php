@@ -19,7 +19,7 @@ class ApiDeckControllerTest extends TestCase
     public function testApiControllerStatusCode() : void
     {
         $client = new Client([
-            'base_uri' => 'http://localhost:8888/',
+            'base_uri' => 'https://www.student.bth.se/~mafl22/dbwebb-kurser/mvc/me/report/public/',
             'http_errors' => false
         ]);
 
