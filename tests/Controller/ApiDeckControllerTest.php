@@ -39,7 +39,8 @@ class ApiDeckControllerTest extends TestCase
         $response = $controller->jsonDeck($session);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $data = json_decode($response->getContent(), true);
+        $content = $response->getContent();
+        $data = is_string($content) ? json_decode($content, true) : null;
         // var_dump($data);
 
         $count = count($data);

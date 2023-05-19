@@ -28,7 +28,7 @@ class ApiDrawControllerTest extends TestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-    public function testJsonDeckData(): void
+    public function testJsonDeckDrawData(): void
     {
         $session = new Session(new MockArraySessionStorage());
 
@@ -37,7 +37,8 @@ class ApiDrawControllerTest extends TestCase
         $response = $controller->jsonDeckDraw($session);
 
         $this->assertEquals(200, $response->getStatusCode());
-        $data = json_decode($response->getContent(), true);
+        $content = $response->getContent();
+        $data = is_string($content) ? json_decode($content, true) : null;
 
         $count = count($data);
 

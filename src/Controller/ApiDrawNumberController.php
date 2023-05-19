@@ -12,16 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiDrawNumberController extends AbstractController
 {
-    #[Route("/api/deck/draw/{number<\d+>}", name: 'api_draw_number', methods: ['POST', 'GET'])]
+    #[Route("/api/deck/draw/number", name: 'api_draw_number', methods: ['POST'])]
     public function jsonDeckDrawNumber(
-        int $number,
         SessionInterface $session,
         Request $request
     ): JsonResponse|Response {
-        if ($request->isMethod('POST')) {
-            $number = $request->request->get('draw_count');
-            return $this->redirectToRoute('api_draw_number', ['number' => $number]);
-        }
+
+        $number = $request->request->get('draw_count');
 
         $deck = $session->has('remainder') && count($session->get('remainder')->getDeckImages()) > 0
             ? $session->get('remainder')
