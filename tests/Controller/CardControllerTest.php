@@ -19,4 +19,14 @@ class CardControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Card');
     }
+
+    public function testHtmlContentCardDeckRoute(): void
+    {
+        $client = static::createClient();
+        
+        $crawler = $client->request('GET', "/card/deck");
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Card');
+    }
 }
