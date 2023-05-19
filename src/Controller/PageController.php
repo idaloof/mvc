@@ -68,7 +68,7 @@ class PageController extends AbstractController
             'deckUrl' => $this->generateUrl('api_deck'),
             'shuffleUrl' => $this->generateUrl('api_deck_shuffle'),
             'drawUrl' => $this->generateUrl('api_draw'),
-            'drawNumberUrl' => $this->generateUrl('api_draw_number', ['number' => 1]),
+            'drawNumberUrl' => $this->generateUrl('api_draw_number'),
             'gameUrl' => $this->generateUrl('api_game'),
             'booksUrl' => $this->generateUrl('api_library_books'),
             'bookUrl' => $this->generateUrl('api_library_book_isbn', ['isbn' => 9780446569903])
