@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684518847">
-  <project timestamp="1684518847">
+<coverage generated="1684792297">
+  <project timestamp="1684792297">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -914,6 +914,143 @@
       <line num="114" type="stmt" count="0"/>
       <metrics loc="117" ncloc="111" classes="1" methods="7" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="35" coveredstatements="0" elements="42" coveredelements="0"/>
     </file>
-    <metrics files="20" loc="2187" ncloc="1756" classes="20" methods="98" coveredmethods="56" conditionals="0" coveredconditionals="0" statements="695" coveredstatements="342" elements="793" coveredelements="398"/>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/EvaluatorInterface.php">
+      <metrics loc="22" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/FlushEvaluator.php">
+      <class name="App\Texas\FlushEvaluator" namespace="global">
+        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </class>
+      <line num="21" type="method" name="evaluateHand" visibility="public" complexity="2" crap="2" count="6"/>
+      <line num="23" type="stmt" count="6"/>
+      <line num="25" type="stmt" count="6"/>
+      <metrics loc="28" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/FourOfAKindEvaluator.php">
+      <class name="App\Texas\FourOfAKindEvaluator" namespace="global">
+        <metrics complexity="3" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </class>
+      <line num="21" type="method" name="evaluateHand" visibility="public" complexity="3" crap="3" count="3"/>
+      <line num="23" type="stmt" count="3"/>
+      <line num="25" type="stmt" count="3"/>
+      <line num="26" type="stmt" count="3"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="2"/>
+      <metrics loc="34" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/FullHouseEvaluator.php">
+      <class name="App\Texas\FullHouseEvaluator" namespace="global">
+        <metrics complexity="4" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </class>
+      <line num="21" type="method" name="evaluateHand" visibility="public" complexity="4" crap="4" count="3"/>
+      <line num="23" type="stmt" count="3"/>
+      <line num="24" type="stmt" count="3"/>
+      <line num="26" type="stmt" count="3"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="30" type="stmt" count="2"/>
+      <metrics loc="33" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/HandEvaluator.php">
+      <class name="App\Texas\HandEvaluator" namespace="global">
+        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+      </class>
+      <line num="24" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="40" type="method" name="evaluateHand" visibility="public" complexity="3" crap="3" count="2"/>
+      <line num="42" type="stmt" count="2"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <metrics loc="51" ncloc="27" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/OnePairEvaluator.php">
+      <class name="App\Texas\OnePairEvaluator" namespace="global">
+        <metrics complexity="2" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </class>
+      <line num="21" type="method" name="evaluateHand" visibility="public" complexity="2" crap="2" count="8"/>
+      <line num="23" type="stmt" count="8"/>
+      <line num="25" type="stmt" count="8"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="29" type="stmt" count="6"/>
+      <metrics loc="32" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/RoyalStraightFlushEvaluator.php">
+      <class name="App\Texas\RoyalStraightFlushEvaluator" namespace="global">
+        <metrics complexity="6" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </class>
+      <line num="28" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="30" type="stmt" count="5"/>
+      <line num="31" type="stmt" count="5"/>
+      <line num="44" type="method" name="evaluateHand" visibility="public" complexity="5" crap="5" count="4"/>
+      <line num="46" type="stmt" count="4"/>
+      <line num="47" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="3"/>
+      <line num="51" type="stmt" count="3"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="2"/>
+      <metrics loc="58" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/StraightEvaluator.php">
+      <class name="App\Texas\StraightEvaluator" namespace="global">
+        <metrics complexity="5" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="12" coveredelements="12"/>
+      </class>
+      <line num="21" type="method" name="evaluateHand" visibility="public" complexity="5" crap="5" count="8"/>
+      <line num="23" type="stmt" count="8"/>
+      <line num="24" type="stmt" count="8"/>
+      <line num="25" type="stmt" count="8"/>
+      <line num="27" type="stmt" count="8"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="31" type="stmt" count="7"/>
+      <line num="32" type="stmt" count="7"/>
+      <line num="33" type="stmt" count="7"/>
+      <line num="35" type="stmt" count="7"/>
+      <line num="36" type="stmt" count="7"/>
+      <line num="40" type="stmt" count="7"/>
+      <metrics loc="43" ncloc="30" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="12" coveredelements="12"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/StraightFlushEvaluator.php">
+      <class name="App\Texas\StraightFlushEvaluator" namespace="global">
+        <metrics complexity="6" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </class>
+      <line num="28" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="30" type="stmt" count="5"/>
+      <line num="31" type="stmt" count="5"/>
+      <line num="44" type="method" name="evaluateHand" visibility="public" complexity="5" crap="5" count="4"/>
+      <line num="46" type="stmt" count="4"/>
+      <line num="47" type="stmt" count="2"/>
+      <line num="50" type="stmt" count="2"/>
+      <line num="51" type="stmt" count="2"/>
+      <line num="52" type="stmt" count="1"/>
+      <line num="55" type="stmt" count="1"/>
+      <metrics loc="58" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/ThreeOfAKindEvaluator.php">
+      <class name="App\Texas\ThreeOfAKindEvaluator" namespace="global">
+        <metrics complexity="4" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+      </class>
+      <line num="21" type="method" name="evaluateHand" visibility="public" complexity="4" crap="4" count="5"/>
+      <line num="23" type="stmt" count="5"/>
+      <line num="24" type="stmt" count="5"/>
+      <line num="26" type="stmt" count="5"/>
+      <line num="27" type="stmt" count="5"/>
+      <line num="28" type="stmt" count="1"/>
+      <line num="32" type="stmt" count="4"/>
+      <metrics loc="35" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+    </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TwoPairEvaluator.php">
+      <class name="App\Texas\TwoPairEvaluator" namespace="global">
+        <metrics complexity="5" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      </class>
+      <line num="21" type="method" name="evaluateHand" visibility="public" complexity="5" crap="5" count="5"/>
+      <line num="23" type="stmt" count="5"/>
+      <line num="24" type="stmt" count="5"/>
+      <line num="26" type="stmt" count="5"/>
+      <line num="27" type="stmt" count="5"/>
+      <line num="29" type="stmt" count="5"/>
+      <line num="30" type="stmt" count="2"/>
+      <line num="34" type="stmt" count="5"/>
+      <metrics loc="37" ncloc="24" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+    </file>
+    <metrics files="31" loc="2618" ncloc="2014" classes="30" methods="111" coveredmethods="69" conditionals="0" coveredconditionals="0" statements="756" coveredstatements="403" elements="867" coveredelements="472"/>
   </project>
 </coverage>
