@@ -22,7 +22,6 @@ class StraightEvaluator implements EvaluatorInterface
     {
         $specialArray = ["2", "3", "4", "5", "14"];
         sort($values);
-        $count = 0;
 
         if ($values === $specialArray) {
             return "Straight";
