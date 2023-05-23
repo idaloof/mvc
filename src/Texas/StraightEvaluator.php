@@ -32,11 +32,11 @@ class StraightEvaluator implements EvaluatorInterface
             $currentValue = $values[$i];
             $nextValue = $values[$i + 1];
 
-            if (intval($nextValue) === intval($currentValue) + 1) {
-                $count += 1;
+            if (!(intval($nextValue) === intval($currentValue) + 1)) {
+                return "";
             }
         }
 
-        return ($count === 4) ? "Straight" : "";
+        return "Straight";
     }
 }
