@@ -81,7 +81,7 @@ class ThreeOfAKindEvaluatorTest extends TestCase
         $evaluator = new ThreeOfAKindEvaluator();
         $ranks = ["Q", "9", "A", "A", "A"];
 
-        $exp = 18;
+        $exp = 414;
         $res = $evaluator->calculatePoints($ranks);
 
         $this->assertEquals($exp, $res);

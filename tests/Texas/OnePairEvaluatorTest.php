@@ -113,7 +113,7 @@ class OnePairEvaluatorTest extends TestCase
         $evaluator = new OnePairEvaluator();
         $ranks = ["Q", "9", "9", "K", "A"];
 
-        $exp = 11;
+        $exp = 209;
         $res = $evaluator->calculatePoints($ranks);
 
         $this->assertEquals($exp, $res);
