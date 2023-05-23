@@ -40,4 +40,32 @@ class FourOfAKindEvaluatorTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that evaluator returns correct points.
+     */
+    public function testEvaluateReturnPointsAces() : void
+    {
+        $evaluator = new FourOfAKindEvaluator();
+        $ranks = ["Q", "A", "A", "A", "A"];
+
+        $exp = 814;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that evaluator returns correct points.
+     */
+    public function testEvaluateReturnPointsTwos() : void
+    {
+        $evaluator = new FourOfAKindEvaluator();
+        $ranks = ["Q", "2", "2", "2", "2"];
+
+        $exp = 802;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+    }
 }
