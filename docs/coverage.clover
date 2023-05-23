@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684871147">
-  <project timestamp="1684871147">
+<coverage generated="1684871745">
+  <project timestamp="1684871745">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -940,7 +940,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/FourOfAKindEvaluator.php">
       <class name="App\Texas\FourOfAKindEvaluator" namespace="global">
-        <metrics complexity="3" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
       </class>
       <line num="21" type="method" name="evaluateHand" visibility="public" complexity="3" crap="3" count="3"/>
       <line num="23" type="stmt" count="3"/>
@@ -948,7 +948,14 @@
       <line num="26" type="stmt" count="3"/>
       <line num="27" type="stmt" count="1"/>
       <line num="31" type="stmt" count="2"/>
-      <metrics loc="34" ncloc="21" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      <line num="41" type="method" name="calculatePoints" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="43" type="stmt" count="2"/>
+      <line num="44" type="stmt" count="2"/>
+      <line num="45" type="stmt" count="2"/>
+      <line num="47" type="stmt" count="2"/>
+      <line num="48" type="stmt" count="2"/>
+      <line num="50" type="stmt" count="2"/>
+      <metrics loc="53" ncloc="33" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="13" coveredelements="13"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/FullHouseEvaluator.php">
       <class name="App\Texas\FullHouseEvaluator" namespace="global">
@@ -1099,6 +1106,6 @@
       <line num="61" type="stmt" count="1"/>
       <metrics loc="64" ncloc="44" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="19" coveredelements="19"/>
     </file>
-    <metrics files="32" loc="2767" ncloc="2124" classes="30" methods="116" coveredmethods="74" conditionals="0" coveredconditionals="0" statements="793" coveredstatements="440" elements="909" coveredelements="514"/>
+    <metrics files="32" loc="2786" ncloc="2136" classes="30" methods="117" coveredmethods="75" conditionals="0" coveredconditionals="0" statements="799" coveredstatements="446" elements="916" coveredelements="521"/>
   </project>
 </coverage>
