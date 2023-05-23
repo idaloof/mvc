@@ -6,7 +6,7 @@
 
 namespace App\Texas;
 
-class TwoPairEvaluator implements EvaluatorInterface
+class TwoPairEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * Returns two pair if hand has it or empty string if not.
@@ -32,5 +32,32 @@ class TwoPairEvaluator implements EvaluatorInterface
         }
 
         return (count($pairs) === 2) ? "Two Pair" : "";
+    }
+
+    /**
+     * Calculates and returns the points for a hand.
+     *
+     * @param array<string> $ranks  Ranks of the player's cards.
+     *
+     * @return int                  Number of points obtained from hand.
+     */
+    public function calculatePoints(array $ranks): int
+    {
+        $points = 0;
+        $counts = array_count_values($ranks);
+        $uniqueCards = array_keys($counts);
+
+        $pairRank = [];
+
+        for ($i = 0; $i < 3; $i++) {
+            if ($counts[$uniqueCards[$i]] === 2) {
+                array_push($pairRank, self::RANK_POINTS[$uniqueCards[$i]]);
+            }
+        }
+
+        $points += max($pairRank);
+        $points += self::HAND_POINTS["Two Pair"];
+
+        return $points;
     }
 }

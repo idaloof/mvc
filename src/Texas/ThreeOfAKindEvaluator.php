@@ -6,7 +6,7 @@
 
 namespace App\Texas;
 
-class ThreeOfAKindEvaluator implements EvaluatorInterface
+class ThreeOfAKindEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * Returns three of a kind if hand has it or empty string if not.
@@ -30,5 +30,24 @@ class ThreeOfAKindEvaluator implements EvaluatorInterface
         }
 
         return "";
+    }
+
+    /**
+     * Calculates and returns the points for a hand.
+     *
+     * @param array<string> $ranks  Ranks of the player's cards.
+     *
+     * @return int                  Number of points obtained from hand.
+     */
+    public function calculatePoints(array $ranks): int
+    {
+        $points = 0;
+        $counts = array_count_values($ranks);
+        $pairRank = array_search(3, $counts);
+
+        $points += self::RANK_POINTS[$pairRank];
+        $points += self::HAND_POINTS["Three Of A Kind"];
+
+        return $points;
     }
 }
