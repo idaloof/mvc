@@ -65,4 +65,19 @@ class RoyalStraightFlushEvaluatorTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testEvaluateReturnPoints() : void
+    {
+        $straight = new StraightEvaluator();
+        $flush = new FlushEvaluator();
+        $evaluator = new RoyalStraightFlushEvaluator($straight, $flush);
+
+        $exp = 1000;
+        $res = $evaluator->calculatePoints();
+
+        $this->assertEquals($exp, $res);
+    }
 }

@@ -54,4 +54,14 @@ class RoyalStraightFlushEvaluator implements EvaluatorInterface
 
         return "";
     }
+
+    /**
+     * Returns the points for a hand.
+     *
+     * @return int Number of points obtained from hand.
+     */
+    public function calculatePoints(): int
+    {
+        return 1000;
+    }
 }
