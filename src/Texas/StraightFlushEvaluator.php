@@ -9,7 +9,7 @@ namespace App\Texas;
 use App\Texas\StraightEvaluator;
 use App\Texas\FlushEvaluator;
 
-class StraightFlushEvaluator implements EvaluatorInterface
+class StraightFlushEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * @var StraightEvaluator   $straightEvaluator  Class evaluating hand for straight
@@ -53,5 +53,31 @@ class StraightFlushEvaluator implements EvaluatorInterface
         }
 
         return "";
+    }
+
+    /**
+     * Calculates and returns the points for a hand.
+     *
+     * @param array<string> $values Values of the player's cards.
+     *
+     * @return int                  Number of points obtained from hand.
+     */
+    public function calculatePoints(array $values): int
+    {
+        $points = 0;
+        $sumValues = intval(array_sum($values));
+        sort($values);
+
+        $specialArray = ["2", "3", "4", "5", "14"];
+        if ($values === $specialArray) {
+            $points += self::HAND_POINTS["Straight Flush"];
+            $points += 15;
+            return $points;
+        }
+
+        $points += $sumValues;
+        $points += self::HAND_POINTS["Straight Flush"];
+
+        return $points;
     }
 }

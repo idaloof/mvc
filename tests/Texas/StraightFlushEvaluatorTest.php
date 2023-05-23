@@ -65,4 +65,38 @@ class StraightFlushEvaluatorTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testEvaluateReturnPoints() : void
+    {
+        $straight = new StraightEvaluator();
+        $flush = new FlushEvaluator();
+        $evaluator = new StraightFlushEvaluator($straight, $flush);
+
+        $values = ["13", "11", "12", "10", "14"];
+
+        $exp = 960;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testEvaluateReturnPointsSpecial() : void
+    {
+        $straight = new StraightEvaluator();
+        $flush = new FlushEvaluator();
+        $evaluator = new StraightFlushEvaluator($straight, $flush);
+
+        $values = ["2", "14", "5", "4", "3"];
+
+        $exp = 915;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+    }
 }
