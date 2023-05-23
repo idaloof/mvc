@@ -49,9 +49,17 @@ class StraightEvaluator extends CalculatePoints implements EvaluatorInterface
     public function calculatePoints(array $values): int
     {
         $points = 0;
-        $highestValue = intval(max($values));
+        $sumValues = intval(array_sum($values));
+        sort($values);
 
-        $points += $highestValue;
+        $specialArray = ["2", "3", "4", "5", "14"];
+        if ($values === $specialArray) {
+            $points += self::HAND_POINTS["Straight"];
+            $points += 15;
+            return $points;
+        }
+
+        $points += $sumValues;
         $points += self::HAND_POINTS["Straight"];
 
         return $points;
