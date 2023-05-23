@@ -6,7 +6,7 @@
 
 namespace App\Texas;
 
-class FlushEvaluator implements EvaluatorInterface
+class FlushEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * Returns flush if hand has it or empty string if not.
@@ -23,5 +23,23 @@ class FlushEvaluator implements EvaluatorInterface
         $counts = array_count_values($suits);
 
         return ($counts[$suits[0]] === 5) ? "Flush" : "";
+    }
+
+    /**
+     * Calculates and returns the points for a hand.
+     *
+     * @param array<string> $values Values of the player's cards.
+     *
+     * @return int                  Number of points obtained from hand.
+     */
+    public function calculatePoints(array $values): int
+    {
+        $points = 0;
+        $highestValue = max($values);
+
+        $points += $highestValue;
+        $points += self::HAND_POINTS["Flush"];
+
+        return $points;
     }
 }
