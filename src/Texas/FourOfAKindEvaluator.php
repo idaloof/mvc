@@ -6,7 +6,7 @@
 
 namespace App\Texas;
 
-class FourOfAKindEvaluator implements EvaluatorInterface
+class FourOfAKindEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * Returns four of a kind if hand has it or empty string if not.
@@ -29,5 +29,24 @@ class FourOfAKindEvaluator implements EvaluatorInterface
         }
 
         return "";
+    }
+
+    /**
+     * Calculates and returns the points for a hand.
+     *
+     * @param array<string> $ranks  Ranks of the player's cards.
+     *
+     * @return int                  Number of points obtained from hand.
+     */
+    public function calculatePoints(array $ranks): int
+    {
+        $points = 0;
+        $counts = array_count_values($ranks);
+        $rank = array_search(4, $counts);
+
+        $points += self::RANK_POINTS[$rank];
+        $points += self::HAND_POINTS["Four Of A Kind"];
+
+        return $points;
     }
 }
