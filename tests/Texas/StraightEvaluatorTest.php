@@ -65,7 +65,21 @@ class StraightEvaluatorTest extends TestCase
         $evaluator = new StraightEvaluator();
         $values = ["13", "11", "12", "10", "14"];
 
-        $exp = 514;
+        $exp = 560;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testEvaluateReturnPointsSpecial() : void
+    {
+        $evaluator = new StraightEvaluator();
+        $values = ["2", "14", "5", "4", "3"];
+
+        $exp = 515;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
