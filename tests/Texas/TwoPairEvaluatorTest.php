@@ -72,4 +72,18 @@ class TwoPairEvaluatorTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testEvaluateReturnPoints() : void
+    {
+        $evaluator = new TwoPairEvaluator();
+        $ranks = ["Q", "9", "9", "A", "A"];
+
+        $exp = 17;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+    }
 }

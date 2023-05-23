@@ -72,4 +72,18 @@ class ThreeOfAKindEvaluatorTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testEvaluateReturnPoints() : void
+    {
+        $evaluator = new ThreeOfAKindEvaluator();
+        $ranks = ["Q", "9", "A", "A", "A"];
+
+        $exp = 18;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+    }
 }

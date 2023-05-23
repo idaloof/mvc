@@ -104,4 +104,18 @@ class OnePairEvaluatorTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testEvaluateReturnPoints() : void
+    {
+        $evaluator = new OnePairEvaluator();
+        $ranks = ["Q", "9", "9", "K", "A"];
+
+        $exp = 11;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+    }
 }
