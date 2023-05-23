@@ -6,7 +6,7 @@
 
 namespace App\Texas;
 
-class StraightEvaluator implements EvaluatorInterface
+class StraightEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * Returns straight if hand has it or empty string if not.
@@ -37,5 +37,23 @@ class StraightEvaluator implements EvaluatorInterface
         }
 
         return "Straight";
+    }
+
+    /**
+     * Calculates and returns the points for a hand.
+     *
+     * @param array<string> $values Values of the player's cards.
+     *
+     * @return int                  Number of points obtained from hand.
+     */
+    public function calculatePoints(array $values): int
+    {
+        $points = 0;
+        $highestValue = max($values);
+
+        $points += $highestValue;
+        $points += self::HAND_POINTS["Straight"];
+
+        return $points;
     }
 }
