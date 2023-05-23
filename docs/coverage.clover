@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684871745">
-  <project timestamp="1684871745">
+<coverage generated="1684872061">
+  <project timestamp="1684872061">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -925,18 +925,24 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/FlushEvaluator.php">
       <class name="App\Texas\FlushEvaluator" namespace="global">
-        <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+        <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="15" coveredelements="15"/>
       </class>
       <line num="21" type="method" name="evaluateHand" visibility="public" complexity="2" crap="2" count="6"/>
       <line num="23" type="stmt" count="6"/>
       <line num="25" type="stmt" count="6"/>
-      <line num="35" type="method" name="calculatePoints" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="37" type="stmt" count="1"/>
-      <line num="38" type="stmt" count="1"/>
-      <line num="40" type="stmt" count="1"/>
-      <line num="41" type="stmt" count="1"/>
+      <line num="35" type="method" name="calculatePoints" visibility="public" complexity="2" crap="2" count="2"/>
+      <line num="37" type="stmt" count="2"/>
+      <line num="38" type="stmt" count="2"/>
+      <line num="39" type="stmt" count="2"/>
+      <line num="41" type="stmt" count="2"/>
+      <line num="42" type="stmt" count="2"/>
       <line num="43" type="stmt" count="1"/>
-      <metrics loc="46" ncloc="26" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
+      <line num="44" type="stmt" count="1"/>
+      <line num="45" type="stmt" count="1"/>
+      <line num="48" type="stmt" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="51" type="stmt" count="1"/>
+      <metrics loc="54" ncloc="34" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="15" coveredelements="15"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/FourOfAKindEvaluator.php">
       <class name="App\Texas\FourOfAKindEvaluator" namespace="global">
@@ -1106,6 +1112,6 @@
       <line num="61" type="stmt" count="1"/>
       <metrics loc="64" ncloc="44" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="19" coveredelements="19"/>
     </file>
-    <metrics files="32" loc="2786" ncloc="2136" classes="30" methods="117" coveredmethods="75" conditionals="0" coveredconditionals="0" statements="799" coveredstatements="446" elements="916" coveredelements="521"/>
+    <metrics files="32" loc="2794" ncloc="2144" classes="30" methods="117" coveredmethods="75" conditionals="0" coveredconditionals="0" statements="805" coveredstatements="452" elements="922" coveredelements="527"/>
   </project>
 </coverage>
