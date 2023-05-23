@@ -36,6 +36,14 @@ class FlushEvaluator extends CalculatePoints implements EvaluatorInterface
     {
         $points = 0;
         $sumValues = intval(array_sum($values));
+        sort($values);
+
+        $specialArray = ["2", "3", "4", "5", "14"];
+        if ($values === $specialArray) {
+            $points += self::HAND_POINTS["Flush"];
+            $points += 15;
+            return $points;
+        }
 
         $points += $sumValues;
         $points += self::HAND_POINTS["Flush"];
