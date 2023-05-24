@@ -20,9 +20,7 @@ class TexasPlayerTest extends TestCase
      */
     protected function setUp() : void
     {
-        $this->player = new TexasPlayer("Martin");
-        $this->player->increaseWallet(20);
-        $this->player->increaseBuyIn(20);
+        $this->player = new TexasPlayer("Martin", 20, 20);
     }
 
     /**
@@ -115,5 +113,23 @@ class TexasPlayerTest extends TestCase
         $res = $this->player->getBet();
 
         $this->assertInstanceOf($exp, $res);
+    }
+
+    /**
+     * Verify that TexasPlayer setHasFolded sets correct bool.
+     */
+    public function testSetHasFolded() : void
+    {
+        $this->player->setHasFolded();
+
+        $this->assertTrue($this->player->hasFolded());
+    }
+
+    /**
+     * Verify that TexasPlayer hasFolded returns correct bool.
+     */
+    public function testHasFolded() : void
+    {
+        $this->assertFalse($this->player->hasFolded());
     }
 }
