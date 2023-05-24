@@ -14,7 +14,6 @@ class TexasHand
     /**
      * @var array<Card>     $holeCards          Cards in hand.
      */
-
     private array $holeCards;
 
     /**
