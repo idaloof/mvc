@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684935549">
-  <project timestamp="1684935549">
+<coverage generated="1684937855">
+  <project timestamp="1684937855">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -1048,22 +1048,6 @@
       <line num="48" type="stmt" count="1"/>
       <metrics loc="51" ncloc="31" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
     </file>
-    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/Player.php">
-      <class name="App\Texas\Player" namespace="global">
-        <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
-      </class>
-      <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="35" type="stmt" count="0"/>
-      <line num="36" type="stmt" count="0"/>
-      <line num="37" type="stmt" count="0"/>
-      <line num="38" type="stmt" count="0"/>
-      <line num="39" type="stmt" count="0"/>
-      <line num="47" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="49" type="stmt" count="0"/>
-      <line num="57" type="method" name="setName" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="59" type="stmt" count="0"/>
-      <metrics loc="62" ncloc="34" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
-    </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/RoyalStraightFlushEvaluator.php">
       <class name="App\Texas\RoyalStraightFlushEvaluator" namespace="global">
         <metrics complexity="7" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="12" coveredelements="12"/>
@@ -1195,6 +1179,36 @@
       <line num="119" type="stmt" count="1"/>
       <metrics loc="122" ncloc="56" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="16" coveredelements="16"/>
     </file>
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasPlayer.php">
+      <class name="App\Texas\TexasPlayer" namespace="global">
+        <metrics complexity="10" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="24" coveredelements="24"/>
+      </class>
+      <line num="33" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="35" type="stmt" count="7"/>
+      <line num="36" type="stmt" count="7"/>
+      <line num="37" type="stmt" count="7"/>
+      <line num="38" type="stmt" count="7"/>
+      <line num="39" type="stmt" count="7"/>
+      <line num="47" type="method" name="getName" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="57" type="method" name="getWallet" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="59" type="stmt" count="2"/>
+      <line num="69" type="method" name="increaseWallet" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="71" type="stmt" count="7"/>
+      <line num="81" type="method" name="decreaseWallet" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="83" type="stmt" count="1"/>
+      <line num="91" type="method" name="getBuyIn" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="93" type="stmt" count="2"/>
+      <line num="103" type="method" name="increaseBuyIn" visibility="public" complexity="1" crap="1" count="7"/>
+      <line num="105" type="stmt" count="7"/>
+      <line num="115" type="method" name="decreaseBuyIn" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="117" type="stmt" count="1"/>
+      <line num="125" type="method" name="getHand" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="127" type="stmt" count="1"/>
+      <line num="135" type="method" name="getBet" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="137" type="stmt" count="1"/>
+      <metrics loc="140" ncloc="69" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="24" coveredelements="24"/>
+    </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/ThreeOfAKindEvaluator.php">
       <class name="App\Texas\ThreeOfAKindEvaluator" namespace="global">
         <metrics complexity="5" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="14" coveredelements="14"/>
@@ -1240,6 +1254,6 @@
       <line num="61" type="stmt" count="1"/>
       <metrics loc="64" ncloc="44" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="19" coveredelements="19"/>
     </file>
-    <metrics files="38" loc="3295" ncloc="2436" classes="35" methods="143" coveredmethods="98" conditionals="0" coveredconditionals="0" statements="871" coveredstatements="511" elements="1014" coveredelements="609"/>
+    <metrics files="38" loc="3373" ncloc="2471" classes="35" methods="150" coveredmethods="108" conditionals="0" coveredconditionals="0" statements="878" coveredstatements="525" elements="1028" coveredelements="633"/>
   </project>
 </coverage>
