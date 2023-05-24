@@ -1,145 +1,61 @@
 <?php
 
-// /**
-//  * Class Player
-//  */
+/**
+ * Class Player
+ * This class is responsible for managing a player's properties.
+ * It has dependencies towards the Hand class, the Bet class and the HandEvaluator class.
+ */
 
-// namespace App\Texas;
+namespace App\Texas;
 
-// class Player
-// {
-//     /**
-//      * @var Hand    $hand       Hand with cards.
-//      * @var string  $name       Player name.
-//      * @var Points  $points     Points class.
-//      */
+class Player
+{
+    /**
+     * @var string          $name       Player name.
+     * @var int             $wallet     Player's digital wallet.
+     * @var int             $buyIn      Player's buy in for a game.
+     * @var TexasHand       $hand       Hand object.
+     * @var Bet             $bet        Bet object.
+     */
 
-//     protected string $name;
-//     protected Points $points;
+    protected string $name;
+    protected int $wallet;
+    protected int $buyIn;
+    protected TexasHand $hand;
+    protected Bet $bet;
 
-//     /**
-//      * Class constructor
-//      *
-//      * @param Hand      $hand   Hand with cards
-//      * @param Points    $points Points class with player points.
-//      *
-//      */
-//     public function __construct(Hand $hand, Points $points)
-//     {
-//         $this->name = "human";
-//         $this->hand = $hand;
-//         $this->points = $points;
-//     }
+    /**
+     * Class constructor
+     *
+     * @param string $name Player name.
+     *
+     */
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+        $this->wallet = 0;
+        $this->buyIn = 0;
+        $this->hand = new TexasHand();
+        $this->bet = new Bet();
+    }
 
-//     /**
-//      * Gets name of player.
-//      *
-//      * @return string name of player.
-//      */
-//     public function getName(): string
-//     {
-//         return $this->name;
-//     }
+    /**
+     * Gets name of player.
+     *
+     * @return string name of player.
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
-//     /**
-//      * Sets name of player.
-//      *
-//      * @return void
-//      */
-//     public function setName(string $name): void
-//     {
-//         $this->name = $name;
-//     }
-
-//     /**
-//      * Calculates player's points.
-//      *
-//      * @return void
-//      */
-//     public function calculatePlayerPoints(): void
-//     {
-//         $this->points->calculatePoints($this->hand);
-//     }
-
-//     /**
-//      * Sets player's best points for hand of cards.
-//      *
-//      * @return void
-//      */
-//     public function setPlayerDefinitivePoints(): void
-//     {
-//         $this->points->setBestHandPoints();
-//     }
-
-//     /**
-//      * Gets player's best points for hand of cards.
-//      *
-//      * @return int with best points possible.
-//      */
-//     public function getPlayerDefinitivePoints(): int
-//     {
-//         return $this->points->getBestHandPoints();
-//     }
-
-//     /**
-//      * Sets player's best points for hand of cards.
-//      *
-//      * @return int|array<string,int> with player's points.
-//      */
-//     public function getPlayerPoints(): int|array
-//     {
-//         return $this->points->getPoints();
-//     }
-
-//     /**
-//      * Adds card to player hand.
-//      *
-//      * @param array<mixed,string> $card Card to be added to hand.
-//      *
-//      * @return void
-//      */
-//     public function addCardToPlayerHand($card): void
-//     {
-//         $this->hand->addCard($card);
-//     }
-
-//     /**
-//      * Get player card images.
-//      *
-//      * @return array<string> with player card images.
-//      */
-//     public function getPlayerCardImages(): array
-//     {
-//         return $this->hand->getCardImages();
-//     }
-
-//     /**
-//      * Get player card values.
-//      *
-//      * @return array<string> with player card images.
-//      */
-//     public function getPlayerCardValues(): array
-//     {
-//         return $this->hand->getCardValues();
-//     }
-
-//     /**
-//      * Get player's low points.
-//      *
-//      * @return int with low points.
-//      */
-//     public function getPlayerLowPoints(): int
-//     {
-//         return $this->points->getLowPoints();
-//     }
-
-//     /**
-//      * Get player's high points.
-//      *
-//      * @return int with high points.
-//      */
-//     public function getPlayerHighPoints(): int
-//     {
-//         return $this->points->getHighPoints();
-//     }
-// }
+    /**
+     * Sets name of player.
+     *
+     * @return void
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+}
