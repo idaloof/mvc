@@ -14,22 +14,22 @@ class TexasHand
     /**
      * @var array<Card>     $holeCards          Cards in hand.
      */
-    private array $holeCards;
+    private array $holeCards = [];
 
     /**
      * @var array<Card>     $bestHand           Best possible five card hand.
      */
-    private array $bestHand;
+    private array $bestHand = [];
 
     /**
      * @var string          $bestHandName       Name of best hand.
      */
-    private string $bestHandName;
+    private string $bestHandName = "";
 
     /**
      * @var int             $bestHandPoints     Points of best hand.
      */
-    private int $bestHandPoints;
+    private int $bestHandPoints = 0;
 
     /**
      * Gets player's hole cards.
@@ -51,6 +51,16 @@ class TexasHand
     public function setHoleCards(array $cards): void
     {
         $this->holeCards = $cards;
+    }
+
+    /**
+     * Folds player's hand.
+     *
+     * @return void
+     */
+    public function foldHand(): void
+    {
+        $this->holeCards = [];
     }
 
     /**
