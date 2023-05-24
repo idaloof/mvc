@@ -1,26 +1,28 @@
 <?php
 
 /**
- * Class Player
+ * Class TexasPlayer
  * This class is responsible for managing a player's properties.
  * It has dependencies towards the Hand class and the Bet class.
  */
 
 namespace App\Texas;
 
-class TexasPlayer
+class TexasPlayer implements PlayerInterface
 {
     /**
      * @var string          $name       Player name.
      * @var int             $wallet     Player's digital wallet.
      * @var int             $buyIn      Player's buy in for a game.
+     * @var bool            $hasFolded  Whether player has folded or not.
      * @var TexasHand       $hand       Hand object.
      * @var Bet             $bet        Bet object.
      */
 
-    protected string $name;
-    protected int $wallet;
-    protected int $buyIn;
+    private string $name;
+    private int $wallet;
+    private int $buyIn;
+    private bool $hasFolded;
     protected TexasHand $hand;
     protected Bet $bet;
 
@@ -30,11 +32,12 @@ class TexasPlayer
      * @param string $name Player name.
      *
      */
-    public function __construct(string $name)
+    public function __construct(string $name, int $initialWallet, int $initialBuyIn)
     {
         $this->name = $name;
-        $this->wallet = 0;
-        $this->buyIn = 0;
+        $this->wallet = $initialWallet;
+        $this->buyIn = $initialBuyIn;
+        $this->hasFolded = false;
         $this->hand = new TexasHand();
         $this->bet = new Bet();
     }
@@ -66,7 +69,7 @@ class TexasPlayer
      *
      * @return void
      */
-    public function increaseWallet(int $money)
+    public function increaseWallet(int $money): void
     {
         $this->wallet += $money;
     }
@@ -78,7 +81,7 @@ class TexasPlayer
      *
      * @return void
      */
-    public function decreaseWallet(int $money)
+    public function decreaseWallet(int $money): void
     {
         $this->wallet -= $money;
     }
@@ -100,7 +103,7 @@ class TexasPlayer
      *
      * @return void
      */
-    public function increaseBuyIn(int $money)
+    public function increaseBuyIn(int $money): void
     {
         $this->buyIn += $money;
     }
@@ -112,7 +115,7 @@ class TexasPlayer
      *
      * @return void
      */
-    public function decreaseBuyIn(int $money)
+    public function decreaseBuyIn(int $money): void
     {
         $this->buyIn -= $money;
     }
@@ -135,5 +138,26 @@ class TexasPlayer
     public function getBet(): Bet
     {
         return $this->bet;
+    }
+
+    /**
+     * Sets property hasFolded.
+     *
+     * @return void
+     */
+    public function setHasFolded(): void
+    {
+        $this->hasFolded = ($this->hasFolded)
+            ? false : true;
+    }
+
+    /**
+     * Gets property hasFolded.
+     *
+     * @return bool If player has folded or not.
+     */
+    public function hasFolded(): bool
+    {
+        return $this->hasFolded;
     }
 }
