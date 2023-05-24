@@ -8,7 +8,7 @@
 
 namespace App\Texas;
 
-class Player
+class TexasPlayer
 {
     /**
      * @var string          $name       Player name.
@@ -50,12 +50,100 @@ class Player
     }
 
     /**
-     * Sets name of player.
+     * Sets amount of money in player wallet.
      *
      * @return void
      */
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * Gets wallet of player.
+     *
+     * @return int Amount of money in player wallet.
+     */
+    public function getWallet(): int
+    {
+        return $this->wallet;
+    }
+
+    /**
+     * Increases money in player wallet.
+     *
+     * @param int $money Amount of money to increase player wallet with.
+     *
+     * @return void
+     */
+    public function increaseWallet(int $money)
+    {
+        $this->wallet += $money;
+    }
+
+    /**
+     * Decreases money in player wallet.
+     *
+     * @param int $money Amount of money to decrease player wallet with.
+     *
+     * @return void
+     */
+    public function decreaseWallet(int $money)
+    {
+        $this->wallet -= $money;
+    }
+
+    /**
+     * Gets buy-in of player.
+     *
+     * @return int Amount of money in player buy-in.
+     */
+    public function getBuyIn(): int
+    {
+        return $this->buyIn;
+    }
+
+    /**
+     * Increases money in player buy-in.
+     *
+     * @param int $money Amount of money to increase player buy-in with.
+     *
+     * @return void
+     */
+    public function increaseBuyIn(int $money)
+    {
+        $this->buyIn += $money;
+    }
+
+    /**
+     * Decreases money in player buy-in.
+     *
+     * @param int $money Amount of money to decrease player buy-in with.
+     *
+     * @return void
+     */
+    public function decreaseBuyIn(int $money)
+    {
+        $this->buyIn -= $money;
+    }
+
+    /**
+     * Gets hand of player.
+     *
+     * @return TexasHand Player hand.
+     */
+    public function getHand(): TexasHand
+    {
+        return $this->hand;
+    }
+
+    /**
+     * Gets bet of player.
+     *
+     * @return Bet Player bet.
+     */
+    public function getBet(): Bet
+    {
+        return $this->bet;
     }
 }
