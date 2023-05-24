@@ -24,9 +24,9 @@ class ComputerStuTest extends TestCase
     }
 
     /**
-     * Verify that TexasPlayer returns correct name.
+     * Verify that ComputerStu returns correct name.
      */
-    public function testCardReturnName() : void
+    public function testReturnName() : void
     {
         $exp = "Stu";
 
@@ -36,9 +36,9 @@ class ComputerStuTest extends TestCase
     }
 
     /**
-     * Verify that TexasPlayer sets and returns correct buy-in amount.
+     * Verify that ComputerStu sets and returns correct buy-in amount.
      */
-    public function testCardIncreaseAndReturnBuyIn() : void
+    public function testIncreaseAndReturnBuyIn() : void
     {
         $this->player->increaseBuyIn(20);
 
@@ -50,9 +50,9 @@ class ComputerStuTest extends TestCase
     }
 
     /**
-     * Verify that TexasPlayer sets and returns correct buy-in amount.
+     * Verify that ComputerStu sets and returns correct buy-in amount.
      */
-    public function testCardDecreaseAndReturnBuyIn() : void
+    public function testDecreaseAndReturnBuyIn() : void
     {
         $this->player->decreaseBuyIn(20);
 
@@ -64,9 +64,9 @@ class ComputerStuTest extends TestCase
     }
 
     /**
-     * Verify that TexasPlayer returns correct object.
+     * Verify that ComputerStu returns correct object.
      */
-    public function testCardReturnHand() : void
+    public function testReturnHand() : void
     {
         $exp = "App\Texas\TexasHand";
 
@@ -76,32 +76,44 @@ class ComputerStuTest extends TestCase
     }
 
     /**
-     * Verify that TexasPlayer returns correct object.
+     * Verify that ComputerStu returns correct object.
      */
-    public function testCardReturnBet() : void
+    public function testGetMovesObject() : void
     {
-        $exp = "App\Texas\Bet";
+        $exp = "App\Texas\PlayerMoves";
 
-        $res = $this->player->getBet();
+        $res = $this->player->getPlayerMoves();
 
         $this->assertInstanceOf($exp, $res);
     }
 
     /**
-     * Verify that TexasPlayer setHasFolded sets correct bool.
+     * Verify that ComputerStu sets and returns correct betting amount.
      */
-    public function testSetHasFolded() : void
+    public function testAddAndGetBets() : void
     {
-        $this->player->setHasFolded();
+        $this->player->addToBets(20);
 
-        $this->assertTrue($this->player->hasFolded());
+        $exp = 20;
+
+        $res = $this->player->getBets();
+
+        $this->assertEquals($exp, $res);
     }
 
     /**
-     * Verify that TexasPlayer hasFolded returns correct bool.
+     * Verify that ComputerStu sets and returns correct buy-in amount.
      */
-    public function testHasFolded() : void
+    public function testClearBets() : void
     {
-        $this->assertFalse($this->player->hasFolded());
+        $this->player->addToBets(20);
+
+        $this->player->clearPlayerBets();
+
+        $exp = 0;
+
+        $res = $this->player->getBets();
+
+        $this->assertEquals($exp, $res);
     }
 }
