@@ -118,4 +118,18 @@ class TexasHandTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that hole cards are folded.
+     */
+    public function testFoldHand() : void
+    {
+        $hand = new TexasHand();
+
+        $hand->setHoleCards($this->holeCards);
+
+        $hand->foldHand();
+
+        $this->assertEmpty($hand->getHoleCards());
+    }
 }
