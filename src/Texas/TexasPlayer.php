@@ -3,7 +3,7 @@
 /**
  * Class TexasPlayer
  * This class is responsible for managing a player's properties.
- * It has dependencies towards the Hand class and the Bet class.
+ * It has dependencies towards the Hand class and the PlayerMoves class.
  */
 
 namespace App\Texas;
@@ -14,17 +14,17 @@ class TexasPlayer implements PlayerInterface
      * @var string          $name       Player name.
      * @var int             $wallet     Player's digital wallet.
      * @var int             $buyIn      Player's buy in for a game.
-     * @var bool            $hasFolded  Whether player has folded or not.
+     * @var int             $bets       Player's bets for a betting round.
      * @var TexasHand       $hand       Hand object.
-     * @var Bet             $bet        Bet object.
+     * @var PlayerMoves     $moves      PlayerMoves object.
      */
 
     private string $name;
     private int $wallet;
     private int $buyIn;
-    private bool $hasFolded;
+    private int $bets = 0;
     protected TexasHand $hand;
-    protected Bet $bet;
+    protected PlayerMoves $moves;
 
     /**
      * Class constructor
@@ -37,9 +37,8 @@ class TexasPlayer implements PlayerInterface
         $this->name = $name;
         $this->wallet = $initialWallet;
         $this->buyIn = $initialBuyIn;
-        $this->hasFolded = false;
         $this->hand = new TexasHand();
-        $this->bet = new Bet();
+        $this->moves = new PlayerMoves();
     }
 
     /**
@@ -121,6 +120,38 @@ class TexasPlayer implements PlayerInterface
     }
 
     /**
+     * Gets bets of player.
+     *
+     * @return int Amount of money a player has bet in a single betting round (e.g. pre-flop).
+     */
+    public function getBets(): int
+    {
+        return $this->bets;
+    }
+
+    /**
+     * Adds to player bets.
+     *
+     * @param int $betAmount Bet amount to be added for betting round.
+     *
+     * @return void
+     */
+    public function addToBets(int $betAmount): void
+    {
+        $this->bets += $betAmount;
+    }
+
+    /**
+     * Clears player's bets.
+     *
+     * @return void
+     */
+    public function clearPlayerBets(): void
+    {
+        $this->bets = 0;
+    }
+
+    /**
      * Gets hand of player.
      *
      * @return TexasHand Player hand.
@@ -131,33 +162,12 @@ class TexasPlayer implements PlayerInterface
     }
 
     /**
-     * Gets bet of player.
+     * Gets moves of player.
      *
-     * @return Bet Player bet.
+     * @return PlayerMoves Player moves.
      */
-    public function getBet(): Bet
+    public function getPlayerMoves(): PlayerMoves
     {
-        return $this->bet;
-    }
-
-    /**
-     * Sets property hasFolded.
-     *
-     * @return void
-     */
-    public function setHasFolded(): void
-    {
-        $this->hasFolded = ($this->hasFolded)
-            ? false : true;
-    }
-
-    /**
-     * Gets property hasFolded.
-     *
-     * @return bool If player has folded or not.
-     */
-    public function hasFolded(): bool
-    {
-        return $this->hasFolded;
+        return $this->moves;
     }
 }

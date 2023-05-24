@@ -19,9 +19,5 @@ interface PlayerInterface
 
     public function getHand(): TexasHand;
 
-    public function getBet(): Bet;
-
-    public function setHasFolded(): void;
-
-    public function hasFolded(): bool;
+    public function getPlayerMoves(): PlayerMoves;
 }
