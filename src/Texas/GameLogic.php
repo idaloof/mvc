@@ -40,6 +40,14 @@ class GameLogic
     public function __construct(Queue $queue)
     {
         $this->queue = $queue;
+
+        $this->dealerPlayer = $this->queue->dequeue();
+        $this->smallBlindPlayer = $this->queue->dequeue();
+        $this->bigBlindPlayer = $this->queue->dequeue();
+
+        $this->queue->enqueue($this->dealerPlayer);
+        $this->queue->enqueue($this->smallBlindPlayer);
+        $this->queue->enqueue($this->bigBlindPlayer);
     }
 
     /**
@@ -87,30 +95,12 @@ class GameLogic
 
     /**
      * Determines which player is dealer
-     * and which players have the blinds before game starts.
-     *
-     * @return void
-     */
-
-    public function setQueueBeforeGameStart(): void
-    {
-        $this->dealerPlayer = $this->queue->dequeue();
-        $this->smallBlindPlayer = $this->queue->dequeue();
-        $this->bigBlindPlayer = $this->queue->dequeue();
-
-        $this->queue->enqueue($this->dealerPlayer);
-        $this->queue->enqueue($this->smallBlindPlayer);
-        $this->queue->enqueue($this->bigBlindPlayer);
-    }
-
-    /**
-     * Determines which player is dealer
      * and which players have the blinds before next round starts.
      *
-     * @return void
+     * @return array<PlayerInterface> array of players.
      */
 
-    public function setQueueBeforeRoundStart(): void
+    public function setQueueBeforeRoundStart(): array
     {
         $players = $this->queue->getQueue();
         $nrOfPlayers = count($players);
@@ -128,15 +118,18 @@ class GameLogic
         $this->queue->enqueue($this->dealerPlayer);
         $this->queue->enqueue($this->smallBlindPlayer);
         $this->queue->enqueue($this->bigBlindPlayer);
+
+
+        return [$this->dealerPlayer, $this->smallBlindPlayer, $this->bigBlindPlayer];
     }
 
     /**
      * Shifts the players back in correct queue position
      * so that correct player is first to act (smallBlindPlayer).
      *
-     * @return void
+     * @return array<PlayerInterface> array of players.
      */
-    public function shiftPlayersBeforeCommunityCards(): void
+    public function shiftPlayersBeforeCommunityCards(): array
     {
         $players = $this->queue->getQueue();
         $nrOfPlayers = count($players);
@@ -148,6 +141,8 @@ class GameLogic
         $this->queue->enqueue($this->smallBlindPlayer);
         $this->queue->enqueue($this->bigBlindPlayer);
         $this->queue->enqueue($this->dealerPlayer);
+
+        return [$this->dealerPlayer, $this->smallBlindPlayer, $this->bigBlindPlayer];
     }
 
     /**
@@ -170,25 +165,25 @@ class GameLogic
         return ($count < 2) ? true : false;
     }
 
-    /**
-     * Returns whether game is over or not, depending on amount of money players have left.
-     *
-     * @return bool is game over or not.
-     */
-    public function isGameOver(): bool
-    {
-        $count = 0;
+    // /**
+    //  * Returns whether game is over or not, depending on amount of money players have left.
+    //  *
+    //  * @return bool is game over or not.
+    //  */
+    // public function isGameOver(): bool
+    // {
+    //     $count = 0;
 
-        $players = $this->queue->getQueue();
+    //     $players = $this->queue->getQueue();
 
-        foreach ($players as $player) {
-            if ($player->getBuyIn() > 0) {
-                $count += 1;
-            }
-        }
+    //     foreach ($players as $player) {
+    //         if ($player->getBuyIn() > 0) {
+    //             $count += 1;
+    //         }
+    //     }
 
-        return ($count === 0) ? true : false;
-    }
+    //     return ($count === 0) ? true : false;
+    // }
 
     /**
      * Returns the current highest bet.
@@ -265,7 +260,7 @@ class GameLogic
         $playersLeft = $nrOfPlayers - $foldedPlayers;
 
         foreach ($players as $player) {
-            if (!$this->isPlayerReady($player)) {
+            if ($this->isPlayerReady($player)) {
                 $countReady += 1;
             }
         }
