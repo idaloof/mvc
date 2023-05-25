@@ -142,8 +142,10 @@ class GameLogic
 
     /**
      * Returns whether rounds is over or not, depending on amount of folds.
+     *
+     * @return bool is round over or not.
      */
-    public function checkIfRoundIsOver(): bool
+    public function isRoundOver(): bool
     {
         $count = 0;
 
@@ -160,8 +162,10 @@ class GameLogic
 
     /**
      * Returns whether game is over or not, depending on amount of money players have left.
+     *
+     * @return bool is game over or not.
      */
-    public function checkIfGameIsOver(): bool
+    public function isGameOver(): bool
     {
         $count = 0;
 
@@ -174,5 +178,88 @@ class GameLogic
         }
 
         return ($count === 0) ? true : false;
+    }
+
+    /**
+     * Returns the current highest bet.
+     *
+     * @return int Current highest bet.
+     */
+    public function getHighestCurrentBet(): int
+    {
+        $players = $this->queue->getQueue();
+        $bets = [];
+
+        foreach ($players as $player) {
+            array_push($bets, $player->getBets());
+        }
+
+        return max($bets);
+    }
+
+    /**
+     * Checks if player is ready for next round,
+     * e.g. not folded and up to speed with bets.
+     *
+     * @param PlayerInterface $player Player to check.
+     *
+     * @return bool if player is ready.
+     */
+    public function isPlayerReady(PlayerInterface $player): bool
+    {
+        $highest = $this->getHighestCurrentBet();
+
+        if ($player->getBets() === $highest) {
+            return true;
+        } elseif ($player->getBuyIn() === 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get nr of folded players.
+     *
+     * @return int number of folded players.
+     */
+    public function getNumberOfFoldedPlayers(): int
+    {
+        $foldCount = 0;
+
+        $players = $this->queue->getQueue();
+
+        foreach ($players as $player) {
+            if ($player->getPlayerMoves()->hasFolded()) {
+                $foldCount += 1;
+            }
+        }
+
+        return $foldCount;
+    }
+
+    /**
+     * Returns whether game is ready for next stage.
+     * e.g. move on to flop, turn or river.
+     *
+     * @return bool is game ready to move on to next stage.
+     */
+    public function isGameReadyForNextStage(): bool
+    {
+        $countReady = 0;
+        $players = $this->queue->getQueue();
+        $nrOfPlayers = count($players);
+
+        $foldedPlayers = $this->getNumberOfFoldedPlayers();
+
+        $playersLeft = $nrOfPlayers - $foldedPlayers;
+
+        foreach ($players as $player) {
+            if (!$this->isPlayerReady($player)) {
+                $countReady += 1;
+            }
+        }
+
+        return ($countReady === $playersLeft) ? true : false;
     }
 }
