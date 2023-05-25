@@ -22,8 +22,17 @@ class TexasGame
     private HandEvaluator $handEvaluator;
 
     /**
-     * @var array<PlayerInterface> $players Array of players.
+     * @var GameLogic $gameLogic GameLogic class which holds methods for the game logic.
      */
-    private array $players;
+    private GameLogic $gameLogic;
 
+    // /**
+    //  * @var GameData $gameData GameData class which holds methods for the game logic.
+    //  */
+    // private GameData $gameData;
+
+    // /**
+    //  * @var GameEvents $gameEvents GameEvents class which holds methods for the game logic.
+    //  */
+    // private GameEvents $gameEvents;
 }
