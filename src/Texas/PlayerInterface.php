@@ -17,6 +17,12 @@ interface PlayerInterface
 
     public function decreaseBuyIn(int $money): void;
 
+    public function getBets(): int;
+
+    public function addToBets(int $betAmount): void;
+
+    public function clearPlayerBets(): void;
+
     public function getHand(): TexasHand;
 
     public function getPlayerMoves(): PlayerMoves;
