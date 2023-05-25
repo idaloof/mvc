@@ -76,6 +76,16 @@ class GameLogic
     }
 
     /**
+     * Gets queue of players.
+     *
+     * @return array<PlayerInterface> Array of players.
+     */
+    public function getPlayersInQueue(): array
+    {
+        return $this->queue->getQueue();
+    }
+
+    /**
      * Determines which player is dealer
      * and which players have the blinds before game starts.
      *
