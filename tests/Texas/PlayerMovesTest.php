@@ -24,6 +24,54 @@ class PlayerMovesTest extends TestCase
     }
 
     /**
+     * Verify that PlayerMoves sets moves and gets correct array of moves.
+     */
+    public function testSetAndGetMoves() : void
+    {
+        $this->moves->addToRoundMoves("check");
+        $this->moves->addToRoundMoves("raise");
+        $this->moves->addToRoundMoves("call");
+
+        $exp = [
+            "check",
+            "raise",
+            "call"
+        ];
+
+        $res = $this->moves->getRoundMoves() ;
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that PlayerMoves object can clear player moves.
+     */
+    public function testClearMoves() : void
+    {
+        $this->moves->addToRoundMoves("check");
+        $this->moves->addToRoundMoves("raise");
+        $this->moves->addToRoundMoves("call");
+
+        $exp = [
+            "check",
+            "raise",
+            "call"
+        ];
+
+        $res = $this->moves->getRoundMoves() ;
+
+        $this->assertEquals($exp, $res);
+
+        $this->moves->clearRoundMoves();
+
+        $exp = [];
+
+        $res = $this->moves->getRoundMoves();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
      * Verify that PlayerMoves setHasFolded sets correct bool.
      */
     public function testSetHasFolded() : void
