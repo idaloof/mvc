@@ -7,7 +7,7 @@
 namespace App\Texas;
 use PHPUnit\Framework\TestCase;
 
-class GameLogicTest2 extends TestCase
+class GameLogic2Test extends TestCase
 {
     /**
      * @var GameLogic $gameLogic GameLogic class.
