@@ -19,7 +19,6 @@ class QueueTest extends TestCase
         $queue = new Queue($player);
 
         $playerCom1 = new ComputerStu("Stu", 20);
-        // $playerCom2 = new ComputerStu("Stu2", 20);
 
         $queue->enqueue($playerCom1);
 
@@ -101,6 +100,58 @@ class QueueTest extends TestCase
         $exp = "Martin";
 
         $res = $player->getName();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that GameLogic object returns correct order of players.
+     */
+    public function testSetQueueAndGetRound() : void
+    {
+        $players = [
+            new TexasPlayer("Martin", 20, 20),
+            new ComputerStu("Stu", 20),
+            new ComputerStu("Mag", 20)
+        ];
+
+        $queue = new Queue($players);
+
+        $queue->setRolesBeforeGameStart();
+
+        $playerRoles = $queue->setQueueBeforeRoundStart();
+
+        $dealer = $playerRoles[0];
+
+        $exp = "Stu";
+
+        $res = $dealer->getName();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that GameLogic object returns correct order of players.
+     */
+    public function testSetQueueAndGetCommunity() : void
+    {
+        $players = [
+            new TexasPlayer("Martin", 20, 20),
+            new ComputerStu("Stu", 20),
+            new ComputerStu("Mag", 20)
+        ];
+
+        $queue = new Queue($players);
+
+        $queue->setRolesBeforeGameStart();
+
+        $playerRoles = $queue->shiftPlayersBeforeCommunityCards();
+
+        $smallBlind = $playerRoles[0];
+
+        $exp = "Stu";
+
+        $res = $smallBlind->getName();
 
         $this->assertEquals($exp, $res);
     }
