@@ -14,6 +14,11 @@ class GameLogicTest extends TestCase
      */
     private GameLogic $gameLogic;
 
+    /**
+     * @var Queue $queue Queue of players.
+     */
+    private Queue $queue;
+
     public function setUp(): void
     {
         $players = [
@@ -22,81 +27,9 @@ class GameLogicTest extends TestCase
             new ComputerStu("Mag", 20)
         ];
 
-        $queue = new Queue($players);
+        $this->queue = new Queue($players);
 
-        $this->gameLogic = new GameLogic($queue);
-    }
-
-    /**
-     * Verify that GameLogic object returns first player in queue.
-     */
-    public function testGetFirstInQueue() : void
-    {
-        $exp = "Martin";
-
-        $res = $this->gameLogic->getFirstInQueue()->getName();
-
-        $this->assertEquals($exp, $res);
-    }
-
-    /**
-     * Verify that GameLogic object correctly adds player to queue.
-     */
-    public function testEnqueue() : void
-    {
-        $this->gameLogic->enqueuePlayer(new ComputerStu("Bob", 20));
-
-        $exp = 4;
-
-        $res = count($this->gameLogic->getPlayersInQueue());
-
-        $this->assertEquals($exp, $res);
-    }
-
-    /**
-     * Verify that GameLogic object returns correct player in queue after dequeue.
-     */
-    public function testDequeue() : void
-    {
-        $this->gameLogic->dequeuePlayer();
-
-        $exp = "Stu";
-
-        $res = $this->gameLogic->getFirstInQueue()->getName();
-
-        $this->assertEquals($exp, $res);
-    }
-
-    /**
-     * Verify that GameLogic object returns correct order of players.
-     */
-    public function testSetQueueAndGetRound() : void
-    {
-        $playerRoles = $this->gameLogic->setQueueBeforeRoundStart();
-
-        $dealer = $playerRoles[0];
-
-        $exp = "Mag";
-
-        $res = $dealer->getName();
-
-        $this->assertEquals($exp, $res);
-    }
-
-    /**
-     * Verify that GameLogic object returns correct order of players.
-     */
-    public function testSetQueueAndGetCommunity() : void
-    {
-        $playerRoles = $this->gameLogic->shiftPlayersBeforeCommunityCards();
-
-        $smallBlind = $playerRoles[0];
-
-        $exp = "Martin";
-
-        $res = $smallBlind->getName();
-
-        $this->assertEquals($exp, $res);
+        $this->gameLogic = new GameLogic();
     }
 
     /**
@@ -104,7 +37,8 @@ class GameLogicTest extends TestCase
      */
     public function testRoundOverFalse() : void
     {
-        $this->assertFalse($this->gameLogic->isRoundOver());
+        $players = $this->queue->getQueue();
+        $this->assertFalse($this->gameLogic->isRoundOver($players));
     }
 
     /**
@@ -112,13 +46,13 @@ class GameLogicTest extends TestCase
      */
     public function testRoundOverTrue() : void
     {
-        $players = $this->gameLogic->getPlayersInQueue();
+        $players = $this->queue->getQueue();
 
         foreach ($players as $player) {
             $player->getPlayerMoves()->setHasFolded();
         }
 
-        $this->assertTrue($this->gameLogic->isRoundOver());
+        $this->assertTrue($this->gameLogic->isRoundOver($players));
     }
 
     /**
@@ -126,10 +60,107 @@ class GameLogicTest extends TestCase
      */
     public function testHighestBet() : void
     {
+        $players = $this->queue->getQueue();
+
         $exp = 0;
 
-        $res = $this->gameLogic->getHighestCurrentBet();
+        $res = $this->gameLogic->getHighestCurrentBet($players);
 
         $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that GameLogic object returns false for isPlayerReady.
+     */
+    public function testPlayerReadyFalse() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $player1 = $players[0];
+
+        $player1->addToBets(30);
+
+        $player2 = $players[1];
+
+        $player2->addToBets(20);
+
+        $this->assertFalse($this->gameLogic->isPlayerReady($player2, $players));
+    }
+
+    /**
+     * Verify that GameLogic object returns true for isPlayerReady when check for equal bet.
+     */
+    public function testPlayerReadyTrueBetEqual() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $player1 = $players[0];
+
+        $player1->addToBets(30);
+
+        $player2 = $players[1];
+
+        $player2->addToBets(30);
+
+        $this->assertTrue($this->gameLogic->isPlayerReady($player2, $players));
+    }
+
+    /**
+     * Verify that GameLogic object returns true for isPlayerReady when checking for zero buy-in.
+     */
+    public function testPlayerReadyTrueZeroBuyIn() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $player1 = $players[0];
+
+        $player1->addToBets(20);
+        $player1->decreaseBuyIn(20);
+
+        $player2 = $players[1];
+
+        $player2->addToBets(30);
+
+        $this->assertTrue($this->gameLogic->isPlayerReady($player1, $players));
+    }
+
+    /**
+     * Verify that GameLogic object returns correct integer for number of folded players.
+     */
+    public function testFoldedPlayers() : void
+    {
+        $players = $this->queue->getQueue();
+        $player = $players[0];
+        $player->getPlayerMoves()->setHasFolded();
+
+        $exp = 1;
+
+        $res = $this->gameLogic->getNumberOfFoldedPlayers($players);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that GameLogic object returns true for isPlayerReady when checking for zero buy-in.
+     */
+    public function testGameNextStage() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $player1 = $players[0];
+
+        $player1->addToBets(20);
+
+        $player2 = $players[1];
+
+        $players[2]->getPlayerMoves()->setHasFolded();
+
+        $player2->addToBets(30);
+
+        $this->assertFalse($this->gameLogic->isGameReadyForNextStage($players));
+
+        $player1->addToBets(10);
+
+        $this->assertTrue($this->gameLogic->isGameReadyForNextStage($players));
     }
 }
