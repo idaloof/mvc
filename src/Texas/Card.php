@@ -8,7 +8,7 @@
 
 namespace App\Texas;
 
-class Card extends CalculatePoints
+class Card extends CalculatePoints implements CardInterface
 {
     /**
      * @var string $name    The name of the card.
@@ -54,7 +54,7 @@ class Card extends CalculatePoints
      * @return string Card name.
      */
 
-    public function getCardName()
+    public function getCardName(): string
     {
         return $this->name;
     }
@@ -65,7 +65,7 @@ class Card extends CalculatePoints
      * @return string Card image name.
      */
 
-    public function getCardImage()
+    public function getCardImage(): string
     {
         return $this->image;
     }
@@ -76,7 +76,7 @@ class Card extends CalculatePoints
      * @return string Card suit.
      */
 
-    public function getCardSuit()
+    public function getCardSuit(): string
     {
         return $this->suit;
     }
@@ -87,7 +87,7 @@ class Card extends CalculatePoints
      * @return string Card value.
      */
 
-    public function getCardValue()
+    public function getCardValue(): string
     {
         return $this->value;
     }
@@ -98,7 +98,7 @@ class Card extends CalculatePoints
      * @return string Card rank.
      */
 
-    public function getCardRank()
+    public function getCardRank(): string
     {
         return $this->rank;
     }
