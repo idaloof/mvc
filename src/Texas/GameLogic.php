@@ -2,9 +2,9 @@
 
 /**
  * GameLogic class
- * This class is responsible for managing the queue, checking if round/game is over,
- * checking if game can move on to next stage
- * It has dependencies towards the Queue class.
+ * This class is responsible for checking if round/game is over,
+ * if game can move on to next stage and
+ * if player is ready, and what
  */
 
 namespace App\Texas;
@@ -12,149 +12,15 @@ namespace App\Texas;
 class GameLogic
 {
     /**
-     * @var Queue $queue Queue class which holds the players and methods for de- and enqueueing them.
-     */
-    private Queue $queue;
-
-    /**
-     * @var PlayerInterface $smallBlindPlayer Player that has small blind at the moment.
-     */
-    private PlayerInterface $smallBlindPlayer;
-
-    /**
-     * @var PlayerInterface $bigBlindPlayer Player that has big blind at the moment.
-     */
-    private PlayerInterface $bigBlindPlayer;
-
-    /**
-     * @var PlayerInterface $dealerPlayer Player that has the dealer button at the moment.
-     */
-    private PlayerInterface $dealerPlayer;
-
-    /**
-     * Class constructor
-     *
-     * @param Queue $queue
-     *
-     */
-    public function __construct(Queue $queue)
-    {
-        $this->queue = $queue;
-
-        $this->dealerPlayer = $this->queue->dequeue();
-        $this->smallBlindPlayer = $this->queue->dequeue();
-        $this->bigBlindPlayer = $this->queue->dequeue();
-
-        $this->queue->enqueue($this->dealerPlayer);
-        $this->queue->enqueue($this->smallBlindPlayer);
-        $this->queue->enqueue($this->bigBlindPlayer);
-    }
-
-    /**
-     * Returns first player in queue.
-     * Needed for the Game container, when setting the playerToAct property.
-     *
-     * @return PlayerInterface First player in queue
-     */
-    public function getFirstInQueue(): PlayerInterface
-    {
-        return $this->queue->peek();
-    }
-
-    /**
-     * Returns player that is dequeued.
-     *
-     * @return PlayerInterface Player that is dequeued and needs to be enqueued again.
-     */
-    public function dequeuePlayer(): PlayerInterface
-    {
-        return $this->queue->dequeue();
-    }
-
-    /**
-     * Enqueues player.
-     *
-     * @param PlayerInterface $player Player to be enqueued.
-     *
-     * @return void
-     */
-    public function enqueuePlayer(PlayerInterface $player): void
-    {
-        $this->queue->enqueue($player);
-    }
-
-    /**
-     * Gets queue of players.
-     *
-     * @return array<PlayerInterface> Array of players.
-     */
-    public function getPlayersInQueue(): array
-    {
-        return $this->queue->getQueue();
-    }
-
-    /**
-     * Determines which player is dealer
-     * and which players have the blinds before next round starts.
-     *
-     * @return array<PlayerInterface> array of players.
-     */
-
-    public function setQueueBeforeRoundStart(): array
-    {
-        $players = $this->queue->getQueue();
-        $nrOfPlayers = count($players);
-
-        for ($i = 0; $i < $nrOfPlayers; $i++) {
-            $this->queue->dequeue();
-        }
-
-        $theDealer = $this->dealerPlayer;
-
-        $this->dealerPlayer = $this->bigBlindPlayer;
-        $this->bigBlindPlayer = $this->smallBlindPlayer;
-        $this->smallBlindPlayer = $theDealer;
-
-        $this->queue->enqueue($this->dealerPlayer);
-        $this->queue->enqueue($this->smallBlindPlayer);
-        $this->queue->enqueue($this->bigBlindPlayer);
-
-
-        return [$this->dealerPlayer, $this->smallBlindPlayer, $this->bigBlindPlayer];
-    }
-
-    /**
-     * Shifts the players back in correct queue position
-     * so that correct player is first to act (smallBlindPlayer).
-     *
-     * @return array<PlayerInterface> array of players.
-     */
-    public function shiftPlayersBeforeCommunityCards(): array
-    {
-        $players = $this->queue->getQueue();
-        $nrOfPlayers = count($players);
-
-        for ($i = 0; $i < $nrOfPlayers; $i++) {
-            $this->queue->dequeue();
-        }
-
-        $this->queue->enqueue($this->smallBlindPlayer);
-        $this->queue->enqueue($this->bigBlindPlayer);
-        $this->queue->enqueue($this->dealerPlayer);
-
-        return [$this->dealerPlayer, $this->smallBlindPlayer, $this->bigBlindPlayer];
-    }
-
-    /**
      * Returns whether rounds is over or not, depending on amount of folds.
+     *
+     * @param array<PlayerInterface> $players All players in game.
      *
      * @return bool is round over or not.
      */
-    public function isRoundOver(): bool
+    public function isRoundOver(array $players): bool
     {
         $count = 0;
-
-        $players = $this->queue->getQueue();
 
         foreach ($players as $player) {
             if (!$player->getPlayerMoves()->hasFolded()) {
@@ -188,11 +54,12 @@ class GameLogic
     /**
      * Returns the current highest bet.
      *
+     * @param array<PlayerInterface> $players All players in game.
+     *
      * @return int Current highest bet.
      */
-    public function getHighestCurrentBet(): int
+    public function getHighestCurrentBet(array $players): int
     {
-        $players = $this->queue->getQueue();
         $bets = [];
 
         foreach ($players as $player) {
@@ -207,12 +74,13 @@ class GameLogic
      * e.g. not folded and up to speed with bets.
      *
      * @param PlayerInterface $player Player to check.
+     * @param array<PlayerInterface> $players All players of game.
      *
      * @return bool if player is ready.
      */
-    public function isPlayerReady(PlayerInterface $player): bool
+    public function isPlayerReady(PlayerInterface $player, array $players): bool
     {
-        $highest = $this->getHighestCurrentBet();
+        $highest = $this->getHighestCurrentBet($players);
 
         if ($player->getBets() === $highest) {
             return true;
@@ -226,13 +94,13 @@ class GameLogic
     /**
      * Get nr of folded players.
      *
+     * @param array<PlayerInterface> $players All players in game.
+     *
      * @return int number of folded players.
      */
-    public function getNumberOfFoldedPlayers(): int
+    public function getNumberOfFoldedPlayers(array $players): int
     {
         $foldCount = 0;
-
-        $players = $this->queue->getQueue();
 
         foreach ($players as $player) {
             if ($player->getPlayerMoves()->hasFolded()) {
@@ -247,20 +115,21 @@ class GameLogic
      * Returns whether game is ready for next stage.
      * e.g. move on to flop, turn or river.
      *
+     * @param array<PlayerInterface> $players All players in game.
+     *
      * @return bool is game ready to move on to next stage.
      */
-    public function isGameReadyForNextStage(): bool
+    public function isGameReadyForNextStage(array $players): bool
     {
         $countReady = 0;
-        $players = $this->queue->getQueue();
         $nrOfPlayers = count($players);
 
-        $foldedPlayers = $this->getNumberOfFoldedPlayers();
+        $foldedPlayers = $this->getNumberOfFoldedPlayers($players);
 
         $playersLeft = $nrOfPlayers - $foldedPlayers;
 
         foreach ($players as $player) {
-            if ($this->isPlayerReady($player)) {
+            if ($this->isPlayerReady($player, $players)) {
                 $countReady += 1;
             }
         }
