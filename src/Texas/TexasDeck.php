@@ -46,6 +46,9 @@ class TexasDeck
 
     /**
      * Constructor to initiate the deck.
+     *
+     * @param Card $card Card to be added to deck.
+     *
      */
     public function __construct()
     {
@@ -55,8 +58,8 @@ class TexasDeck
                 $image = $short . $letter;
                 $suit = $letter;
                 $rank = $short;
-                $card = new Card($name, $image, $suit, $rank);
-                array_push($this->deck, $card);
+                $cardInstance = new Card($name, $image, $suit, $rank);
+                array_push($this->deck, $cardInstance);
             }
         }
     }
