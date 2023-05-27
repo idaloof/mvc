@@ -46,9 +46,6 @@ class TexasDeck
 
     /**
      * Constructor to initiate the deck.
-     *
-     * @param Card $card Card to be added to deck.
-     *
      */
     public function __construct()
     {
