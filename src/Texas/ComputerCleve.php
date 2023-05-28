@@ -40,26 +40,24 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
     }
 
     /**
-     * Increases risk level.
+     * Adjusts risk level.
      *
-     * @param int $amount Amount to increase risk level with.
+     * @param int $amount Amount to adjust risk level with.
      *
      * @return void
      */
-    public function increaseRiskLevel(int $amount): void
+    public function adjustRiskLevel(int $amount): void
     {
         $this->riskLevel += $amount;
     }
 
     /**
-     * Decreases risk level.
-     *
-     * @param int $amount Amount to decrease risk level with.
+     * Adjusts risk level.
      *
      * @return void
      */
-    public function decreaseRiskLevel(int $amount): void
+    public function clearRiskLevel(): void
     {
-        $this->riskLevel -= $amount;
+        $this->riskLevel = 0;
     }
 }
