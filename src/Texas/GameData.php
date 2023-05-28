@@ -85,7 +85,7 @@ class GameData
     /**
      * Sets players' hands.
      *
-     * @param array<int, array<string>> $hands Array of players.
+     * @param array<int, array<string>> $hands Array of players's hands.
      *
      * @return void
      */
