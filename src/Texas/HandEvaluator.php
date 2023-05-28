@@ -27,24 +27,41 @@ class HandEvaluator
     }
 
     /**
+     * Creates a HandEvaluator object without the need to
+     * manually instantiate and inject evaluators.
+     *
+     * @param \traversable<EvaluatorInterface> $evaluators
+     *
+     * @return self This object.
+     */
+    public static function create(iterable $evaluators): self
+    {
+        $evaluatorArray = iterator_to_array($evaluators);
+        return new self($evaluatorArray);
+    }
+
+    /**
      * Returns the current poker hand of a player based on the player's cards.
      *
      * @param array<string> $suits      Suits of the player's cards.
      * @param array<string> $values     Values of the player's cards.
      * @param array<string> $ranks      Ranks of the player's cards.
      *
-     * @return string           The kind of hand the player has.
+     * @return array<mixed>           The kind of hand the player has.
      *
      */
 
-    public function evaluateHand(array $suits, array $values, array $ranks): string
+    public function evaluateHand(array $suits, array $values, array $ranks): array
     {
+        $handData = [];
+
         foreach ($this->evaluators as $evaluator) {
             if ($evaluator->evaluateHand($suits, $values, $ranks)) {
-                return $evaluator->evaluateHand($suits, $values, $ranks);
+                $handData[] = $evaluator->evaluateHand($suits, $values, $ranks);
+                $handData[] = $evaluator->calculatePoints($values);
             }
         }
 
-        return "High Card";
+        return $handData;
     }
 }
