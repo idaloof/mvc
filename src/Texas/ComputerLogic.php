@@ -164,15 +164,15 @@ class ComputerLogic extends CalculatePoints
     {
         $riskAdjust = 0;
 
-        if ($this->hasPlayerChecked($moves)) {
+        if ($this->hasPlayerChecked($moves) && $this->hasPlayerRaised($moves)) {
+            $riskAdjust -= 30;
+        } elseif ($this->hasPlayerChecked($moves) && $this->hasPlayerCalled($moves)) {
+            $riskAdjust += 10;
+        } elseif ($this->hasPlayerChecked($moves)) {
             $riskAdjust += 30;
-        }
-
-        if ($this->hasPlayerCalled($moves)) {
-            $riskAdjust += 5;
-        }
-
-        if ($this->hasPlayerRaised($moves)) {
+        } elseif ($this->hasPlayerCalled($moves)) {
+            $riskAdjust += 20;
+        } elseif ($this->hasPlayerRaised($moves)) {
             $riskAdjust -= 20;
         }
 
@@ -189,9 +189,9 @@ class ComputerLogic extends CalculatePoints
      */
     public function adjustRiskPotAndBlind(int $pot, int $blind): int
     {
-        if ($blind/$pot <= 0.2) {
+        if ($blind/$pot <= 0.1) {
             return 30;
-        } elseif ($blind/$pot <= 0.4) {
+        } elseif ($blind/$pot <= 0.3) {
             return 10;
         }
 
@@ -208,11 +208,11 @@ class ComputerLogic extends CalculatePoints
     public function adjustRiskHandPoints(int $points): int
     {
         if ($points >= 400) {
-            return 30;
+            return 50;
         } elseif ($points >= 300) {
-            return 10;
+            return 30;
         }
 
-        return 0;
+        return 10;
     }
 }
