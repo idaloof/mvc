@@ -23,7 +23,7 @@ class CardCombinator
      *
      * @return array<int, array<Card>>
      */
-    private function findAndAddCombinations(array $cards, int $size = 5): array
+    private function findCombinations(array $cards, int $size = 5): array
     {
         if ($size == 1) {
             return array_map(function ($element) {
@@ -37,7 +37,7 @@ class CardCombinator
         for ($i = 0; $i < $count; $i++) {
             $firstElement = $cards[$i];
             $remainingElements = array_slice($cards, $i + 1);
-            $subCombinations = $this->findAndAddCombinations($remainingElements, $size - 1);
+            $subCombinations = $this->findCombinations($remainingElements, $size - 1);
 
             foreach ($subCombinations as $subCombination) {
                 $combinations[] = array_merge([$firstElement], $subCombination);
@@ -56,7 +56,7 @@ class CardCombinator
      */
     public function setAndGetCombinations(array $cards): array
     {
-        $this->combinations = $this->findAndAddCombinations($cards);
+        $this->combinations = $this->findCombinations($cards);
 
         return $this->combinations;
     }
