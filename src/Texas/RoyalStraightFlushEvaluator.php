@@ -43,7 +43,7 @@ class RoyalStraightFlushEvaluator implements EvaluatorInterface
      */
     public function evaluateHand(array $suits, array $values, array $ranks): string
     {
-        if (!in_array("14", $values) && !in_array("13", $values)) {
+        if (!in_array("14", $values) || !in_array("13", $values)) {
             return "";
         }
 
@@ -58,9 +58,11 @@ class RoyalStraightFlushEvaluator implements EvaluatorInterface
     /**
      * Returns the points for a hand.
      *
+     * @param array<string> $values
+     *
      * @return int Number of points obtained from hand.
      */
-    public function calculatePoints(): int
+    public function calculatePoints(array $values): int
     {
         return 1000;
     }
