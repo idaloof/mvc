@@ -37,27 +37,26 @@ class TwoPairEvaluator extends CalculatePoints implements EvaluatorInterface
     /**
      * Calculates and returns the points for a hand.
      *
-     * @param array<string> $ranks  Ranks of the player's cards.
+     * @param array<string> $values Values of the player's cards.
      *
      * @return int                  Number of points obtained from hand.
      */
-    public function calculatePoints(array $ranks): int
+    public function calculatePoints(array $values): int
     {
         $points = 0;
-        $counts = array_count_values($ranks);
-        $uniqueCards = array_keys($counts);
+        $points += array_sum($values);
 
-        $pairRank = [];
+        $counts = array_count_values($values);
+        $uniqueCards = array_keys($counts);
 
         for ($i = 0; $i < 3; $i++) {
             if ($counts[$uniqueCards[$i]] === 2) {
-                array_push($pairRank, self::RANK_POINTS[$uniqueCards[$i]]);
+                $points += $uniqueCards[$i];
             }
         }
 
-        $points += max($pairRank);
         $points += self::HAND_POINTS["Two Pair"];
 
-        return $points;
+        return intval($points);
     }
 }

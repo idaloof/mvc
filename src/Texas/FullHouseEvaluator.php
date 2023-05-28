@@ -6,7 +6,7 @@
 
 namespace App\Texas;
 
-class FullHouseEvaluator implements EvaluatorInterface
+class FullHouseEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * Returns full house if hand has it or empty string if not.
@@ -28,5 +28,26 @@ class FullHouseEvaluator implements EvaluatorInterface
         }
 
         return "";
+    }
+
+    /**
+     * Calculates and returns the points for a hand.
+     *
+     * @param array<string> $values Values of the player's cards.
+     *
+     * @return int                  Number of points obtained from hand.
+     */
+    public function calculatePoints(array $values): int
+    {
+        $points = 0;
+        $counts = array_count_values($values);
+        $rank1 = array_search(3, $counts);
+        $rank2 = array_search(2, $counts);
+
+        $points += 3 * $rank1;
+        $points += 2 * $rank2;
+        $points += self::HAND_POINTS["Full House"];
+
+        return intval($points);
     }
 }

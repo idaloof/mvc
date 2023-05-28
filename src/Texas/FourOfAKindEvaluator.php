@@ -34,19 +34,21 @@ class FourOfAKindEvaluator extends CalculatePoints implements EvaluatorInterface
     /**
      * Calculates and returns the points for a hand.
      *
-     * @param array<string> $ranks  Ranks of the player's cards.
+     * @param array<string> $values Values of the player's cards.
      *
      * @return int                  Number of points obtained from hand.
      */
-    public function calculatePoints(array $ranks): int
+    public function calculatePoints(array $values): int
     {
         $points = 0;
-        $counts = array_count_values($ranks);
+        $points += array_sum($values);
+
+        $counts = array_count_values($values);
         $rank = array_search(4, $counts);
 
-        $points += self::RANK_POINTS[$rank];
+        $points += $rank;
         $points += self::HAND_POINTS["Four Of A Kind"];
 
-        return $points;
+        return intval($points);
     }
 }

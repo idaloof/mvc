@@ -35,19 +35,21 @@ class ThreeOfAKindEvaluator extends CalculatePoints implements EvaluatorInterfac
     /**
      * Calculates and returns the points for a hand.
      *
-     * @param array<string> $ranks  Ranks of the player's cards.
+     * @param array<string> $values Values of the player's cards.
      *
      * @return int                  Number of points obtained from hand.
      */
-    public function calculatePoints(array $ranks): int
+    public function calculatePoints(array $values): int
     {
         $points = 0;
-        $counts = array_count_values($ranks);
-        $pairRank = array_search(3, $counts);
+        $points += array_sum($values);
 
-        $points += self::RANK_POINTS[$pairRank];
+        $counts = array_count_values($values);
+        $rank = array_search(3, $counts);
+
+        $points += $rank;
         $points += self::HAND_POINTS["Three Of A Kind"];
 
-        return $points;
+        return intval($points);
     }
 }
