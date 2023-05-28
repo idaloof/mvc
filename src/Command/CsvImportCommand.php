@@ -18,14 +18,16 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class CsvImportCommand extends Command
 {
     private EntityManagerInterface $entityManager;
+    private Reader $csvReader;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, Reader $csvReader)
     {
         $this->entityManager = $entityManager;
+        $this->csvReader = $csvReader;
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('csv:import')
@@ -33,22 +35,20 @@ class CsvImportCommand extends Command
             ->setHelp('This command allows you to read and store its data in the database');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $inOut = new SymfonyStyle($input, $output);
         $inOut->title('Attempting to import the data...');
 
         try {
-            $reader = Reader::createFromPath('%kernel.root_dir%/../src/Data/preflop.csv');
-
-            $results = $reader->getRecords();
+            $results = $this->csvReader->getRecords();
             $inOut->progressStart(iterator_count($results));
 
             foreach ($results as $row) {
                 $cardCombo = (new PreFlopRankings())
-                    ->setCards($row[1])
-                    ->setType($row[2])
-                    ->setRank($row[0]);
+                    ->setCards((string) $row[1])
+                    ->setType((string) $row[2])
+                    ->setRank((string) $row[0]);
 
                 $this->entityManager->persist($cardCombo);
 
