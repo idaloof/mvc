@@ -67,4 +67,72 @@ class ComputerLogicTest extends TestCase
 
         $this->assertFalse($this->computerLogic->isRunningLow($mockPlayer, $initial));
     }
+
+    /**
+     * Verifies that correct card ranks are returned.
+     */
+    public function testGetHoleRanks(): void
+    {
+        $cards = [
+            new Card("Ace of spades", "AS", "S", "A"),
+            new Card("Ace of clubs", "AC", "C", "A")
+        ];
+
+        $exp = "AA";
+
+        $res = $this->computerLogic->getHoleRanks($cards);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verifies that correct card combo type is returned.
+     */
+    public function testGetHoleTypeOffSuit(): void
+    {
+        $cards = [
+            new Card("King of spades", "KS", "S", "K"),
+            new Card("Ace of clubs", "AC", "C", "A")
+        ];
+
+        $exp = "o";
+
+        $res = $this->computerLogic->getHoleType($cards);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verifies that correct card combo type is returned.
+     */
+    public function testGetHoleTypeSuited(): void
+    {
+        $cards = [
+            new Card("King of clubs", "KC", "C", "K"),
+            new Card("Ace of clubs", "AC", "C", "A")
+        ];
+
+        $exp = "s";
+
+        $res = $this->computerLogic->getHoleType($cards);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verifies that correct card combo type is returned.
+     */
+    public function testGetHoleTypePair(): void
+    {
+        $cards = [
+            new Card("Ace of spades", "AS", "S", "A"),
+            new Card("Ace of clubs", "AC", "C", "A")
+        ];
+
+        $exp = "p";
+
+        $res = $this->computerLogic->getHoleType($cards);
+
+        $this->assertEquals($exp, $res);
+    }
 }
