@@ -5,6 +5,10 @@ namespace App\Entity;
 use App\Repository\PreFlopRankingsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
+
 #[ORM\Entity(repositoryClass: PreFlopRankingsRepository::class)]
 class PreFlopRankings
 {
