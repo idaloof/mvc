@@ -38,7 +38,7 @@ class ComputerCleveTest extends TestCase
      */
     public function testIncreaseAndGetRisk() : void
     {
-        $this->player->increaseRiskLevel(20);
+        $this->player->adjustRiskLevel(20);
 
         $exp = 20;
 
@@ -52,8 +52,22 @@ class ComputerCleveTest extends TestCase
      */
     public function testDecreaseAndGetRisk() : void
     {
-        $this->player->increaseRiskLevel(20);
-        $this->player->decreaseRiskLevel(20);
+        $this->player->adjustRiskLevel(-20);
+
+        $exp = -20;
+
+        $res = $this->player->getRiskLevel();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that ComputerCleve decreases and returns correct risk level.
+     */
+    public function testClearAndGetRisk() : void
+    {
+        $this->player->adjustRiskLevel(-20);
+        $this->player->clearRiskLevel();
 
         $exp = 0;
 
