@@ -18,9 +18,9 @@ class ComputerStu implements PlayerInterface
      * @var PlayerMoves     $moves      PlayerMoves object.
      */
 
-    private string $name;
-    private int $buyIn;
-    private int $bets = 0;
+    protected string $name;
+    protected int $buyIn;
+    protected int $bets = 0;
     protected TexasHand $hand;
     protected PlayerMoves $moves;
 
