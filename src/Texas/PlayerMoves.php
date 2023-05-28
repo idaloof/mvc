@@ -23,7 +23,7 @@ class PlayerMoves
     /**
      * Returns whether player has called
      *
-     * @param string $move Player's latest move, check, call, raise.
+     * @param string $move Player's latest move, check, call, raise, fold.
      *
      * @return void
      */
