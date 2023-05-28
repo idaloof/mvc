@@ -32,7 +32,7 @@ class FlushEvaluator extends CalculatePoints implements EvaluatorInterface
      *
      * @return int                  Number of points obtained from hand.
      */
-    public function calculatePoints(array $values): int
+    public function calculatePoints($values): int
     {
         $points = 0;
         $sumValues = intval(array_sum($values));
