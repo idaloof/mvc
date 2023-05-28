@@ -23,6 +23,15 @@ services:
     App\Command\CsvImportCommand:
         tags:
             - { name: 'console.command' }
+        arguments:
+            $entityManager: '@doctrine.orm.default_entity_manager'
+            $csvReader: '@app.csv_reader'
+
+    app.csv_reader:
+        class: League\Csv\Reader
+        factory: ['League\Csv\Reader', 'createFromPath']
+        arguments:
+            - '%kernel.project_dir%/src/Data/preflop.csv'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
