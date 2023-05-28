@@ -33,5 +33,50 @@ services:
         arguments:
             - '%kernel.project_dir%/src/Data/preflop.csv'
 
+    App\Texas\FlushEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 600 }
+
+    App\Texas\FourOfAKindEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 800 }
+
+    App\Texas\FullHouseEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 700 }
+
+    App\Texas\OnePairEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 200 }
+
+    App\Texas\RoyalStraightFlushEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 1000 }
+
+    App\Texas\StraightEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 500 }
+
+    App\Texas\StraightFlushEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 900 }
+
+    App\Texas\ThreeOfAKindEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 400 }
+
+    App\Texas\TwoPairEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 300 }
+
+    App\Texas\HighCardEvaluator:
+        tags:
+            - { name: 'app.evaluator', priority: 100 }
+
+    App\Texas\HandEvaluator:
+        factory: ['App\Texas\HandEvaluator', 'create']
+        arguments:
+            $evaluators: !tagged_iterator app.evaluator
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
