@@ -9,7 +9,7 @@ namespace App\Texas;
 
 use App\Repository\PreFlopRankingsRepository;
 
-class ComputerLogic
+class ComputerLogic extends CalculatePoints
 {
     /**
      * PreFlopRankingsRepository class which holds methods for requiring data
@@ -105,11 +105,114 @@ class ComputerLogic
         return $cardRank;
     }
 
-    // Cleve måste ha en riskAversion-property som ökar
-    // eller sjunker. Riskaversionen ska vara beroende av
-    // humanplayer moves, potten i förhållande till blindsen,
-    // sin egen insats i rundan i förhållande till potten,
-    // vilka kort den har på hand, hur stor chans den har att
-    // få stege/färg/två par/triss i nästa stage (flop, turn, river).???
-    //
+    /**
+     * Checks if human player has raised.
+     *
+     * @param array<string> $moves Player's round moves.
+     *
+     * @return bool
+     */
+    private function hasPlayerRaised(array $moves): bool
+    {
+        if (in_array("raise", $moves)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks if human player has called.
+     *
+     * @param array<string> $moves Player's round moves.
+     *
+     * @return bool
+     */
+    private function hasPlayerCalled(array $moves): bool
+    {
+        if (in_array("call", $moves)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Checks if human player has checked.
+     *
+     * @param array<string> $moves Player's round moves.
+     *
+     * @return bool
+     */
+    private function hasPlayerChecked(array $moves): bool
+    {
+        if (in_array("check", $moves)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Adjusts Cleve's risk level for player moves.
+     *
+     * @param array<string> $moves Player's round moves.
+     *
+     * @return int Risk adjustment.
+     */
+    public function adjustRiskPlayerMoves(array $moves): int
+    {
+        $riskAdjust = 0;
+
+        if ($this->hasPlayerChecked($moves)) {
+            $riskAdjust += 30;
+        }
+
+        if ($this->hasPlayerCalled($moves)) {
+            $riskAdjust += 5;
+        }
+
+        if ($this->hasPlayerRaised($moves)) {
+            $riskAdjust -= 20;
+        }
+
+        return $riskAdjust;
+    }
+
+    /**
+     * Adjusts Cleve's risk level for blind and pot.
+     *
+     * @param int $pot Pot size.
+     * @param int $blind Size of big blind.
+     *
+     * @return int Risk adjustment.
+     */
+    public function adjustRiskPotAndBlind(int $pot, int $blind): int
+    {
+        if ($blind/$pot <= 0.2) {
+            return 30;
+        } elseif ($blind/$pot <= 0.4) {
+            return 10;
+        }
+
+        return 0;
+    }
+
+    /**
+     * Adjusts Cleve's risk level for best hand (post flop).
+     *
+     * @param int $points Player's hand points.
+     *
+     * @return int Risk adjustment.
+     */
+    public function adjustRiskHandPoints(int $points): int
+    {
+        if ($points >= 400) {
+            return 30;
+        } elseif ($points >= 300) {
+            return 10;
+        }
+
+        return 0;
+    }
 }
