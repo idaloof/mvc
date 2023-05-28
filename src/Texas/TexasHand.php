@@ -2,9 +2,8 @@
 
 /**
  * Class TexasHand
- * This class is responsible for keeping the player's hole cards.
- * It has dependencies towards the HandEvaluator class in order to decide the best hand
- * and the best hands points for comparison to other players.
+ * This class is responsible for keeping the player's hole cards,
+ * and best hand cards, name and points.
  */
 
 namespace App\Texas;
