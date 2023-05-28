@@ -79,10 +79,10 @@ class ThreeOfAKindEvaluatorTest extends TestCase
     public function testEvaluateReturnPoints() : void
     {
         $evaluator = new ThreeOfAKindEvaluator();
-        $ranks = ["Q", "9", "A", "A", "A"];
+        $values = ["12", "9", "14", "14", "14"];
 
-        $exp = 414;
-        $res = $evaluator->calculatePoints($ranks);
+        $exp = 477;
+        $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
     }

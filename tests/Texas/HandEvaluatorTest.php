@@ -19,6 +19,7 @@ class HandEvaluatorTest extends TestCase
      */
     protected function setUp(): void
     {
+        $high = new HighCardEvaluator();
         $one = new OnePairEvaluator();
         $two = new TwoPairEvaluator();
         $three = new ThreeOfAKindEvaluator();
@@ -30,16 +31,37 @@ class HandEvaluatorTest extends TestCase
         $royal = new RoyalStraightFlushEvaluator($straight, $flush);
 
         $this->evaluators = [
-            $one,
-            $two,
-            $three,
-            $straight,
-            $flush, 
-            $full,
-            $four,
+            $royal,
             $straightFlush,
-            $royal
+            $four,
+            $flush, 
+            $straight,
+            $three,
+            $full,
+            $two,
+            $one,
+            $high
         ];
+    }
+
+    /**
+     * Verify that a HandEvaluator object is created with the create method.
+     * @SuppressWarnings(PHPMD)
+     */
+    public function testCreateObjectThroughServices() : void
+    {
+        /**
+         * @var \traversable<EvaluatorInterface> $evaluators
+         */
+
+        $evaluators = [
+            $this->createMock(EvaluatorInterface::class),
+            $this->createMock(EvaluatorInterface::class)
+        ];
+
+        $handEvaluator = HandEvaluator::create($evaluators);
+
+        $this->assertInstanceOf(HandEvaluator::class, $handEvaluator);
     }
 
     /**
@@ -54,7 +76,7 @@ class HandEvaluatorTest extends TestCase
         $ranks = ["K", "K", "Q", "J", "10"];
 
         $exp = "One Pair";
-        $res = $evaluator->evaluateHand($suits, $values, $ranks);
+        $res = $evaluator->evaluateHand($suits, $values, $ranks)[0];
 
         $this->assertEquals($exp, $res);
     }
@@ -62,7 +84,7 @@ class HandEvaluatorTest extends TestCase
     /**
      * Verify that a HandEvaluator returns "High card".
      */
-    public function testEvaluateReturnEmpty() : void
+    public function testEvaluateReturnHighCard() : void
     {
         $evaluator = new HandEvaluator($this->evaluators);
         $suits = ["D", "H", "D", "D", "H"];
@@ -70,7 +92,23 @@ class HandEvaluatorTest extends TestCase
         $ranks = ["Q", "10", "9", "K", "A"];
 
         $exp = "High Card";
-        $res = $evaluator->evaluateHand($suits, $values, $ranks);
+        $res = $evaluator->evaluateHand($suits, $values, $ranks)[0];
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a HandEvaluator returns "Straight Flush".
+     */
+    public function testEvaluateReturnStraightFlush() : void
+    {
+        $evaluator = new HandEvaluator($this->evaluators);
+        $suits = ["D", "D", "D", "D", "D"];
+        $values = ["12", "10", "9", "13", "11"];
+        $ranks = ["Q", "10", "9", "K", "J"];
+
+        $exp = "Straight Flush";
+        $res = $evaluator->evaluateHand($suits, $values, $ranks)[0];
 
         $this->assertEquals($exp, $res);
     }

@@ -111,9 +111,9 @@ class OnePairEvaluatorTest extends TestCase
     public function testEvaluateReturnPoints() : void
     {
         $evaluator = new OnePairEvaluator();
-        $ranks = ["Q", "9", "9", "K", "A"];
+        $ranks = ["12", "14", "14", "13", "11"];
 
-        $exp = 209;
+        $exp = 278;
         $res = $evaluator->calculatePoints($ranks);
 
         $this->assertEquals($exp, $res);

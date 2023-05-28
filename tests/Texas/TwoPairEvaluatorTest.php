@@ -79,9 +79,9 @@ class TwoPairEvaluatorTest extends TestCase
     public function testEvaluateReturnPoints() : void
     {
         $evaluator = new TwoPairEvaluator();
-        $ranks = ["Q", "9", "9", "A", "A"];
+        $ranks = ["12", "9", "9", "14", "14"];
 
-        $exp = 314;
+        $exp = 381;
         $res = $evaluator->calculatePoints($ranks);
 
         $this->assertEquals($exp, $res);

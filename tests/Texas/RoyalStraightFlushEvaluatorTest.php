@@ -71,12 +71,13 @@ class RoyalStraightFlushEvaluatorTest extends TestCase
      */
     public function testEvaluateReturnPoints() : void
     {
+        $ranks = ["A"];
         $straight = new StraightEvaluator();
         $flush = new FlushEvaluator();
         $evaluator = new RoyalStraightFlushEvaluator($straight, $flush);
 
         $exp = 1000;
-        $res = $evaluator->calculatePoints();
+        $res = $evaluator->calculatePoints($ranks);
 
         $this->assertEquals($exp, $res);
     }

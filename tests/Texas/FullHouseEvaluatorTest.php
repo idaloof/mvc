@@ -40,4 +40,32 @@ class FullHouseEvaluatorTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that evaluator returns correct points.
+     */
+    public function testEvaluateReturnPointsAces() : void
+    {
+        $evaluator = new FullHouseEvaluator();
+        $values = ["5", "14", "5", "14", "14"];
+
+        $exp = 752;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that evaluator returns correct points.
+     */
+    public function testEvaluateReturnPointsTwos() : void
+    {
+        $evaluator = new FullHouseEvaluator();
+        $values = ["12", "12", "2", "2", "2"];
+
+        $exp = 730;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+    }
 }
