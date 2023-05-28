@@ -19,11 +19,11 @@ class CardCombinator
      * Takes an array of cards and a card hand size and adds combinations to object property.
      *
      * @param array<Card> $cards All cards that can be combined.
-     * @param int $size Size of card hand.
+     * @param int $size Size of card hand (5 default).
      *
      * @return array<int, array<Card>>
      */
-    public function findAndAddCombinations(array $cards, int $size): array
+    private function findAndAddCombinations(array $cards, int $size = 5): array
     {
         if ($size == 1) {
             return array_map(function ($element) {
@@ -31,6 +31,7 @@ class CardCombinator
             }, $cards);
         }
 
+        $combinations = [];
         $count = count($cards);
 
         for ($i = 0; $i < $count; $i++) {
@@ -39,9 +40,23 @@ class CardCombinator
             $subCombinations = $this->findAndAddCombinations($remainingElements, $size - 1);
 
             foreach ($subCombinations as $subCombination) {
-                $this->combinations[] = array_merge([$firstElement], $subCombination);
+                $combinations[] = array_merge([$firstElement], $subCombination);
             }
         }
+
+        return $combinations;
+    }
+
+    /**
+     * Takes an array of cards and a card hand size and adds combinations to object property.
+     *
+     * @param array<Card> $cards All cards that can be combined.
+     *
+     * @return array<int, array<Card>>
+     */
+    public function setAndGetCombinations(array $cards): array
+    {
+        $this->combinations = $this->findAndAddCombinations($cards);
 
         return $this->combinations;
     }
