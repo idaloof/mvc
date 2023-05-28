@@ -18,4 +18,13 @@ interface EvaluatorInterface
      * @return string
      */
     public function evaluateHand(array $suits, array $values, array $ranks): string;
+
+    /**
+     * Calculates points for hand.
+     *
+     * @param array<string> $values      Values of player's 5 card combination.
+     *
+     * @return int
+     */
+    public function calculatePoints(array $values): int;
 }
