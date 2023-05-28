@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/phones.ico') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body style="background-image: url({{ asset('img/bg-body.jpg') }})">
+
+    <div class="page-container">
+
+        <header id="header" class="header" style="background-image: url({{ asset('img/site-header.jpg') }})">
+            <div class="logo-container">
+                <img src="{{ asset('img/logo.jpg') }}" alt="logo" width="200"/>
+            </div>
+            <div class="nav-container">
+                <nav id="nav">
+                    <ul>
+                        <li><a href="{{ path('/') }}">Home</a></li>
+                        <li><a href="{{ path('about') }}">About</a></li>
+                        <li><a href="{{ path('report') }}">Report</a></li>
+                        <li><a href="{{ path('lucky') }}">Lucky</a></li>
+                        <li><a href="{{ path('api') }}">API</a></li>
+                        <li><a href="{{ path('card') }}">Card</a></li>
+                        <li><a href="{{ path('game') }}">Game</a></li>
+                        <li><a href="{{ path('library') }}">Library</a></li>
+                        <li><a href="{{ path('metrics') }}">Metrics</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="proj-main">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="footer">
+            <div class="myinfo">
+                <p>
+                    Martin 2023
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    </body>
+</html>
