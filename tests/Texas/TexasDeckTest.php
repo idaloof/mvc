@@ -28,7 +28,7 @@ class TexasDeckTest extends TestCase
      */
     public function testGetDeckLastCard() : void
     {
-        $exp = "King of diamonds";
+        $exp = "K♦";
 
         $deck = $this->deck->getDeck();
         $lastCard = $deck[array_key_last($deck)];
@@ -45,7 +45,7 @@ class TexasDeckTest extends TestCase
     {
         $this->deck->shuffleDeck(3);
 
-        $exp = "Three of spades";
+        $exp = "3♠";
 
         $deck = $this->deck->getDeck();
         $lastCard = $deck[array_key_last($deck)];
@@ -76,7 +76,7 @@ class TexasDeckTest extends TestCase
 
         $card = $this->deck->drawSingle();
 
-        $exp = "Ace of diamonds";
+        $exp = "A♦";
 
         $res = $card->getCardName();
 
@@ -92,13 +92,13 @@ class TexasDeckTest extends TestCase
 
         $cards = $this->deck->drawMany(2);
 
-        $exp = "Ace of diamonds";
+        $exp = "A♦";
 
         $res = $cards[0]->getCardName();
 
         $this->assertEquals($exp, $res);
 
-        $exp = "Eight of spades";
+        $exp = "8♠";
 
         $res = $cards[1]->getCardName();
 

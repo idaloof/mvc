@@ -14,29 +14,29 @@ class TexasDeck
      * @var array<string> $values Card values
      */
     private array $values = [
-        'A' => 'Ace',
-        '2' => 'Two',
-        '3' => 'Three',
-        '4' => 'Four',
-        '5' => 'Five',
-        '6' => 'Six',
-        '7' => 'Seven',
-        '8' => 'Eight',
-        '9' => 'Nine',
-        '10' => 'Ten',
-        'J' => 'Jack',
-        'Q' => 'Queen',
-        'K' => 'King',
+        'A',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        'J',
+        'Q',
+        'K'
     ];
 
     /**
      * @var array<string> $suits Card suits
      */
     private array $suits = [
-        'S' => 'spades',
-        'H' => 'hearts',
-        'C' => 'clubs',
-        'D' => 'diamonds'
+        'S' => '♠',
+        'H' => '♥',
+        'C' => '♣',
+        'D' => '♦'
     ];
 
     /**
@@ -50,8 +50,8 @@ class TexasDeck
     public function __construct()
     {
         foreach ($this->suits as $letter => $string) {
-            foreach ($this->values as $short => $full) {
-                $name = $full . " of " . $string;
+            foreach ($this->values as $short) {
+                $name = $short . $string;
                 $image = $short . $letter;
                 $suit = $letter;
                 $rank = $short;

@@ -1,11 +1,12 @@
 <?php
 
-/**
- * Test suite for HandEvaluator class
- */
-
 namespace App\Texas;
 use PHPUnit\Framework\TestCase;
+
+/**
+ * Test suite for HandEvaluator class
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 
 class HandEvaluatorTest extends TestCase
 {
@@ -66,6 +67,7 @@ class HandEvaluatorTest extends TestCase
 
     /**
      * Verify that a HandEvaluator returns correct hand string.
+     * @SuppressWarnings(PHPMD)
      */
     public function testEvaluateReturnHandString() : void
     {
@@ -83,6 +85,7 @@ class HandEvaluatorTest extends TestCase
 
     /**
      * Verify that a HandEvaluator returns "High card".
+     * @SuppressWarnings(PHPMD)
      */
     public function testEvaluateReturnHighCard() : void
     {
@@ -99,6 +102,7 @@ class HandEvaluatorTest extends TestCase
 
     /**
      * Verify that a HandEvaluator returns "Straight Flush".
+     * @SuppressWarnings(PHPMD)
      */
     public function testEvaluateReturnStraightFlush() : void
     {
@@ -111,5 +115,119 @@ class HandEvaluatorTest extends TestCase
         $res = $evaluator->evaluateHand($suits, $values, $ranks)[0];
 
         $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a HandEvaluator returns correct array of strings.
+     * @SuppressWarnings(PHPMD)
+     */
+    public function testReturnSuitsAsString() : void
+    {
+        $evaluator = new HandEvaluator($this->evaluators);
+        $card = $this->createMock(CardInterface::class);
+        $card->method('getCardSuit')->willReturn("C");
+
+        /**
+         * @var array<Card> $cards
+         */
+        $cards = [
+            $card,
+            $card,
+            $card,
+            $card
+        ];
+        $exp = ["C", "C", "C", "C"];
+        $res = $evaluator->cardSuitsToString($cards);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a HandEvaluator returns correct array of strings.
+     * @SuppressWarnings(PHPMD)
+     */
+    public function testReturnValuesAsString() : void
+    {
+        $evaluator = new HandEvaluator($this->evaluators);
+        $card = $this->createMock(CardInterface::class);
+        $card->method('getCardValue')->willReturn("14");
+
+        /**
+         * @var array<Card> $cards
+         */
+        $cards = [
+            $card,
+            $card,
+            $card,
+            $card
+        ];
+
+        $exp = ["14", "14", "14", "14"];
+        $res = $evaluator->cardValuesToString($cards);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a HandEvaluator returns correct array of strings.
+     * @SuppressWarnings(PHPMD)
+     */
+    public function testReturnRanksAsString() : void
+    {
+        $evaluator = new HandEvaluator($this->evaluators);
+        $card = $this->createMock(CardInterface::class);
+        $card->method('getCardRank')->willReturn("A");
+
+        /**
+         * @var array<Card> $cards
+         */
+        $cards = [
+            $card,
+            $card,
+            $card,
+            $card
+        ];
+
+        $exp = ["A", "A", "A", "A"];
+        $res = $evaluator->cardRanksToString($cards);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a HandEvaluator returns correct array hand names and points.
+     * @SuppressWarnings(PHPMD)
+     */
+    public function testEvaluateManyHands(): void
+    {
+        // Create a mock HandEvaluator object
+        $evaluator1 = $this->createMock(EvaluatorInterface::class);
+        $evaluator1->method('evaluateHand')->willReturn("One Pair");
+        $evaluator1->method('calculatePoints')->willReturn(10);
+
+        $evaluator2 = $this->createMock(EvaluatorInterface::class);
+        $evaluator2->method('evaluateHand')->willReturn("High Card");
+        $evaluator2->method('calculatePoints')->willReturn(5);
+
+        // Create a mock Card object
+        $card1 = $this->createMock(Card::class);
+        $card2 = $this->createMock(Card::class);
+
+        // Create a mock HandEvaluator object and inject the mock evaluators
+        $handEvaluator = new HandEvaluator([$evaluator1, $evaluator2]);
+
+        // Create an array of mock hands
+        $hands = [[$card1, $card2], [$card1, $card2]];
+
+        // Call the evaluateManyHands method
+        $result = $handEvaluator->evaluateManyHands($hands);
+
+        // Assert the expected result
+        $expected = [
+            'One Pair' => 10,
+            'High Card' => 5
+        ];
+
+        $this->assertEquals($expected, $result);
     }
 }

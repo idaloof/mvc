@@ -8,7 +8,7 @@
 
 namespace App\Texas;
 
-class HandEvaluator
+class HandEvaluator extends CardCombinator
 {
     /**
      * @var array<EvaluatorInterface> $evaluators
@@ -28,7 +28,7 @@ class HandEvaluator
 
     /**
      * Creates a HandEvaluator object without the need to
-     * manually instantiate and inject evaluators.
+     * manually instantiate and inject evaluators. (see service.yaml file)
      *
      * @param \traversable<EvaluatorInterface> $evaluators
      *
@@ -41,13 +41,13 @@ class HandEvaluator
     }
 
     /**
-     * Returns the current poker hand of a player based on the player's cards.
+     * Returns the current poker hand of a player and its points based on the player's cards.
      *
      * @param array<string> $suits      Suits of the player's cards.
      * @param array<string> $values     Values of the player's cards.
      * @param array<string> $ranks      Ranks of the player's cards.
      *
-     * @return array<mixed>           The kind of hand the player has.
+     * @return array<mixed>             The kind of hand the player has and the points for the hand.
      *
      */
 
@@ -59,6 +59,91 @@ class HandEvaluator
             if ($evaluator->evaluateHand($suits, $values, $ranks)) {
                 $handData[] = $evaluator->evaluateHand($suits, $values, $ranks);
                 $handData[] = $evaluator->calculatePoints($values);
+            }
+        }
+
+        return $handData;
+    }
+
+    /**
+     * Takes an array of card objects and returns the card suits as an array of strings.
+     *
+     * @param array<Card> $cards
+     *
+     * @return array<string> Card suits.
+     */
+    public function cardSuitsToString(array $cards): array
+    {
+        $suits = [];
+
+        foreach ($cards as $card) {
+            array_push($suits, $card->getCardSuit());
+        }
+
+        return $suits;
+    }
+
+    /**
+     * Takes an array of card objects and returns the card values as an array of strings.
+     *
+     * @param array<Card> $cards
+     *
+     * @return array<string> Card values.
+     */
+    public function cardValuesToString(array $cards): array
+    {
+        $values = [];
+
+        foreach ($cards as $card) {
+            array_push($values, $card->getCardValue());
+        }
+
+        return $values;
+    }
+
+    /**
+     * Takes an array of card objects and returns the card ranks as an array of strings.
+     *
+     * @param array<Card> $cards
+     *
+     * @return array<string> Card ranks.
+     */
+    public function cardRanksToString(array $cards): array
+    {
+        $ranks = [];
+
+        foreach ($cards as $card) {
+            array_push($ranks, $card->getCardRank());
+        }
+
+        return $ranks;
+    }
+
+    /**
+     * Returns an array of all hand combinations with their names and points.
+     *
+     * @param array<int, array<Card>> $hands    All possible current hands that the player can use.
+     *
+     * @return array<string, int>         The kind of hand the player has.
+     *
+     */
+    public function evaluateManyHands(array $hands): array
+    {
+        $handData = [];
+
+        foreach ($hands as $hand) {
+            $suits = $this->cardSuitsToString($hand);
+            $values = $this->cardValuesToString($hand);
+            $ranks = $this->cardRanksToString($hand);
+
+            foreach ($this->evaluators as $evaluator) {
+                if ($evaluator->evaluateHand($suits, $values, $ranks)) {
+                    $hand = $evaluator->evaluateHand($suits, $values, $ranks);
+                    $points = $evaluator->calculatePoints($values);
+                    if (!array_key_exists($hand, $handData) || $handData[$hand] < $points) {
+                        $handData[$hand] = $points;
+                    }
+                }
             }
         }
 
