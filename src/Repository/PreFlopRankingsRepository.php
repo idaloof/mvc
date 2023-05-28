@@ -9,6 +9,8 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @extends ServiceEntityRepository<PreFlopRankings>
  *
+ * @SuppressWarnings(PHPMD)
+ *
  * @method PreFlopRankings|null find($id, $lockMode = null, $lockVersion = null)
  * @method PreFlopRankings|null findOneBy(array $criteria, array $orderBy = null)
  * @method PreFlopRankings[]    findAll()
@@ -40,17 +42,19 @@ class PreFlopRankingsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return array<string, string>
+     * @return PreFlopRankings[]
      */
-    public function findCardRanking(string $cards): array
+    public function findCardRanking(string $cards, string $aType): array
     {
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
             'SELECT b
             FROM App\Entity\PreFlopRankings b
-            WHERE b.cards = :cards'
-        )->setParameter('cards', $cards);
+            WHERE b.cards = :cards
+            AND b.type = :aType'
+        )->setParameter('cards', $cards)
+        ->setParameter('aType', $aType);
 
         return $query->getResult();
     }
