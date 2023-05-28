@@ -9,7 +9,7 @@ namespace App\Texas;
 
 use App\Repository\PreFlopRankingsRepository;
 
-class ComputerLogic extends CalculatePoints
+class ComputerLogic
 {
     /**
      * PreFlopRankingsRepository class which holds methods for requiring data
