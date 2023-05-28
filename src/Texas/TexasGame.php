@@ -36,6 +36,11 @@ class TexasGame
      */
     private GameData $gameData;
 
+    /**
+     * @var Queue $queue Queue class which manages queue and player roles.
+     */
+    private Queue $queue;
+
     // /**
     //  * @var MessageRepository $messageRepository MessageRepository class which holds methods for the game logic.
     //  */
@@ -62,6 +67,7 @@ class TexasGame
         HandEvaluator $handEvaluator,
         GameLogic $gameLogic,
         GameData $gameData,
+        Queue $queue,
         Table $table,
         array $players
     ) {
@@ -69,10 +75,23 @@ class TexasGame
         $this->handEvaluator = $handEvaluator;
         $this->gameLogic = $gameLogic;
         $this->gameData = $gameData;
+        $this->queue = $queue;
         $this->table = $table;
         $this->players = $players;
     }
 
+    /*
+        Vad måste hända innan ett objekt av den här klassen initieras?
+            - Alla spelare initieras efter att spelaren har angett wallet och buy-in.
+            - En kortlek måste initieras.
+            - En HandEvaluator måste initieras med samtliga evaluators (se test).
+            - En GameLogic måste initieras med PreFlopRepo.
+            - En GameData måste initieras.
+            - En
+        * Vad vill jag att den här klassen ska göra?
+        * Tänk på att controllern pratar med denna klass, endast.
+            1. Sätt rollerna innan spelstart
+    */
     /**
      * WHAT??
      *
