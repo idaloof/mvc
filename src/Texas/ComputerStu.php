@@ -20,7 +20,7 @@ class ComputerStu implements PlayerInterface
      */
 
     protected string $name;
-    protected string $role;
+    protected string $role = "";
     protected int $buyIn;
     protected int $bets = 0;
     protected TexasHand $hand;

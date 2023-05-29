@@ -21,7 +21,7 @@ class TexasPlayer implements PlayerInterface
      */
 
     private string $name;
-    private string $role;
+    private string $role = "";
     private int $wallet;
     private int $buyIn;
     private int $bets = 0;
