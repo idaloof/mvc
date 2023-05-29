@@ -19,7 +19,7 @@ class TableTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->table = new Table();
+        $this->table = new Table(100);
     }
 
     /**
@@ -82,6 +82,30 @@ class TableTest extends TestCase
         $exp = 0;
 
         $res = $this->table->getPot();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that Table sets and gets correct big blind.
+     */
+    public function testSetAndGetBigBlind() : void
+    {
+        $exp = 2;
+
+        $res = $this->table->getBigBlind();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that Table sets and gets correct small blind.
+     */
+    public function testSetAndGetSmallBlind() : void
+    {
+        $exp = 1;
+
+        $res = $this->table->getSmallBlind();
 
         $this->assertEquals($exp, $res);
     }
