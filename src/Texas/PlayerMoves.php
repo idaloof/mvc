@@ -43,6 +43,16 @@ class PlayerMoves
     }
 
     /**
+     * Returns number of round moves.
+     *
+     * @return int Number of round moves.
+     */
+    public function getNumberOfRoundMoves(): int
+    {
+        return count($this->roundMoves);
+    }
+
+    /**
      * Clears player's round moves.
      *
      * @return void
