@@ -30,4 +30,9 @@ interface PlayerInterface
     public function getHand(): TexasHand;
 
     public function getPlayerMoves(): PlayerMoves;
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function getPlayerData(): array;
 }
