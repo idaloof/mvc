@@ -12,6 +12,7 @@ class ComputerStu implements PlayerInterface
 {
     /**
      * @var string          $name       Player name.
+     * @var string          $role       Player role.
      * @var int             $buyIn      Player's buy in for a game.
      * @var int             $bets       Player's bets for a betting round.
      * @var TexasHand       $hand       Hand object.
@@ -19,6 +20,7 @@ class ComputerStu implements PlayerInterface
      */
 
     protected string $name;
+    protected string $role;
     protected int $buyIn;
     protected int $bets = 0;
     protected TexasHand $hand;
@@ -46,6 +48,28 @@ class ComputerStu implements PlayerInterface
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * Gets role of player.
+     *
+     * @return string role of player.
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
+     * Sets role of player.
+     *
+     * @param string $role Role of player.
+     *
+     * @return void
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 
     /**
