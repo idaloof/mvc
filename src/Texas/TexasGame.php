@@ -114,15 +114,44 @@ class TexasGame
         $this->table->addMoneyToPot($toPot);
     }
 
-    // /**
-    //  * Set initial message in the message entity.
-    //  *
-    //  * @return void
-    //  */
-    // public function setFirstMessage(): void
-    // {
-    //     $this->
-    // }
+    /**
+     * Draws and deals two starting cards to each player.
+     *
+     * @return void
+     */
+    public function dealStartingCards(): void
+    {
+        foreach ($this->players as $player) {
+            $cards = $this->deck->drawMany(2);
+
+            $player->getHand()->setHoleCards($cards);
+        }
+    }
+
+    /**
+     * This method returns the player objects of the game.
+     *
+     * @return array<PlayerInterface> Players of the game.
+     */
+    public function getPlayers(): array
+    {
+        return $this->players;
+    }
+
+    /**
+     * This method resets the data properties of all objects before next round
+     */
+    /* A public function that resets:
+        - gameData properties (round winner etc)
+        - player hole cards
+        - player bets
+        - table pot
+        - and so on..
+    */
+
+    /**
+     * This method sets game data properties for api.
+     */
 
     /*
         Vad måste hända innan ett objekt av den här klassen initieras?
@@ -141,14 +170,14 @@ class TexasGame
         * Vad vill jag att den här klassen ska göra?
         * Tänk på att controllern pratar med denna klass, endast.
         INNAN PRE-FLOP:
-            1.  Sätt rollerna och platserna i kön innan spelstart (Queue) KLAR
-                - Sätt även spelarnas roller i setPlayerRole -> "bb", "sb" eller "d" KLAR
-            2.  Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (Table) KLAR
-            3.  Hämta välkomstmeddelande från messageRepo (hämta hela tiden senaste 5 från databasen).
+            1.  Sätt rollerna och platserna i kön innan spelstart (Queue) KLART
+                - Sätt även spelarnas roller i setPlayerRole -> "bb", "sb" eller "d" KLART
+            2.  Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (Table) KLART
+            3.  Hämta välkomstmeddelande från messageRepo (hämta hela tiden senaste 5 från databasen). KLART (görs från controllern)
         PRE-FLOP:
-            4.  Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in)
-            5.  Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand)
-                - I controllern hämtas spelarnas hole cards som ska visas på sidan.
+            4.  Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in) KLART
+            5.  Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand) KLART
+                - I controllern hämtas spelarnas hole cards som ska visas på sidan. KLART (vet hur det ska gå till i alla fall!)
             6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan.
             7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
                 - Beräkna även hur mycket som krävs för call.
