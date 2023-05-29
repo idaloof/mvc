@@ -1,0 +1,14 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}Texas Init Testing{% endblock %}
+
+{% block main %}
+    <div class="proj-container">
+        {% for card in cards %}
+            <p>{{ card }}</p>
+        {% endfor %}
+        <p>Spelaren heter: {{ name }}</p>
+        <p>Plånboken har: {{ wallet }}$</p>
+        <p>Insatsen är: {{ buyIn }}$</p>
+    </div>
+{% endblock %}

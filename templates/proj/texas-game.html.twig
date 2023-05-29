@@ -1,0 +1,22 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}Texas Init Testing{% endblock %}
+
+{% block main %}
+    <div class="proj-container">
+        <div>
+            <p>Namn: {{ Martin.name }}</p>
+            <p>Roll: {{ Martin.role }}</p>
+            <p>Insats: {{ Martin.buy_in }}$</p>
+            {% if Martin.hasFolded %}
+                <p>Out: Har lagt sig.</p>
+            {% else %}
+                <p>In: Fortfarande med.</p>
+            {% endif %}
+            <p>Bet: {{ Martin.bets }}$</p>
+            {% for card in Martin.holeCards %}
+                <img class="one-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
