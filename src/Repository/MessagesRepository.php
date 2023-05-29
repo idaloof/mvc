@@ -43,11 +43,9 @@ class MessagesRepository extends ServiceEntityRepository
    /**
     * @return Messages[] Returns an array of Messages objects
     */
-   public function findFiveLatestMessages($value): array
+   public function findFiveLatestMessages(): array
    {
        return $this->createQueryBuilder('m')
-           ->andWhere('m.exampleField = :val')
-           ->setParameter('val', $value)
            ->orderBy('m.id', 'DESC')
            ->setMaxResults(5)
            ->getQuery()
