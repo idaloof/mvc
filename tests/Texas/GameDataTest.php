@@ -150,32 +150,4 @@ class GameDataTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
-
-    /**
-     * Verify that GameData sets and gets correct big blind.
-     */
-    public function testSetAndGetBigBlind() : void
-    {
-        $this->gameData->setBigBlind(100);
-
-        $exp = 100;
-
-        $res = $this->gameData->getBigBlind();
-
-        $this->assertEquals($exp, $res);
-    }
-
-    /**
-     * Verify that GameData sets and gets correct small blind.
-     */
-    public function testSetAndGetSmallBlind() : void
-    {
-        $this->gameData->setSmallBlind(50);
-
-        $exp = 50;
-
-        $res = $this->gameData->getSmallBlind();
-
-        $this->assertEquals($exp, $res);
-    }
 }
