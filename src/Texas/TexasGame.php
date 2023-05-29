@@ -107,7 +107,7 @@ class TexasGame
                 - I controllern hämtas spelarnas hole cards som ska visas på sidan.
             6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan.
             7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
-                * Beräkna även hur mycket som krävs för call.
+                - Beräkna även hur mycket som krävs för call.
             8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
                 Spelaren måste ha en egen path genom spellogiken, endast spelarens moves som sparas.
                 - Om spelaren fold:
@@ -126,6 +126,7 @@ class TexasGame
                     * lägg till meddelande i messageboard
             X.  Hämta och visa messageboard (hämta hela tiden senaste 5 från databasen).
             X.  Beräkna hur mycket ComputerStu får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
+                - Beräkna även hur mycket som krävs för call.
             X.  ComputerStu's tur:
                 Kolla om ComputerStu har foldat. Player->PlayerMoves->hasFolded
                 Kolla om ComputerStu har färre moves än högsta möjliga antalet moves. Player->PlayerMoves->getNumberOfRoundMoves
