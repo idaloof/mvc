@@ -96,8 +96,35 @@ class TexasGame
             - MessageRepo måste initieras.
         * Vad vill jag att den här klassen ska göra?
         * Tänk på att controllern pratar med denna klass, endast.
-            1. Sätt rollerna och platserna i kön innan spelstart (Queue-klassen)
-            2. Sätt small och big blind utifrån spelarens buy in 
+            1. Sätt rollerna och platserna i kön innan spelstart (Queue)
+            2. Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (GameData)
+            3. Hämta välkomstmeddelande från messageRepo. (hämta hela tiden senaste 5 från databasen)
+            4. Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in)
+            5. Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand)
+            6. Spelaren är först ut att vara dealer, spelaren börjar således första rundan.
+            7. Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
+            8. Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
+                Spelaren måste ha en egen path genom spellogiken, endast spelarens moves som sparas.
+                - Om spelaren fold:
+                    * spelarens hasFolded sätts (Player->PlayerMoves)
+                    * lägg till meddelande i messageboard
+                    * skapa flash?
+                - Om spelaren check:
+                    * lägg till check i moves (Player->PlayerMoves->addToRoundMoves)
+                    * lägg till meddelande i messageboard
+                    * skapa flash?
+                - Om spelaren call:
+                    * spelarens buy in sjunker med call-belopp (måste skötas från game-klassen)
+                    * lägg till call i moves (Player->PlayerMoves->addToRoundMoves)
+                    * lägg till meddelande i messageboard
+                    * skapa flash?
+                - Om spelaren raise:
+                    * spelarens buy in sjunker med raise-belopp (måste skötas från game-klassen)
+                    * lägg till raise i moves (Player->PlayerMoves->addToRoundMoves)
+                    * lägg till meddelande i messageboard
+                    * skapa flash?
+            9. Kolla om spelrundan är över (GameLogic)
+            10. Om 9:an är nej -> Kolla om spelet är redo att gå vidare till nästa runda.
     */
     /**
      * WHAT??
