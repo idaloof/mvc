@@ -12,6 +12,7 @@ class TexasPlayer implements PlayerInterface
 {
     /**
      * @var string          $name       Player name.
+     * @var string          $role       Player role.
      * @var int             $wallet     Player's digital wallet.
      * @var int             $buyIn      Player's buy in for a game.
      * @var int             $bets       Player's bets for a betting round.
@@ -20,6 +21,7 @@ class TexasPlayer implements PlayerInterface
      */
 
     private string $name;
+    private string $role;
     private int $wallet;
     private int $buyIn;
     private int $bets = 0;
@@ -49,6 +51,28 @@ class TexasPlayer implements PlayerInterface
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * Gets role of player.
+     *
+     * @return string role of player.
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
+     * Sets role of player.
+     *
+     * @param string $role Role of player.
+     *
+     * @return void
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
     }
 
     /**
