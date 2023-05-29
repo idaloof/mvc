@@ -82,50 +82,67 @@ class TexasGame
 
     /*
         Vad måste hända innan ett objekt av den här klassen initieras?
-            - TexasHand och PlayerMoves måste initieras (om de ska injectas i spelarna)
-            - Alla spelare initieras efter att spelaren har angett wallet och buy-in.
+            1. TexasHand och PlayerMoves måste initieras (om de ska injectas i spelarna)
+            2.  Alla spelare initieras efter att spelaren har angett wallet, namn och buy-in.
                 - Spelarna används i både Queue och Game-klassen.
-            - En kortlek måste initieras.
-            - En HandEvaluator måste initieras med samtliga evaluators (se test).
-            - Måste en CardCombinator initieras om den extendas av HandEvaluator?
-            - En ComputerLogic måste initieras med PreFlopRepo.
-            - En GameLogic måste initieras.
-            - En GameData måste initieras.
-            - En Queue måste initieras.
-            - En Table måste initieras.
-            - MessageRepo måste initieras.
+            3.  En kortlek måste initieras.
+            4.  En HandEvaluator måste initieras med samtliga evaluators (se test).
+            5.  Måste en CardCombinator initieras om den extendas av HandEvaluator?
+            6.  En ComputerLogic måste initieras med PreFlopRepo.
+            7.  En GameLogic måste initieras.
+            8.  En GameData måste initieras.
+            9.  En Queue måste initieras.
+            10. En Table måste initieras.
+            11. MessageRepo måste initieras.
         * Vad vill jag att den här klassen ska göra?
         * Tänk på att controllern pratar med denna klass, endast.
-            1. Sätt rollerna och platserna i kön innan spelstart (Queue)
-            2. Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (GameData)
-            3. Hämta välkomstmeddelande från messageRepo. (hämta hela tiden senaste 5 från databasen)
-            4. Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in)
-            5. Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand)
-            6. Spelaren är först ut att vara dealer, spelaren börjar således första rundan.
-            7. Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
-            8. Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
+        INNAN PRE-FLOP:
+            1.  Sätt rollerna och platserna i kön innan spelstart (Queue)
+                - Sätt även spelarnas roller i setPlayerRole -> "bb", "sb" eller "d"
+            2.  Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (GameData)
+            3.  Hämta välkomstmeddelande från messageRepo (hämta hela tiden senaste 5 från databasen).
+        PRE-FLOP:
+            4.  Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in)
+            5.  Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand)
+                - I controllern hämtas spelarnas hole cards som ska visas på sidan.
+            6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan.
+            7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
+                * Beräkna även hur mycket som krävs för call.
+            8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
                 Spelaren måste ha en egen path genom spellogiken, endast spelarens moves som sparas.
                 - Om spelaren fold:
                     * spelarens hasFolded sätts (Player->PlayerMoves)
                     * lägg till meddelande i messageboard
-                    * skapa flash?
                 - Om spelaren check:
                     * lägg till check i moves (Player->PlayerMoves->addToRoundMoves)
                     * lägg till meddelande i messageboard
-                    * skapa flash?
                 - Om spelaren call:
                     * spelarens buy in sjunker med call-belopp (måste skötas från game-klassen)
                     * lägg till call i moves (Player->PlayerMoves->addToRoundMoves)
                     * lägg till meddelande i messageboard
-                    * skapa flash?
                 - Om spelaren raise:
                     * spelarens buy in sjunker med raise-belopp (måste skötas från game-klassen)
                     * lägg till raise i moves (Player->PlayerMoves->addToRoundMoves)
                     * lägg till meddelande i messageboard
-                    * skapa flash?
-            9. Kolla om spelrundan är över (GameLogic)
-            10. Om 9:an är nej -> Kolla om spelet är redo att gå vidare till nästa runda.
+            X.  Hämta och visa messageboard (hämta hela tiden senaste 5 från databasen).
+            X.  Beräkna hur mycket ComputerStu får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
+            X.  ComputerStu's tur:
+                Kolla om ComputerStu har foldat. Player->PlayerMoves->hasFolded
+                Kolla om ComputerStu har färre moves än högsta möjliga antalet moves. Player->PlayerMoves->getNumberOfRoundMoves
+                Om ej foldat och har färre moves:
+                Kolla gamestage:
+                - Beroende på game stage det är får ComputerStu olika alternativ.
+                    * Pre-flop:
+                        - Om Stu inte har högsta betten: -> skapa metod för movesWhenHighestBet tre alternativ 50 50
+                            * fold, call och raise
+                        - Om Stu har högsta betten: -> skapa metod för movesWhenNotHighestBet två alternativ 50 50
+                            * check och raise
+            X.  Hämta spelarnas bet som ska visas på sidan.
+            X.  Kolla om spelrundan är över (GameLogic) via controller.
+            X.  Om 9:an är nej -> Kolla om spelet är redo att gå vidare till nästa runda (GameLogic) via controller.
+            X.
     */
+
     /**
      * WHAT??
      *
