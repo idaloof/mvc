@@ -157,4 +157,23 @@ class ComputerStu implements PlayerInterface
     {
         return $this->moves;
     }
+
+    /**
+     * Gets player data for easier access in controller.
+     *
+     * @return array<string, mixed> Array of player info.
+     */
+    public function getPlayerData(): array
+    {
+        $playerData = [
+            'name' => $this->name,
+            'role' => $this->role,
+            'buy_in' => $this->buyIn,
+            'hasFolded' => $this->moves->hasFolded(),
+            'bets' => $this->bets,
+            'holeCards' => $this->getHand()->getBestHandAsImages(),
+        ];
+
+        return $playerData;
+    }
 }
