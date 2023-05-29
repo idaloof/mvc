@@ -11,6 +11,10 @@ interface PlayerInterface
 {
     public function getName(): string;
 
+    public function setRole(string $role): void;
+
+    public function getRole(): string;
+
     public function getBuyIn(): int;
 
     public function increaseBuyIn(int $money): void;
