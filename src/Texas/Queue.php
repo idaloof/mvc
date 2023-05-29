@@ -57,6 +57,10 @@ class Queue
         $this->enqueue($this->smallBlindPlayer);
         $this->enqueue($this->bigBlindPlayer);
 
+        $this->dealerPlayer->setRole("d");
+        $this->smallBlindPlayer->setRole("sb");
+        $this->bigBlindPlayer->setRole("bb");
+
         return $this->players;
     }
 
@@ -131,6 +135,9 @@ class Queue
         $this->enqueue($this->smallBlindPlayer);
         $this->enqueue($this->bigBlindPlayer);
 
+        $this->dealerPlayer->setRole("d");
+        $this->smallBlindPlayer->setRole("sb");
+        $this->bigBlindPlayer->setRole("bb");
 
         return $this->players;
     }
@@ -155,5 +162,25 @@ class Queue
         $this->enqueue($this->dealerPlayer);
 
         return $this->players;
+    }
+
+    /**
+     * Returns small blind player.
+     *
+     * @return PlayerInterface small blind player.
+     */
+    public function getSmallBlindPlayer(): PlayerInterface
+    {
+        return $this->smallBlindPlayer;
+    }
+
+    /**
+     * Returns big blind player.
+     *
+     * @return PlayerInterface big blind player.
+     */
+    public function getBigBlindPlayer(): PlayerInterface
+    {
+        return $this->bigBlindPlayer;
     }
 }
