@@ -41,6 +41,22 @@ class TexasHand
     }
 
     /**
+     * Gets player's hole cards as array with strings.
+     *
+     * @return array<string> Player's hole cards as array with strings.
+     */
+    public function getHoleCardsAsStrings(): array
+    {
+        $cardStrings = [];
+
+        foreach ($this->holeCards as $card) {
+            array_push($cardStrings, $card->getCardImage());
+        }
+
+        return $cardStrings;
+    }
+
+    /**
      * Sets player's hole cards.
      *
      * @param array<Card> $cards Array with two hole cards.
@@ -86,6 +102,22 @@ class TexasHand
         }
 
         return $handString;
+    }
+
+    /**
+     * Gets player's best hand as array with image names.
+     *
+     * @return array<string> Player's best hand as array with image names.
+     */
+    public function getBestHandAsImages(): array
+    {
+        $handImages = [];
+
+        foreach ($this->bestHand as $card) {
+            array_push($handString, $card->getCardImage());
+        }
+
+        return $handImages;
     }
 
     /**
