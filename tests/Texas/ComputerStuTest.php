@@ -116,4 +116,37 @@ class ComputerStuTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that ComputerStu sets and returns correct role.
+     */
+    public function testSetAndGetRole() : void
+    {
+        $this->player->setRole("dealer");
+
+        $exp = "dealer";
+
+        $res = $this->player->getRole();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that ComputerStu returns correct data.
+     */
+    public function testGetPlayerData() : void
+    {
+        $exp = [
+            'name' => "Stu",
+            'role' => "",
+            'buy_in' => 20,
+            'hasFolded' => false,
+            'bets' => 0,
+            'holeCards' => [],
+        ];
+
+        $res = $this->player->getPlayerData();
+
+        $this->assertEquals($exp, $res);
+    }
 }
