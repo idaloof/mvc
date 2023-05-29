@@ -65,6 +65,22 @@ class Table
     }
 
     /**
+     * Gets community card images.
+     *
+     * @return array<string> Community cards.
+     */
+    public function getCommunityCardImages(): array
+    {
+        $cardImages = [];
+
+        foreach ($this->communityCards as $card) {
+            array_push($cardImages, $card->getCardImage());
+        }
+
+        return $cardImages;
+    }
+
+    /**
      * Clears community cards.
      *
      * @return void
