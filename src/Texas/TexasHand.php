@@ -114,7 +114,7 @@ class TexasHand
         $handImages = [];
 
         foreach ($this->bestHand as $card) {
-            array_push($handString, $card->getCardImage());
+            array_push($handImages, $card->getCardImage());
         }
 
         return $handImages;
