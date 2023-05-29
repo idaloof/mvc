@@ -31,16 +31,6 @@ class GameData
     private int $initialBuyIn;
 
     /**
-     * @var int $smallBlind The game's small blind.
-     */
-    private int $smallBlind;
-
-    /**
-     * @var int $bigBlind The game's big blind.
-     */
-    private int $bigBlind;
-
-    /**
      * @var int $currentPot Current pot on the table.
      */
     private int $currentPot;
@@ -146,50 +136,6 @@ class GameData
     public function setInitialBuyIn(int $buyIn): void
     {
         $this->initialBuyIn = $buyIn;
-    }
-
-    /**
-     * Gets small blind.
-     *
-     * @return int Small blind.
-     */
-    public function getSmallBlind(): int
-    {
-        return $this->smallBlind;
-    }
-
-    /**
-     * Sets small blind.
-     *
-     * @param int $smallBlind Small blind.
-     *
-     * @return void
-     */
-    public function setSmallBlind(int $smallBlind): void
-    {
-        $this->smallBlind = $smallBlind;
-    }
-
-    /**
-     * Gets big blind.
-     *
-     * @return int Big blind.
-     */
-    public function getBigBlind(): int
-    {
-        return $this->bigBlind;
-    }
-
-    /**
-     * Sets big blind.
-     *
-     * @param int $bigBlind Big blind.
-     *
-     * @return void
-     */
-    public function setBigBlind(int $bigBlind): void
-    {
-        $this->bigBlind = $bigBlind;
     }
 
     /**
