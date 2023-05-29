@@ -7,6 +7,9 @@
 namespace App\Texas;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class TexasPlayerTest extends TestCase
 {
     /**
