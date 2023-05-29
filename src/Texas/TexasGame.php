@@ -82,15 +82,22 @@ class TexasGame
 
     /*
         Vad måste hända innan ett objekt av den här klassen initieras?
+            - TexasHand och PlayerMoves måste initieras (om de ska injectas i spelarna)
             - Alla spelare initieras efter att spelaren har angett wallet och buy-in.
+                - Spelarna används i både Queue och Game-klassen.
             - En kortlek måste initieras.
             - En HandEvaluator måste initieras med samtliga evaluators (se test).
-            - En GameLogic måste initieras med PreFlopRepo.
+            - Måste en CardCombinator initieras om den extendas av HandEvaluator?
+            - En ComputerLogic måste initieras med PreFlopRepo.
+            - En GameLogic måste initieras.
             - En GameData måste initieras.
-            - En
+            - En Queue måste initieras.
+            - En Table måste initieras.
+            - MessageRepo måste initieras.
         * Vad vill jag att den här klassen ska göra?
         * Tänk på att controllern pratar med denna klass, endast.
-            1. Sätt rollerna innan spelstart
+            1. Sätt rollerna och platserna i kön innan spelstart (Queue-klassen)
+            2. Sätt small och big blind utifrån spelarens buy in 
     */
     /**
      * WHAT??
