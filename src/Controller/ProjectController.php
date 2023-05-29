@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
+// use App\Entity\Messages;
 use App\Texas\HandEvaluator;
-use Doctrine\Persistence\ManagerRegistry;
+// use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +16,7 @@ class ProjectController extends AbstractController
     /* Proj Route */
     #[Route("/proj", name: "proj")]
     public function projLanding(
-        ManagerRegistry $doctrine,
+        // ManagerRegistry $doctrine,
         HandEvaluator $handEvaluator
     ): Response {
         // date_default_timezone_set('Europe/Stockholm');
