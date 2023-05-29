@@ -39,6 +39,22 @@ class TableTest extends TestCase
     }
 
     /**
+     * Verify that Table object correctly returns images.
+     */
+    public function testGetCommunityImages(): void
+    {
+        $card = new Card("Ace of Hearts", "AH", "H", "A");
+
+        $this->table->addToCommunityCards($card);
+
+        $exp = ["AH"];
+
+        $res = $this->table->getCommunityCardImages();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
      * Verify that Table object correctly clears community cards.
      */
     public function testClearCommunityCards(): void
