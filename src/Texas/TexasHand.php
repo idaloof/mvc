@@ -73,6 +73,22 @@ class TexasHand
     }
 
     /**
+     * Gets player's best hand as array with strings.
+     *
+     * @return array<string> Player's best hand as array with strings.
+     */
+    public function getBestHandAsString(): array
+    {
+        $handString = [];
+
+        foreach ($this->bestHand as $card) {
+            array_push($handString, $card->getCardName());
+        }
+
+        return $handString;
+    }
+
+    /**
      * Sets player's best hand.
      *
      * @param array<Card> $cards Array with best five card combination.
