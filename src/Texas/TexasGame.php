@@ -9,6 +9,8 @@
 
 namespace App\Texas;
 
+use App\Repository\MessagesRepository;
+
 class TexasGame
 {
     /**
@@ -41,10 +43,10 @@ class TexasGame
      */
     private Queue $queue;
 
-    // /**
-    //  * @var MessageRepository $messageRepository MessageRepository class which holds methods for the game logic.
-    //  */
-    // private MessageRepository $messageRepository;
+    /**
+     * @var MessagesRepository $messageRepo MessageRepository class which holds methods for the game logic.
+     */
+    private MessagesRepository $messageRepo;
 
     /**
      * @var Table $table Table class for keeping track of community cards and pot.
@@ -54,12 +56,13 @@ class TexasGame
     /**
      * Class constructor.
      *
-     * @param TexasDeck $deck Object with Deck of cards.
-     * @param HandEvaluator $handEvaluator Object that evaluates card hand.
-     * @param GameLogic $gameLogic Object that manages game logic.
-     * @param GameData $gameData Object that manages game data.
-     * @param Table $table Object that manages game table.
-     * @param array<PlayerInterface> $players Array of players.
+     * @param TexasDeck $deck                       Object with Deck of cards.
+     * @param HandEvaluator $handEvaluator          Object that evaluates card hand.
+     * @param GameLogic $gameLogic                  Object that manages game logic.
+     * @param GameData $gameData                    Object that manages game data.
+     * @param Table $table                          Object that manages game table.
+     * @param MessagesRepository $messageRepo       Object that manages messages towards database.
+     * @param array<PlayerInterface> $players       Array of players.
      *
      */
     public function __construct(
@@ -69,6 +72,7 @@ class TexasGame
         GameData $gameData,
         Queue $queue,
         Table $table,
+        MessagesRepository $messageRepo,
         array $players
     ) {
         $this->deck = $deck;
@@ -77,8 +81,48 @@ class TexasGame
         $this->gameData = $gameData;
         $this->queue = $queue;
         $this->table = $table;
+        $this->messageRepo = $messageRepo;
         $this->players = $players;
     }
+
+    /**
+     * Sets queue and player roles before game-start.
+     *
+     * @return void
+     */
+    public function setQueueAndRoles(): void
+    {
+        $this->queue->setRolesBeforeGameStart();
+    }
+
+    /**
+     * Get blinds from players and increase pot with blind amounts.
+     *
+     * @return void
+     */
+    public function takeBlindsAndAddToPot(): void
+    {
+        $small = $this->table->getSmallBlind();
+        $big = $this->table->getBigBlind();
+
+        $this->queue->getSmallBlindPlayer()->addToBets($small);
+        $this->queue->getSmallBlindPlayer()->decreaseBuyIn($small);
+        $this->queue->getBigBlindPlayer()->addToBets($big);
+        $this->queue->getBigBlindPlayer()->decreaseBuyIn($big);
+
+        $toPot = $big + $small;
+        $this->table->addMoneyToPot($toPot);
+    }
+
+    // /**
+    //  * Set initial message in the message entity.
+    //  *
+    //  * @return void
+    //  */
+    // public function setFirstMessage(): void
+    // {
+    //     $this->
+    // }
 
     /*
         Vad måste hända innan ett objekt av den här klassen initieras?
@@ -97,9 +141,9 @@ class TexasGame
         * Vad vill jag att den här klassen ska göra?
         * Tänk på att controllern pratar med denna klass, endast.
         INNAN PRE-FLOP:
-            1.  Sätt rollerna och platserna i kön innan spelstart (Queue)
-                - Sätt även spelarnas roller i setPlayerRole -> "bb", "sb" eller "d"
-            2.  Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (GameData)
+            1.  Sätt rollerna och platserna i kön innan spelstart (Queue) KLAR
+                - Sätt även spelarnas roller i setPlayerRole -> "bb", "sb" eller "d" KLAR
+            2.  Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (Table) KLAR
             3.  Hämta välkomstmeddelande från messageRepo (hämta hela tiden senaste 5 från databasen).
         PRE-FLOP:
             4.  Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in)
@@ -109,7 +153,7 @@ class TexasGame
             7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
                 - Beräkna även hur mycket som krävs för call.
             8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
-                Spelaren måste ha en egen path genom spellogiken, endast spelarens moves som sparas.
+                Spelaren måste ha en egen path genom spelflödet??. det är inte endast spelarens moves som sparas.
                 - Om spelaren fold:
                     * spelarens hasFolded sätts (Player->PlayerMoves)
                     * lägg till meddelande i messageboard
@@ -132,25 +176,15 @@ class TexasGame
                 Kolla om ComputerStu har färre moves än högsta möjliga antalet moves. Player->PlayerMoves->getNumberOfRoundMoves
                 Om ej foldat och har färre moves:
                 Kolla gamestage:
-                - Beroende på game stage det är får ComputerStu olika alternativ.
+                - Beroende på game stage får ComputerStu olika alternativ.
                     * Pre-flop:
                         - Om Stu inte har högsta betten: -> skapa metod för movesWhenHighestBet tre alternativ 50 50
                             * fold, call och raise
                         - Om Stu har högsta betten: -> skapa metod för movesWhenNotHighestBet två alternativ 50 50
                             * check och raise
-            X.  Hämta spelarnas bet som ska visas på sidan.
+            X.  Hämta spelarens bet som ska visas på sidan.
             X.  Kolla om spelrundan är över (GameLogic) via controller.
-            X.  Om 9:an är nej -> Kolla om spelet är redo att gå vidare till nästa runda (GameLogic) via controller.
+            X.  Om föregående är nej -> Kolla om spelet är redo att gå vidare till nästa runda (GameLogic) via controller.
             X.
     */
-
-    /**
-     * WHAT??
-     *
-     * @return bool
-     */
-    public function checkComputerPlayerBalance(): bool
-    {
-        return false;
-    }
 }
