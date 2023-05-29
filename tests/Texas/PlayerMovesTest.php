@@ -44,6 +44,22 @@ class PlayerMovesTest extends TestCase
     }
 
     /**
+     * Verify that PlayerMoves returns correct amount of moves.
+     */
+    public function testGetNumberOfMoves() : void
+    {
+        $this->moves->addToRoundMoves("check");
+        $this->moves->addToRoundMoves("raise");
+        $this->moves->addToRoundMoves("call");
+
+        $exp = 3;
+
+        $res = $this->moves->getNumberOfRoundMoves();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
      * Verify that PlayerMoves object can clear player moves.
      */
     public function testClearMoves() : void
