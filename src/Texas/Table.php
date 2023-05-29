@@ -38,8 +38,8 @@ class Table
      */
     public function __construct(int $buyIn)
     {
-        $this->smallBlind = 0.01 * $buyIn;
-        $this->bigBlind = 0.02 * $buyIn;
+        $this->smallBlind = intval(0.01 * $buyIn);
+        $this->bigBlind = intval(0.02 * $buyIn);
     }
 
     /**
