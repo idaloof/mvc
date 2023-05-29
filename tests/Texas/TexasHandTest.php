@@ -149,4 +149,36 @@ class TexasHandTest extends TestCase
 
         $this->assertEmpty($hand->getHoleCards());
     }
+
+    /**
+     * Verify that the correct array of strings (card images) is returned.
+     */
+    public function testGetHoleImages() : void
+    {
+        $hand = new TexasHand();
+
+        $hand->setHoleCards($this->holeCards);
+
+        $exp = ["AS", "8H"];
+
+        $res = $hand->getHoleCardsAsStrings();
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that the correct array of strings (card images) is returned.
+     */
+    public function testBestHandImages() : void
+    {
+        $hand = new TexasHand();
+
+        $hand->setBestHand($this->fullHand);
+
+        $exp = ["AS", "8H", "9D", "KC", "TH"];
+
+        $res = $hand->getBestHandAsImages();
+
+        $this->assertEquals($exp, $res);
+    }
 }
