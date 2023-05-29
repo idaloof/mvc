@@ -155,4 +155,32 @@ class QueueTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that GameLogic object returns correct small and big blind players.
+     */
+    public function testGetSmallAndBig() : void
+    {
+        $players = [
+            new TexasPlayer("Martin", 20, 20),
+            new ComputerStu("Stu", 20),
+            new ComputerStu("Mag", 20)
+        ];
+
+        $queue = new Queue($players);
+
+        $queue->setRolesBeforeGameStart();
+
+        $exp = "Stu";
+
+        $res = $queue->getSmallBlindPlayer()->getName();
+
+        $this->assertEquals($exp, $res);
+
+        $exp = "Mag";
+
+        $res = $queue->getBigBlindPlayer()->getName();
+
+        $this->assertEquals($exp, $res);
+    }
 }
