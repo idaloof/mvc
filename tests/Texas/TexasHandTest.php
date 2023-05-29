@@ -25,11 +25,11 @@ class TexasHandTest extends TestCase
     protected function setUp() : void
     {
         $cards = [
-            new Card("Ace of spades", "AS", "S", "A"),
-            new Card("Eight of hearts", "8H", "H", "8"),
-            new Card("Nine of diamonds", "9D", "D", "9"),
-            new Card("King of clubs", "KC", "C", "K"),
-            new Card("Ten of hearts", "10H", "H", "10")
+            new Card("A♠", "AS", "S", "A"),
+            new Card("8♥", "8H", "H", "8"),
+            new Card("9♦", "9D", "D", "9"),
+            new Card("K♣", "KC", "C", "K"),
+            new Card("T♥", "TH", "H", "T")
         ];
 
         for ($i = 0; $i < 2; $i++) {
@@ -50,7 +50,7 @@ class TexasHandTest extends TestCase
 
         $cards = $hand->getHoleCards();
 
-        $exp = "Ace of spades";
+        $exp = "A♠";
 
         $res = $cards[0]->getCardName();
 
@@ -74,7 +74,7 @@ class TexasHandTest extends TestCase
 
         $cards = $hand->getBestHand();
 
-        $exp = "Nine of diamonds";
+        $exp = '9♦';
 
         $res = $cards[2]->getCardName();
 
@@ -83,6 +83,23 @@ class TexasHandTest extends TestCase
         $exp = 5;
 
         $res = count($cards);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that best hand is set and the
+     * correct array of strings (card names) is returned.
+     */
+    public function testHandSetAndGetBestHandAsString() : void
+    {
+        $hand = new TexasHand();
+
+        $hand->setBestHand($this->fullHand);
+
+        $exp = ["A♠", "8♥", "9♦", "K♣", "T♥"];
+
+        $res = $hand->getBestHandAsString();
 
         $this->assertEquals($exp, $res);
     }
