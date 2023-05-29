@@ -24,7 +24,7 @@ class ProbabilityTraitTest extends TestCase
         "7" => 7,
         "8" => 8,
         "9" => 9,
-        "10" => 10,
+        "T" => 10,
         "J" => 10,
         "Q" => 10,
         "K" => 10
