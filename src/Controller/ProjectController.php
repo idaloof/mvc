@@ -86,11 +86,10 @@ class ProjectController extends AbstractController
 
     /* Texas-init Route */
     #[Route("/proj/texas-game", name: "p_texas_game")]
-    public function texas_game(
+    public function texasGame(
         HandEvaluator $handEvaluator,
         ManagerRegistry $registry
-    ): Response
-    {
+    ): Response {
         $deck = new TexasDeck();
         $gameLogic = new GameLogic();
         $gameData = new GameData();
@@ -133,4 +132,3 @@ class ProjectController extends AbstractController
         return $this->render('proj/texas-game.html.twig', $data);
     }
 }
-
