@@ -1,0 +1,13 @@
+/* Style sheet for project landing page */
+
+.proj-landing-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+    box-shadow: $box-shadow-main;
+    // background-color: #133c1c;
+    border: $proj-border-header-footer;
+}

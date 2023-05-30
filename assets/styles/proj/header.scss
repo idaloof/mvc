@@ -1,0 +1,29 @@
+/* Style sheet for project header */
+
+.proj-header {
+    max-width: $proj-max-width;
+    height: 200px;
+    box-shadow: none !important;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 0;
+    border: none !important;
+    filter: grayscale(50%);
+}
+
+.proj-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.proj-header-heading {
+    flex-wrap: nowrap;
+    font-size: 50px;
+    color: $proj-font-color-header-heading;
+    text-align: center;
+    font-family: $proj-font-family-header-heading;
+    width: 50%;
+    margin: 0 auto;
+    letter-spacing: 5px;
+}

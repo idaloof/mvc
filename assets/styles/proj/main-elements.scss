@@ -1,0 +1,45 @@
+/* Style sheet for project main elements */
+
+.proj-body {
+    // background-color: $bg-body;
+    max-width: $proj-max-width;
+    background-color: #000;
+    margin: 0 auto;
+    box-sizing: border-box;
+    color: $font-color-rest;
+    display: flex;
+    flex-direction: column;
+    line-height: $base-line-height;
+}
+
+html {
+    font-size: 100%;
+}
+
+.proj-main {
+    max-width: $proj-max-width;
+    padding: $magic-number;
+    background-color: #28383d;
+    box-shadow: none !important;
+    height: 60vh;
+    flex: 1;
+    border-top: $proj-border-header-footer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-container {
+    min-height: 100vh;
+    max-width: 64rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.p-para {
+    font-size: $base-font-size;
+    font-family: $proj-font-family-paragraph;
+    margin-bottom: $magic-number * 0.3;
+    color: $proj-font-color-paragraphs;
+}

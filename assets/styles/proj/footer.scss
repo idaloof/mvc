@@ -1,0 +1,37 @@
+/* Style sheet for project footer */
+
+.proj-footer {
+    max-width: $proj-max-width;
+    color: #fff;
+    bottom: 0;
+    height: 175px;
+    background-color: #5b3c43;
+    border-top: $proj-border-header-footer;
+    filter: grayscale(20%);
+}
+
+.footer {
+    padding: $magic-number;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.proj-footer-text {
+    flex-wrap: nowrap;
+    font-size: 22px;
+    color: $proj-font-color-header-heading;
+    text-align: center;
+    font-family: $proj-font-family-header-heading;
+    letter-spacing: 2px;
+}
+
+.small {
+    font-size: 17px;
+}
+
+.footer-addiction,
+.no-money {
+    width: 100%;
+    text-align: center;
+}

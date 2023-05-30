@@ -1,0 +1,14 @@
+/* Style sheet for project buttons */
+
+.p-button {
+    font-family: $proj-font-family-paragraph;
+    font-size: $base-font-size * 0.8;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    line-height: $base-line-height;
+    width: fit-content;
+    border: 1px solid #333;
+    background-image: linear-gradient(#fff, darken(#fff, 30%));
+    margin-top: $magic-number;
+}

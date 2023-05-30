@@ -1,0 +1,13 @@
+/* Style sheet for project headings */
+
+h2 {
+    text-align: center;
+    font-family: $font-family-heading;
+    width: 100px;
+    border-bottom: 2px double #333;
+}
+
+h3 {
+    text-align: center;
+    font-family: $font-family-heading;
+}

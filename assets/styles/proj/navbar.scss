@@ -1,0 +1,43 @@
+/* Style sheet for project typography */
+
+.proj-nav-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 2px;
+    align-items: center;
+    // justify-items: center;
+    // text-align: center;
+}
+
+.grid-home-icon-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    padding-left: $magic-number;
+    filter: hue-rotate(60deg);
+}
+
+.grid-nav-container {
+    grid-column: 3 / 11;
+    grid-row: 1 / 2;
+    justify-content: center;
+}
+
+.proj-nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    padding: 0;
+
+    li {
+        a {
+            text-decoration: none !important;
+            font-size: $base-font-size * 1.5;
+            color: $proj-font-color-navbar;
+            font-family: $proj-font-family-navbar;
+            margin: $magic-number * 0.4;
+        }
+
+        list-style: none;
+    }
+}
