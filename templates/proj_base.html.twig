@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="{{ asset('img/proj/aces.ico') }}">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,23 +15,30 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="proj-body" style="background-image: url({{ asset('img/proj/body-texas.jpg') }})">
+    <body class="proj-body">
 
     <div class="proj-page-container">
 
-        <header id="proj-header" class="proj-header" style="background-image: url({{ asset('img/site-header.jpg') }})">
-            <div class="logo-container">
-                <img src="{{ asset('img/logo.jpg') }}" alt="logo" width="200"/>
+        <header id="proj-header" class="proj-header" style="background-image: url({{ asset('img/proj/proj-header.png') }})">
+            <div class="header-heading">
+                <p class="proj-header-heading">TEXAS hold'em</p>
             </div>
-            <div class="nav-container">
-                <nav id="nav">
-                    <ul>
-                        <li><a href="{{ path('/') }}">
-                            <img class="home-icon" src="{{ asset('../img/proj/icons8-home.gif') }}">
-                        </a></li>
-                        <li><a href="{{ path('proj') }}">Proj</a></li>
-                    </ul>
-                </nav>
+            <div class="proj-nav-container">
+                <div class="grid-home-icon-container">
+                    <a href="{{ path('/') }}">
+                        <img src="{{ asset('img/proj/home.png') }}" alt="home icon" width="40">
+                    </a>
+                </div>
+                <div class="grid-nav-container">
+                    <nav id="nav" class="proj-nav">
+                        <ul class="proj-nav-ul">
+                            <li><a href="{{ path('proj') }}">Proj</a></li>
+                            <li><a href="{{ path('proj') }}">Om</a></li>
+                            <li><a href="{{ path('proj') }}">Api</a></li>
+                            <li><a href="{{ path('proj') }}">Databas</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </header>
 
@@ -40,10 +48,11 @@
         </main>
 
         <footer class="proj-footer">
-            <div class="myinfo">
-                <p>
-                    Martin 2023
-                </p>
+            <div class="no-money">
+                <p class="proj-footer-text">behöver du hjälp att sluta spela?</p>
+            </div>
+            <div class="footer-addiction">
+                <a href="https://spelberoende.se/" class="proj-footer-text small">Klicka här</a>
             </div>
         </footer>
 

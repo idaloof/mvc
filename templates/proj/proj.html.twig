@@ -1,10 +1,28 @@
 {% extends "proj_base.html.twig" %}
 
-{% block title %}Project{% endblock %}
+{% block title %}MVC Project{% endblock %}
 
 {% block main %}
-    <div class="proj-container">
-        <p>Handen är: {{ hand }}</p>
-        <p>Poängen är: {{ points }}</p>
+    <div class="proj-landing-container">
+        <div class="p-form-container">
+            <div class="p-form-header-container">
+                <h2 class="p-form-header">Välkommen!</h2>
+            </div>
+            <form class="p-wallet-form" action="{{ path('proj_post') }}" method="post">
+                <label class="p-label" for="wallet">Fyll din plånbok</label>
+                <input
+                    class="p-input"
+                    type="number"
+                    required="required"
+                    id="wallet"
+                    name="wallet"
+                    min="100"
+                    max="10000"
+                    step="100"
+                    placeholder="Hela hundratal, t.ex. 400, 1200..."
+                >
+                <input class="p-button" type="submit" value="Gå vidare">
+            </form>
+        </div>
     </div>
 {% endblock %}
