@@ -1,0 +1,39 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+    <div class="proj-buyin-container">
+        <div class="p-form-container">
+            <div class="p-form-header-container">
+                <h2 class="p-form-header">Snart dags...</h2>
+            </div>
+            <p class="p-para">Du har max {{ wallet }}kr spela för.</p>
+            <!-- BYT UT path i action-attributet! -->
+            <form class="p-form" action="{{ path('proj_create_players') }}" method="post">
+                <label class="p-label" for="name">Ditt namn</label>
+                <input
+                    class="p-input"
+                    type="text"
+                    required="required"
+                    id="name"
+                    name="name"
+                    placeholder="T.ex. Miss Aces"
+                >
+                <label class="p-label" for="buyin">Insats</label>
+                <input
+                    class="p-input"
+                    type="number"
+                    required="required"
+                    id="buyin"
+                    name="buyin"
+                    min="100"
+                    max="{{ wallet }}"
+                    step="100"
+                    placeholder="Hela hundratal, t.ex. 200, 900..."
+                >
+                <input class="p-button" type="submit" value="Starta spelet">
+            </form>
+        </div>
+    </div>
+{% endblock %}
