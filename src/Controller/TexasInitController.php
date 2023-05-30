@@ -25,6 +25,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class TexasInitController extends AbstractController
 {
     /* Texas-init Route */
+    #[Route("/proj/texas-buyin", name: "p_texas_buyin")]
+    public function texasBuyIn(
+    ): Response {
+
+        return $this->render('proj/texas-init.html.twig',);
+    }
+    /* Texas-init Route */
     #[Route("/proj/texas-init", name: "p_texas_init")]
     public function texasInit(
     ): Response {
@@ -49,11 +56,12 @@ class TexasInitController extends AbstractController
     #[Route("/proj/texas-game", name: "p_texas_game")]
     public function texasGame(
         HandEvaluator $handEvaluator,
-        ManagerRegistry $registry
+        ManagerRegistry $registry,
+        MessagesRepository $messageRepo,
+        TexasDeck $deck,
+        GameLogic $gameLogic,
+        GameData $gameData
     ): Response {
-        $deck = new TexasDeck();
-        $gameLogic = new GameLogic();
-        $gameData = new GameData();
         $player = new TexasPlayer("Martin", 1000, 500);
         $playerStu = new ComputerStu("Stu", 500);
         $playerCleve = new ComputerCleve("Cleve", 500);
@@ -61,10 +69,8 @@ class TexasInitController extends AbstractController
         $players = [$player, $playerStu, $playerCleve];
 
         $table = new Table(500);
-        $messageRepo = new MessagesRepository($registry);
         $queue = new Queue($players);
 
-        $deck = new TexasDeck();
         $deck->shuffleDeck();
 
         $game = new TexasGame(
