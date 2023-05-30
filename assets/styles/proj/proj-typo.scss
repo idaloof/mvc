@@ -1,0 +1,15 @@
+/* Style sheet for project typography */
+
+.proj-body {
+    // background-color: $bg-body;
+    max-width: 64rem;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    box-sizing: border-box;
+    color: $font-color-rest;
+    display: flex;
+    flex-direction: column;
+    padding: 0 $magic-number;
+    line-height: $base-line-height;
+}
