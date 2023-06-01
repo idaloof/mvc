@@ -24,12 +24,15 @@
     border: $proj-border-header-footer;
     padding: 0.2rem;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     justify-self: center;
 
     p {
-        font-family: $proj-font-family-tables;
+        font-size: $base-font-size * 1.3;
+        margin: 0;
+        font-family: $proj-font-family-message-board-heading;
     }
 }
 
