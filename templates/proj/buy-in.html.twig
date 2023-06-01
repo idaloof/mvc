@@ -11,7 +11,7 @@
             <p class="p-para">Du har max {{ wallet }}kr spela för.</p>
             <!-- BYT UT path i action-attributet! -->
             <form class="p-form" action="{{ path('proj_create_players') }}" method="post">
-                <label class="p-label" for="name">Ditt namn</label>
+                <label class="p-label" for="name">Ditt namn (maxlängd 10)</label>
                 <input
                     class="p-input"
                     type="text"
@@ -19,6 +19,7 @@
                     id="name"
                     name="name"
                     placeholder="T.ex. Miss Aces"
+                    maxlength="10"
                 >
                 <label class="p-label" for="buyin">Insats</label>
                 <input
