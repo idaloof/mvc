@@ -1,0 +1,48 @@
+/* Style sheet for project message board */
+
+.proj-message-container {
+    grid-column: 10 / 13;
+    grid-row: 4 / 10;
+    border-radius: 10px;
+    box-shadow: $box-shadow-main;
+    background-color: $proj-background-message-board;
+    border: $proj-border-messages;
+    filter: grayscale(40%);
+    overflow-y: scroll;
+    justify-self: center;
+    margin-right: 20px;
+}
+
+.message-board {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.message-board-heading {
+    text-align: center;
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0;
+    font-size: $base-font-size * 1.2;
+    font-family: $proj-font-family-message-board-heading;
+}
+
+.proj-message {
+    padding: 0.6rem;
+    margin: 0 auto;
+    margin-top: 0.4rem;
+    border-top: 1px solid #333;
+    width: 80%;
+}
+
+.message-heading {
+    text-align: left;
+    margin: 0.2rem 0;
+    font-family: $proj-font-family-message-heading;
+}
+
+.message-text {
+    margin: 0.2rem 0;
+    font-family: $proj-font-family-message;
+    font-size: $base-font-size * 0.8;
+}

@@ -2,11 +2,13 @@
 
 // Font families
 $proj-font-family-header-heading: 'Monoton', cursive;
-$proj-font-family-headings: 'Lora', serif; // BYT!
-$proj-font-family-paragraph: 'Scope One', serif; // BYT!
-$proj-font-family-messages: 'Times New Roman'; // BYT!
+$proj-font-family-headings: 'Lora', serif;
+$proj-font-family-paragraph: 'Scope One', serif;
+$proj-font-family-message-board-heading: 'Pacifico', cursive;
+$proj-font-family-message-heading: 'IBM Plex Sans Condensed', sans-serif;
+$proj-font-family-message: 'IBM Plex Sans', sans-serif;
 $proj-font-family-navbar: 'Bungee Shade', cursive;
-$proj-font-family-small: 'Times New Roman'; // BYT!
+$proj-font-family-tables: 'IBM Plex Mono', monospace;
 
 // Font colors
 $proj-font-color-header-heading: #ff3;
@@ -19,8 +21,8 @@ $proj-font-color-small: #000; //BYT
 // Borders
 $proj-border-header-footer: 2px solid #beb88f; //BYT
 $proj-border-page-container: 3px solid #fff; //BYT
-$proj-border-messages: 3px solid #fff; //BYT
-$proj-border-player-info: 3px solid #fff; //BYT
+$proj-border-messages: 2px solid #333; //BYT
+$proj-border-player-info: 1px solid #fff; //BYT
 $proj-border-form-div: 3px solid #fff; //BYT
 
 // Font sizes
@@ -29,8 +31,9 @@ $proj-font-size-h2: $base-font-size * 2; //BYT
 $proj-font-size-h3: $base-font-size * 1.35; //BYT
 
 // Background colors
-$proj-background-main: #333; //BYT
+$proj-background-main: #333;
+$proj-background-message-board: rgb(224, 224, 156);
 
 // Widths and heights
-$proj-max-width: 85rem;
+$proj-max-width: 75rem;
 $proj-form-width: 20rem;

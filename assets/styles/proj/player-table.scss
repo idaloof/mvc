@@ -1,0 +1,57 @@
+/* Style sheet for project player info table */
+
+// INFO TABLE
+
+.info-para {
+    font-size: smaller;
+    color: $proj-font-color-paragraphs;
+}
+
+.info-head {
+    font-family: $proj-font-family-tables;
+    font-size: $base-font-size;
+    color: #fff;
+    border-bottom: 4px double #fff;
+}
+
+.proj-table {
+    width: 140px;
+    border-collapse: collapse;
+}
+
+.proj-table-com {
+    width: 170px;
+    border-collapse: collapse;
+}
+
+// .proj-thead {
+
+// }
+
+.proj-thead-tr {
+    text-align: center;
+
+}
+
+.proj-thead-th {
+    font-family: $proj-font-family-tables;
+    font-size: $base-font-size * 0.85;
+    padding: 0.2rem;
+    color: #000;
+}
+
+// .proj-tbody {
+
+// }
+
+// .proj-tbody-tr {
+
+// }
+
+.proj-td {
+    font-family: $proj-font-family-tables;
+    font-size: $base-font-size * 0.7;
+    text-align: center;
+    padding: 0.2rem;
+    color: #000;
+}
