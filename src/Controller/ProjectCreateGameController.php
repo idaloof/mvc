@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\MessagesRepository;
 use App\Texas\GameData;
 use App\Texas\GameLogic;
 use App\Texas\HandEvaluator;
@@ -11,6 +10,7 @@ use App\Texas\Queue;
 use App\Texas\Table;
 use App\Texas\TexasDeck;
 use App\Texas\TexasGame;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +28,7 @@ class ProjectCreateGameController extends AbstractController
         HandEvaluator $handEvaluator,
         GameLogic $gameLogic,
         GameData $gameData,
-        MessagesRepository $messageRepo
+        ManagerRegistry $registry
     ): Response {
 
         /**
@@ -40,6 +40,8 @@ class ProjectCreateGameController extends AbstractController
         $queue = new Queue($players);
         $table = new Table($buyin);
 
+        $deck->shuffleDeck();
+
         $game = new TexasGame(
             $deck,
             $handEvaluator,
@@ -47,12 +49,11 @@ class ProjectCreateGameController extends AbstractController
             $gameData,
             $queue,
             $table,
-            $messageRepo,
             $players
         );
 
         $session->set('game', $game);
 
-        return $this->redirectToRoute('proj_pre_flop');
+        return $this->redirectToRoute('proj_game_init');
     }
 }
