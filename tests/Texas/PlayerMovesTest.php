@@ -78,6 +78,10 @@ class PlayerMovesTest extends TestCase
 
         $this->assertEquals($exp, $res);
 
+        $exp = 'raise';
+
+        $res = $this->moves->getLatestMove();
+
         $this->moves->clearRoundMoves();
 
         $exp = [];

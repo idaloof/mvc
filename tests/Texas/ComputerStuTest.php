@@ -139,10 +139,11 @@ class ComputerStuTest extends TestCase
         $exp = [
             'name' => "Stu",
             'role' => "",
-            'buy_in' => 20,
+            'buyIn' => 20,
             'hasFolded' => false,
             'bets' => 0,
-            'holeCards' => [],
+            'holeCards' => ['X', 'X'],
+            'move' => ''
         ];
 
         $res = $this->player->getPlayerData();

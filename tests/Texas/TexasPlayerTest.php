@@ -170,10 +170,12 @@ class TexasPlayerTest extends TestCase
         $exp = [
             'name' => "Martin",
             'role' => "",
-            'buy_in' => 20,
+            'buyIn' => 20,
             'hasFolded' => false,
             'bets' => 0,
             'holeCards' => [],
+            'wallet' => 20,
+            'move' => ''
         ];
 
         $res = $this->player->getPlayerData();
