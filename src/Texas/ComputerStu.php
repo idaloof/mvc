@@ -168,10 +168,11 @@ class ComputerStu implements PlayerInterface
         $playerData = [
             'name' => $this->name,
             'role' => $this->role,
-            'buy_in' => $this->buyIn,
+            'buyIn' => $this->buyIn,
             'hasFolded' => $this->moves->hasFolded(),
             'bets' => $this->bets,
-            'holeCards' => $this->getHand()->getBestHandAsImages(),
+            'holeCards' => ["X", "X"],
+            'move' => $this->getPlayerMoves()->getLatestMove()
         ];
 
         return $playerData;

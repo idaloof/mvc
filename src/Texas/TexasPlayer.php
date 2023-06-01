@@ -204,11 +204,13 @@ class TexasPlayer implements PlayerInterface
     {
         $playerData = [
             'name' => $this->name,
-            'role' => $this->role,
-            'buy_in' => $this->buyIn,
+            'role' => $this->getRole(),
+            'wallet' => $this->wallet,
+            'buyIn' => $this->buyIn,
             'hasFolded' => $this->moves->hasFolded(),
             'bets' => $this->bets,
-            'holeCards' => $this->getHand()->getHoleCardsAsStrings()
+            'holeCards' => $this->getHand()->getHoleCardsAsStrings(),
+            'move' => $this->getPlayerMoves()->getLatestMove()
         ];
 
         return $playerData;
