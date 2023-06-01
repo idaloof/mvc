@@ -29,7 +29,7 @@ class TexasInitController extends AbstractController
     public function texasBuyIn(
     ): Response {
 
-        return $this->render('proj/texas-init.html.twig',);
+        return $this->render('proj/texas-init.html.twig', );
     }
     /* Texas-init Route */
     #[Route("/proj/texas-init", name: "p_texas_init")]
@@ -56,7 +56,6 @@ class TexasInitController extends AbstractController
     #[Route("/proj/texas-game", name: "p_texas_game")]
     public function texasGame(
         HandEvaluator $handEvaluator,
-        ManagerRegistry $registry,
         TexasDeck $deck,
         GameLogic $gameLogic,
         GameData $gameData

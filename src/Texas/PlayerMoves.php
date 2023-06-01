@@ -51,7 +51,7 @@ class PlayerMoves
     {
         if ($this->roundMoves) {
             $moves = $this->getRoundMoves();
-            $this->$moves[array_key_last($moves)];
+            return $this->$moves[array_key_last($moves)];
         }
 
         return "";

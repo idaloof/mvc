@@ -19,7 +19,14 @@ class ProjectCreatePlayersController extends AbstractController
         SessionInterface $session,
         Request $request
     ): Response {
+        /**
+         * @var string $name
+         */
         $name = $request->request->get('name');
+
+        /**
+         * @var int $buyIn
+         */
         $buyIn = $request->request->get('buyin');
         $wallet = $session->get('wallet') - $buyIn;
 

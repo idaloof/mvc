@@ -10,9 +10,7 @@ use App\Texas\Queue;
 use App\Texas\Table;
 use App\Texas\TexasDeck;
 use App\Texas\TexasGame;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,12 +21,10 @@ class ProjectCreateGameController extends AbstractController
     #[Route("/proj/create-game", name: "proj_create_game")]
     public function projCreateGame(
         SessionInterface $session,
-        Request $request,
         TexasDeck $deck,
         HandEvaluator $handEvaluator,
         GameLogic $gameLogic,
-        GameData $gameData,
-        ManagerRegistry $registry
+        GameData $gameData
     ): Response {
 
         /**

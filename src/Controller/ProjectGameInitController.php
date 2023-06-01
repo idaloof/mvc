@@ -18,7 +18,6 @@ class ProjectGameInitController extends AbstractController
     #[Route("/proj/game-init", name: "proj_game_init")]
     public function projCreateGame(
         SessionInterface $session,
-        MessagesRepository $repo,
         ManagerRegistry $doctrine,
         Connection $connection
     ): Response {
@@ -56,9 +55,9 @@ class ProjectGameInitController extends AbstractController
 
         date_default_timezone_set('Europe/Stockholm');
 
-        $current_time = date('H:i');
+        $currentTime = date('H:i');
 
-        $message->setCreated(strval($current_time));
+        $message->setCreated(strval($currentTime));
         $message->setMessenger("Game");
         $message->setMessage(
             "Welcome! Play fair and good luck!"
