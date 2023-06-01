@@ -9,7 +9,7 @@
 
 namespace App\Texas;
 
-use App\Repository\MessagesRepository;
+// use App\Repository\MessagesRepository;
 
 class TexasGame
 {
@@ -43,10 +43,10 @@ class TexasGame
      */
     private Queue $queue;
 
-    /**
-     * @var MessagesRepository $messageRepo MessageRepository class which holds methods for the game logic.
-     */
-    private MessagesRepository $messageRepo;
+    // /**
+    //  * @var MessagesRepository $messageRepo MessageRepository class which holds methods for the game logic.
+    //  */
+    // private MessagesRepository $messageRepo;
 
     /**
      * @var Table $table Table class for keeping track of community cards and pot.
@@ -61,7 +61,6 @@ class TexasGame
      * @param GameLogic $gameLogic                  Object that manages game logic.
      * @param GameData $gameData                    Object that manages game data.
      * @param Table $table                          Object that manages game table.
-     * @param MessagesRepository $messageRepo       Object that manages messages towards database.
      * @param array<PlayerInterface> $players       Array of players.
      *
      */
@@ -72,7 +71,7 @@ class TexasGame
         GameData $gameData,
         Queue $queue,
         Table $table,
-        MessagesRepository $messageRepo,
+        // MessagesRepository $messageRepo,
         array $players
     ) {
         $this->deck = $deck;
@@ -81,7 +80,7 @@ class TexasGame
         $this->gameData = $gameData;
         $this->queue = $queue;
         $this->table = $table;
-        $this->messageRepo = $messageRepo;
+        // $this->messageRepo = $messageRepo;
         $this->players = $players;
     }
 
@@ -121,7 +120,8 @@ class TexasGame
      */
     public function dealStartingCards(): void
     {
-        foreach ($this->players as $player) {
+        $players = $this->queue->getQueue();
+        foreach ($players as $player) {
             $cards = $this->deck->drawMany(2);
 
             $player->getHand()->setHoleCards($cards);
@@ -136,6 +136,16 @@ class TexasGame
     public function getPlayers(): array
     {
         return $this->players;
+    }
+
+    /**
+     * This method returns the player objects of the queue.
+     *
+     * @return array<PlayerInterface> Players of the queue.
+     */
+    public function getQueuePlayers(): array
+    {
+        return $this->queue->getQueue();
     }
 
     /**
