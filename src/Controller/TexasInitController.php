@@ -57,7 +57,6 @@ class TexasInitController extends AbstractController
     public function texasGame(
         HandEvaluator $handEvaluator,
         ManagerRegistry $registry,
-        MessagesRepository $messageRepo,
         TexasDeck $deck,
         GameLogic $gameLogic,
         GameData $gameData
@@ -80,7 +79,6 @@ class TexasInitController extends AbstractController
             $gameData,
             $queue,
             $table,
-            $messageRepo,
             $players
         );
 
