@@ -49,7 +49,7 @@ class PlayerMoves
      */
     public function getLatestMove(): string
     {
-        if ($this->roundMoves) {
+        if (!empty($this->roundMoves)) {
             $moves = $this->getRoundMoves();
             return $moves[array_key_last($moves)];
         }
