@@ -58,9 +58,9 @@ class ProjectGameInitController extends AbstractController
         $currentTime = date('H:i');
 
         $message->setCreated(strval($currentTime));
-        $message->setMessenger("Game");
+        $message->setMessenger("Texas");
         $message->setMessage(
-            "Welcome! Play fair and good luck!"
+            "Välkommen och lycka till!"
         );
 
         $entityManager->persist($message);
