@@ -43,6 +43,21 @@ class PlayerMoves
     }
 
     /**
+     * Returns player's lates round move.
+     *
+     * @return string Player's latest round move.
+     */
+    public function getLatestMove(): string
+    {
+        if ($this->roundMoves) {
+            $moves = $this->getRoundMoves();
+            $this->$moves[array_key_last($moves)];
+        }
+
+        return "";
+    }
+
+    /**
      * Returns number of round moves.
      *
      * @return int Number of round moves.
