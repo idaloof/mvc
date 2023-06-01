@@ -2,18 +2,20 @@
 
 namespace App\Controller;
 
+use App\Repository\MessagesRepository;
 use App\Texas\TexasGame;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ProjectCreateMoreController extends AbstractController
+class ProjectPreFlopController extends AbstractController
 {
-    /* Proj Post Route */
-    #[Route("/proj/create-game", name: "proj_create_game")]
+    /* Proj PreFlop Route */
+    #[Route("/proj/pre-flop", name: "proj_pre_flop")]
     public function projCreateGame(
         SessionInterface $session,
+        MessagesRepository $repository
     ): Response {
 
         /**
@@ -21,6 +23,19 @@ class ProjectCreateMoreController extends AbstractController
          */
         $game = $session->get('game');
 
-        return $this->render('proj/proj-pre-flop.html.twig');
+        $queuePlayers = $game->getQueuePlayers();
+
+        $queuePlayersData = [];
+
+        foreach ($queuePlayers as $player) {
+            $queuePlayersData[] = $player->getPlayerData();
+        }
+
+        $messages = $repository->findAll();
+
+        return $this->render('proj/proj-pre-flop.html.twig', [
+            'queuePlayers' => $queuePlayersData,
+            'messages' => $messages
+        ]);
     }
 }
