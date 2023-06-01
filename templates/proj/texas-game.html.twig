@@ -5,15 +5,15 @@
 {% block main %}
     <div class="proj-container">
         <div>
-            <p>Namn: {{ Martin.name }}</p>
-            <p>Roll: {{ Martin.role }}</p>
-            <p>Insats: {{ Martin.buy_in }}$</p>
+            <p class="p-para">Namn: {{ Martin.name }}</p>
+            <p class="p-para">Roll: {{ Martin.role }}</p>
+            <p class="p-para">Insats: {{ Martin.buyIn }}$</p>
             {% if Martin.hasFolded %}
-                <p>Out: Har lagt sig.</p>
+                <p class="p-para">Out: Har lagt sig.</p>
             {% else %}
-                <p>In: Fortfarande med.</p>
+                <p class="p-para">In: Fortfarande med.</p>
             {% endif %}
-            <p>Bet: {{ Martin.bets }}$</p>
+            <p class="p-para">Bet: {{ Martin.bets }}$</p>
             {% for card in Martin.holeCards %}
                 <img class="one-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
             {% endfor %}
