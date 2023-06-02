@@ -136,4 +136,22 @@ class GameLogic
 
         return ($countReady === $playersLeft) ? true : false;
     }
+
+    /**
+     * Returns the highest number of action moves.
+     *
+     * @param array<PlayerInterface> Players of the game.
+     *
+     * @return int Highest number of action moves.
+     */
+    public function getHighestNumberOfActions(array $players): int
+    {
+        $actions = [];
+
+        foreach ($players as $player) {
+            array_push($actions, $player->getBets());
+        }
+
+        return max($actions);
+    }
 }

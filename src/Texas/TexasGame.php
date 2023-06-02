@@ -128,15 +128,15 @@ class TexasGame
         }
     }
 
-    /**
-     * This method returns the player objects of the game.
-     *
-     * @return array<PlayerInterface> Players of the game.
-     */
-    public function getPlayers(): array
-    {
-        return $this->players;
-    }
+    // /**
+    //  * This method returns the player objects of the game.
+    //  *
+    //  * @return array<PlayerInterface> Players of the game.
+    //  */
+    // public function getPlayers(): array
+    // {
+    //     return $this->players;
+    // }
 
     /**
      * This method returns the player objects of the queue.
@@ -146,6 +146,52 @@ class TexasGame
     public function getQueuePlayers(): array
     {
         return $this->queue->getQueue();
+    }
+
+    /**
+     * Returns number of possible moves for player, 2 or 3.
+     *
+     * @param PlayerInterface Player to return moves for.
+     *
+     * @return int Number of possible moves.
+     */
+    public function getPossibleMoves(PlayerInterface $player): int
+    {
+        $players = $this->queue->getQueue();
+
+        $playerBet = $player->getBets();
+        $playerMoves = $player->getPlayerMoves()->getNumberOfRoundMoves();
+
+        $highestBet = $this->gameLogic->getHighestCurrentBet($players);
+        $highestMoves = $this->gameLogic->getHighestNumberOfActions($players);
+
+        if ($playerBet === $highestBet && $playerMoves < $highestMoves) {
+            return 2;
+        }
+
+        return 3;
+    }
+
+    /**
+     * Dequeues player and returns it.
+     *
+     * @return PlayerInterface First player in queue.
+     */
+    public function dequeuePlayer(): PlayerInterface
+    {
+        return $this->queue->dequeue();
+    }
+
+    /**
+     * Enqueues player
+     *
+     * @param PlayerInterface $player Player to enqueue.
+     *
+     * @return void
+     */
+    public function enqueuePlayer(PlayerInterface $player): void
+    {
+        $this->queue->enqueue($player);
     }
 
     /**
@@ -188,7 +234,7 @@ class TexasGame
             4.  Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in) KLART
             5.  Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand) KLART
                 - I controllern hämtas spelarnas hole cards som ska visas på sidan. KLART (vet hur det ska gå till i alla fall!)
-            6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan.
+            6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan. 
             7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
                 - Beräkna även hur mycket som krävs för call.
             8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
@@ -212,7 +258,7 @@ class TexasGame
                 - Beräkna även hur mycket som krävs för call.
             X.  ComputerStu's tur:
                 Kolla om ComputerStu har foldat. Player->PlayerMoves->hasFolded
-                Kolla om ComputerStu har färre moves än högsta möjliga antalet moves. Player->PlayerMoves->getNumberOfRoundMoves
+                Kolla om ComputerStu har färre moves än högsta antalet moves. Player->PlayerMoves->getNumberOfRoundMoves
                 Om ej foldat och har färre moves:
                 Kolla gamestage:
                 - Beroende på game stage får ComputerStu olika alternativ.
