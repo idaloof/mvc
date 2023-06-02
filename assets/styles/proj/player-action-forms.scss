@@ -1,0 +1,12 @@
+/* Style sheet for player action forms */
+
+.action-form-container {
+    grid-column: 7 / 10;
+    grid-row: 11 / 13;
+}
+
+.action-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

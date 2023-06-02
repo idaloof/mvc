@@ -12,3 +12,27 @@
     background-image: linear-gradient(#fff, darken(#fff, 30%));
     margin-top: $magic-number;
 }
+
+.p-button.call {
+    font-family: $proj-font-family-tables;
+    background-image: linear-gradient(#266e3d, darken(#abe69e, 10%));
+    filter: grayscale(20%);
+}
+
+.p-button.raise {
+    font-family: $proj-font-family-tables;
+    background-image: linear-gradient(#6e5c26, darken(#e6cf9e, 10%));
+    filter: grayscale(20%);
+}
+
+.p-button.fold {
+    font-family: $proj-font-family-tables;
+    background-image: linear-gradient(#6e2626, darken(#e6a69e, 10%));
+    filter: grayscale(20%);
+}
+
+.p-button.check {
+    font-family: $proj-font-family-tables;
+    background-image: linear-gradient(#39648f, darken(#9ebee6, 5%));
+    filter: grayscale(20%);
+}
