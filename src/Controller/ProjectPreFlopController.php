@@ -25,6 +25,24 @@ class ProjectPreFlopController extends AbstractController
 
         $queuePlayers = $game->getQueuePlayers();
 
+        // KOLLA OM RUNDAN ÄR ÖVER, I SÅ FALL:
+        //      --> REDIRECT TILL SIDA SOM STÄLLER OM ALLT INFÖR NY RUNDA.
+        // ANNARS:
+        //      --> NÄSTA IF-SATS NEDAN
+
+        // KOLLA OM SPELET KAN GÅ VIDARE TILL NÄSTA RUNDA, I SÅ FALL:
+        //      --> REDIRECT TILL SIDA SOM STÄLLER OM RELEVANT DATA
+        //      --> SKIFTAR KÖN
+        //      --> DELAR UT COMMUNITY CARDS
+        //      --> REDIRECT TILL NÄSTA STAGE CONTROLLER
+        // ANNARS:
+        //      --> NÄSTA IF-SATS NEDAN
+
+        // KOLLA OM FÖRSTA SPELAREN I KÖN HAR FOLDAT, I SÅ FALL:
+        //      --> SKIFTA KÖN
+        // ANNARS:
+        //      --> RENDERA SIDAN
+
         $queuePlayersData = [];
 
         foreach ($queuePlayers as $player) {
@@ -33,9 +51,16 @@ class ProjectPreFlopController extends AbstractController
 
         $messages = $repository->findAll();
 
+        // KOLLA HUR MÅNGA MOVES SPELAREN KAN GÖRA
+        $player = $game->dequeuePlayer();
+        $game->enqueuePlayer($player);
+
+        $possibleMoves = $game->getPossibleMoves($player);
+
         return $this->render('proj/proj-pre-flop.html.twig', [
             'queuePlayers' => $queuePlayersData,
-            'messages' => $messages
+            'messages' => $messages,
+            'moves' => $possibleMoves
         ]);
     }
 }
