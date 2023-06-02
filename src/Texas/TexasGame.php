@@ -195,6 +195,18 @@ class TexasGame
     }
 
     /**
+     * Checks if round is over.
+     *
+     * @return bool
+     */
+    public function isRoundOver(): bool
+    {
+        $players = $this->queue->getQueue();
+
+        return $this->gameLogic->isRoundOver($players);
+    }
+
+    /**
      * This method resets the data properties of all objects before next round
      */
     /* A public function that resets:
