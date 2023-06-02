@@ -1,29 +1,29 @@
 <?php
 
-// namespace App\Controller;
+namespace App\Controller;
 
-// // use App\Entity\Messages;
-// use App\Texas\ComputerCleve;
-// use App\Texas\ComputerStu;
-// use App\Texas\GameData;
-// use App\Texas\GameLogic;
-// use App\Texas\HandEvaluator;
-// use App\Texas\Queue;
-// use App\Texas\Table;
-// use App\Texas\TexasDeck;
-// use App\Texas\TexasGame;
-// use App\Repository\MessagesRepository;
-// // use Doctrine\Persistence\ManagerRegistry;
-// use App\Texas\TexasPlayer;
+// use App\Entity\Messages;
+use App\Texas\ComputerCleve;
+use App\Texas\ComputerStu;
+use App\Texas\GameData;
+use App\Texas\GameLogic;
+use App\Texas\HandEvaluator;
+use App\Texas\Queue;
+use App\Texas\Table;
+use App\Texas\TexasDeck;
+use App\Texas\TexasGame;
+use App\Repository\MessagesRepository;
 // use Doctrine\Persistence\ManagerRegistry;
-// use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-// // use Symfony\Component\HttpFoundation\Request;
-// use Symfony\Component\HttpFoundation\Response;
-// // use Symfony\Component\HttpFoundation\Session\SessionInterface;
-// use Symfony\Component\Routing\Annotation\Route;
+use App\Texas\TexasPlayer;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+// use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+// use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
-// class TexasInitController extends AbstractController
-// {
+class TexasInitController extends AbstractController
+{
 //     /* Texas-init Route */
 //     #[Route("/proj/texas-buyin", name: "p_texas_buyin")]
 //     public function texasBuyIn(
@@ -95,4 +95,4 @@
 
 //         return $this->render('proj/texas-game.html.twig', $data);
 //     }
-// }
+}
