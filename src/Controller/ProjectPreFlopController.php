@@ -25,11 +25,6 @@ class ProjectPreFlopController extends AbstractController
 
         $queuePlayers = $game->getQueuePlayers();
 
-        // KOLLA OM RUNDAN ÄR ÖVER, I SÅ FALL:
-        //      --> REDIRECT TILL SIDA SOM STÄLLER OM ALLT INFÖR NY RUNDA.
-        // ANNARS:
-        //      --> NÄSTA IF-SATS NEDAN
-
         // KOLLA OM SPELET KAN GÅ VIDARE TILL NÄSTA RUNDA, I SÅ FALL:
         //      --> REDIRECT TILL SIDA SOM STÄLLER OM RELEVANT DATA
         //      --> SKIFTAR KÖN
@@ -51,16 +46,28 @@ class ProjectPreFlopController extends AbstractController
 
         $messages = $repository->findAll();
 
-        // KOLLA HUR MÅNGA MOVES SPELAREN KAN GÖRA
+        // TA FRAM HUR MÅNGA MOVES SPELAREN KAN GÖRA
         $player = $game->dequeuePlayer();
         $game->enqueuePlayer($player);
 
         $possibleMoves = $game->getPossibleMoves($player);
 
+        // Beräkna hur mycket för call samt
+        // min och max raise utifrån spelarens bet, pot och högsta bet.
+        $highestBet = $game->getHighestCurrentBet();
+        $pot = $game->getPot();
+
+        $callSize = $highestBet - $player->getBets();
+        $maxRaise = $callSize + $pot;
+        $minRaise = $callSize + $game->getBigBlind();
+
         return $this->render('proj/proj-pre-flop.html.twig', [
             'queuePlayers' => $queuePlayersData,
             'messages' => $messages,
-            'moves' => $possibleMoves
+            'moves' => $possibleMoves,
+            'call' => $callSize,
+            'maxRaise' => $maxRaise,
+            'minRaise' => $minRaise,
         ]);
     }
 }
