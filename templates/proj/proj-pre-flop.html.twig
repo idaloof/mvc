@@ -99,52 +99,106 @@
         </div>
     </div>
     <div class="action-form-container">
-            <form class="action-form" action="" method="">
-                {% if moves == 3 %}
-                    <div class="proj-call action">
-                        <button
-                            class="p-button call"
-                            onClick="this.form.action='';this.form.method='post';"
-                        >
-                        Call
-                        </button>
-                    </div>
-                    <div class="proj-raise action">
-                        <button
-                            class="p-button raise"
-                            onClick="this.form.action='';this.form.method='post';"
-                        >
-                        Raise
-                        </button>
-                    </div>
-                    <div class="proj-fold action">
-                        <button
-                            class="p-button fold"
-                            onClick="this.form.action='';this.form.method='post';"
-                        >
-                        Fold
-                        </button>
-                    </div>
-                {% elseif moves == 2 %}
-                    <div class="proj-check action">
-                        <button
-                            class="p-button check"
-                            onClick="this.form.action='';this.form.method='post';"
-                        >
-                        Check
-                        </button>
-                    </div>
-                    <div class="proj-raise action">
-                        <button
-                            class="p-button raise"
-                            onClick="this.form.action='';this.form.method='post';"
-                        >
-                        Raise
-                        </button>
-                    </div>
-                {% endif %}
+        {% if moves == 3 %}
+            <form class="action-form call" action="" method="">
+                <div class="proj-call action">
+                    <button
+                        class="p-button call"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Call ({{ call }})
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        type="number"
+                        value="{{ call }}"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="call-amount"
+                        id="call-amount"
+                    >
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="call"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="call-message"
+                    >
+                </div>
             </form>
-        </div>
+            <form class="action-form raise" action="" method="">
+                <div class="proj-raise action">
+                    <button
+                        class="p-button raise"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Raise
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        class="p-input raise"
+                        type="number"
+                        required="required"
+                        max="{{ maxRaise }}"
+                        min="{{ minRaise }}"
+                        name="raise-amount"
+                        id="raise-amount"
+                    >
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="raise"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="raise-message"
+                    >
+                </div>
+            </form>
+            <form class="action-form fold" action="" method="">
+                <div class="proj-fold action">
+                    <button
+                        class="p-button fold"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Fold
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="fold"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="fold-message"
+                    >
+                </div>
+            </form>
+        {% elseif moves == 2 %}
+                <div class="proj-check action">
+                    <button
+                        class="p-button check"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Check
+                    </button>
+                </div>
+                <div class="proj-raise action">
+                    <button
+                        class="p-button raise"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Raise
+                    </button>
+                </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
