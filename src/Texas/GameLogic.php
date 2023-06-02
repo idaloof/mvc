@@ -149,7 +149,7 @@ class GameLogic
         $actions = [];
 
         foreach ($players as $player) {
-            array_push($actions, $player->getBets());
+            array_push($actions, $player->getPlayerMoves()->getNumberOfRoundMoves());
         }
 
         return max($actions);
