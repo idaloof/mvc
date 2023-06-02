@@ -183,7 +183,7 @@ class TexasGame
     }
 
     /**
-     * Enqueues player
+     * Enqueues player.
      *
      * @param PlayerInterface $player Player to enqueue.
      *
@@ -204,6 +204,48 @@ class TexasGame
         $players = $this->queue->getQueue();
 
         return $this->gameLogic->isRoundOver($players);
+    }
+
+    /**
+     * Gets highest current bet.
+     *
+     * @return int Highest current bet.
+     */
+    public function getHighestCurrentBet(): int
+    {
+        $players = $this->queue->getQueue();
+
+        return $this->gameLogic->getHighestCurrentBet($players);
+    }
+
+    /**
+     * Gets pot size.
+     *
+     * @return int Pot size.
+     */
+    public function getPot(): int
+    {
+        return $this->table->getPot();
+    }
+
+    /**
+     * Gets small blind.
+     *
+     * @return int Small blind.
+     */
+    public function getSmallBlind(): int
+    {
+        return $this->table->getSmallBlind();
+    }
+
+    /**
+     * Gets big blind.
+     *
+     * @return int Big blind.
+     */
+    public function getBigBlind(): int
+    {
+        return $this->table->getBigBlind();
     }
 
     /**
