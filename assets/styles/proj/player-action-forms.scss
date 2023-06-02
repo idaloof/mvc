@@ -3,10 +3,15 @@
 .action-form-container {
     grid-column: 7 / 10;
     grid-row: 11 / 13;
-}
-
-.action-form {
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+
+.p-input.call {
+    border: none !important;
+}
+
+.p-input.raise {
+    width: 100%;
 }
