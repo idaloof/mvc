@@ -60,7 +60,7 @@ class ProjectGameInitController extends AbstractController
         $message->setCreated(strval($currentTime));
         $message->setMessenger("Texas");
         $message->setMessage(
-            "Välkommen och lycka till!"
+            "Pot Limit Texas Hold'em! Nu kör vi."
         );
 
         $entityManager->persist($message);
