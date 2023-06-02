@@ -98,5 +98,53 @@
             {% endfor %}
         </div>
     </div>
+    <div class="action-form-container">
+            <form class="action-form" action="" method="">
+                {% if moves == 3 %}
+                    <div class="proj-call action">
+                        <button
+                            class="p-button call"
+                            onClick="this.form.action='';this.form.method='post';"
+                        >
+                        Call
+                        </button>
+                    </div>
+                    <div class="proj-raise action">
+                        <button
+                            class="p-button raise"
+                            onClick="this.form.action='';this.form.method='post';"
+                        >
+                        Raise
+                        </button>
+                    </div>
+                    <div class="proj-fold action">
+                        <button
+                            class="p-button fold"
+                            onClick="this.form.action='';this.form.method='post';"
+                        >
+                        Fold
+                        </button>
+                    </div>
+                {% elseif moves == 2 %}
+                    <div class="proj-check action">
+                        <button
+                            class="p-button check"
+                            onClick="this.form.action='';this.form.method='post';"
+                        >
+                        Check
+                        </button>
+                    </div>
+                    <div class="proj-raise action">
+                        <button
+                            class="p-button raise"
+                            onClick="this.form.action='';this.form.method='post';"
+                        >
+                        Raise
+                        </button>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
