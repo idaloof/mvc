@@ -12,7 +12,7 @@ use App\Texas\Queue;
 use App\Texas\Table;
 use App\Texas\TexasDeck;
 use App\Texas\TexasGame;
-use App\Repository\MessagesRepository;
+// use App\Repository\MessagesRepository;
 // use Doctrine\Persistence\ManagerRegistry;
 use App\Texas\TexasPlayer;
 use Doctrine\Persistence\ManagerRegistry;
@@ -52,47 +52,47 @@ class TexasInitController extends AbstractController
     //     return $this->render('proj/texas-init.html.twig', $data);
     // }
 
-//     /* Texas-init Route */
-//     #[Route("/proj/texas-game", name: "p_texas_game")]
-//     public function texasGame(
-//         HandEvaluator $handEvaluator,
-//         TexasDeck $deck,
-//         GameLogic $gameLogic,
-//         GameData $gameData
-//     ): Response {
-//         $player = new TexasPlayer("Martin", 1000, 500);
-//         $playerStu = new ComputerStu("Stu", 500);
-//         $playerCleve = new ComputerCleve("Cleve", 500);
+    /* Texas-init Route */
+    #[Route("/proj/texas-game", name: "p_texas_game")]
+    public function texasGame(
+        HandEvaluator $handEvaluator,
+        TexasDeck $deck,
+        GameLogic $gameLogic,
+        GameData $gameData
+    ): Response {
+        $player = new TexasPlayer("Martin", 1000, 500);
+        $playerStu = new ComputerStu("Stu", 500);
+        $playerCleve = new ComputerCleve("Cleve", 500);
 
-//         $players = [$player, $playerStu, $playerCleve];
+        $players = [$player, $playerStu, $playerCleve];
 
-//         $table = new Table(500);
-//         $queue = new Queue($players);
+        $table = new Table(500);
+        $queue = new Queue($players);
 
-//         $deck->shuffleDeck();
+        $deck->shuffleDeck();
 
-//         $game = new TexasGame(
-//             $deck,
-//             $handEvaluator,
-//             $gameLogic,
-//             $gameData,
-//             $queue,
-//             $table,
-//             $players
-//         );
+        $game = new TexasGame(
+            $deck,
+            $handEvaluator,
+            $gameLogic,
+            $gameData,
+            $queue,
+            $table,
+            $players
+        );
 
-//         $game->setQueueAndRoles();
-//         $game->takeBlindsAndAddToPot();
-//         $game->dealStartingCards();
-//         $players = $game->getPlayers();
+        $game->setQueueAndRoles();
+        $game->takeBlindsAndAddToPot();
+        $game->dealStartingCards();
+        $players = $game->getQueuePlayers();
 
-//         $data = [];
+        $data = [];
 
-//         foreach ($players as $player) {
-//             $name = $player->getName();
-//             $data[$name] = $player->getPlayerData();
-//         }
+        foreach ($players as $player) {
+            $name = $player->getName();
+            $data[$name] = $player->getPlayerData();
+        }
 
-//         return $this->render('proj/texas-game.html.twig', $data);
-//     }
+        return $this->render('proj/texas-game.html.twig', $data);
+    }
 }
