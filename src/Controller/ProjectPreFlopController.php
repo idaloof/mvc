@@ -17,7 +17,14 @@ class ProjectPreFlopController extends AbstractController
         SessionInterface $session,
         MessagesRepository $repository
     ): Response {
-
+        // HÄR ELLER VIA EN ANNAN ROUTE MÅSTE DET SKE EN RESET INFÖR NY RUNDA
+        /*
+            Alla spelarbets
+            Potten
+            Typ allt i GameData (kolla --> kanske fixa en metod i GameData som resettar den)
+            Samma reset för spelaren också?
+            Queue har ju en reset inför ny runda
+        */
         /**
          * @var TexasGame $game
          */
@@ -47,8 +54,7 @@ class ProjectPreFlopController extends AbstractController
         $messages = $repository->findAll();
 
         // TA FRAM HUR MÅNGA MOVES SPELAREN KAN GÖRA
-        $player = $game->dequeuePlayer();
-        $game->enqueuePlayer($player);
+        $player = $game->getQueuePlayers()[0];
 
         $possibleMoves = $game->getPossibleMoves($player);
 
@@ -68,6 +74,7 @@ class ProjectPreFlopController extends AbstractController
             'call' => $callSize,
             'maxRaise' => $maxRaise,
             'minRaise' => $minRaise,
+            'callUrl' => $this->generateUrl('proj_player_call')
         ]);
     }
 }
