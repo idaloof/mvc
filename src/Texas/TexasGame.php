@@ -249,6 +249,38 @@ class TexasGame
     }
 
     /**
+     * Ready for next stage.
+     *
+     * @return bool
+     */
+    public function isGameReadyForNextRound(): bool
+    {
+        $players = $this->queue->getQueue();
+
+        return $this->gameLogic->isGameReadyForNextStage($players);
+    }
+
+    /**
+     * Player call actions.
+     *
+     * @param int $callAmount Amount to add to bets, remove from buyIn.
+     *
+     * @return PlayerInterface
+     */
+    public function playerCalls(int $callAmount): PlayerInterface
+    {
+        $player = $this->queue->dequeue();
+
+        $player->addToBets($callAmount);
+        $player->decreaseBuyIn($callAmount);
+        $this->table->addMoneyToPot($callAmount);
+
+        $this->queue->enqueue($player);
+
+        return $player;
+    }
+
+    /**
      * This method resets the data properties of all objects before next round
      */
     /* A public function that resets:
