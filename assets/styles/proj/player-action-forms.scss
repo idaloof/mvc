@@ -1,8 +1,9 @@
 /* Style sheet for player action forms */
 
 .action-form-container {
-    grid-column: 7 / 10;
+    grid-column: 7 / 11;
     grid-row: 11 / 13;
+    justify-self: flex-start;
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -14,4 +15,5 @@
 
 .p-input.raise {
     width: 100%;
+    font-size: smaller;
 }
