@@ -142,7 +142,7 @@ class ComputerStuTest extends TestCase
             'buyIn' => 20,
             'hasFolded' => false,
             'bets' => 0,
-            'holeCards' => ['X', 'X'],
+            'holeCards' => [],
             'move' => ''
         ];
 

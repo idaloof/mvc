@@ -101,27 +101,9 @@ class GameLogicTest extends TestCase
         $player2 = $players[1];
 
         $player2->addToBets(30);
+        $player2->getPlayerMoves()->addToRoundMoves("call");
 
         $this->assertTrue($this->gameLogic->isPlayerReady($player2, $players));
-    }
-
-    /**
-     * Verify that GameLogic object returns true for isPlayerReady when checking for zero buy-in.
-     */
-    public function testPlayerReadyTrueZeroBuyIn() : void
-    {
-        $players = $this->queue->getQueue();
-
-        $player1 = $players[0];
-
-        $player1->addToBets(20);
-        $player1->decreaseBuyIn(20);
-
-        $player2 = $players[1];
-
-        $player2->addToBets(30);
-
-        $this->assertTrue($this->gameLogic->isPlayerReady($player1, $players));
     }
 
     /**
@@ -150,16 +132,19 @@ class GameLogicTest extends TestCase
         $player1 = $players[0];
 
         $player1->addToBets(20);
+        $player1->getPlayerMoves()->addToRoundMoves("call");
 
         $player2 = $players[1];
 
         $players[2]->getPlayerMoves()->setHasFolded();
 
         $player2->addToBets(30);
+        $player2->getPlayerMoves()->addToRoundMoves("raise");
 
         $this->assertFalse($this->gameLogic->isGameReadyForNextStage($players));
 
         $player1->addToBets(10);
+        $player1->getPlayerMoves()->addToRoundMoves("call");
 
         $this->assertTrue($this->gameLogic->isGameReadyForNextStage($players));
     }

@@ -25,11 +25,11 @@ class TexasHandTest extends TestCase
     protected function setUp() : void
     {
         $cards = [
-            new Card("A♠", "AS", "S", "A"),
-            new Card("8♥", "8H", "H", "8"),
-            new Card("9♦", "9D", "D", "9"),
-            new Card("K♣", "KC", "C", "K"),
-            new Card("T♥", "TH", "H", "T")
+            new Card("A♠", "AS", "S", "A", "14"),
+            new Card("8♥", "8H", "H", "8", "8"),
+            new Card("9♦", "9D", "D", "9", "9"),
+            new Card("K♣", "KC", "C", "K", "13"),
+            new Card("T♥", "TH", "H", "T", "10")
         ];
 
         for ($i = 0; $i < 2; $i++) {

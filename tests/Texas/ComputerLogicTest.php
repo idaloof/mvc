@@ -10,6 +10,9 @@ use App\Repository\PreFlopRankingsRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @SuppressWarnings(PHPMD)
+ */
 class ComputerLogicTest extends TestCase
 {
     /**
@@ -74,8 +77,8 @@ class ComputerLogicTest extends TestCase
     public function testGetHoleRanks(): void
     {
         $cards = [
-            new Card("Ace of spades", "AS", "S", "A"),
-            new Card("Ace of clubs", "AC", "C", "A")
+            new Card("Ace of spades", "AS", "S", "A", "14"),
+            new Card("Ace of clubs", "AC", "C", "A", "14")
         ];
 
         $exp = "AA";
@@ -91,8 +94,8 @@ class ComputerLogicTest extends TestCase
     public function testGetHoleTypeOffSuit(): void
     {
         $cards = [
-            new Card("King of spades", "KS", "S", "K"),
-            new Card("Ace of clubs", "AC", "C", "A")
+            new Card("King of spades", "KS", "S", "K", "13"),
+            new Card("Ace of clubs", "AC", "C", "A", "14")
         ];
 
         $exp = "o";
@@ -108,8 +111,8 @@ class ComputerLogicTest extends TestCase
     public function testGetHoleTypeSuited(): void
     {
         $cards = [
-            new Card("King of clubs", "KC", "C", "K"),
-            new Card("Ace of clubs", "AC", "C", "A")
+            new Card("King of clubs", "KC", "C", "K", "13"),
+            new Card("Ace of clubs", "AC", "C", "A", "14")
         ];
 
         $exp = "s";
@@ -125,8 +128,8 @@ class ComputerLogicTest extends TestCase
     public function testGetHoleTypePair(): void
     {
         $cards = [
-            new Card("Ace of spades", "AS", "S", "A"),
-            new Card("Ace of clubs", "AC", "C", "A")
+            new Card("Ace of spades", "AS", "S", "A", "14"),
+            new Card("Ace of clubs", "AC", "C", "A", "14")
         ];
 
         $exp = "p";
@@ -134,5 +137,106 @@ class ComputerLogicTest extends TestCase
         $res = $this->computerLogic->getHoleType($cards);
 
         $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verifies that correct number of elements exist in returned array.
+     */
+    public function testStuMoveReturnArrayTwo(): void
+    {
+        $player = $this->createMock(PlayerInterface::class);
+
+        $moves = 2;
+        $callSize = 20;
+        $minRaise = 20;
+        $maxRaise = 40;
+
+        $repo = $this->createMock(PreFlopRankingsRepository::class);
+        $computerLogic = new ComputerLogic($repo);
+        $result = $computerLogic->setAndGetStuMove($player, $moves, $callSize, $minRaise, $maxRaise);
+
+        $exp = 2;
+
+        $res = count($result);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verifies that correct array is returned.
+     */
+    public function testStuFoldsCorrectArray(): void
+    {
+        $player = $this->createMock(PlayerInterface::class);
+
+        $repo = $this->createMock(PreFlopRankingsRepository::class);
+        $computerLogic = new ComputerLogic($repo);
+        $result = $computerLogic->wrapperStuFolds($computerLogic, $player, 14, 14, 14);
+
+        $this->assertEquals(["fold", ""], $result);
+    }
+
+    /**
+     * Verifies that correct array is returned.
+     */
+    public function testStuChecksCorrectArray(): void
+    {
+        $player = $this->createMock(PlayerInterface::class);
+
+        $repo = $this->createMock(PreFlopRankingsRepository::class);
+        $computerLogic = new ComputerLogic($repo);
+        $result = $computerLogic->wrapperStuChecks($computerLogic, $player, 14, 14, 14);
+
+        $this->assertEquals(["check", ""], $result);
+    }
+
+    /**
+     * Verifies that correct array is returned.
+     */
+    public function testStuCallsCorrectArray(): void
+    {
+        $player = $this->createMock(PlayerInterface::class);
+
+        $repo = $this->createMock(PreFlopRankingsRepository::class);
+        $computerLogic = new ComputerLogic($repo);
+
+        $callSize = 20;
+        $minRaise = 20;
+        $maxRaise = 40;
+
+        $result = $computerLogic->wrapperStuCalls(
+            $computerLogic,
+            $player,
+            $callSize,
+            $minRaise,
+            $maxRaise
+        );
+
+        $this->assertEquals(["call", 20], $result);
+    }
+
+    /**
+     * Verifies that correct array is returned.
+     */
+    public function testStuRaisesCorrectArray(): void
+    {
+        $player = $this->createMock(PlayerInterface::class);
+
+        $repo = $this->createMock(PreFlopRankingsRepository::class);
+        $computerLogic = new ComputerLogic($repo);
+
+        $callSize = 20;
+        $minRaise = 20;
+        $maxRaise = 40;
+
+        $result = $computerLogic->wrapperStuRaises(
+            $computerLogic,
+            $player,
+            $callSize,
+            $minRaise,
+            $maxRaise
+        );
+
+        $this->assertGreaterThanOrEqual(20, $result[1]);
     }
 }

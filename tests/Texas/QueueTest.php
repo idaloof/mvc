@@ -145,7 +145,7 @@ class QueueTest extends TestCase
 
         $queue->setRolesBeforeGameStart();
 
-        $playerRoles = $queue->shiftPlayersBeforeCommunityCards();
+        $playerRoles = $queue->shiftPlayersBeforeNextStage();
 
         $smallBlind = $playerRoles[0];
 

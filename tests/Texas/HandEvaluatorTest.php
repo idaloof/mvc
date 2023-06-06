@@ -217,15 +217,33 @@ class HandEvaluatorTest extends TestCase
         $handEvaluator = new HandEvaluator([$evaluator1, $evaluator2]);
 
         // Create an array of mock hands
-        $hands = [[$card1, $card2], [$card1, $card2]];
+        $hand1 = [
+            $card1,
+            $card1,
+            $card1,
+            $card1,
+            $card1
+        ];
+
+        $hand2 = [
+            $card2,
+            $card2,
+            $card2,
+            $card2,
+            $card2
+        ];
+
+        $hands = [$hand1, $hand2];
 
         // Call the evaluateManyHands method
         $result = $handEvaluator->evaluateManyHands($hands);
 
         // Assert the expected result
         $expected = [
-            'One Pair' => 10,
-            'High Card' => 5
+            [10, 'One Pair', $hand1],
+            [5, 'High Card', $hand2],
+            [10, 'One Pair', $hand1],
+            [5, 'High Card', $hand2],
         ];
 
         $this->assertEquals($expected, $result);

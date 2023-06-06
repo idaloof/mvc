@@ -20,7 +20,7 @@ class CardTest extends TestCase
      */
     protected function setUp() : void
     {
-        $this->card = new Card("Ace of spades", "AS", "S", "A");
+        $this->card = new Card("Ace of spades", "AS", "S", "A", "14");
     }
 
     /**

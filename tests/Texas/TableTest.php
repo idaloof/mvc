@@ -27,7 +27,7 @@ class TableTest extends TestCase
      */
     public function testAddAndGetCards(): void
     {
-        $card = new Card("Ace of Hearts", "AH", "H", "A");
+        $card = new Card("Ace of Hearts", "AH", "H", "A", "14");
 
         $this->table->addToCommunityCards($card);
 
@@ -43,7 +43,7 @@ class TableTest extends TestCase
      */
     public function testGetCommunityImages(): void
     {
-        $card = new Card("Ace of Hearts", "AH", "H", "A");
+        $card = new Card("Ace of Hearts", "AH", "H", "A", "14");
 
         $this->table->addToCommunityCards($card);
 
@@ -59,7 +59,7 @@ class TableTest extends TestCase
      */
     public function testClearCommunityCards(): void
     {
-        $card = new Card("Ace of Hearts", "AH", "H", "A");
+        $card = new Card("Ace of Hearts", "AH", "H", "A", "14");
 
         $this->table->addToCommunityCards($card);
 
