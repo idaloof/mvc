@@ -299,6 +299,39 @@ class TexasGame
     }
 
     /**
+     * Player check action.
+     *
+     * @return PlayerInterface
+     */
+    public function playerChecks(): PlayerInterface
+    {
+        $player = $this->queue->dequeue();
+
+        $this->queue->enqueue($player);
+
+        return $player;
+    }
+
+    /**
+     * Player fold actions.
+     *
+     * @return PlayerInterface
+     */
+    public function playerFolds(): PlayerInterface
+    {
+        $player = $this->queue->dequeue();
+
+        $player->clearPlayerBets();
+        $player->getHand()->foldHand();
+        $player->getPlayerMoves()->setHasFolded();
+        $player->getPlayerMoves()->clearRoundMoves();
+
+        $this->queue->enqueue($player);
+
+        return $player;
+    }
+
+    /**
      * Resets game property properties before next stage.
      *
      * @return void
