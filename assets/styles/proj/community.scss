@@ -1,5 +1,10 @@
 /* Style sheet for community cards */
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 .proj-community-container {
     grid-column: 4 / 8;
     grid-row: 6 / 8;
@@ -13,4 +18,5 @@
 
 .community-card {
     width: 60px;
+    animation: fadeIn 2s;
 }
