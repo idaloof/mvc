@@ -385,6 +385,9 @@ class TexasGame
         $this->table->clearCommunityCards();
 
         $this->queue->shiftPlayersBeforeNextStage();
+
+        $this->takeBlindsAndAddToPot();
+        $this->dealStartingCards();
     }
 
     /**
