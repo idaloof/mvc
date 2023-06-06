@@ -24,7 +24,6 @@
                             <tr class="proj-tbody-tr">
                                 <td class="proj-td">{{ player.buyIn }}</td>
                                 <td class="proj-td">{{ player.bets }}</td>
-                                <td class="proj-td">{{ player.move }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,7 +77,7 @@
                 {% endif %}
                 <div class="proj-card-{{ player.name|lower }}-container">
                     {% for card in player.holeCards %}
-                        <img class="hole-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+                        <img class="hole-card" src="{{ asset('../img/cards/X.png') }}">
                     {% endfor %}
                 </div>
             </div>
@@ -134,7 +133,7 @@
                 <div class="proj-raise action">
                     <button
                         class="p-button raise"
-                        onClick="this.form.action='';this.form.method='post';"
+                        onClick="this.form.action='{{ raiseUrl }}';this.form.method='post';"
                     >
                     Raise
                     </button>
