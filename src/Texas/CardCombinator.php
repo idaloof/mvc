@@ -30,7 +30,7 @@ class CardCombinator
                 return [$element];
             }, $cards);
         }
-
+        // var_dump($cards);
         $combinations = [];
         $count = count($cards);
 
@@ -44,11 +44,12 @@ class CardCombinator
             }
         }
 
+        // var_dump($combinations);
         return $combinations;
     }
 
     /**
-     * Takes an array of cards and a card hand size and adds combinations to object property.
+     * Takes an array of cards and adds combinations to object property.
      *
      * @param array<Card> $cards All cards that can be combined.
      *
@@ -56,6 +57,7 @@ class CardCombinator
      */
     public function setAndGetCombinations(array $cards): array
     {
+        // var_dump($cards);
         $this->combinations = $this->findCombinations($cards);
 
         return $this->combinations;

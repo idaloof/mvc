@@ -80,13 +80,18 @@ class GameLogic
      */
     public function isPlayerReady(PlayerInterface $player, array $players): bool
     {
-        $highest = $this->getHighestCurrentBet($players);
+        $highBet = $this->getHighestCurrentBet($players);
+        // $highActions = $this->getHighestNumberOfActions($players);
 
-        if ($player->getBets() === $highest) {
-            return true;
-        } elseif ($player->getBuyIn() === 0) {
+        if (
+            $player->getBets() === $highBet &&
+            $player->getPlayerMoves()->getNumberOfRoundMoves() > 0
+        ) {
             return true;
         }
+        // } elseif ($player->getBuyIn() === 0) {
+        //     return true;
+        // }
 
         return false;
     }
@@ -140,7 +145,7 @@ class GameLogic
     /**
      * Returns the highest number of action moves.
      *
-     * @param array<PlayerInterface> Players of the game.
+     * @param array<PlayerInterface> $players Players of the game.
      *
      * @return int Highest number of action moves.
      */

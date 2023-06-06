@@ -148,7 +148,7 @@ class Queue
      *
      * @return array<PlayerInterface> array of players.
      */
-    public function shiftPlayersBeforeCommunityCards(): array
+    public function shiftPlayersBeforeNextStage(): array
     {
         $players = $this->getQueue();
         $nrOfPlayers = count($players);

@@ -124,7 +124,7 @@ class HandEvaluator extends CardCombinator
      *
      * @param array<int, array<Card>> $hands    All possible current hands that the player can use.
      *
-     * @return array<string, int>         The kind of hand the player has.
+     * @return array<int, array<mixed>>         The kind of hand the player has.
      *
      */
     public function evaluateManyHands(array $hands): array
@@ -138,15 +138,41 @@ class HandEvaluator extends CardCombinator
 
             foreach ($this->evaluators as $evaluator) {
                 if ($evaluator->evaluateHand($suits, $values, $ranks)) {
-                    $hand = $evaluator->evaluateHand($suits, $values, $ranks);
-                    $points = $evaluator->calculatePoints($values);
-                    if (!array_key_exists($hand, $handData) || $handData[$hand] < $points) {
-                        $handData[$hand] = $points;
-                    }
+                    $handName = $evaluator->evaluateHand($suits, $values, $ranks);
+                    $handPoints = $evaluator->calculatePoints($values);
+                    $handData[] = [$handPoints, $handName, $hand];
                 }
             }
         }
 
+        $this->sortHandData($handData);
+
         return $handData;
     }
+
+    /**
+     * Compares the points of the hands from evaluation method.
+     *
+     * @param array<mixed> $first
+     * @param array<mixed> $next
+     *
+     * @return int
+     */
+    public function compareFirstElement($first, $next): int
+    {
+        return $first[0] <=> $next[0];
+    }
+
+    /**
+     * Sorts the different hand combinations the player can have by points.
+     *
+     * @param array<mixed> $handData Current hand combinations.
+     *
+     * @return void
+     */
+    public function sortHandData(array $handData): void
+    {
+        usort($handData, array($this, 'compareFirstElement'));
+    }
+
 }

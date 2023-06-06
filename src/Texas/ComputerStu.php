@@ -8,7 +8,7 @@
 
 namespace App\Texas;
 
-class ComputerStu implements PlayerInterface
+class ComputerStu extends ComputerLogic implements PlayerInterface
 {
     /**
      * @var string          $name       Player name.
@@ -171,10 +171,29 @@ class ComputerStu implements PlayerInterface
             'buyIn' => $this->buyIn,
             'hasFolded' => $this->moves->hasFolded(),
             'bets' => $this->bets,
-            'holeCards' => ["X", "X"],
+            'holeCards' => $this->getHand()->getHoleCardsAsStrings(),
             'move' => $this->getPlayerMoves()->getLatestMove()
         ];
 
         return $playerData;
+    }
+
+    /**
+     * Sets and gets ComputerStu's move.
+     *
+     * @param int $moves Number of allowed moves.
+     *
+     * @return array<mixed> Move and amount if call or raise.
+     */
+    public function setAndGetMove(
+        PlayerInterface $stu,
+        int $moves,
+        int $callSize = 0,
+        int $minRaise = 0,
+        int $maxRaise = 0
+    ): array {
+        $moveData = parent::setAndGetStuMove($stu, $moves, $callSize, $minRaise, $maxRaise);
+
+        return $moveData;
     }
 }

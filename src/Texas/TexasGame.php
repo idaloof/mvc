@@ -9,8 +9,6 @@
 
 namespace App\Texas;
 
-// use App\Repository\MessagesRepository;
-
 class TexasGame
 {
     /**
@@ -43,11 +41,6 @@ class TexasGame
      */
     private Queue $queue;
 
-    // /**
-    //  * @var MessagesRepository $messageRepo MessageRepository class which holds methods for the game logic.
-    //  */
-    // private MessagesRepository $messageRepo;
-
     /**
      * @var Table $table Table class for keeping track of community cards and pot.
      */
@@ -71,7 +64,6 @@ class TexasGame
         GameData $gameData,
         Queue $queue,
         Table $table,
-        // MessagesRepository $messageRepo,
         array $players
     ) {
         $this->deck = $deck;
@@ -80,7 +72,6 @@ class TexasGame
         $this->gameData = $gameData;
         $this->queue = $queue;
         $this->table = $table;
-        // $this->messageRepo = $messageRepo;
         $this->players = $players;
     }
 
@@ -122,21 +113,18 @@ class TexasGame
     {
         $players = $this->queue->getQueue();
         foreach ($players as $player) {
-            $cards = $this->deck->drawMany(2);
+            $card1 = $this->deck->drawSingle();
+            $card2 = $this->deck->drawSingle();
+            $cards = [$card2, $card1];
+
+            if (intval($card2->getCardValue()) < intval($card1->getCardValue())) {
+                $cards = [];
+                $cards = [$card1, $card2];
+            }
 
             $player->getHand()->setHoleCards($cards);
         }
     }
-
-    // /**
-    //  * This method returns the player objects of the game.
-    //  *
-    //  * @return array<PlayerInterface> Players of the game.
-    //  */
-    // public function getPlayers(): array
-    // {
-    //     return $this->players;
-    // }
 
     /**
      * This method returns the player objects of the queue.
@@ -151,7 +139,7 @@ class TexasGame
     /**
      * Returns number of possible moves for player, 2 or 3.
      *
-     * @param PlayerInterface Player to return moves for.
+     * @param PlayerInterface $player Player to return moves for.
      *
      * @return int Number of possible moves.
      */
@@ -160,12 +148,12 @@ class TexasGame
         $players = $this->queue->getQueue();
 
         $playerBet = $player->getBets();
-        $playerMoves = $player->getPlayerMoves()->getNumberOfRoundMoves();
+        // $playerMoves = $player->getPlayerMoves()->getNumberOfRoundMoves();
 
         $highestBet = $this->gameLogic->getHighestCurrentBet($players);
-        $highestMoves = $this->gameLogic->getHighestNumberOfActions($players);
+        // $highestMoves = $this->gameLogic->getHighestNumberOfActions($players);
 
-        if ($playerBet === $highestBet && $playerMoves < $highestMoves) {
+        if ($playerBet === $highestBet) {
             return 2;
         }
 
@@ -192,6 +180,16 @@ class TexasGame
     public function enqueuePlayer(PlayerInterface $player): void
     {
         $this->queue->enqueue($player);
+    }
+
+    /**
+     * Gets first player in queue.
+     *
+     * @return PlayerInterface First player in queue
+     */
+    public function getFirstPlayer(): PlayerInterface
+    {
+        return $this->queue->peek();
     }
 
     /**
@@ -253,7 +251,7 @@ class TexasGame
      *
      * @return bool
      */
-    public function isGameReadyForNextRound(): bool
+    public function isGameReadyForNextStage(): bool
     {
         $players = $this->queue->getQueue();
 
@@ -281,15 +279,212 @@ class TexasGame
     }
 
     /**
-     * This method resets the data properties of all objects before next round
+     * Player raise actions.
+     *
+     * @param int $raiseAmount Amount to add to bets, remove from buyIn.
+     *
+     * @return PlayerInterface
      */
-    /* A public function that resets:
-        - gameData properties (round winner etc)
-        - player hole cards
-        - player bets
-        - table pot
-        - and so on..
-    */
+    public function playerRaises(int $raiseAmount): PlayerInterface
+    {
+        $player = $this->queue->dequeue();
+
+        $player->addToBets($raiseAmount);
+        $player->decreaseBuyIn($raiseAmount);
+        $this->table->addMoneyToPot($raiseAmount);
+
+        $this->queue->enqueue($player);
+
+        return $player;
+    }
+
+    /**
+     * Resets game property properties before next stage.
+     *
+     * @return void
+     */
+    public function resetForNextStage(): void
+    {
+        $players = $this->queue->getQueue();
+
+        foreach ($players as $player) {
+            $player->clearPlayerBets();
+            $player->getPlayerMoves()->clearRoundMoves();
+        }
+
+        $this->queue->shiftPlayersBeforeNextStage();
+    }
+
+    /**
+     * Resets game property properties before new round.
+     *
+     * @return void
+     */
+    public function resetForNewRound(): void
+    {
+        $this->deck = new TexasDeck();
+        $this->deck->shuffleDeck();
+
+        $players = $this->queue->getQueue();
+
+        foreach ($players as $player) {
+            $player->clearPlayerBets();
+            $player->getPlayerMoves()->clearRoundMoves();
+            $player->getHand()->foldHand();
+        }
+
+        $this->table->clearPot();
+        $this->table->clearCommunityCards();
+
+        $this->queue->shiftPlayersBeforeNextStage();
+    }
+
+    /**
+     * Deal the flop and return the cards.
+     *
+     * @return array<string> Array of flop card images.
+     */
+    public function setFlopAndGetImages(): array
+    {
+        for ($i = 0; $i < 3; $i++) {
+            $card = $this->deck->drawSingle();
+            $this->table->addToCommunityCards($card);
+        }
+
+        return $this->table->getCommunityCardImages();
+    }
+
+    /**
+     * Finds and sets player's best hand, name and points.
+     *
+     * @return void
+     */
+    public function getAndSetBestHands(): void
+    {
+        $allCards = [];
+        $communityCards = $this->table->getCommunityCards();
+
+        $players = $this->queue->getQueue();
+
+        foreach ($players as $player) {
+            if (!$player->getPlayerMoves()->hasFolded()) {
+                $holeCards = $player->getHand()->getHoleCards();
+                $allCards = array_merge($holeCards, $communityCards);
+                $combinations = $this->handEvaluator->setAndGetCombinations($allCards);
+                // var_dump($combinations);
+
+                $handData = $this->handEvaluator->evaluateManyHands($combinations);
+                // var_dump($handData);
+                $bestHandPoints = $handData[0][0];
+                $bestHandName = $handData[0][1];
+                $bestHand = $handData[0][2];
+
+                $player->getHand()->setBestHand($bestHand);
+                $player->getHand()->setBestHandName($bestHandName);
+                $player->getHand()->setBestHandPoints($bestHandPoints);
+            }
+        }
+    }
+
+    /**
+     * Returns community card images
+     *
+     * @return array<string> Array with card images.
+     */
+    public function returnCommunity(): array
+    {
+        return $this->table->getCommunityCardImages();
+    }
+
+    /**
+     * Get possible moves for ComputerStu and pass it to ComputerLogic method.
+     *
+     * @param ComputerStu $stu ComputerStu player.
+     *
+     * @return array<mixed> Move and amount called or raised.
+     */
+    public function setStuMoveAndReturnIt(ComputerStu $stu): array
+    {
+        $moves = $this->getPossibleMoves($stu);
+
+        $highestBet = $this->getHighestCurrentBet();
+        $pot = $this->getPot();
+
+        $callSize = $highestBet - $stu->getBets();
+        $maxRaise = $callSize + $pot;
+        $minRaise = $callSize + $this->getBigBlind();
+
+        return $stu->setAndGetMove(
+            $stu,
+            $moves,
+            $callSize,
+            $minRaise,
+            $maxRaise
+        );
+    }
+
+    /**
+     * Gets pre or post flop.
+     *
+     * @return string pre or post.
+     */
+    public function getPrePostFlop(): string
+    {
+        if (empty($this->table->getCommunityCards())) {
+            return "pre";
+        }
+
+        return "post";
+    }
+
+    /**
+     * Sets risk level depending of pre or post flop.
+     *
+     * @param string $stage
+     * @param ComputerCleve $cleve
+     *
+     * @return int Risk level.
+     */
+    public function setCleveRiskLevel(string $stage, ComputerCleve $cleve): int
+    {
+        $players = $this->getQueuePlayers();
+
+        /**
+         * @var PlayerInterface $human
+         */
+        $human = "";
+
+        foreach ($players as $player) {
+            if ($player->getName() !== "Stu" && $player->getName() !== "Cleve") {
+                /**
+                 * @var PlayerInterface $human
+                 */
+                $human = $player;
+            }
+        }
+
+        $moves = $human->getPlayerMoves()->getRoundMoves();
+        $pot = $this->table->getPot();
+        $blind = $this->table->getBigBlind();
+
+        $handPoints = $cleve->getHand()->getBestHandPoints();
+
+        $potRisk = $cleve->adjustRiskPotAndBlind($pot, $blind);
+        $moveRisk = $cleve->adjustRiskPlayerMoves($moves);
+
+        $cleve->adjustRiskLevel($potRisk);
+        $cleve->adjustRiskLevel($moveRisk);
+
+        if ($stage === "pre") {
+            return $cleve->getRiskLevel();
+        }
+
+        $pointRisk = $cleve->adjustRiskHandPoints($handPoints);
+
+        $cleve->adjustRiskLevel($pointRisk);
+
+        return $cleve->getRiskLevel();
+    }
 
     /**
      * This method sets game data properties for api.
@@ -320,9 +515,9 @@ class TexasGame
             4.  Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in) KLART
             5.  Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand) KLART
                 - I controllern hämtas spelarnas hole cards som ska visas på sidan. KLART (vet hur det ska gå till i alla fall!)
-            6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan. 
-            7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
-                - Beräkna även hur mycket som krävs för call.
+            6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan. KLART
+            7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet) KLART
+                - Beräkna även hur mycket som krävs för call. KLART
             8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
                 Spelaren måste ha en egen path genom spelflödet??. det är inte endast spelarens moves som sparas.
                 - Om spelaren fold:

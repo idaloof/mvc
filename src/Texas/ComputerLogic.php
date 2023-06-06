@@ -106,6 +106,26 @@ class ComputerLogic
     }
 
     /**
+     * Adjusts Cleve's risk level for hole card ranks.
+     *
+     * @param int $cardRank
+     *
+     * @return int Risk adjustment.
+     */
+    public function adjustRiskCardRank(int $cardRank): int
+    {
+        if ($cardRank <= 20) {
+            return 50;
+        } elseif ($cardRank <= 50) {
+            return 40;
+        } elseif ($cardRank <= 100) {
+            return 30;
+        }
+
+        return 10;
+    }
+
+    /**
      * Checks if human player has raised.
      *
      * @param array<string> $moves Player's round moves.
@@ -214,5 +234,239 @@ class ComputerLogic
         }
 
         return 10;
+    }
+
+    /**
+     * Wrapper for ComputerStu fold method.
+     *
+     * @param ComputerLogic $object
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     *
+     * @return array<mixed> Fold message and empty amount.
+     */
+    public function wrapperStuFolds(
+        ComputerLogic $object,
+        PlayerInterface $player,
+        int $callSize,
+        int $minRaise,
+        int $maxRaise
+    ): array {
+        return $object->setStuFolds(
+            $player,
+            $callSize,
+            $minRaise,
+            $maxRaise
+        );
+    }
+
+    /**
+     * Method for Stu folding.
+     *
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     * @SuppressWarnings(PHPMD)
+     *
+     * @return array<mixed> Fold message and empty amount.
+     */
+    public function setStuFolds(
+        PlayerInterface $player,
+        int $callSize,
+        int $minRaise,
+        int $maxRaise
+    ): array {
+        $player->getPlayerMoves()->setHasFolded();
+        $player->getHand()->foldHand();
+        $player->clearPlayerBets();
+        $player->getPlayerMoves()->addToRoundMoves("fold");
+
+        return ["fold", ""];
+    }
+
+    /**
+     * Wrapper for ComputerStu check method.
+     *
+     * @param ComputerLogic $object
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     *
+     * @return array<mixed> Check message and empty amount.
+     */
+    public function wrapperStuChecks(
+        ComputerLogic $object,
+        PlayerInterface $player,
+        int $callSize,
+        int $minRaise,
+        int $maxRaise
+    ): array {
+        return $object->setStuChecks(
+            $player,
+            $callSize,
+            $minRaise,
+            $maxRaise
+        );
+    }
+
+    /**
+     * Method for Stu checking.
+     *
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     * @SuppressWarnings(PHPMD)
+     *
+     * @return array<mixed> Check message and empty amount.
+     */
+    public function setStuChecks(
+        PlayerInterface $player,
+        int $callSize,
+        int $minRaise,
+        int $maxRaise
+    ): array {
+        $player->getPlayerMoves()->addToRoundMoves("check");
+        return ["check", ""];
+    }
+
+    /**
+     * Wrapper for ComputerStu call method.
+     *
+     * @param ComputerLogic $object
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     *
+     * @return array<mixed> Call message and amount.
+     */
+    public function wrapperStuCalls(
+        ComputerLogic $object,
+        PlayerInterface $player,
+        int $callSize,
+        ?int $minRaise = null,
+        ?int $maxRaise = null
+    ): array {
+        return $object->setStuCalls(
+            $player,
+            $callSize,
+            $minRaise,
+            $maxRaise
+        );
+    }
+
+    /**
+     * Method for Stu calling.
+     *
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     * @SuppressWarnings(PHPMD)
+     *
+     * @return array<mixed> Call message and amount.
+     */
+    public function setStuCalls(
+        PlayerInterface $player,
+        int $callSize,
+        ?int $minRaise = null,
+        ?int $maxRaise = null
+    ): array {
+        $player->addToBets($callSize);
+        $player->decreaseBuyIn($callSize);
+
+        $player->getPlayerMoves()->addToRoundMoves("call");
+
+        return ["call", $callSize];
+    }
+
+    /**
+     * Wrapper for ComputerStu raise method.
+     *
+     * @param ComputerLogic $object
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     *
+     * @return array<mixed> Raise message and amount.
+     */
+    public function wrapperStuRaises(
+        ComputerLogic $object,
+        PlayerInterface $player,
+        int $callSize,
+        int $minRaise,
+        int $maxRaise
+    ): array {
+        return $object->setStuRaises(
+            $player,
+            $callSize,
+            $minRaise,
+            $maxRaise
+        );
+    }
+
+    /**
+     * Method for Stu raising.
+     *
+     * @param PlayerInterface $player
+     * @param int $callSize
+     * @param int $minRaise
+     * @param int $maxRaise
+     * @SuppressWarnings(PHPMD)
+     *
+     * @return array<mixed> Raise message and amount.
+     */
+    public function setStuRaises(
+        PlayerInterface $player,
+        int $callSize,
+        int $minRaise,
+        int $maxRaise
+    ): array {
+        $raiseSize = random_int($minRaise, $maxRaise);
+
+        $player->addToBets($raiseSize);
+        $player->decreaseBuyIn($raiseSize);
+
+        $player->getPlayerMoves()->addToRoundMoves("raise");
+
+        return ["raise", $raiseSize];
+    }
+
+    /**
+     * Sets and gets ComputerStu's next move.
+     *
+     * @param int $moves Number of allowed moves.
+     *
+     * @return array<mixed> Move and amount if call or raise.
+     */
+    public function setAndGetStuMove(
+        PlayerInterface $stu,
+        int $moves,
+        int $callSize,
+        int $minRaise,
+        int $maxRaise
+    ): array {
+        $methodCalls = [
+            'wrapperStuFolds',
+            'wrapperStuCalls',
+            'wrapperStuRaises'
+        ];
+
+        if ($moves === 2) {
+            $methodCalls = [
+                'wrapperStuChecks',
+                'wrapperStuRaises'
+            ];
+        }
+
+        $randomMethod = $methodCalls[array_rand($methodCalls)];
+
+        return $this->$randomMethod($this, $stu, $callSize, $minRaise, $maxRaise);
     }
 }

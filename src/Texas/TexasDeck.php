@@ -8,7 +8,7 @@ namespace App\Texas;
 
 use Exception;
 
-class TexasDeck
+class TexasDeck extends CalculatePoints
 {
     /**
      * @var array<string> $values Card values
@@ -55,7 +55,8 @@ class TexasDeck
                 $image = $short . $letter;
                 $suit = $letter;
                 $rank = $short;
-                $cardInstance = new Card($name, $image, $suit, $rank);
+                $value = strval(self::RANK_POINTS[$rank]);
+                $cardInstance = new Card($name, $image, $suit, $rank, $value);
                 array_push($this->deck, $cardInstance);
             }
         }

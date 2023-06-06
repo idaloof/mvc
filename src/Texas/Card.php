@@ -31,21 +31,23 @@ class Card extends CalculatePoints implements CardInterface
      * @param string $image Card image name.
      * @param string $suit  Card suit.
      * @param string $rank  Card rank.
+     * @param string $value Card value.
      *
      */
 
-    public function __construct(string $name, string $image, string $suit, string $rank)
+    public function __construct(string $name, string $image, string $suit, string $rank, string $value)
     {
-        $this->name = $name;
-        $this->image = $image;
-        $this->suit = $suit;
-        $this->rank = $rank;
+        $this->name     = $name;
+        $this->image    = $image;
+        $this->suit     = $suit;
+        $this->rank     = $rank;
+        $this->value    = $value;
 
-        foreach (self::RANK_POINTS as $k => $v) {
-            if ($k === $rank) {
-                $this->value = strval($v);
-            }
-        }
+        // foreach (self::RANK_POINTS as $k => $v) {
+        //     if ($k === $rank) {
+        //         $this->value = strval($v);
+        //     }
+        // }
     }
 
     /**
