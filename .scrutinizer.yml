@@ -6,6 +6,7 @@ filter:
         - vendor/
         - tests/
         - .php-cs-fixer.dist.php
+        - src/Controller
     
     # dependency_paths:
     #     - src/Entity/
