@@ -364,6 +364,9 @@ class TexasGame
             $player->clearPlayerBets();
             $player->getPlayerMoves()->clearRoundMoves();
             $player->getHand()->foldHand();
+            if ($player->getPlayerMoves()->hasFolded()) {
+                $player->getPlayerMoves()->setHasFolded();
+            }
         }
 
         $this->table->clearPot();
