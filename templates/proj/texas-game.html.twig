@@ -5,7 +5,7 @@
 {% block main %}
     <div class="proj-container">
         <div>
-            <p class="p-para">Namn: {{ Martin.name }}</p>
+            {# <p class="p-para">Namn: {{ Martin.name }}</p>
             <p class="p-para">Roll: {{ Martin.role }}</p>
             <p class="p-para">Insats: {{ Martin.buyIn }}$</p>
             {% if Martin.hasFolded %}
@@ -13,8 +13,12 @@
             {% else %}
                 <p class="p-para">In: Fortfarande med.</p>
             {% endif %}
-            <p class="p-para">Bet: {{ Martin.bets }}$</p>
-            {% for card in Martin.holeCards %}
+            <p class="p-para">Bet: {{ Martin.bets }}$</p> #}
+            {% for card in community %}
+                <img class="one-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            {% endfor %}
+            <p></p>
+            {% for card in m8.bestHand %}
                 <img class="one-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
             {% endfor %}
         </div>
