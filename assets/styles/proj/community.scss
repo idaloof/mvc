@@ -1,0 +1,16 @@
+/* Style sheet for community cards */
+
+.proj-community-container {
+    grid-column: 4 / 8;
+    grid-row: 6 / 8;
+}
+
+.community-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.community-card {
+    width: 60px;
+}
