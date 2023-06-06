@@ -86,6 +86,8 @@ class ProjectFlopController extends AbstractController
             'minRaise' => $minRaise,
             'callUrl' => $this->generateUrl('proj_player_call'),
             'raiseUrl' => $this->generateUrl('proj_player_raise'),
+            'checkUrl' => $this->generateUrl('proj_player_check'),
+            'foldUrl' => $this->generateUrl('proj_player_fold'),
             'community' => $communityImages
         ]);
     }

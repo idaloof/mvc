@@ -181,7 +181,7 @@
                 <div class="proj-fold action">
                     <button
                         class="p-button fold"
-                        onClick="this.form.action='';this.form.method='post';"
+                        onClick="this.form.action='{{ foldUrl }}';this.form.method='post';"
                     >
                     Fold
                     </button>
@@ -202,7 +202,7 @@
                 <div class="proj-check action">
                     <button
                         class="p-button check"
-                        onClick="this.form.action='';this.form.method='post';"
+                        onClick="this.form.action='{{ checkUrl }}';this.form.method='post';"
                     >
                     Check
                     </button>
@@ -222,7 +222,7 @@
                 <div class="proj-raise action">
                     <button
                         class="p-button raise"
-                        onClick="this.form.action='';this.form.method='post';"
+                        onClick="this.form.action='{{ raiseUrl }}';this.form.method='post';"
                     >
                     Raise
                     </button>
