@@ -54,6 +54,10 @@ class ProjectStuTurnController extends AbstractController
         // SÄTT STU MOVE
         $moveData = $game->setStuMoveAndReturnIt($playerToAct);
 
+        if ($moveData[0] === "call" || $moveData === "raise") {
+            $game->addMoneyToPot($moveData[1]);
+        }
+
         $move = ucfirst($moveData[0]);
         $amount = $moveData[1];
 

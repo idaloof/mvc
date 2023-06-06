@@ -84,6 +84,10 @@ class ProjectCleveTurnController extends AbstractController
 
         $moveData = $playerToAct->setCleveMoveAndReturnData($cleveMove, $highestBet, $pot, $bigBlind);
 
+        if ($moveData[0] === "call" || $moveData === "raise") {
+            $game->addMoneyToPot($moveData[1]);
+        }
+
         $playerToAct->clearRiskLevel();
 
         $move = ucfirst($moveData[0]);

@@ -227,6 +227,18 @@ class TexasGame
     }
 
     /**
+     * Adds money to pot.
+     *
+     * @param int $amount Money to add to pot.
+     *
+     * @return void
+     */
+    public function addMoneyToPot(int $amount): void
+    {
+        $this->table->addMoneyToPot($amount);
+    }
+
+    /**
      * Gets small blind.
      *
      * @return int Small blind.
