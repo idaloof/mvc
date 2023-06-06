@@ -84,7 +84,9 @@ class ProjectPreFlopController extends AbstractController
             'maxRaise' => $maxRaise,
             'minRaise' => $minRaise,
             'callUrl' => $this->generateUrl('proj_player_call'),
-            'raiseUrl' => $this->generateUrl('proj_player_raise')
+            'raiseUrl' => $this->generateUrl('proj_player_raise'),
+            'checkUrl' => $this->generateUrl('proj_player_check'),
+            'foldUrl' => $this->generateUrl('proj_player_fold')
         ]);
     }
 }
