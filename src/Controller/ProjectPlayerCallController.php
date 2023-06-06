@@ -60,6 +60,7 @@ class ProjectPlayerCallController extends AbstractController
         $entityManager->flush();
 
         $session->set('game', $game);
+        $bRoute = $session->get('back-route');
 
         if ($game->isRoundOver()) {
             return $this->redirectToRoute('proj_reset_round');
@@ -69,6 +70,6 @@ class ProjectPlayerCallController extends AbstractController
             return $this->redirectToRoute('proj_reset_stage');
         }
 
-        return $this->redirectToRoute('proj_stu_turn');
+        return $this->redirectToRoute($bRoute);
     }
 }
