@@ -21,7 +21,6 @@ class ProjectCreateGameController extends AbstractController
     #[Route("/proj/create-game", name: "proj_create_game")]
     public function projCreateGame(
         SessionInterface $session,
-        TexasDeck $deck,
         HandEvaluator $handEvaluator,
         GameLogic $gameLogic,
         GameData $gameData
@@ -35,6 +34,8 @@ class ProjectCreateGameController extends AbstractController
 
         $queue = new Queue($players);
         $table = new Table($buyin);
+
+        $deck = new TexasDeck();
 
         $deck->shuffleDeck();
 

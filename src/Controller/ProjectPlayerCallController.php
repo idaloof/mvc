@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Messages;
 use App\Texas\TexasGame;
-use App\Repository\MessagesRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,9 +22,12 @@ class ProjectPlayerCallController extends AbstractController
     #[Route('proj/player-call', name:'proj_player_call', methods: ['POST'])]
     public function projPlayerCall(
         SessionInterface $session,
-        Request $request
-    ): Response
-    {
+        Request $request,
+        ManagerRegistry $doctrine
+    ): Response {
+        /**
+         * @var int $callAmount
+         */
         $callAmount = $request->request->get('call-amount');
 
         /**
@@ -35,30 +37,11 @@ class ProjectPlayerCallController extends AbstractController
 
         $player = $game->playerCalls($callAmount);
 
-        $message = $request->request->get('message');
+        $playerMessage = $request->request->get('message');
 
-        $session->set('message', $message);
+        $player->getPlayerMoves()->addToRoundMoves("call");
 
-        $session->set('messenger', $player->getName());
-
-        $session->set('callAmount', $callAmount);
-
-        return $this->redirectToRoute('proj_call_message');
-    }
-
-    /* Proj Call Message Route */
-    #[Route('proj/call-message', name:'proj_call_message')]
-    public function projCallMessage(
-        SessionInterface $session,
-        ManagerRegistry $doctrine,
-        MessagesRepository $repo
-    ): Response
-    {
-        $newMessage = $session->get('message');
-
-        $callAmount = $session->get('callAmount');
-
-        $messenger = $session->get('messenger');
+        $messenger = $player->getName();
 
         $entityManager = $doctrine->getManager();
 
@@ -70,14 +53,22 @@ class ProjectPlayerCallController extends AbstractController
 
         $message->setCreated(strval($currentTime));
         $message->setMessenger($messenger);
-        $message->setMessage($newMessage . " " . $callAmount);
+        $message->setMessage($playerMessage . " " . $callAmount);
 
         $entityManager->persist($message);
 
         $entityManager->flush();
 
-        $route = "_pre_flop";
+        $session->set('game', $game);
 
-        return $this->redirectToRoute('proj' . $route);
+        if ($game->isRoundOver()) {
+            return $this->redirectToRoute('proj_reset_round');
+        }
+
+        if ($game->isGameReadyForNextStage()) {
+            return $this->redirectToRoute('proj_reset_stage');
+        }
+
+        return $this->redirectToRoute('proj_stu_turn');
     }
 }

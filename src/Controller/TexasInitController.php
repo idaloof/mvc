@@ -3,14 +3,15 @@
 namespace App\Controller;
 
 // use App\Entity\Messages;
-use App\Texas\ComputerCleve;
-use App\Texas\ComputerStu;
-use App\Texas\GameData;
-use App\Texas\GameLogic;
-use App\Texas\HandEvaluator;
-use App\Texas\Queue;
-use App\Texas\Table;
-use App\Texas\TexasDeck;
+use App\Repository\PreFlopRankingsRepository;
+// use App\Texas\ComputerCleve;
+// use App\Texas\ComputerStu;
+// use App\Texas\GameData;
+// use App\Texas\GameLogic;
+// use App\Texas\HandEvaluator;
+// use App\Texas\Queue;
+// use App\Texas\Table;
+// use App\Texas\TexasDeck;
 use App\Texas\TexasGame;
 // use App\Repository\MessagesRepository;
 // use Doctrine\Persistence\ManagerRegistry;
@@ -20,17 +21,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 // use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TexasInitController extends AbstractController
 {
-//     /* Texas-init Route */
-//     #[Route("/proj/texas-buyin", name: "p_texas_buyin")]
-//     public function texasBuyIn(
-//     ): Response {
+    //     /* Texas-init Route */
+    //     #[Route("/proj/texas-buyin", name: "p_texas_buyin")]
+    //     public function texasBuyIn(
+    //     ): Response {
 
-//         return $this->render('proj/texas-init.html.twig', );
-//     }
+    //         return $this->render('proj/texas-init.html.twig', );
+    //     }
     /* Texas-init Route */
     // #[Route("/proj/texas-init", name: "p_texas_init")]
     // public function texasInit(
@@ -55,36 +57,48 @@ class TexasInitController extends AbstractController
     /* Texas-init Route */
     #[Route("/proj/texas-game", name: "p_texas_game")]
     public function texasGame(
-        HandEvaluator $handEvaluator,
-        TexasDeck $deck,
-        GameLogic $gameLogic,
-        GameData $gameData
+        // HandEvaluator $handEvaluator,
+        // TexasDeck $deck,
+        // GameLogic $gameLogic,
+        // GameData $gameData,
+        // PreFlopRankingsRepository $repo,
+        SessionInterface $session
     ): Response {
-        $player = new TexasPlayer("Martin", 1000, 500);
-        $playerStu = new ComputerStu("Stu", 500);
-        $playerCleve = new ComputerCleve("Cleve", 500);
+        // $player = new TexasPlayer("Martin", 1000, 500);
+        // $playerStu = new ComputerStu("Stu", 500);
+        // $playerCleve = new ComputerCleve("Cleve", 500);
 
-        $players = [$player, $playerStu, $playerCleve];
+        // $players = [$player, $playerStu, $playerCleve];
 
-        $table = new Table(500);
-        $queue = new Queue($players);
+        // $table = new Table(500);
+        // $queue = new Queue($players);
 
-        $deck->shuffleDeck();
+        // $deck->shuffleDeck();
 
-        $game = new TexasGame(
-            $deck,
-            $handEvaluator,
-            $gameLogic,
-            $gameData,
-            $queue,
-            $table,
-            $players
-        );
+        // $game = new TexasGame(
+        //     $deck,
+        //     $handEvaluator,
+        //     $gameLogic,
+        //     $gameData,
+        //     $queue,
+        //     $table,
+        //     $players
+        // );
 
-        $game->setQueueAndRoles();
-        $game->takeBlindsAndAddToPot();
-        $game->dealStartingCards();
+        /**
+         * @var TexasGame $game
+         */
+
+        $game = $session->get('game');
+
+        // $game->setQueueAndRoles();
+        // $game->takeBlindsAndAddToPot();
+        // $game->dealStartingCards();
         $players = $game->getQueuePlayers();
+
+        // $cardObject = $repo->findCardRanking("AK", "s")[0];
+
+        // $cardsRanking = $cardObject->getRank();
 
         $data = [];
 
@@ -92,6 +106,12 @@ class TexasInitController extends AbstractController
             $name = $player->getName();
             $data[$name] = $player->getPlayerData();
         }
+
+        $community = $game->returnCommunity();
+
+        // $cards = $players[0]->getHand()->getHoleCards();
+
+        $data["community"] = $community;
 
         return $this->render('proj/texas-game.html.twig', $data);
     }

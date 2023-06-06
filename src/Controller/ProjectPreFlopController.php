@@ -13,37 +13,44 @@ class ProjectPreFlopController extends AbstractController
 {
     /* Proj PreFlop Route */
     #[Route("/proj/pre-flop", name: "proj_pre_flop")]
-    public function projCreateGame(
+    public function projPreFlop(
         SessionInterface $session,
         MessagesRepository $repository
     ): Response {
-        // HÄR ELLER VIA EN ANNAN ROUTE MÅSTE DET SKE EN RESET INFÖR NY RUNDA
-        /*
-            Alla spelarbets
-            Potten
-            Typ allt i GameData (kolla --> kanske fixa en metod i GameData som resettar den)
-            Samma reset för spelaren också?
-            Queue har ju en reset inför ny runda
-        */
+        $session->set('forward-route', 'proj_flop_init');
+        $session->set('back-route', 'proj_pre_flop');
+
         /**
          * @var TexasGame $game
          */
         $game = $session->get('game');
 
+        if ($game->isRoundOver()) {
+            return $this->redirectToRoute('proj_reset_round');
+        }
+
+        if ($game->isGameReadyForNextStage()) {
+            return $this->redirectToRoute('proj_reset_stage');
+        }
+
         $queuePlayers = $game->getQueuePlayers();
 
-        // KOLLA OM SPELET KAN GÅ VIDARE TILL NÄSTA RUNDA, I SÅ FALL:
-        //      --> REDIRECT TILL SIDA SOM STÄLLER OM RELEVANT DATA
-        //      --> SKIFTAR KÖN
-        //      --> DELAR UT COMMUNITY CARDS
-        //      --> REDIRECT TILL NÄSTA STAGE CONTROLLER
-        // ANNARS:
-        //      --> NÄSTA IF-SATS NEDAN
+        $playerToAct = $game->getFirstPlayer();
 
-        // KOLLA OM FÖRSTA SPELAREN I KÖN HAR FOLDAT, I SÅ FALL:
-        //      --> SKIFTA KÖN
-        // ANNARS:
-        //      --> RENDERA SIDAN
+        if ($playerToAct->getPlayerMoves()->hasFolded()) {
+            $game->dequeuePlayer();
+            $game->enqueuePlayer($playerToAct);
+
+            return $this->redirectToRoute('proj_pre_flop');
+        }
+
+        if ($playerToAct->getName() === "Stu") {
+            return $this->redirectToRoute('proj_stu_turn');
+        }
+
+        if ($playerToAct->getName() === "Cleve") {
+            return $this->redirectToRoute('proj_cleve_turn');
+        }
 
         $queuePlayersData = [];
 
@@ -54,11 +61,11 @@ class ProjectPreFlopController extends AbstractController
         $messages = $repository->findAll();
 
         // TA FRAM HUR MÅNGA MOVES SPELAREN KAN GÖRA
-        $player = $game->getQueuePlayers()[0];
+        $player = $game->getFirstPlayer();
 
         $possibleMoves = $game->getPossibleMoves($player);
 
-        // Beräkna hur mycket för call samt
+        // Beräkna hur mycket för call samt (METOD???)
         // min och max raise utifrån spelarens bet, pot och högsta bet.
         $highestBet = $game->getHighestCurrentBet();
         $pot = $game->getPot();
@@ -67,6 +74,8 @@ class ProjectPreFlopController extends AbstractController
         $maxRaise = $callSize + $pot;
         $minRaise = $callSize + $game->getBigBlind();
 
+        $session->set('game', $game);
+
         return $this->render('proj/proj-pre-flop.html.twig', [
             'queuePlayers' => $queuePlayersData,
             'messages' => $messages,
@@ -74,7 +83,8 @@ class ProjectPreFlopController extends AbstractController
             'call' => $callSize,
             'maxRaise' => $maxRaise,
             'minRaise' => $minRaise,
-            'callUrl' => $this->generateUrl('proj_player_call')
+            'callUrl' => $this->generateUrl('proj_player_call'),
+            'raiseUrl' => $this->generateUrl('proj_player_raise')
         ]);
     }
 }
