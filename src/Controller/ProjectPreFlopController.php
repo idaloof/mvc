@@ -83,6 +83,7 @@ class ProjectPreFlopController extends AbstractController
             'call' => $callSize,
             'maxRaise' => $maxRaise,
             'minRaise' => $minRaise,
+            'pot' => $pot,
             'callUrl' => $this->generateUrl('proj_player_call'),
             'raiseUrl' => $this->generateUrl('proj_player_raise'),
             'checkUrl' => $this->generateUrl('proj_player_check'),
