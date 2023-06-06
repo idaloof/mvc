@@ -19,7 +19,7 @@ class ProjectFlopController extends AbstractController
     ): Response {
         $session->set('forward-route', 'proj_turn_init');
         $session->set('back-route', 'proj_flop');
-
+        var_dump("FLOP");
         /**
          * @var TexasGame $game
          */
