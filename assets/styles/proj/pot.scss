@@ -1,0 +1,14 @@
+/* Style sheet for pot container */
+
+.proj-pot-container {
+    grid-column: 1 / 3;
+    grid-row: 6 / 8;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}
+
+.pot-size {
+    color: #fff;
+    font-family: $proj-font-family-paragraph;
+}
