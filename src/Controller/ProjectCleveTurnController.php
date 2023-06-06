@@ -46,8 +46,6 @@ class ProjectCleveTurnController extends AbstractController
          */
         $playerToAct = $game->getFirstPlayer();
 
-        var_dump($playerToAct->getName());
-
         if ($playerToAct->getPlayerMoves()->hasFolded()) {
             $game->dequeuePlayer();
             $game->enqueuePlayer($playerToAct);
@@ -56,6 +54,8 @@ class ProjectCleveTurnController extends AbstractController
         }
 
         $holeCards = $playerToAct->getHand()->getHoleCards();
+
+        var_dump($holeCards);
         $type = $playerToAct->getHoleType($holeCards);
         $ranks = $playerToAct->getHoleRanks($holeCards);
 
