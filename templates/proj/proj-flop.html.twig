@@ -1,0 +1,255 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+<div class="outer-flop-container">
+    <div class="proj-flop-container">
+    </div>
+    {% for player in queuePlayers %}
+        {% if player.wallet is defined %}
+            <div class="humanplayer-container">
+                <div class="humanplayer-head">
+                    <p>{{ player.name }}</p>
+                </div>
+                <div class="poker-player-info">
+                    <table class="proj-table">
+                        <thead class="proj-thead">
+                            <tr>
+                                <th class="proj-thead-th">Saldo</th>
+                                <th class="proj-thead-th">Insats</th>
+                            </tr>
+                        </thead>
+                        <tbody class="proj-tbody">
+                            <tr class="proj-tbody-tr">
+                                <td class="proj-td">{{ player.buyIn }}</td>
+                                <td class="proj-td">{{ player.bets }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {% if player.role is same as "d" %}
+                    <div class="dealer-chip-container">
+                            <img
+                                class="dealer-chip"
+                                src="{{ asset('../img/proj/dealer.png') }}"
+                                width="50"
+                            >
+                    </div>
+                {% endif %}
+                <div class="proj-card-container">
+                    {% for card in player.holeCards %}
+                        <img class="hole-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="best-hand-container">
+                <div class="best-hand-cards">
+                    {% for card in player.bestHand %}
+                        <img class="best-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+                    {% endfor %}
+                </div>
+                <div class="best-hand-name">
+                    <p>{{ player.bestHandName }}</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="{{ player.name|lower }}-container">
+                <div class="{{ player.name|lower }}-head">
+                    <p>{{ player.name }}</p>
+                </div>
+                <div class="poker-{{ player.name|lower }}-info">
+                    <table class="proj-table-com">
+                        <thead class="proj-thead">
+                            <tr>
+                                <th class="proj-thead-th">Saldo</th>
+                                <th class="proj-thead-th">Insats</th>
+                                <th class="proj-thead-th">Drag</th>
+                            </tr>
+                        </thead>
+                        <tbody class="proj-tbody">
+                            <tr class="proj-tbody-tr">
+                                <td class="proj-td">{{ player.buyIn }}</td>
+                                <td class="proj-td">{{ player.bets }}</td>
+                                <td class="proj-td">{{ player.move }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {% if player.role is same as "d" %}
+                    <div class="dealer-chip-{{ player.name|lower }}-container">
+                            <img
+                                class="dealer-chip"
+                                src="{{ asset('../img/proj/dealer.png') }}"
+                                width="50"
+                            >
+                    </div>
+                {% endif %}
+                <div class="proj-card-{{ player.name|lower }}-container">
+                    {% for card in player.holeCards %}
+                        <img class="hole-card" src="{{ asset('../img/cards/X.png') }}">
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="proj-community-container">
+        <div class="community-cards">
+            {% for card in community %}
+                <img class="community-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            {% endfor %}
+        </div>
+    </div>
+    <div class="proj-message-container">
+        <p class="message-board-heading">Message Board</p>
+        <div class="message-board">
+            {% for message in messages %}
+                <div class="proj-message">
+                    <p class="message-heading">
+                    {{ message.created }} 
+                    {{ message.messenger }} säger:
+                    </p>
+                    <p class="message-text"> {{ message.message }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="action-form-container">
+        {% if moves == 3 %}
+            <form class="action-form call" action="" method="">
+                <div class="proj-call action">
+                    <button
+                        class="p-button call"
+                        onClick="this.form.action='{{ callUrl }}';this.form.method='post';"
+                    >
+                    Call ({{ call }})
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        type="number"
+                        value="{{ call }}"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="call-amount"
+                        id="call-amount"
+                    >
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="Call"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="call-message"
+                    >
+                </div>
+            </form>
+            <form class="action-form raise" action="" method="">
+                <div class="proj-raise action">
+                    <button
+                        class="p-button raise"
+                        onClick="this.form.action='{{ raiseUrl }}';this.form.method='post';"
+                    >
+                    Raise
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        class="p-input raise"
+                        type="number"
+                        required="required"
+                        max="{{ maxRaise }}"
+                        min="{{ minRaise }}"
+                        name="raise-amount"
+                        id="raise-amount"
+                    >
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="Raise"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="raise-message"
+                    >
+                </div>
+            </form>
+            <form class="action-form fold" action="" method="">
+                <div class="proj-fold action">
+                    <button
+                        class="p-button fold"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Fold
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="Fold"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="fold-message"
+                    >
+                </div>
+            </form>
+        {% elseif moves == 2 %}
+            <form class="action-form check" action="" method="">
+                <div class="proj-check action">
+                    <button
+                        class="p-button check"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Check
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="Check"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="check-message"
+                    >
+                </div>
+            </form>
+            <form class="action-form raise" action="" method="">
+                <div class="proj-raise action">
+                    <button
+                        class="p-button raise"
+                        onClick="this.form.action='';this.form.method='post';"
+                    >
+                    Raise
+                    </button>
+                </div>
+                <div class="input-container">
+                    <input
+                        class="p-input raise"
+                        type="number"
+                        required="required"
+                        max="{{ maxRaise }}"
+                        min="{{ minRaise }}"
+                        name="raise-amount"
+                        id="raise-amount"
+                    >
+                </div>
+                <div class="input-container">
+                    <input
+                        type="text"
+                        value="Raise"
+                        readonly="readonly"
+                        style="display:none;"
+                        name="message"
+                        id="raise-message"
+                    >
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
