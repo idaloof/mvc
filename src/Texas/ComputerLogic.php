@@ -282,6 +282,7 @@ class ComputerLogic
         $player->getPlayerMoves()->setHasFolded();
         $player->getHand()->foldHand();
         $player->clearPlayerBets();
+        $player->getHand()->clearBestHandProperties();
         $player->getPlayerMoves()->addToRoundMoves("fold");
 
         return ["fold", ""];

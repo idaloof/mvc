@@ -73,6 +73,7 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
         $this->getPlayerMoves()->setHasFolded();
         $this->getHand()->foldHand();
         $this->clearPlayerBets();
+        $this->getHand()->clearBestHandProperties();
         $this->getPlayerMoves()->addToRoundMoves("fold");
 
         return ["fold", ""];
