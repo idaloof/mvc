@@ -159,4 +159,29 @@ class GameLogic
 
         return max($actions);
     }
+
+    /**
+     * Returns winner.
+     *
+     * @param array<PlayerInterface> $players Players in the game.
+     *
+     * @return PlayerInterface Winner.
+     */
+    public function getWinner(array $players): PlayerInterface
+    {
+        $count = count($players);
+
+        $winner = "";
+
+        for ($i = 0; $i < $count - 1; $i++) {
+            $winner = (
+                $players[$i]->getHand()->getBestHandPoints() <
+                $players[$i + 1]->getHand()->getBestHandPoints()
+            )
+            ? $players[$i + 1]
+            : $players[$i];
+        }
+
+        return $winner;
+    }
 }
