@@ -171,7 +171,63 @@ class GameLogic
     {
         $count = count($players);
 
-        $winner = "";
+        /**
+         * @var PlayerInterface $winner
+         */
+        $winner = null;
+
+        for ($i = 0; $i < $count - 1; $i++) {
+            $winner = (
+                $players[$i]->getHand()->getBestHandPoints() <
+                $players[$i + 1]->getHand()->getBestHandPoints()
+            )
+            ? $players[$i + 1]
+            : $players[$i];
+        }
+
+        return $winner;
+    }
+
+    /**
+     * Returns winner by others folding.
+     *
+     * @param array<PlayerInterface> $players Players in the game.
+     *
+     * @return PlayerInterface Winner.
+     */
+    public function getWinnerByFold(array $players): PlayerInterface
+    {
+        /**
+         * @var PlayerInterface $winner
+         */
+        $winner = null;
+
+        foreach ($players as $player) {
+            if ($player->getPlayerMoves()->hasFolded()) {
+                continue;
+            }
+
+            $winner = $player;
+        }
+
+        return $winner;
+    }
+
+    /**
+     * Returns winner by best hand.
+     *
+     * @param array<PlayerInterface> $players Players in the game.
+     *
+     * @return PlayerInterface Winner.
+     */
+    public function getWinnerByBestHand(array $players): PlayerInterface
+    {
+        $count = count($players);
+
+        /**
+         * @var PlayerInterface $winner
+         */
+        $winner = null;
 
         for ($i = 0; $i < $count - 1; $i++) {
             $winner = (
