@@ -337,6 +337,7 @@ class TexasGame
         $player->getHand()->foldHand();
         $player->getPlayerMoves()->setHasFolded();
         $player->getPlayerMoves()->clearRoundMoves();
+        $player->getHand()->clearBestHandProperties();
 
         $this->queue->enqueue($player);
 
@@ -363,9 +364,9 @@ class TexasGame
     /**
      * Resets game property properties before new round.
      *
-     * @return void
+     * @return array<mixed>
      */
-    public function resetForNewRound(): void
+    public function resetForNewRound(): array
     {
         $this->deck = new TexasDeck();
         $this->deck->shuffleDeck();
@@ -376,18 +377,26 @@ class TexasGame
             $player->clearPlayerBets();
             $player->getPlayerMoves()->clearRoundMoves();
             $player->getHand()->foldHand();
+            $player->getHand()->clearBestHandProperties();
             if ($player->getPlayerMoves()->hasFolded()) {
                 $player->getPlayerMoves()->setHasFolded();
             }
         }
 
+        $winner = $this->gameLogic->getWinner($players);
+        $pot = $this->getPot();
+
+        $winner->increaseBuyIn($pot);
+
         $this->table->clearPot();
         $this->table->clearCommunityCards();
 
-        $this->queue->shiftPlayersBeforeNextStage();
+        $this->queue->setQueueBeforeRoundStart();
 
         $this->takeBlindsAndAddToPot();
         $this->dealStartingCards();
+
+        return [$winner, $pot];
     }
 
     /**
