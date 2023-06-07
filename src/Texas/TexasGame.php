@@ -373,6 +373,11 @@ class TexasGame
 
         $players = $this->queue->getQueue();
 
+        $winner = $this->gameLogic->getWinner($players);
+        $pot = $this->getPot();
+
+        $winner->increaseBuyIn($pot);
+
         foreach ($players as $player) {
             $player->clearPlayerBets();
             $player->getPlayerMoves()->clearRoundMoves();
@@ -382,11 +387,6 @@ class TexasGame
                 $player->getPlayerMoves()->setHasFolded();
             }
         }
-
-        $winner = $this->gameLogic->getWinner($players);
-        $pot = $this->getPot();
-
-        $winner->increaseBuyIn($pot);
 
         $this->table->clearPot();
         $this->table->clearCommunityCards();
