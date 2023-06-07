@@ -1,0 +1,14 @@
+<div class="proj-message-container">
+    <p class="message-board-heading">Message Board</p>
+    <div class="message-board">
+        {% for message in messages %}
+            <div class="proj-message">
+                <p class="message-heading">
+                {{ message.created }} 
+                {{ message.messenger }} säger:
+                </p>
+                <p class="message-text"> {{ message.message }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
