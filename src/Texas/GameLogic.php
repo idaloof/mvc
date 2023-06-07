@@ -169,23 +169,28 @@ class GameLogic
      */
     public function getWinner(array $players): PlayerInterface
     {
-        $count = count($players);
-
-        /**
-         * @var PlayerInterface $winner
-         */
-        $winner = null;
-
-        for ($i = 0; $i < $count - 1; $i++) {
-            $winner = (
-                $players[$i]->getHand()->getBestHandPoints() <
-                $players[$i + 1]->getHand()->getBestHandPoints()
-            )
-            ? $players[$i + 1]
-            : $players[$i];
+        if ($this->isWinnerByFold($players)) {
+            return $this->getWinnerByFold($players);
         }
 
-        return $winner;
+        return $this->getWinnerByBestHand($players);
+    }
+
+    /**
+     * Check if winner should be decided because of folding players,
+     * rather than a winning hand.
+     *
+     * @param array<PlayerInterface> $players.
+     *
+     * @return bool
+     */
+    private function isWinnerByFold(array $players): bool
+    {
+        if ($this->getNumberOfFoldedPlayers($players) > 1) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
