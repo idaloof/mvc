@@ -55,7 +55,6 @@ class ProjectCleveTurnController extends AbstractController
 
         $holeCards = $playerToAct->getHand()->getHoleCards();
 
-        var_dump($holeCards);
         $type = $playerToAct->getHoleType($holeCards);
         $ranks = $playerToAct->getHoleRanks($holeCards);
 

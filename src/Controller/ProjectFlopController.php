@@ -65,7 +65,7 @@ class ProjectFlopController extends AbstractController
 
         $possibleMoves = $game->getPossibleMoves($player);
 
-        // Beräkna hur mycket för call samt (METOD???)
+        // Beräkna hur mycket för call samt
         // min och max raise utifrån spelarens bet, pot och högsta bet.
         $highestBet = $game->getHighestCurrentBet();
         $pot = $game->getPot();
