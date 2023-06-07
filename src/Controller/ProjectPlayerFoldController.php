@@ -48,7 +48,7 @@ class ProjectPlayerFoldController extends AbstractController
 
         $message->setCreated(strval($currentTime));
         $message->setMessenger($messenger);
-        $message->setMessage($playerMessage);
+        $message->setMessage((string) $playerMessage);
 
         $entityManager->persist($message);
 
