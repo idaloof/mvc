@@ -89,6 +89,18 @@ class TexasHand
     }
 
     /**
+     * Clears player's best hand properties.
+     *
+     * @return void
+     */
+    public function clearBestHandProperties(): void
+    {
+        $this->bestHand = [];
+        $this->bestHandName = "";
+        $this->bestHandPoints = 0;
+    }
+
+    /**
      * Gets player's best hand as array with strings.
      *
      * @return array<string> Player's best hand as array with strings.
