@@ -578,7 +578,7 @@ class TexasGame
             6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan. KLART
             7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet) KLART
                 - Beräkna även hur mycket som krävs för call. KLART
-            8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call)
+            8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call) KLART
                 Spelaren måste ha en egen path genom spelflödet??. det är inte endast spelarens moves som sparas.
                 - Om spelaren fold:
                     * spelarens hasFolded sätts (Player->PlayerMoves)
