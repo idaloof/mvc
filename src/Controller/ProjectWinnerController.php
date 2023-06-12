@@ -43,7 +43,7 @@ class ProjectWinnerController extends AbstractController
 
         $winning = "hand";
 
-        if ($game->getByFold()) {
+        if ($game->isWinnerByFold()) {
             $winning = "fold";
         }
 
