@@ -1,10 +1,10 @@
 /* Style sheet for project stu container */
 
 .stu-container {
-    grid-column: 1 / 5;
+    grid-column: 2 / 5;
     grid-row: 1 / 4;
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(9, auto);
     grid-template-rows: repeat(4, auto);
     gap: 10px;
     align-items: center;
@@ -13,7 +13,7 @@
 
 // STU CONTAINER CONTENT
 .stu-head {
-    grid-column: 4 / 8;
+    grid-column: 3 / 10;
     grid-row: 1 / 3;
     width: 100px;
     height: 100px;
@@ -23,9 +23,12 @@
     color: #fff;
     border: $proj-border-header-footer;
     padding: 0.2rem;
-    justify-self: center;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
 
     p {
         font-size: $base-font-size * 1.3;
@@ -34,6 +37,32 @@
         align-self: center;
         justify-self: center;
         font-family: $proj-font-family-message-board-heading;
+    }
+
+    .smaller {
+        font-size: $base-font-size * 0.8;
+        font-family: $proj-font-family-message;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+}
+
+.stu-bet-container {
+    grid-column: 2 / 5;
+    grid-row: 5 / 6;
+    height: fit-content;
+    align-self: first baseline;
+    justify-self: center;
+    color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+
+    .smaller {
+        font-size: $base-font-size * 0.8;
+        margin: 0;
     }
 }
 
@@ -52,7 +81,7 @@
 }
 
 .dealer-chip-stu-container {
-    grid-column: 1 / 4;
+    grid-column: 1 / 3;
     grid-row: 3 / 5;
     justify-self: center;
 }
@@ -61,7 +90,7 @@
     display: flex;
     flex-direction: row;
     gap: 4px;
-    grid-column: 4 / 8;
+    grid-column: 3 / 10;
     grid-row: 3 / 5;
     justify-self: center;
 }
