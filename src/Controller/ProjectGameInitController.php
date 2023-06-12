@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
+use App\Texas\MessageTrait;
 use App\Texas\TexasGame;
 use Doctrine\DBAL\Connection;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,6 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectGameInitController extends AbstractController
 {
+    use MessageTrait;
+
     /* Proj PreFlop Route */
     #[Route("/proj/game-init", name: "proj_game_init")]
     public function projCreateGame(
@@ -47,24 +49,10 @@ class ProjectGameInitController extends AbstractController
             $statement->executeStatement();
         }
 
+        $messenger = "Texas";
+        $message = "Pot Limit Texas Hold'em! Nu kör vi.";
 
-        $entityManager = $doctrine->getManager();
-
-        $message = new Messages();
-
-        date_default_timezone_set('Europe/Stockholm');
-
-        $currentTime = date('H:i');
-
-        $message->setCreated(strval($currentTime));
-        $message->setMessenger("Texas");
-        $message->setMessage(
-            "Pot Limit Texas Hold'em! Nu kör vi."
-        );
-
-        $entityManager->persist($message);
-
-        $entityManager->flush();
+        $this->addMessage($messenger, $message, $doctrine);
 
         return $this->redirectToRoute('proj_pre_flop');
     }

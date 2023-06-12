@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
 use App\Repository\PreFlopRankingsRepository;
 use App\Texas\ComputerCleve;
+use App\Texas\MessageTrait;
 use App\Texas\TexasGame;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectCleveTurnController extends AbstractController
 {
+    use MessageTrait;
     /* Proj Cleve Turn Route */
     #[Route('proj/cleve-turn', name:'proj_cleve_turn')]
     public function projCleveTurn(
@@ -94,21 +95,9 @@ class ProjectCleveTurnController extends AbstractController
 
         $messenger = $playerToAct->getName();
 
-        $entityManager = $doctrine->getManager();
+        $message = $move . " " . $amount;
 
-        $message = new Messages();
-
-        date_default_timezone_set('Europe/Stockholm');
-
-        $currentTime = date('H:i');
-
-        $message->setCreated(strval($currentTime));
-        $message->setMessenger($messenger);
-        $message->setMessage($move . " " . $amount);
-
-        $entityManager->persist($message);
-
-        $entityManager->flush();
+        $this->addMessage($messenger, $message, $doctrine);
 
         $game->dequeuePlayer();
         $game->enqueuePlayer($playerToAct);

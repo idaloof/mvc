@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
+use App\Texas\MessageTrait;
 use App\Texas\TexasGame;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +18,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectPlayerCheckController extends AbstractController
 {
+    use MessageTrait;
+
     /* Proj Check Route */
     #[Route('proj/player-check', name:'proj_player_check', methods: ['POST'])]
     public function projPlayerCheck(
@@ -38,21 +40,9 @@ class ProjectPlayerCheckController extends AbstractController
 
         $messenger = $player->getName();
 
-        $entityManager = $doctrine->getManager();
+        $message = (string) $playerMessage;
 
-        $message = new Messages();
-
-        date_default_timezone_set('Europe/Stockholm');
-
-        $currentTime = date('H:i');
-
-        $message->setCreated(strval($currentTime));
-        $message->setMessenger($messenger);
-        $message->setMessage((string) $playerMessage);
-
-        $entityManager->persist($message);
-
-        $entityManager->flush();
+        $this->addMessage($messenger, $message, $doctrine);
 
         $bRoute = $session->get('back-route');
 

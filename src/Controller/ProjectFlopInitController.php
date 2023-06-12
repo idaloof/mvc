@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
+use App\Texas\MessageTrait;
 use App\Texas\TexasGame;
-use App\Entity\Messages;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectFlopInitController extends AbstractController
 {
+    use MessageTrait;
+
     /* Proj Flop Init Route */
     #[Route("/proj/flop-init", name: "proj_flop_init")]
     public function projFlopInit(
@@ -29,21 +31,10 @@ class ProjectFlopInitController extends AbstractController
         // Hitta bästa handen för alla spelare -> set best hand och best hand name.
         $game->getAndSetBestHands();
 
-        $entityManager = $doctrine->getManager();
+        $messenger = "Texas";
+        $message = "Floppen på bordet!";
 
-        $message = new Messages();
-
-        date_default_timezone_set('Europe/Stockholm');
-
-        $currentTime = date('H:i');
-
-        $message->setCreated(strval($currentTime));
-        $message->setMessenger("Texas");
-        $message->setMessage("Floppen på bordet!");
-
-        $entityManager->persist($message);
-
-        $entityManager->flush();
+        $this->addMessage($messenger, $message, $doctrine);
 
         $session->set('game', $game);
 

@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
+// use App\Entity\Messages;
+use App\Texas\MessageTrait;
 use App\Texas\TexasGame;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectResetController extends AbstractController
 {
+    use MessageTrait;
     /* Proj Reset Stage Route */
     #[Route("/proj/reset-stage", name: "proj_reset_stage")]
     public function projResetStage(
@@ -44,32 +46,18 @@ class ProjectResetController extends AbstractController
 
         $winnerData = $game->resetForNewRound();
 
-        $entityManager = $doctrine->getManager();
-
         $player = $winnerData[0]->getName();
         $pot = $winnerData[1];
 
-        date_default_timezone_set('Europe/Stockholm');
+        $messenger = "Texas";
+        $aMessage = $player . " vinner potten på " . $pot;
 
-        $currentTime = date('H:i');
+        $this->addMessage($messenger, $aMessage, $doctrine);
 
-        $message = new Messages();
+        $messenger = "Texas";
+        $aMessage = "Ny runda, blinds ute!";
 
-        $message->setCreated(strval($currentTime));
-        $message->setMessenger("Texas");
-        $message->setMessage($player . " vinner potten på " . $pot);
-
-        $entityManager->persist($message);
-
-        $message = new Messages();
-
-        $message->setCreated(strval($currentTime));
-        $message->setMessenger("Texas");
-        $message->setMessage("Ny runda, blinds ute!");
-
-        $entityManager->persist($message);
-
-        $entityManager->flush();
+        $this->addMessage($messenger, $aMessage, $doctrine);
 
         $session->set('game', $game);
 

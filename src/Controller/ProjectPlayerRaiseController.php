@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Messages;
+use App\Texas\MessageTrait;
 use App\Texas\TexasGame;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +18,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectPlayerRaiseController extends AbstractController
 {
+    use MessageTrait;
+
     /* Proj Call Route */
     #[Route('proj/player-raise', name:'proj_player_raise', methods: ['POST'])]
     public function projPlayerRaise(
@@ -43,21 +45,9 @@ class ProjectPlayerRaiseController extends AbstractController
 
         $messenger = $player->getName();
 
-        $entityManager = $doctrine->getManager();
+        $message = $playerMessage . " " . $raiseAmount;
 
-        $message = new Messages();
-
-        date_default_timezone_set('Europe/Stockholm');
-
-        $currentTime = date('H:i');
-
-        $message->setCreated(strval($currentTime));
-        $message->setMessenger($messenger);
-        $message->setMessage($playerMessage . " " . $raiseAmount);
-
-        $entityManager->persist($message);
-
-        $entityManager->flush();
+        $this->addMessage($messenger, $message, $doctrine);
 
         $bRoute = $session->get('back-route');
 
