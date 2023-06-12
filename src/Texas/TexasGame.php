@@ -399,6 +399,19 @@ class TexasGame
     }
 
     /**
+     * Gets winner of the round.
+     *
+     * @return PlayerInterface Winner of the round.
+     */
+    public function getWinner(): PlayerInterface
+    {
+        $players = $this->queue->getQueue();
+        $winner = $this->gameLogic->getWinner($players);
+
+        return $winner;
+    }
+
+    /**
      * Deal the flop and return the cards.
      *
      * @return array<string> Array of flop card images.
@@ -424,6 +437,18 @@ class TexasGame
         $this->table->addToCommunityCards($card);
 
         return $this->table->getCommunityCardImages();
+    }
+
+    /**
+     * Gets if winner is by fold.
+     *
+     * @return bool
+     */
+    public function getByFold(): bool
+    {
+        $players = $this->queue->getQueue();
+
+        return $this->gameLogic->isWinnerByFold($players);
     }
 
     /**

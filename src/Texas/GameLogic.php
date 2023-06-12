@@ -184,7 +184,7 @@ class GameLogic
      *
      * @return bool
      */
-    private function isWinnerByFold(array $players): bool
+    public function isWinnerByFold(array $players): bool
     {
         if ($this->getNumberOfFoldedPlayers($players) > 1) {
             return true;
