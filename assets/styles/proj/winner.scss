@@ -1,0 +1,38 @@
+/* Style sheet for project winner template */
+
+@keyframes rainBorder {
+    0%   {border: 2px solid #ef3550;}
+    12.5%  {border: 2px solid #f48fb1;}
+    25%  {border: 2px solid #7e57c2;}
+    37.5%  {border: 2px solid #2196f3;}
+    50%  {border: 2px solid #26c6da;}
+    62.5%  {border: 2px solid #43a047;}
+    75%  {border: 2px solid #eeff41;}
+    87.5%  {border: 2px solid #f9a825;}
+    100% {border: 2px solid #ff5722;}
+}
+
+.winner-container {
+    grid-column: 9 / 13;
+    grid-row: 5 / 9;
+    width: fit-content;
+    padding: $magic-number;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    animation: rainBorder 4s linear infinite;
+}
+
+.winner-card {
+    width: 40px;
+}
+
+.a-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.the-link {
+    grid-column: 9 / 10;
+    grid-row: 9 / 10;
+    width: 80px;
+}
