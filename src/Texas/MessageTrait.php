@@ -25,8 +25,7 @@ trait MessageTrait
         string $messenger,
         string $aMessage,
         ManagerRegistry $doctrine
-    ): void
-    {
+    ): void {
         $entityManager = $doctrine->getManager();
 
         $message = new Messages();
