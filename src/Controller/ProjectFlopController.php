@@ -74,7 +74,7 @@ class ProjectFlopController extends AbstractController
         $session->set('game', $game);
         $communityImages = $session->get('communityImages');
 
-        return $this->render('proj/proj-flop.html.twig', [
+        return $this->render('proj/proj-post-flop.html.twig', [
             'queuePlayers' => $queuePlayersData,
             'messages' => $messages,
             'moves' => $possibleMoves,
