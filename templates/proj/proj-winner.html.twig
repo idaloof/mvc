@@ -1,0 +1,47 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+<div class="outer-flop-container">
+    <div class="proj-flop-container">
+    </div>
+    {% for player in queuePlayers %}
+        {% if player.wallet is defined %}
+            {% include 'proj/proj-player.html.twig' %}
+        {% else %}
+            {% include 'proj/proj-computer-winner.html.twig' %}
+        {% endif %}
+    {% endfor %}
+    <div class="proj-community-container">
+        <div class="community-cards">
+            {% for card in community %}
+                <img class="community-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            {% endfor %}
+        </div>
+    </div>
+    {% if winning is same as "hand" %}
+        <div class="winner-container">
+            <div class="winner-text">
+                <p class="p-para">{{ winner }} vinner {{ pot }} SEK,</p>
+            </div>
+            <div class="winner-hand">
+                <p class="p-para">med handen: {{ winnerHand }}</p>
+            </div>
+            <br>
+            {% for card in winnerCards %}
+                <img class="winner-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="winner-container">
+            <div class="winner-text">
+                <p class="p-para">{{ winner }} vinner {{ pot }} SEK,</p>
+            </div>
+        </div>
+    {% endif %}
+    <div class="p-button the-link">
+        <a class="a-link" href="{{ restartUrl }}">Ny runda</a>
+    </div>
+</div>
+{% endblock %}

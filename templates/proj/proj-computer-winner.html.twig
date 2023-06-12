@@ -1,0 +1,37 @@
+<div class="{{ player.name|lower }}-container">
+    <div class="{{ player.name|lower }}-head">
+        <p>{{ player.name }}</p>
+    </div>
+    <div class="poker-{{ player.name|lower }}-info">
+        <table class="proj-table-com">
+            <thead class="proj-thead">
+                <tr>
+                    <th class="proj-thead-th">Saldo</th>
+                    <th class="proj-thead-th">Insats</th>
+                    <th class="proj-thead-th">Drag</th>
+                </tr>
+            </thead>
+            <tbody class="proj-tbody">
+                <tr class="proj-tbody-tr">
+                    <td class="proj-td">{{ player.buyIn }}</td>
+                    <td class="proj-td">{{ player.bets }}</td>
+                    <td class="proj-td">{{ player.move }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% if player.role is same as "d" %}
+        <div class="dealer-chip-{{ player.name|lower }}-container">
+                <img
+                    class="dealer-chip"
+                    src="{{ asset('../img/proj/dealer.png') }}"
+                    width="50"
+                >
+        </div>
+    {% endif %}
+    <div class="proj-card-{{ player.name|lower }}-container">
+        {% for card in player.holeCards %}
+            <img class="hole-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+        {% endfor %}
+    </div>
+</div>
