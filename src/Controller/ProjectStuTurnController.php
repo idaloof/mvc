@@ -75,6 +75,6 @@ class ProjectStuTurnController extends AbstractController
         $session->set('game', $game);
 
         // REDIRECT TILL CLEVEs CONTROLLER
-        return $this->redirectToRoute('proj_cleve_turn');
+        return $this->redirectToRoute($bRoute);
     }
 }
