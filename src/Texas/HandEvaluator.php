@@ -145,7 +145,7 @@ class HandEvaluator extends CardCombinator
             }
         }
 
-        $this->sortHandData($handData);
+        $handData = $this->sortHandData($handData);
 
         return $handData;
     }
@@ -160,7 +160,7 @@ class HandEvaluator extends CardCombinator
      */
     public function compareFirstElement($first, $next): int
     {
-        return $first[0] <=> $next[0];
+        return $next[0] <=> $first[0];
     }
 
     /**
@@ -168,11 +168,12 @@ class HandEvaluator extends CardCombinator
      *
      * @param array<mixed> $handData Current hand combinations.
      *
-     * @return void
+     * @return array<mixed>
      */
-    public function sortHandData(array $handData): void
+    public function sortHandData(array $handData): array
     {
         usort($handData, array($this, 'compareFirstElement'));
+        return $handData;
     }
 
 }
