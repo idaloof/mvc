@@ -8,7 +8,7 @@
     </div>
     {% for player in queuePlayers %}
         {% if player.wallet is defined %}
-            {% include 'proj/proj-player.html.twig' %}
+            {% include 'proj/proj-player-winner.html.twig' %}
         {% else %}
             {% include 'proj/proj-computer-winner.html.twig' %}
         {% endif %}
