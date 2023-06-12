@@ -1,14 +1,1115 @@
 Array
 (
-    [name] => Eight of spades
-    [value] => 8
-    [suit] => spades
-    [image] => 8S
+    [0] => Array
+        (
+            [0] => 274
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♠
+                            [image:App\Texas\Card:private] => KS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => J♣
+                            [image:App\Texas\Card:private] => JC
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 11
+                            [rank:App\Texas\Card:private] => J
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♥
+                            [image:App\Texas\Card:private] => KH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♠
+                            [image:App\Texas\Card:private] => TS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [0] => 269
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♠
+                            [image:App\Texas\Card:private] => KS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => J♣
+                            [image:App\Texas\Card:private] => JC
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 11
+                            [rank:App\Texas\Card:private] => J
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♥
+                            [image:App\Texas\Card:private] => KH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [2] => Array
+        (
+            [0] => 268
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♠
+                            [image:App\Texas\Card:private] => KS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♥
+                            [image:App\Texas\Card:private] => KH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♠
+                            [image:App\Texas\Card:private] => TS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [3] => Array
+        (
+            [0] => 265
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♠
+                            [image:App\Texas\Card:private] => KS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => J♣
+                            [image:App\Texas\Card:private] => JC
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 11
+                            [rank:App\Texas\Card:private] => J
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♥
+                            [image:App\Texas\Card:private] => KH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♠
+                            [image:App\Texas\Card:private] => TS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [4] => Array
+        (
+            [0] => 153
+            [1] => High Card
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♠
+                            [image:App\Texas\Card:private] => KS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => J♣
+                            [image:App\Texas\Card:private] => JC
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 11
+                            [rank:App\Texas\Card:private] => J
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♠
+                            [image:App\Texas\Card:private] => TS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [5] => Array
+        (
+            [0] => 153
+            [1] => High Card
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => J♣
+                            [image:App\Texas\Card:private] => JC
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 11
+                            [rank:App\Texas\Card:private] => J
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => K♥
+                            [image:App\Texas\Card:private] => KH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 13
+                            [rank:App\Texas\Card:private] => K
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♠
+                            [image:App\Texas\Card:private] => TS
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
 )
 Array
 (
-    [name] => Five of clubs
-    [value] => 5
-    [suit] => clubs
-    [image] => 5C
+    [0] => Array
+        (
+            [0] => 250
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♥
+                            [image:App\Texas\Card:private] => TH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♦
+                            [image:App\Texas\Card:private] => TD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 2♦
+                            [image:App\Texas\Card:private] => 2D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 2
+                            [rank:App\Texas\Card:private] => 2
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                )
+
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [0] => 253
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♥
+                            [image:App\Texas\Card:private] => TH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♦
+                            [image:App\Texas\Card:private] => TD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [0] => 251
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♥
+                            [image:App\Texas\Card:private] => TH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♦
+                            [image:App\Texas\Card:private] => TD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 2♦
+                            [image:App\Texas\Card:private] => 2D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 2
+                            [rank:App\Texas\Card:private] => 2
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [2] => Array
+        (
+            [0] => 250
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♥
+                            [image:App\Texas\Card:private] => TH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♦
+                            [image:App\Texas\Card:private] => TD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 2♦
+                            [image:App\Texas\Card:private] => 2D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 2
+                            [rank:App\Texas\Card:private] => 2
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                )
+
+        )
+
+    [3] => Array
+        (
+            [0] => 241
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♥
+                            [image:App\Texas\Card:private] => TH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♦
+                            [image:App\Texas\Card:private] => TD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 2♦
+                            [image:App\Texas\Card:private] => 2D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 2
+                            [rank:App\Texas\Card:private] => 2
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [4] => Array
+        (
+            [0] => 135
+            [1] => High Card
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♥
+                            [image:App\Texas\Card:private] => TH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 2♦
+                            [image:App\Texas\Card:private] => 2D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 2
+                            [rank:App\Texas\Card:private] => 2
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [5] => Array
+        (
+            [0] => 135
+            [1] => High Card
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => A♦
+                            [image:App\Texas\Card:private] => AD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 14
+                            [rank:App\Texas\Card:private] => A
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => T♦
+                            [image:App\Texas\Card:private] => TD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 10
+                            [rank:App\Texas\Card:private] => T
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 2♦
+                            [image:App\Texas\Card:private] => 2D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 2
+                            [rank:App\Texas\Card:private] => 2
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♣
+                            [image:App\Texas\Card:private] => 5C
+                            [suit:App\Texas\Card:private] => C
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [0] => 237
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♠
+                            [image:App\Texas\Card:private] => 4S
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 8♦
+                            [image:App\Texas\Card:private] => 8D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 8
+                            [rank:App\Texas\Card:private] => 8
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♦
+                            [image:App\Texas\Card:private] => QD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♥
+                            [image:App\Texas\Card:private] => 5H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+)
+Array
+(
+    [0] => Array
+        (
+            [0] => 356
+            [1] => Two Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♠
+                            [image:App\Texas\Card:private] => 4S
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 8♦
+                            [image:App\Texas\Card:private] => 8D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 8
+                            [rank:App\Texas\Card:private] => 8
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♦
+                            [image:App\Texas\Card:private] => QD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♥
+                            [image:App\Texas\Card:private] => QH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [0] => 353
+            [1] => Two Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♠
+                            [image:App\Texas\Card:private] => 4S
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♦
+                            [image:App\Texas\Card:private] => QD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♥
+                            [image:App\Texas\Card:private] => 5H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♥
+                            [image:App\Texas\Card:private] => QH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                )
+
+        )
+
+    [2] => Array
+        (
+            [0] => 253
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♠
+                            [image:App\Texas\Card:private] => 4S
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 8♦
+                            [image:App\Texas\Card:private] => 8D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 8
+                            [rank:App\Texas\Card:private] => 8
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♦
+                            [image:App\Texas\Card:private] => QD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♥
+                            [image:App\Texas\Card:private] => 5H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♥
+                            [image:App\Texas\Card:private] => QH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                )
+
+        )
+
+    [3] => Array
+        (
+            [0] => 253
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 8♦
+                            [image:App\Texas\Card:private] => 8D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 8
+                            [rank:App\Texas\Card:private] => 8
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♦
+                            [image:App\Texas\Card:private] => QD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♥
+                            [image:App\Texas\Card:private] => 5H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♥
+                            [image:App\Texas\Card:private] => QH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                )
+
+        )
+
+    [4] => Array
+        (
+            [0] => 237
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♠
+                            [image:App\Texas\Card:private] => 4S
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 8♦
+                            [image:App\Texas\Card:private] => 8D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 8
+                            [rank:App\Texas\Card:private] => 8
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♦
+                            [image:App\Texas\Card:private] => QD
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♥
+                            [image:App\Texas\Card:private] => 5H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                )
+
+        )
+
+    [5] => Array
+        (
+            [0] => 237
+            [1] => One Pair
+            [2] => Array
+                (
+                    [0] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♠
+                            [image:App\Texas\Card:private] => 4S
+                            [suit:App\Texas\Card:private] => S
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [1] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 4♥
+                            [image:App\Texas\Card:private] => 4H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 4
+                            [rank:App\Texas\Card:private] => 4
+                        )
+
+                    [2] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 8♦
+                            [image:App\Texas\Card:private] => 8D
+                            [suit:App\Texas\Card:private] => D
+                            [value:App\Texas\Card:private] => 8
+                            [rank:App\Texas\Card:private] => 8
+                        )
+
+                    [3] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => 5♥
+                            [image:App\Texas\Card:private] => 5H
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 5
+                            [rank:App\Texas\Card:private] => 5
+                        )
+
+                    [4] => App\Texas\Card Object
+                        (
+                            [name:App\Texas\Card:private] => Q♥
+                            [image:App\Texas\Card:private] => QH
+                            [suit:App\Texas\Card:private] => H
+                            [value:App\Texas\Card:private] => 12
+                            [rank:App\Texas\Card:private] => Q
+                        )
+
+                )
+
+        )
+
 )
