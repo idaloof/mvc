@@ -1,0 +1,10 @@
+<div class="humanplayer-container">
+    <div class="humanplayer-head">
+        <p>{{ player.name }}</p>
+    </div>
+    <div class="proj-card-container">
+        {% for card in player.holeCards %}
+            <img class="hole-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+        {% endfor %}
+    </div>
+</div>
