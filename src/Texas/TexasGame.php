@@ -335,7 +335,6 @@ class TexasGame
         $player->clearPlayerBets();
         $player->getHand()->foldHand();
         $player->getPlayerMoves()->setHasFolded();
-        $player->getPlayerMoves()->clearRoundMoves();
         $player->getHand()->clearBestHandProperties();
 
         $this->queue->enqueue($player);
@@ -444,7 +443,7 @@ class TexasGame
      *
      * @return bool
      */
-    public function getByFold(): bool
+    public function isWinnerByFold(): bool
     {
         $players = $this->queue->getQueue();
 

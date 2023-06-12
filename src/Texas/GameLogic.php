@@ -232,15 +232,12 @@ class GameLogic
         /**
          * @var PlayerInterface $winner
          */
-        $winner = null;
+        $winner = $players[0];
 
-        for ($i = 0; $i < $count - 1; $i++) {
-            $winner = (
-                $players[$i]->getHand()->getBestHandPoints() <
-                $players[$i + 1]->getHand()->getBestHandPoints()
-            )
-            ? $players[$i + 1]
-            : $players[$i];
+        for ($i = 1; $i < $count; $i++) {
+            if ($players[$i]->getHand()->getBestHandPoints() > $winner->getHand()->getBestHandPoints()) {
+                $winner = $players[$i];
+            }
         }
 
         return $winner;
