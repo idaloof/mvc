@@ -17,7 +17,7 @@ class ProjectRiverController extends AbstractController
         SessionInterface $session,
         MessagesRepository $repository
     ): Response {
-        $session->set('forward-route', 'proj_winner_init');
+        $session->set('forward-route', 'proj_winner');
         $session->set('back-route', 'proj_river');
 
         /**
@@ -30,7 +30,7 @@ class ProjectRiverController extends AbstractController
         }
 
         if ($game->isGameReadyForNextStage()) {
-            return $this->redirectToRoute('proj_reset_stage');
+            return $this->redirectToRoute('proj_winner');
         }
 
         $queuePlayers = $game->getQueuePlayers();

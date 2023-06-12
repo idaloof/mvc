@@ -15,9 +15,9 @@ class ProjectGameInitController extends AbstractController
 {
     use MessageTrait;
 
-    /* Proj PreFlop Route */
+    /* Proj Game Init Route */
     #[Route("/proj/game-init", name: "proj_game_init")]
-    public function projCreateGame(
+    public function projGameInit(
         SessionInterface $session,
         ManagerRegistry $doctrine,
         Connection $connection
