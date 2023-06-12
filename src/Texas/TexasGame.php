@@ -414,6 +414,19 @@ class TexasGame
     }
 
     /**
+     * Deal the turn and return the cards.
+     *
+     * @return array<string> Array of community card images.
+     */
+    public function setTurnAndGetImages(): array
+    {
+        $card = $this->deck->drawSingle();
+        $this->table->addToCommunityCards($card);
+
+        return $this->table->getCommunityCardImages();
+    }
+
+    /**
      * Finds and sets player's best hand, name and points.
      *
      * @return void
@@ -429,10 +442,15 @@ class TexasGame
                 $holeCards = $player->getHand()->getHoleCards();
                 $allCards = array_merge($holeCards, $communityCards);
                 $combinations = $this->handEvaluator->setAndGetCombinations($allCards);
-                // var_dump($combinations);
 
                 $handData = $this->handEvaluator->evaluateManyHands($combinations);
+
+                // if ($player->getName() === "m8") {
+                //     error_log(print_r($handData, true), 3, 'log.txt');
+                // }
+
                 // var_dump($handData);
+
                 $bestHandPoints = $handData[0][0];
                 $bestHandName = $handData[0][1];
                 $bestHand = $handData[0][2];
