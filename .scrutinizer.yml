@@ -7,10 +7,12 @@ filter:
         - tests/
         - .php-cs-fixer.dist.php
         - src/Controller
+        - src/Command
+        - src/Data
     
-    # dependency_paths:
-    #     - src/Entity/
-        # - src/Repository/
+    dependency_paths:
+        - src/Entity/
+        - src/Repository/
         - src/Kernel.php
 
 build:

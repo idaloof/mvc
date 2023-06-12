@@ -429,8 +429,6 @@ class ComputerLogic
         int $minRaise,
         int $maxRaise
     ): array {
-        var_dump($minRaise);
-        var_dump($maxRaise);
         $raiseSize = random_int($minRaise, $maxRaise);
 
         $player->addToBets($raiseSize);

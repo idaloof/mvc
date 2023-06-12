@@ -118,7 +118,6 @@ class TexasGame
             $cards = [$card2, $card1];
 
             if (intval($card2->getCardValue()) < intval($card1->getCardValue())) {
-                $cards = [];
                 $cards = [$card1, $card2];
             }
 
@@ -421,7 +420,6 @@ class TexasGame
      */
     public function getAndSetBestHands(): void
     {
-        $allCards = [];
         $communityCards = $this->table->getCommunityCards();
 
         $players = $this->queue->getQueue();
