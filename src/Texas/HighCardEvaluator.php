@@ -15,12 +15,22 @@ class HighCardEvaluator extends CalculatePoints implements EvaluatorInterface
      * @param array<string> $values     Values of the player's cards.
      * @param array<string> $ranks      Ranks of the player's cards.
      *
-     * @return string                   "High Card".
+     * @return string                   "High Card" or empty.
      *
      */
     public function evaluateHand(array $suits, array $values, array $ranks): string
     {
-        return "High Card";
+        $nrOfCards = count($values);
+        sort($values);
+        $count = 0;
+
+        for ($i = 0; $i < $nrOfCards - 1; $i++) {
+            if ($values[$i] === $values[$i + 1]) {
+                $count++;
+            }
+        }
+
+        return ($count === 0) ? "High Card" : "";
     }
 
     /**
