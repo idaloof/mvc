@@ -238,16 +238,6 @@ class TexasGame
     }
 
     /**
-     * Gets small blind.
-     *
-     * @return int Small blind.
-     */
-    public function getSmallBlind(): int
-    {
-        return $this->table->getSmallBlind();
-    }
-
-    /**
      * Gets big blind.
      *
      * @return int Big blind.
@@ -484,16 +474,6 @@ class TexasGame
                 $player->getHand()->setBestHandPoints($bestHandPoints);
             }
         }
-    }
-
-    /**
-     * Returns community card images
-     *
-     * @return array<string> Array with card images.
-     */
-    public function returnCommunity(): array
-    {
-        return $this->table->getCommunityCardImages();
     }
 
     /**

@@ -107,11 +107,11 @@ class TexasInitController extends AbstractController
             $data[$name] = $player->getPlayerData();
         }
 
-        $community = $game->returnCommunity();
+        // $community = $game->returnCommunity();
 
-        // $cards = $players[0]->getHand()->getHoleCards();
+        // // $cards = $players[0]->getHand()->getHoleCards();
 
-        $data["community"] = $community;
+        // $data["community"] = $community;
 
         return $this->render('proj/texas-game.html.twig', $data);
     }
