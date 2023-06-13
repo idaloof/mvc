@@ -24,7 +24,7 @@ class ProjectResetController extends AbstractController
          */
         $game = $session->get('game');
 
-        $game->resetForNextStage();
+        $game->setNextStage();
 
         $fRoute = $session->get('forward-route');
 
@@ -44,7 +44,7 @@ class ProjectResetController extends AbstractController
          */
         $game = $session->get('game');
 
-        $winnerData = $game->resetForNewRound();
+        $winnerData = $game->setNewRound();
 
         $player = $winnerData[0]->getName();
         $pot = $winnerData[1];
