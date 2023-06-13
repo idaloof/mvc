@@ -48,8 +48,8 @@ class ProjectCleveTurnController extends AbstractController
         $playerToAct = $game->getFirstPlayer();
 
         if ($playerToAct->getPlayerMoves()->hasFolded()) {
-            $game->dequeuePlayer();
-            $game->enqueuePlayer($playerToAct);
+            $player = $game->dequeuePlayer();
+            $game->enqueuePlayer($player);
 
             return $this->redirectToRoute($bRoute);
         }
