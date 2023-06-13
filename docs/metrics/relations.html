@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-05-18 06:13:42        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-06-13 18:30:02        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -93,7 +93,7 @@
                             <path d="M0 0h24v24H0z" fill="none">
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z">
                         </svg>
-                        Violations (5)
+                        Violations (10)
                     </a>
                 </li>
                                     <li>
@@ -253,7 +253,7 @@
 
     var relations = [
     {
-        "name": "\\App\\Repository\\ProductRepository",
+        "name": "\\App\\Repository\\PreFlopRankingsRepository",
         "size": 3000,
         "relations": []
     },
@@ -264,6 +264,26 @@
     },
     {
         "name": "\\Doctrine\\Persistence\\ManagerRegistry",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\PreFlopRankings",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\MessagesRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Entity\\Messages",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\ProductRepository",
         "size": 3000,
         "relations": []
     },
@@ -333,14 +353,12 @@
         "relations": []
     },
     {
-        "name": "\\App\\Controller\\CardController",
+        "name": "\\App\\Controller\\ProjectPagesController",
         "size": 3000,
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\App\\Card\\Deck",
-            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-            "\\Symfony\\Component\\HttpFoundation\\Request"
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
         ]
     },
     {
@@ -359,7 +377,135 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\ProjectWhatNextController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectPlayerFoldController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
         "name": "\\Symfony\\Component\\HttpFoundation\\Request",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Controller\\ProjectCreateGameController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Texas\\HandEvaluator",
+            "\\App\\Texas\\GameLogic",
+            "\\App\\Texas\\GameData",
+            "\\App\\Texas\\Queue",
+            "\\App\\Texas\\Table",
+            "\\App\\Texas\\TexasDeck",
+            "\\App\\Texas\\TexasGame"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\HandEvaluator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\GameLogic",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\GameData",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\Queue",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\Table",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\Card"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\TexasDeck",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\TexasGame",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\TexasDeck",
+            "\\App\\Texas\\HandEvaluator",
+            "\\App\\Texas\\GameLogic",
+            "\\App\\Texas\\GameData",
+            "\\App\\Texas\\Queue",
+            "\\App\\Texas\\Table",
+            "\\App\\Texas\\PlayerInterface",
+            "\\App\\Texas\\ComputerStu",
+            "\\App\\Texas\\ComputerCleve"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\CardController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\App\\Card\\Deck",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectResetController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectTurnController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Repository\\MessagesRepository"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ApiTexasGameController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
         "size": 3000,
         "relations": []
     },
@@ -377,6 +523,35 @@
             "\\App\\Card\\Player",
             "\\App\\Card\\Bank",
             "\\App\\Card\\Game"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\TexasInitController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectStuTurnController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectRiverInitController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
         ]
     },
     {
@@ -398,6 +573,15 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\ProjectWinnerController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\ApiLibraryController",
         "size": 3000,
         "relations": [
@@ -408,11 +592,6 @@
             "\\Symfony\\Component\\Serializer\\Normalizer\\ObjectNormalizer",
             "\\Symfony\\Component\\Serializer\\Serializer"
         ]
-    },
-    {
-        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
-        "size": 3000,
-        "relations": []
     },
     {
         "name": "\\Symfony\\Component\\Serializer\\Encoder\\JsonEncoder",
@@ -430,6 +609,16 @@
         "relations": []
     },
     {
+        "name": "\\App\\Controller\\ProjectFlopController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Repository\\MessagesRepository"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\ApiDrawController",
         "size": 3000,
         "relations": [
@@ -437,6 +626,16 @@
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
             "\\App\\Card\\Deck"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectBuyInController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request"
         ]
     },
     {
@@ -457,6 +656,49 @@
             "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
         ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectCleveTurnController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Repository\\PreFlopRankingsRepository"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectCreatePlayersController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\App\\Texas\\TexasPlayer",
+            "\\App\\Texas\\ComputerStu",
+            "\\App\\Texas\\ComputerCleve"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\TexasPlayer",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\PlayerInterface",
+            "\\App\\Texas\\TexasHand",
+            "\\App\\Texas\\PlayerMoves"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\ComputerStu",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\ComputerCleve",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Controller\\ApiQuoteController",
@@ -490,6 +732,39 @@
         ]
     },
     {
+        "name": "\\App\\Controller\\ProjectGameInitController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\Doctrine\\DBAL\\Connection"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectPlayerRaiseController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectPlayerCallController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\ApiDrawNumberController",
         "size": 3000,
         "relations": [
@@ -501,11 +776,62 @@
         ]
     },
     {
+        "name": "\\App\\Controller\\ProjectPlayerCheckController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Request",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectPreFlopController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Repository\\MessagesRepository"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectTurnInitController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
         "name": "\\App\\Controller\\PageController",
         "size": 3000,
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Response"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectFlopInitController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\Doctrine\\Persistence\\ManagerRegistry"
+        ]
+    },
+    {
+        "name": "\\App\\Controller\\ProjectRiverController",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Repository\\MessagesRepository"
         ]
     },
     {
@@ -517,6 +843,179 @@
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
             "\\App\\Card\\Deck"
         ]
+    },
+    {
+        "name": "\\App\\Texas\\Card",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\CalculatePoints",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\CardInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\FullHouseEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\CalculatePoints",
+            "\\App\\Texas\\EvaluatorInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\EvaluatorInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\MessageTrait",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Entity\\Messages"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\FourOfAKindEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\CalculatePoints",
+            "\\App\\Texas\\EvaluatorInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\PlayerInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\CardCombinator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\TexasHand",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\PlayerMoves",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\ComputerLogic",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\ThreeOfAKindEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\CalculatePoints",
+            "\\App\\Texas\\EvaluatorInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\TwoPairEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\CalculatePoints",
+            "\\App\\Texas\\EvaluatorInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\OnePairEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\CalculatePoints",
+            "\\App\\Texas\\EvaluatorInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\HighCardEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\CalculatePoints",
+            "\\App\\Texas\\EvaluatorInterface"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\FlushEvaluator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\StraightEvaluator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\StraightFlushEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\CalculatePoints",
+            "\\App\\Texas\\EvaluatorInterface",
+            "\\App\\Texas\\StraightEvaluator",
+            "\\App\\Texas\\FlushEvaluator"
+        ]
+    },
+    {
+        "name": "\\App\\Texas\\RoyalStraightFlushEvaluator",
+        "size": 3000,
+        "relations": [
+            "\\App\\Texas\\EvaluatorInterface",
+            "\\App\\Texas\\StraightEvaluator",
+            "\\App\\Texas\\FlushEvaluator"
+        ]
+    },
+    {
+        "name": "\\App\\Command\\CsvImportCommand",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\Console\\Command\\Command",
+            "\\Doctrine\\ORM\\EntityManagerInterface",
+            "\\League\\Csv\\Reader",
+            "\\Symfony\\Component\\Console\\Input\\InputInterface",
+            "\\Symfony\\Component\\Console\\Output\\OutputInterface",
+            "\\Symfony\\Component\\Console\\Style\\SymfonyStyle",
+            "\\App\\Entity\\PreFlopRankings"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Command\\Command",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\ORM\\EntityManagerInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\League\\Csv\\Reader",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Input\\InputInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Output\\OutputInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\Console\\Style\\SymfonyStyle",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Kernel",
