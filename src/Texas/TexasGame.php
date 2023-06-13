@@ -337,7 +337,7 @@ class TexasGame
      *
      * @return void
      */
-    public function resetForNextStage(): void
+    public function setNextStage(): void
     {
         $players = $this->queue->getQueue();
 
@@ -354,7 +354,7 @@ class TexasGame
      *
      * @return array<mixed>
      */
-    public function resetForNewRound(): array
+    public function setNewRound(): array
     {
         $this->deck = new TexasDeck();
         $this->deck->shuffleDeck();
