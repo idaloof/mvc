@@ -14,8 +14,7 @@ class ProjectWinnerController extends AbstractController
     /* Proj Winner Route */
     #[Route("/proj/winner", name: "proj_winner")]
     public function projWinner(
-        SessionInterface $session,
-        MessagesRepository $repository
+        SessionInterface $session
     ): Response {
         // $session->set('forward-route', 'proj_winner_init');
         // $session->set('back-route', 'proj_river');
