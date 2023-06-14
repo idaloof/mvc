@@ -114,21 +114,18 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
      * Method for Cleve raising.
      *
      * @param int $minRaise
-     * @param int $maxRaise
      * @SuppressWarnings(PHPMD)
      *
      * @return array<mixed> Raise message and amount.
      */
-    public function setCleveRaises(int $minRaise, int $maxRaise): array
+    public function setCleveRaises(int $minRaise): array
     {
-        $raiseSize = random_int($minRaise, $maxRaise);
-
-        $this->addToBets($raiseSize);
-        $this->decreaseBuyIn($raiseSize);
+        $this->addToBets($minRaise);
+        $this->decreaseBuyIn($minRaise);
 
         $this->getPlayerMoves()->addToRoundMoves("raise");
 
-        return ["raise", $raiseSize];
+        return ["raise", $minRaise];
     }
 
     /**
@@ -144,11 +141,9 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
     public function setCleveMoveAndReturnData(
         string $move,
         int $highestBet,
-        int $pot,
         int $bigBlind
     ): array {
         $callSize = $highestBet - $this->getBets();
-        $maxRaise = $callSize + $pot;
         $minRaise = $callSize + $bigBlind;
 
         $moveData = [];
@@ -164,7 +159,7 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
                 $moveData = $this->setCleveCalls($callSize);
                 break;
             default:
-                $moveData = $this->setCleveRaises($minRaise, $maxRaise);
+                $moveData = $this->setCleveRaises($minRaise);
                 break;
         }
 
