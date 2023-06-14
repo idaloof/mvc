@@ -50,7 +50,7 @@ class ProjectGameInitController extends AbstractController
         }
 
         $messenger = "Texas";
-        $message = "Pot Limit Texas Hold'em! Nu kör vi.";
+        $message = "Limit Texas Hold'em! Nu kör vi.";
 
         $this->addMessage($messenger, $message, $doctrine);
 

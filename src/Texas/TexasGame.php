@@ -488,18 +488,15 @@ class TexasGame
         $moves = $this->getPossibleMoves($stu);
 
         $highestBet = $this->getHighestCurrentBet();
-        $pot = $this->getPot();
 
         $callSize = $highestBet - $stu->getBets();
-        $maxRaise = $callSize + $pot;
-        $minRaise = $callSize + $this->getBigBlind();
+        $minRaise = $this->getBigBlind();
 
         return $stu->setAndGetMove(
             $stu,
             $moves,
             $callSize,
-            $minRaise,
-            $maxRaise
+            $minRaise
         );
     }
 

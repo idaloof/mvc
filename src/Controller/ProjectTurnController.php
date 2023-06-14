@@ -68,8 +68,7 @@ class ProjectTurnController extends AbstractController
         $pot = $game->getPot();
 
         $callSize = $highestBet - $player->getBets();
-        $maxRaise = $callSize + $pot;
-        $minRaise = $callSize + $game->getBigBlind();
+        $minRaise = $game->getBigBlind();
 
         $session->set('game', $game);
         $communityImages = $session->get('communityImages');
@@ -79,7 +78,6 @@ class ProjectTurnController extends AbstractController
             'messages' => $messages,
             'moves' => $possibleMoves,
             'call' => $callSize,
-            'maxRaise' => $maxRaise,
             'minRaise' => $minRaise,
             'callUrl' => $this->generateUrl('proj_player_call'),
             'raiseUrl' => $this->generateUrl('proj_player_raise'),

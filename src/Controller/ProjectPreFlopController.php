@@ -71,8 +71,7 @@ class ProjectPreFlopController extends AbstractController
         $pot = $game->getPot();
 
         $callSize = $highestBet - $player->getBets();
-        $maxRaise = $callSize + $pot;
-        $minRaise = $callSize + $game->getBigBlind();
+        $minRaise = $game->getBigBlind();
 
         $session->set('game', $game);
 
@@ -81,7 +80,6 @@ class ProjectPreFlopController extends AbstractController
             'messages' => $messages,
             'moves' => $possibleMoves,
             'call' => $callSize,
-            'maxRaise' => $maxRaise,
             'minRaise' => $minRaise,
             'pot' => $pot,
             'callUrl' => $this->generateUrl('proj_player_call'),

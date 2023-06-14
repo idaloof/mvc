@@ -243,7 +243,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      *
      * @return array<mixed> Fold message and empty amount.
      */
@@ -251,14 +250,12 @@ class ComputerLogic
         ComputerLogic $object,
         PlayerInterface $player,
         int $callSize,
-        int $minRaise,
-        int $maxRaise
+        int $minRaise
     ): array {
         return $object->setStuFolds(
             $player,
             $callSize,
-            $minRaise,
-            $maxRaise
+            $minRaise
         );
     }
 
@@ -268,7 +265,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      * @SuppressWarnings(PHPMD)
      *
      * @return array<mixed> Fold message and empty amount.
@@ -276,8 +272,7 @@ class ComputerLogic
     public function setStuFolds(
         PlayerInterface $player,
         int $callSize,
-        int $minRaise,
-        int $maxRaise
+        int $minRaise
     ): array {
         $player->getPlayerMoves()->setHasFolded();
         $player->getHand()->foldHand();
@@ -295,7 +290,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      *
      * @return array<mixed> Check message and empty amount.
      */
@@ -303,14 +297,12 @@ class ComputerLogic
         ComputerLogic $object,
         PlayerInterface $player,
         int $callSize,
-        int $minRaise,
-        int $maxRaise
+        int $minRaise
     ): array {
         return $object->setStuChecks(
             $player,
             $callSize,
-            $minRaise,
-            $maxRaise
+            $minRaise
         );
     }
 
@@ -320,7 +312,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      * @SuppressWarnings(PHPMD)
      *
      * @return array<mixed> Check message and empty amount.
@@ -328,8 +319,7 @@ class ComputerLogic
     public function setStuChecks(
         PlayerInterface $player,
         int $callSize,
-        int $minRaise,
-        int $maxRaise
+        int $minRaise
     ): array {
         $player->getPlayerMoves()->addToRoundMoves("check");
         return ["check", ""];
@@ -342,7 +332,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      *
      * @return array<mixed> Call message and amount.
      */
@@ -350,14 +339,12 @@ class ComputerLogic
         ComputerLogic $object,
         PlayerInterface $player,
         int $callSize,
-        ?int $minRaise = null,
-        ?int $maxRaise = null
+        ?int $minRaise = null
     ): array {
         return $object->setStuCalls(
             $player,
             $callSize,
-            $minRaise,
-            $maxRaise
+            $minRaise
         );
     }
 
@@ -367,7 +354,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      * @SuppressWarnings(PHPMD)
      *
      * @return array<mixed> Call message and amount.
@@ -375,8 +361,7 @@ class ComputerLogic
     public function setStuCalls(
         PlayerInterface $player,
         int $callSize,
-        ?int $minRaise = null,
-        ?int $maxRaise = null
+        ?int $minRaise = null
     ): array {
         $player->addToBets($callSize);
         $player->decreaseBuyIn($callSize);
@@ -393,7 +378,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      *
      * @return array<mixed> Raise message and amount.
      */
@@ -401,14 +385,12 @@ class ComputerLogic
         ComputerLogic $object,
         PlayerInterface $player,
         int $callSize,
-        int $minRaise,
-        int $maxRaise
+        int $minRaise
     ): array {
         return $object->setStuRaises(
             $player,
             $callSize,
-            $minRaise,
-            $maxRaise
+            $minRaise
         );
     }
 
@@ -418,7 +400,6 @@ class ComputerLogic
      * @param PlayerInterface $player
      * @param int $callSize
      * @param int $minRaise
-     * @param int $maxRaise
      * @SuppressWarnings(PHPMD)
      *
      * @return array<mixed> Raise message and amount.
@@ -426,17 +407,14 @@ class ComputerLogic
     public function setStuRaises(
         PlayerInterface $player,
         int $callSize,
-        int $minRaise,
-        int $maxRaise
+        int $minRaise
     ): array {
-        $raiseSize = random_int($minRaise, $maxRaise);
-
-        $player->addToBets($raiseSize);
-        $player->decreaseBuyIn($raiseSize);
+        $player->addToBets($minRaise);
+        $player->decreaseBuyIn($minRaise);
 
         $player->getPlayerMoves()->addToRoundMoves("raise");
 
-        return ["raise", $raiseSize];
+        return ["raise", $minRaise];
     }
 
     /**
@@ -450,8 +428,7 @@ class ComputerLogic
         PlayerInterface $stu,
         int $moves,
         int $callSize,
-        int $minRaise,
-        int $maxRaise
+        int $minRaise
     ): array {
         $methodCalls = [
             'wrapperStuFolds',
@@ -468,6 +445,6 @@ class ComputerLogic
 
         $randomMethod = $methodCalls[array_rand($methodCalls)];
 
-        return $this->$randomMethod($this, $stu, $callSize, $minRaise, $maxRaise);
+        return $this->$randomMethod($this, $stu, $callSize, $minRaise);
     }
 }

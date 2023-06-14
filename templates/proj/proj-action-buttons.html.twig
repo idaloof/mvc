@@ -36,16 +36,16 @@
                     class="p-button raise"
                     onClick="this.form.action='{{ raiseUrl }}';this.form.method='post';"
                 >
-                Raise
+                Raise ({{ minRaise }})
                 </button>
             </div>
             <div class="input-container">
                 <input
                     class="p-input raise"
                     type="number"
+                    style="display:none;"
                     required="required"
-                    max="{{ maxRaise }}"
-                    min="{{ minRaise }}"
+                    value="{{ minRaise }}"
                     name="raise-amount"
                     id="raise-amount"
                 >
@@ -108,16 +108,16 @@
                     class="p-button raise"
                     onClick="this.form.action='{{ raiseUrl }}';this.form.method='post';"
                 >
-                Raise
+                Raise ({{ minRaise }})
                 </button>
             </div>
             <div class="input-container">
                 <input
                     class="p-input raise"
                     type="number"
+                    style="display:none;"
                     required="required"
-                    max="{{ maxRaise }}"
-                    min="{{ minRaise }}"
+                    value="{{ minRaise }}"
                     name="raise-amount"
                     id="raise-amount"
                 >
