@@ -188,11 +188,10 @@ class ComputerStu extends ComputerLogic implements PlayerInterface
     public function setAndGetMove(
         PlayerInterface $stu,
         int $moves,
-        int $callSize = 0,
-        int $minRaise = 0,
-        int $maxRaise = 0
+        int $callSize,
+        int $minRaise
     ): array {
-        $moveData = parent::setAndGetStuMove($stu, $moves, $callSize, $minRaise, $maxRaise);
+        $moveData = parent::setAndGetStuMove($stu, $moves, $callSize, $minRaise);
 
         return $moveData;
     }

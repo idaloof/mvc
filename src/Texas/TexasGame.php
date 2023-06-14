@@ -481,7 +481,7 @@ class TexasGame
         $highestBet = $this->getHighestCurrentBet();
 
         $callSize = $highestBet - $stu->getBets();
-        $minRaise = $this->getBigBlind();
+        $minRaise = $callSize + $this->getBigBlind();
 
         return $stu->setAndGetMove(
             $stu,
