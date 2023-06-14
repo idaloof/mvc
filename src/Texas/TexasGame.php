@@ -407,7 +407,7 @@ class TexasGame
     }
 
     /**
-     * Deal the turn and return the cards.
+     * Deal the turn (or river) and return the cards.
      *
      * @return array<string> Array of community card images.
      */
