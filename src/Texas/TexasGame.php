@@ -17,11 +17,6 @@ class TexasGame
     private TexasDeck $deck;
 
     /**
-     * @var array<PlayerInterface> $players Players of the game.
-     */
-    private array $players;
-
-    /**
      * @var HandEvaluator $handEvaluator Evaluator class for evaluating a poker hand.
      */
     private HandEvaluator $handEvaluator;
@@ -32,7 +27,8 @@ class TexasGame
     private GameLogic $gameLogic;
 
     /**
-     * @var GameData $gameData GameData class which holds methods for the game logic.
+     * @var GameData $gameData GameData class which holds methods for
+     * setting and getting game data.
      */
     private GameData $gameData;
 
@@ -54,7 +50,6 @@ class TexasGame
      * @param GameLogic $gameLogic                  Object that manages game logic.
      * @param GameData $gameData                    Object that manages game data.
      * @param Table $table                          Object that manages game table.
-     * @param array<PlayerInterface> $players       Array of players.
      *
      */
     public function __construct(
@@ -63,8 +58,7 @@ class TexasGame
         GameLogic $gameLogic,
         GameData $gameData,
         Queue $queue,
-        Table $table,
-        array $players
+        Table $table
     ) {
         $this->deck = $deck;
         $this->handEvaluator = $handEvaluator;
@@ -72,7 +66,6 @@ class TexasGame
         $this->gameData = $gameData;
         $this->queue = $queue;
         $this->table = $table;
-        $this->players = $players;
     }
 
     /**
@@ -147,10 +140,8 @@ class TexasGame
         $players = $this->queue->getQueue();
 
         $playerBet = $player->getBets();
-        // $playerMoves = $player->getPlayerMoves()->getNumberOfRoundMoves();
 
         $highestBet = $this->gameLogic->getHighestCurrentBet($players);
-        // $highestMoves = $this->gameLogic->getHighestNumberOfActions($players);
 
         if ($playerBet === $highestBet) {
             return 2;
@@ -515,14 +506,11 @@ class TexasGame
     }
 
     /**
-     * Sets risk level depending of pre or post flop.
+     * Gets human player.
      *
-     * @param string $stage
-     * @param ComputerCleve $cleve
-     *
-     * @return int Risk level.
+     * @return PlayerInterface Human player.
      */
-    public function setCleveRiskLevel(string $stage, ComputerCleve $cleve): int
+    public function getHuman(): PlayerInterface
     {
         $players = $this->getQueuePlayers();
 
@@ -540,94 +528,6 @@ class TexasGame
             }
         }
 
-        $moves = $human->getPlayerMoves()->getRoundMoves();
-        $pot = $this->table->getPot();
-        $blind = $this->table->getBigBlind();
-
-        $handPoints = $cleve->getHand()->getBestHandPoints();
-
-        $potRisk = $cleve->adjustRiskPotAndBlind($pot, $blind);
-        $moveRisk = $cleve->adjustRiskPlayerMoves($moves);
-
-        $cleve->adjustRiskLevel($potRisk);
-        $cleve->adjustRiskLevel($moveRisk);
-
-        if ($stage === "pre") {
-            return $cleve->getRiskLevel();
-        }
-
-        $pointRisk = $cleve->adjustRiskHandPoints($handPoints);
-
-        $cleve->adjustRiskLevel($pointRisk);
-
-        return $cleve->getRiskLevel();
+        return $human;
     }
-
-    /**
-     * This method sets game data properties for api.
-     */
-
-    /*
-        Vad måste hända innan ett objekt av den här klassen initieras?
-            1. TexasHand och PlayerMoves måste initieras (om de ska injectas i spelarna)
-            2.  Alla spelare initieras efter att spelaren har angett wallet, namn och buy-in.
-                - Spelarna används i både Queue och Game-klassen.
-            3.  En kortlek måste initieras.
-            4.  En HandEvaluator måste initieras med samtliga evaluators (se test).
-            5.  Måste en CardCombinator initieras om den extendas av HandEvaluator?
-            6.  En ComputerLogic måste initieras med PreFlopRepo.
-            7.  En GameLogic måste initieras.
-            8.  En GameData måste initieras.
-            9.  En Queue måste initieras.
-            10. En Table måste initieras.
-            11. MessageRepo måste initieras.
-        * Vad vill jag att den här klassen ska göra?
-        * Tänk på att controllern pratar med denna klass, endast.
-        INNAN PRE-FLOP:
-            1.  Sätt rollerna och platserna i kön innan spelstart (Queue) KLART
-                - Sätt även spelarnas roller i setPlayerRole -> "bb", "sb" eller "d" KLART
-            2.  Sätt small och big blind utifrån spelarens buy in, 1 respektive 2 procent. (Table) KLART
-            3.  Hämta välkomstmeddelande från messageRepo (hämta hela tiden senaste 5 från databasen). KLART (görs från controllern)
-        PRE-FLOP:
-            4.  Small och big blind dras från respektive spelares pengar. (TexasPlayer buy-in) KLART
-            5.  Hole cards delas ut till varje spelare. (TexasDeck, TexasPlayer->TexasHand) KLART
-                - I controllern hämtas spelarnas hole cards som ska visas på sidan. KLART (vet hur det ska gå till i alla fall!)
-            6.  Spelaren är först ut att vara dealer, spelaren börjar således första rundan. KLART
-            7.  Beräkna hur mycket spelaren får betta -> max pot-limit (även när bara small och big blind ligger på bordet) KLART
-                - Beräkna även hur mycket som krävs för call. KLART
-            8.  Spelaren tar ett beslut: (GameEvents-klass/objekt? som har metoder för raise, check, fold, call) KLART
-                Spelaren måste ha en egen path genom spelflödet??. det är inte endast spelarens moves som sparas.
-                - Om spelaren fold:
-                    * spelarens hasFolded sätts (Player->PlayerMoves)
-                    * lägg till meddelande i messageboard
-                - Om spelaren check:
-                    * lägg till check i moves (Player->PlayerMoves->addToRoundMoves)
-                    * lägg till meddelande i messageboard
-                - Om spelaren call:
-                    * spelarens buy in sjunker med call-belopp (måste skötas från game-klassen)
-                    * lägg till call i moves (Player->PlayerMoves->addToRoundMoves)
-                    * lägg till meddelande i messageboard
-                - Om spelaren raise:
-                    * spelarens buy in sjunker med raise-belopp (måste skötas från game-klassen)
-                    * lägg till raise i moves (Player->PlayerMoves->addToRoundMoves)
-                    * lägg till meddelande i messageboard
-            X.  Hämta och visa messageboard (hämta hela tiden senaste 5 från databasen).
-            X.  Beräkna hur mycket ComputerStu får betta -> max pot-limit (även när bara small och big blind ligger på bordet)
-                - Beräkna även hur mycket som krävs för call.
-            X.  ComputerStu's tur:
-                Kolla om ComputerStu har foldat. Player->PlayerMoves->hasFolded
-                Kolla om ComputerStu har färre moves än högsta antalet moves. Player->PlayerMoves->getNumberOfRoundMoves
-                Om ej foldat och har färre moves:
-                Kolla gamestage:
-                - Beroende på game stage får ComputerStu olika alternativ.
-                    * Pre-flop:
-                        - Om Stu inte har högsta betten: -> skapa metod för movesWhenHighestBet tre alternativ 50 50
-                            * fold, call och raise
-                        - Om Stu har högsta betten: -> skapa metod för movesWhenNotHighestBet två alternativ 50 50
-                            * check och raise
-            X.  Hämta spelarens bet som ska visas på sidan.
-            X.  Kolla om spelrundan är över (GameLogic) via controller.
-            X.  Om föregående är nej -> Kolla om spelet är redo att gå vidare till nästa runda (GameLogic) via controller.
-            X.
-    */
 }

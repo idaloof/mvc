@@ -68,16 +68,18 @@ class ProjectCleveTurnController extends AbstractController
 
         $riskLevel = $playerToAct->adjustRiskCardRank($cardRank);
 
+        $highestBet = $game->getHighestCurrentBet();
+        $bigBlind = $game->getBigBlind();
+        $pot = $game->getPot();
+
         $stage = $game->getPrePostFlop();
-        $riskLevel += $game->setCleveRiskLevel($stage, $playerToAct);
+        $human = $game->getHuman();
+        $riskLevel += $playerToAct->setCleveRiskLevel($human, $stage, $pot, $bigBlind);
         $moves = $game->getPossibleMoves($playerToAct);
 
         $methodName = "setAndGetCleveMove" . ucfirst($stage);
 
         $cleveMove = $playerToAct->$methodName($riskLevel, $moves);
-
-        $highestBet = $game->getHighestCurrentBet();
-        $bigBlind = $game->getBigBlind();
 
         $moveData = $playerToAct->setCleveMoveAndReturnData($cleveMove, $highestBet, $bigBlind);
 

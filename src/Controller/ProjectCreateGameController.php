@@ -45,8 +45,7 @@ class ProjectCreateGameController extends AbstractController
             $gameLogic,
             $gameData,
             $queue,
-            $table,
-            $players
+            $table
         );
 
         $session->set('game', $game);

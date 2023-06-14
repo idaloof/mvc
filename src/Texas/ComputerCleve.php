@@ -243,4 +243,42 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
 
         return $move;
     }
+
+    /**
+     * Sets risk level depending on pre or post flop and returns it.
+     *
+     * @param PlayerInterface $human
+     * @param string $stage
+     * @param int $pot
+     * @param int $bigBlind
+     *
+     * @return int Risk level.
+     */
+    public function setCleveRiskLevel(
+        PlayerInterface $human,
+        string $stage,
+        int $pot,
+        int $blind
+    ): int
+    {
+        $moves = $human->getPlayerMoves()->getRoundMoves();
+
+        $handPoints = $this->getHand()->getBestHandPoints();
+
+        $potRisk = $this->adjustRiskPotAndBlind($pot, $blind);
+        $moveRisk = $this->adjustRiskPlayerMoves($moves);
+
+        $this->adjustRiskLevel($potRisk);
+        $this->adjustRiskLevel($moveRisk);
+
+        if ($stage === "pre") {
+            return $this->getRiskLevel();
+        }
+
+        $pointRisk = $this->adjustRiskHandPoints($handPoints);
+
+        $this->adjustRiskLevel($pointRisk);
+
+        return $this->getRiskLevel();
+    }
 }
