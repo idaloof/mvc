@@ -133,7 +133,6 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
      *
      * @param string $move
      * @param int $highestBet
-     * @param int $pot
      * @param int $bigBlind
      *
      * @return array<mixed> Move and amount called or raised.
@@ -250,7 +249,7 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
      * @param PlayerInterface $human
      * @param string $stage
      * @param int $pot
-     * @param int $bigBlind
+     * @param int $blind
      *
      * @return int Risk level.
      */
