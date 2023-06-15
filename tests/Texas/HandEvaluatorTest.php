@@ -241,8 +241,8 @@ class HandEvaluatorTest extends TestCase
         // Assert the expected result
         $expected = [
             [10, 'One Pair', $hand1],
-            [5, 'High Card', $hand2],
             [10, 'One Pair', $hand1],
+            [5, 'High Card', $hand2],
             [5, 'High Card', $hand2],
         ];
 
