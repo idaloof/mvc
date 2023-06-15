@@ -32,7 +32,7 @@ trait MessageTrait
 
         date_default_timezone_set('Europe/Stockholm');
 
-        $currentTime = date('H:i');
+        $currentTime = date('H:i:s');
 
         $message->setCreated(strval($currentTime));
         $message->setMessenger($messenger);
