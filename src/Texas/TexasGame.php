@@ -468,30 +468,6 @@ class TexasGame
     }
 
     /**
-     * Get possible moves for ComputerStu and pass it to ComputerLogic method.
-     *
-     * @param ComputerStu $stu ComputerStu player.
-     *
-     * @return array<mixed> Move and amount called or raised.
-     */
-    public function setStuMoveAndReturnIt(ComputerStu $stu): array
-    {
-        $moves = $this->getPossibleMoves($stu);
-
-        $highestBet = $this->getHighestCurrentBet();
-
-        $callSize = $highestBet - $stu->getBets();
-        $minRaise = $callSize + $this->getBigBlind();
-
-        return $stu->setAndGetMove(
-            $stu,
-            $moves,
-            $callSize,
-            $minRaise
-        );
-    }
-
-    /**
      * Gets pre or post flop.
      *
      * @return string pre or post.

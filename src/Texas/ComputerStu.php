@@ -186,13 +186,33 @@ class ComputerStu extends ComputerLogic implements PlayerInterface
      * @return array<mixed> Move and amount if call or raise.
      */
     public function setAndGetMove(
-        PlayerInterface $stu,
         int $moves,
         int $callSize,
         int $minRaise
     ): array {
-        $moveData = parent::setAndGetStuMove($stu, $moves, $callSize, $minRaise);
+        $moveData = parent::setAndGetStuMove($this, $moves, $callSize, $minRaise);
 
         return $moveData;
+    }
+
+    /**
+     * Get possible moves for ComputerStu and pass it to ComputerLogic method.
+     *
+     * @param int $moves
+     * @param int $highestBet
+     * @param int $bigBlind
+     *
+     * @return array<mixed> Move and amount called or raised.
+     */
+    public function setStuMoveAndReturnIt(int $moves, int $highestBet, int $bigBlind): array
+    {
+        $callSize = $highestBet - $this->getBets();
+        $minRaise = $callSize + $bigBlind;
+
+        return $this->setAndGetMove(
+            $moves,
+            $callSize,
+            $minRaise
+        );
     }
 }

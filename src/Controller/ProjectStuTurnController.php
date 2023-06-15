@@ -53,8 +53,12 @@ class ProjectStuTurnController extends AbstractController
             return $this->redirectToRoute($bRoute);
         }
 
+        $moves = $game->getPossibleMoves($playerToAct);
+        $bet = $game->getHighestCurrentBet();
+        $blind = $game->getBigBlind();
+
         // SÄTT STU MOVE
-        $moveData = $game->setStuMoveAndReturnIt($playerToAct);
+        $moveData = $playerToAct->setStuMoveAndReturnIt($moves, $bet, $blind);
 
         if ($moveData[0] === "call" || $moveData[0] === "raise") {
             $game->addMoneyToPot($moveData[1]);
