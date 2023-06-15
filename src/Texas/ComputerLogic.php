@@ -11,24 +11,24 @@ use App\Repository\PreFlopRankingsRepository;
 
 class ComputerLogic
 {
-    /**
-     * PreFlopRankingsRepository class which holds methods for requiring data
-     * from pre_flop_rankings table of database.
-     *
-     * @var PreFlopRankingsRepository $flopRepo
-     */
-    private PreFlopRankingsRepository $flopRepo;
+    // /**
+    //  * PreFlopRankingsRepository class which holds methods for requiring data
+    //  * from pre_flop_rankings table of database.
+    //  *
+    //  * @var PreFlopRankingsRepository $flopRepo
+    //  */
+    // private PreFlopRankingsRepository $flopRepo;
 
-    /**
-     * Class constructor
-     *
-     * @param PreFlopRankingsRepository $repo
-     *
-     */
-    public function __construct(PreFlopRankingsRepository $repo)
-    {
-        $this->flopRepo = $repo;
-    }
+    // /**
+    //  * Class constructor
+    //  *
+    //  * @param PreFlopRankingsRepository $repo
+    //  *
+    //  */
+    // public function __construct(PreFlopRankingsRepository $repo)
+    // {
+    //     $this->flopRepo = $repo;
+    // }
 
     /**
      * Checks if computer player is running out of money.

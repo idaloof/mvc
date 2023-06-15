@@ -6,8 +6,6 @@
 
 namespace App\Texas;
 
-use App\Repository\PreFlopRankingsRepository;
-use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,13 +24,7 @@ class ComputerLogicTest extends TestCase
      */
     protected function setUp() : void
     {
-        $registryMock = $this->getMockBuilder(ManagerRegistry::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $repo = new PreFlopRankingsRepository($registryMock);
-
-        $this->computerLogic = new ComputerLogic($repo);
+        $this->computerLogic = new ComputerLogic();
     }
 
     /**
@@ -149,11 +141,9 @@ class ComputerLogicTest extends TestCase
         $moves = 2;
         $callSize = 20;
         $minRaise = 20;
-        $maxRaise = 40;
 
-        $repo = $this->createMock(PreFlopRankingsRepository::class);
-        $computerLogic = new ComputerLogic($repo);
-        $result = $computerLogic->setAndGetStuMove($player, $moves, $callSize, $minRaise, $maxRaise);
+        $computerLogic = new ComputerLogic();
+        $result = $computerLogic->setAndGetStuMove($player, $moves, $callSize, $minRaise);
 
         $exp = 2;
 
@@ -169,9 +159,8 @@ class ComputerLogicTest extends TestCase
     {
         $player = $this->createMock(PlayerInterface::class);
 
-        $repo = $this->createMock(PreFlopRankingsRepository::class);
-        $computerLogic = new ComputerLogic($repo);
-        $result = $computerLogic->wrapperStuFolds($computerLogic, $player, 14, 14, 14);
+        $computerLogic = new ComputerLogic();
+        $result = $computerLogic->wrapperStuFolds($computerLogic, $player, 14, 14);
 
         $this->assertEquals(["fold", ""], $result);
     }
@@ -183,9 +172,8 @@ class ComputerLogicTest extends TestCase
     {
         $player = $this->createMock(PlayerInterface::class);
 
-        $repo = $this->createMock(PreFlopRankingsRepository::class);
-        $computerLogic = new ComputerLogic($repo);
-        $result = $computerLogic->wrapperStuChecks($computerLogic, $player, 14, 14, 14);
+        $computerLogic = new ComputerLogic();
+        $result = $computerLogic->wrapperStuChecks($computerLogic, $player, 14, 14);
 
         $this->assertEquals(["check", ""], $result);
     }
@@ -197,19 +185,16 @@ class ComputerLogicTest extends TestCase
     {
         $player = $this->createMock(PlayerInterface::class);
 
-        $repo = $this->createMock(PreFlopRankingsRepository::class);
-        $computerLogic = new ComputerLogic($repo);
+        $computerLogic = new ComputerLogic();
 
         $callSize = 20;
         $minRaise = 20;
-        $maxRaise = 40;
 
         $result = $computerLogic->wrapperStuCalls(
             $computerLogic,
             $player,
             $callSize,
-            $minRaise,
-            $maxRaise
+            $minRaise
         );
 
         $this->assertEquals(["call", 20], $result);
@@ -222,19 +207,16 @@ class ComputerLogicTest extends TestCase
     {
         $player = $this->createMock(PlayerInterface::class);
 
-        $repo = $this->createMock(PreFlopRankingsRepository::class);
-        $computerLogic = new ComputerLogic($repo);
+        $computerLogic = new ComputerLogic();
 
         $callSize = 20;
         $minRaise = 20;
-        $maxRaise = 40;
 
         $result = $computerLogic->wrapperStuRaises(
             $computerLogic,
             $player,
             $callSize,
-            $minRaise,
-            $maxRaise
+            $minRaise
         );
 
         $this->assertGreaterThanOrEqual(20, $result[1]);

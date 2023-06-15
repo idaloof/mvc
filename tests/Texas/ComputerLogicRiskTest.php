@@ -6,8 +6,6 @@
 
 namespace App\Texas;
 
-use App\Repository\PreFlopRankingsRepository;
-use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Framework\TestCase;
 
 class ComputerLogicRiskTest extends TestCase
@@ -23,13 +21,7 @@ class ComputerLogicRiskTest extends TestCase
      */
     protected function setUp() : void
     {
-        $registryMock = $this->getMockBuilder(ManagerRegistry::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $repo = new PreFlopRankingsRepository($registryMock);
-
-        $this->computerLogic = new ComputerLogic($repo);
+        $this->computerLogic = new ComputerLogic();
     }
 
     /**
