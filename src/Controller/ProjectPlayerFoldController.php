@@ -44,7 +44,7 @@ class ProjectPlayerFoldController extends AbstractController
 
         $this->addMessage($messenger, $message, $doctrine);
 
-        $bRoute = $session->get('back-route');
+        // $bRoute = $session->get('back-route');
 
         $session->set('game', $game);
 
@@ -53,9 +53,9 @@ class ProjectPlayerFoldController extends AbstractController
         }
 
         if ($game->isGameReadyForNextStage()) {
-            return $this->redirectToRoute('proj_reset_stage');
+            return $this->redirectToRoute('proj_complay');
         }
 
-        return $this->redirectToRoute($bRoute);
+        return $this->redirectToRoute('proj_complay');
     }
 }
