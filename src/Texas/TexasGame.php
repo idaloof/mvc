@@ -438,7 +438,7 @@ class TexasGame
      */
     public function getAndSetBestHands(): void
     {
-        $communityCards = $this->table->getCommunityCards();
+        $communityCards = $this->getCommunityCards();
 
         $players = $this->queue->getQueue();
 
@@ -498,11 +498,21 @@ class TexasGame
      */
     public function getPrePostFlop(): string
     {
-        if (empty($this->table->getCommunityCards())) {
+        if (empty($this->getCommunityCards())) {
             return "pre";
         }
 
         return "post";
+    }
+
+    /**
+     * Gets community cards.
+     *
+     * @return array<Card> Community cards.
+     */
+    public function getCommunityCards(): array
+    {
+        return $this->table->getCommunityCards();
     }
 
     /**
