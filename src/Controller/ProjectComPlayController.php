@@ -20,10 +20,9 @@ class ProjectComPlayController extends AbstractController
     #[Route('proj/complay', name:'proj_complay')]
     public function projComPlay(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         /**
-         * @var TexasGame $game 
+         * @var TexasGame $game
          */
         $game = $session->get('game');
 

@@ -259,8 +259,7 @@ class ComputerCleve extends ComputerStu implements PlayerInterface
         string $stage,
         int $pot,
         int $blind
-    ): int
-    {
+    ): int {
         $moves = $human->getPlayerMoves()->getRoundMoves();
 
         $handPoints = $this->getHand()->getBestHandPoints();

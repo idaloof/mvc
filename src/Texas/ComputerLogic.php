@@ -87,25 +87,6 @@ class ComputerLogic
     }
 
     /**
-     * Gets starting cards' ranking as int.
-     *
-     * @param array<Card> $cards The two starting cards of the computer player.
-     *
-     * @return int Starting cards' ranking as int.
-     */
-    public function getHoleRanking(array $cards): int
-    {
-        $type = $this->getHoleType($cards);
-        $cardRanks = $this->getHoleRanks($cards);
-
-        $cardCombo = $this->flopRepo->findCardRanking($cardRanks, $type)[0];
-
-        $cardRank = intval($cardCombo->getRank());
-
-        return $cardRank;
-    }
-
-    /**
      * Adjusts Cleve's risk level for hole card ranks.
      *
      * @param int $cardRank
