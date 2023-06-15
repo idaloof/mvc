@@ -176,4 +176,30 @@ class ComputerLogicRiskTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verifies that correct risk adjustment is returned.
+     */
+    public function testAdjustRiskCardRank(): void
+    {
+        $rank = 10;
+        $exp = 50;
+        $res = $this->computerLogic->adjustRiskCardRank($rank);
+        $this->assertEquals($exp, $res);
+
+        $rank = 30;
+        $exp = 40;
+        $res = $this->computerLogic->adjustRiskCardRank($rank);
+        $this->assertEquals($exp, $res);
+
+        $rank = 60;
+        $exp = 30;
+        $res = $this->computerLogic->adjustRiskCardRank($rank);
+        $this->assertEquals($exp, $res);
+
+        $rank = 120;
+        $exp = 10;
+        $res = $this->computerLogic->adjustRiskCardRank($rank);
+        $this->assertEquals($exp, $res);
+    }
 }
