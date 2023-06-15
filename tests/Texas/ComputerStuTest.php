@@ -162,4 +162,16 @@ class ComputerStuTest extends TestCase
 
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Verify that ComputerStu returns correct move data.
+     */
+    public function testSetAndGetMoveReturn() : void
+    {
+        $exp = 2;
+
+        $res = count($this->player->setStuMoveAndReturnIt(2, 2, 2));
+
+        $this->assertEquals($exp, $res);
+    }
 }
