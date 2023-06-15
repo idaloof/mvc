@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1686823628">
-  <project timestamp="1686823628">
+<coverage generated="1686859642">
+  <project timestamp="1686859642">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -630,7 +630,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/ComputerStu.php">
       <class name="App\Texas\ComputerStu" namespace="global">
-        <metrics complexity="14" methods="14" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="41" coveredelements="41"/>
+        <metrics complexity="15" methods="15" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="27" elements="49" coveredelements="41"/>
       </class>
       <line num="35" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="37"/>
       <line num="37" type="stmt" count="37"/>
@@ -671,9 +671,17 @@
       <line num="176" type="stmt" count="1"/>
       <line num="178" type="stmt" count="1"/>
       <line num="188" type="method" name="setAndGetMove" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="194" type="stmt" count="1"/>
-      <line num="196" type="stmt" count="1"/>
-      <metrics loc="199" ncloc="105" classes="1" methods="14" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="27" coveredstatements="27" elements="41" coveredelements="41"/>
+      <line num="193" type="stmt" count="1"/>
+      <line num="195" type="stmt" count="1"/>
+      <line num="207" type="method" name="setStuMoveAndReturnIt" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="209" type="stmt" count="0"/>
+      <line num="210" type="stmt" count="0"/>
+      <line num="212" type="stmt" count="0"/>
+      <line num="213" type="stmt" count="0"/>
+      <line num="214" type="stmt" count="0"/>
+      <line num="215" type="stmt" count="0"/>
+      <line num="216" type="stmt" count="0"/>
+      <metrics loc="219" ncloc="116" classes="1" methods="15" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="27" elements="49" coveredelements="41"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/EvaluatorInterface.php">
       <metrics loc="31" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -1176,7 +1184,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasGame.php">
       <class name="App\Texas\TexasGame" namespace="global">
-        <metrics complexity="43" methods="30" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="134" coveredstatements="0" elements="164" coveredelements="0"/>
+        <metrics complexity="42" methods="29" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="124" coveredstatements="0" elements="153" coveredelements="0"/>
       </class>
       <line num="55" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="63" type="stmt" count="0"/>
@@ -1318,31 +1326,20 @@
       <line num="463" type="stmt" count="0"/>
       <line num="464" type="stmt" count="0"/>
       <line num="465" type="stmt" count="0"/>
-      <line num="477" type="method" name="setStuMoveAndReturnIt" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="479" type="stmt" count="0"/>
+      <line num="475" type="method" name="getPrePostFlop" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="477" type="stmt" count="0"/>
+      <line num="478" type="stmt" count="0"/>
       <line num="481" type="stmt" count="0"/>
-      <line num="483" type="stmt" count="0"/>
-      <line num="484" type="stmt" count="0"/>
-      <line num="486" type="stmt" count="0"/>
-      <line num="487" type="stmt" count="0"/>
-      <line num="488" type="stmt" count="0"/>
-      <line num="489" type="stmt" count="0"/>
-      <line num="490" type="stmt" count="0"/>
+      <line num="489" type="method" name="getCommunityCards" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="491" type="stmt" count="0"/>
-      <line num="499" type="method" name="getPrePostFlop" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="499" type="method" name="getHuman" visibility="public" complexity="4" crap="20" count="0"/>
       <line num="501" type="stmt" count="0"/>
-      <line num="502" type="stmt" count="0"/>
-      <line num="505" type="stmt" count="0"/>
-      <line num="513" type="method" name="getCommunityCards" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="515" type="stmt" count="0"/>
-      <line num="523" type="method" name="getHuman" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="525" type="stmt" count="0"/>
-      <line num="530" type="stmt" count="0"/>
-      <line num="532" type="stmt" count="0"/>
-      <line num="533" type="stmt" count="0"/>
-      <line num="537" type="stmt" count="0"/>
-      <line num="541" type="stmt" count="0"/>
-      <metrics loc="544" ncloc="342" classes="1" methods="30" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="134" coveredstatements="0" elements="164" coveredelements="0"/>
+      <line num="506" type="stmt" count="0"/>
+      <line num="508" type="stmt" count="0"/>
+      <line num="509" type="stmt" count="0"/>
+      <line num="513" type="stmt" count="0"/>
+      <line num="517" type="stmt" count="0"/>
+      <metrics loc="520" ncloc="325" classes="1" methods="29" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="124" coveredstatements="0" elements="153" coveredelements="0"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasHand.php">
       <class name="App\Texas\TexasHand" namespace="global">
@@ -1486,6 +1483,6 @@
       <line num="60" type="stmt" count="1"/>
       <metrics loc="63" ncloc="43" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
     </file>
-    <metrics files="38" loc="5134" ncloc="3106" classes="34" methods="255" coveredmethods="222" conditionals="0" coveredconditionals="0" statements="1011" coveredstatements="866" elements="1266" coveredelements="1088"/>
+    <metrics files="38" loc="5130" ncloc="3100" classes="34" methods="255" coveredmethods="222" conditionals="0" coveredconditionals="0" statements="1008" coveredstatements="866" elements="1263" coveredelements="1088"/>
   </project>
 </coverage>
