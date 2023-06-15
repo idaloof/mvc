@@ -31,26 +31,6 @@ class GameLogic
         return ($count < 2) ? true : false;
     }
 
-    // /**
-    //  * Returns whether game is over or not, depending on amount of money players have left.
-    //  *
-    //  * @return bool is game over or not.
-    //  */
-    // public function isGameOver(): bool
-    // {
-    //     $count = 0;
-
-    //     $players = $this->queue->getQueue();
-
-    //     foreach ($players as $player) {
-    //         if ($player->getBuyIn() > 0) {
-    //             $count += 1;
-    //         }
-    //     }
-
-    //     return ($count === 0) ? true : false;
-    // }
-
     /**
      * Returns the current highest bet.
      *
