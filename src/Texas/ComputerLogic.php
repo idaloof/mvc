@@ -7,29 +7,8 @@
 
 namespace App\Texas;
 
-use App\Repository\PreFlopRankingsRepository;
-
 class ComputerLogic
 {
-    // /**
-    //  * PreFlopRankingsRepository class which holds methods for requiring data
-    //  * from pre_flop_rankings table of database.
-    //  *
-    //  * @var PreFlopRankingsRepository $flopRepo
-    //  */
-    // private PreFlopRankingsRepository $flopRepo;
-
-    // /**
-    //  * Class constructor
-    //  *
-    //  * @param PreFlopRankingsRepository $repo
-    //  *
-    //  */
-    // public function __construct(PreFlopRankingsRepository $repo)
-    // {
-    //     $this->flopRepo = $repo;
-    // }
-
     /**
      * Checks if computer player is running out of money.
      *
@@ -169,12 +148,11 @@ class ComputerLogic
         $hasCalled = $this->hasPlayerCalled($moves);
 
         if ($hasChecked) {
+            $riskAdjust += 30;
             if ($hasRaised) {
-                $riskAdjust -= 30;
+                $riskAdjust -= 60;
             } elseif ($hasCalled) {
-                $riskAdjust += 10;
-            } else {
-                $riskAdjust += 30;
+                $riskAdjust += 50;
             }
         } elseif ($hasCalled) {
             $riskAdjust += 20;

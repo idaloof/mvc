@@ -45,7 +45,7 @@ class ComputerLogicRiskTest extends TestCase
     {
         $moves = ["call", "check"];
 
-        $exp = 10;
+        $exp = 80;
 
         $res = $this->computerLogic->adjustRiskPlayerMoves($moves);
 
