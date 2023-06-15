@@ -158,7 +158,7 @@ class ComputerStuTest extends TestCase
     {
         $exp = 2;
 
-        $res = count($this->player->setAndGetMove($this->player, 2, 2, 2));
+        $res = count($this->player->setAndGetMove(2, 2, 2));
 
         $this->assertEquals($exp, $res);
     }
