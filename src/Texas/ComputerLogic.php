@@ -183,16 +183,21 @@ class ComputerLogic
     public function adjustRiskPlayerMoves(array $moves): int
     {
         $riskAdjust = 0;
+        $hasChecked = $this->hasPlayerChecked($moves);
+        $hasRaised = $this->hasPlayerRaised($moves);
+        $hasCalled = $this->hasPlayerCalled($moves);
 
-        if ($this->hasPlayerChecked($moves) && $this->hasPlayerRaised($moves)) {
-            $riskAdjust -= 30;
-        } elseif ($this->hasPlayerChecked($moves) && $this->hasPlayerCalled($moves)) {
-            $riskAdjust += 10;
-        } elseif ($this->hasPlayerChecked($moves)) {
-            $riskAdjust += 30;
-        } elseif ($this->hasPlayerCalled($moves)) {
+        if ($hasChecked) {
+            if ($hasRaised) {
+                $riskAdjust -= 30;
+            } elseif ($hasCalled) {
+                $riskAdjust += 10;
+            } else {
+                $riskAdjust += 30;
+            }
+        } elseif ($hasCalled) {
             $riskAdjust += 20;
-        } elseif ($this->hasPlayerRaised($moves)) {
+        } elseif ($hasRaised) {
             $riskAdjust -= 20;
         }
 
