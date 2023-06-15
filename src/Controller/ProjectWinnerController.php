@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Repository\MessagesRepository;
 use App\Texas\TexasGame;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,9 +15,6 @@ class ProjectWinnerController extends AbstractController
     public function projWinner(
         SessionInterface $session
     ): Response {
-        // $session->set('forward-route', 'proj_winner_init');
-        // $session->set('back-route', 'proj_river');
-
         /**
          * @var TexasGame $game
          */
