@@ -31,8 +31,6 @@ class ApiTexasGameController extends AbstractController
 
             foreach ($players as $player) {
                 $data[] = $player->getPlayerData();
-                $data[] = $player->getPlayerMoves()->getNumberOfRoundMoves();
-                $data[] = $player->getPlayerMoves()->getRoundMoves();
             }
 
             $data["pot"] = $game->getPot();
