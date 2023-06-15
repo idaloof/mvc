@@ -148,4 +148,68 @@ class GameLogicTest extends TestCase
 
         $this->assertTrue($this->gameLogic->isGameReadyForNextStage($players));
     }
+
+    /**
+     * Verify that GameLogic object returns correct number of highest actions.
+     */
+    public function testHighestActions() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $exp = 0;
+
+        $res = $this->gameLogic->getHighestNumberOfActions($players);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that GameLogic object returns PlayerInterface.
+     */
+    public function testGetWinnerNoFold() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $exp = "App\\Texas\\PlayerInterface";
+
+        $res = $this->gameLogic->getWinner($players);
+
+        $this->assertInstanceOf($exp, $res);
+    }
+
+    /**
+     * Verify that GameLogic object returns PlayerInterface.
+     */
+    public function testGetWinner() : void
+    {
+        $players = $this->queue->getQueue();
+
+        for ($i = 0; $i < 2; $i++) {
+            $players[$i]->getPlayerMoves()->setHasFolded();
+        }
+
+        $exp = "App\\Texas\\PlayerInterface";
+
+        $res = $this->gameLogic->getWinner($players);
+
+        $this->assertInstanceOf($exp, $res);
+    }
+
+    /**
+     * Verify that GameLogic object returns PlayerInterface.
+     */
+    public function testGetWinnerByBestHand() : void
+    {
+        $players = $this->queue->getQueue();
+
+        for ($i = 0; $i < 2; $i++) {
+            $players[$i]->getHand()->setBestHandPoints(20 + $i);
+        }
+
+        $exp = "App\\Texas\\PlayerInterface";
+
+        $res = $this->gameLogic->getWinner($players);
+
+        $this->assertInstanceOf($exp, $res);
+    }
 }
