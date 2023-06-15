@@ -30,6 +30,8 @@ class ProjectComPlayController extends AbstractController
 
         $count = count($communityCards);
 
+        $community = [];
+
         if ($count === 0) {
             $game->setFlopAndGetImages();
             $game->setNextStage();
