@@ -82,4 +82,38 @@ class GameLogicWinnerTest extends TestCase
 
         $this->assertInstanceOf($exp, $res);
     }
+
+    /**
+     * Verify that GameLogic object returns correct bool.
+     */
+    public function testGameTiedFalse() : void
+    {
+        $players = $this->queue->getQueue();
+
+        for ($i = 0; $i < 2; $i++) {
+            $players[$i]->getHand()->setBestHandPoints(20 + $i);
+        }
+
+        $res = $this->gameLogic->isGameTied($players);
+
+        $this->assertFalse($res);
+    }
+
+    /**
+     * Verify that GameLogic object returns correct bool.
+     */
+    public function testGameTiedTrue() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $players[0]->getPlayerMoves()->setHasFolded();
+
+        for ($i = 1; $i < 3; $i++) {
+            $players[$i]->getHand()->setBestHandPoints(20);
+        }
+
+        $res = $this->gameLogic->isGameTied($players);
+
+        $this->assertTrue($res);
+    }
 }
