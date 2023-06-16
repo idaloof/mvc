@@ -222,4 +222,34 @@ class GameLogic
 
         return $winner;
     }
+
+    /**
+     * Checks if game is tied.
+     *
+     * @param array<PlayerInterface> $players Players in the game.
+     *
+     * @return bool
+     */
+    public function isGameTied(array $players): bool
+    {
+        $handPoints = [];
+
+        foreach ($players as $player) {
+            if ($player->getPlayerMoves()->hasFolded()) {
+                continue;
+            }
+
+            $handPoints[] = $player->getHand()->getBestHandPoints();
+        }
+
+        $uniquePoints = array_unique($handPoints);
+
+        $countUnique = count($uniquePoints);
+
+        if ($countUnique !== 1) {
+            return false;
+        }
+
+        return true;
+    }
 }
