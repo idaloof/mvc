@@ -49,7 +49,7 @@ class FullHouseEvaluatorTest extends TestCase
         $evaluator = new FullHouseEvaluator();
         $values = ["5", "14", "5", "14", "14"];
 
-        $exp = 752;
+        $exp = 70052;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
@@ -63,7 +63,7 @@ class FullHouseEvaluatorTest extends TestCase
         $evaluator = new FullHouseEvaluator();
         $values = ["12", "12", "2", "2", "2"];
 
-        $exp = 730;
+        $exp = 70030;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

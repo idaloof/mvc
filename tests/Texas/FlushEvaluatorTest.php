@@ -49,7 +49,7 @@ class FlushEvaluatorTest extends TestCase
         $evaluator = new FlushEvaluator();
         $values = ["13", "11", "12", "10", "14"];
 
-        $exp = 660;
+        $exp = 60060;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
@@ -63,7 +63,7 @@ class FlushEvaluatorTest extends TestCase
         $evaluator = new FlushEvaluator();
         $values = ["2", "14", "5", "4", "3"];
 
-        $exp = 615;
+        $exp = 60015;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

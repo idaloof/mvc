@@ -9,7 +9,7 @@ namespace App\Texas;
 use App\Texas\StraightEvaluator;
 use App\Texas\FlushEvaluator;
 
-class RoyalStraightFlushEvaluator implements EvaluatorInterface
+class RoyalStraightFlushEvaluator extends CalculatePoints implements EvaluatorInterface
 {
     /**
      * @var StraightEvaluator   $straightEvaluator  Class evaluating hand for straight
@@ -64,6 +64,6 @@ class RoyalStraightFlushEvaluator implements EvaluatorInterface
      */
     public function calculatePoints(array $values): int
     {
-        return 1000;
+        return self::HAND_POINTS["Royal Straight Flush"];
     }
 }
