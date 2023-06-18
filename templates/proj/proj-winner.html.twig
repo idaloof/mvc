@@ -20,26 +20,18 @@
             {% endfor %}
         </div>
     </div>
-    {% if winning is same as "hand" %}
-        <div class="winner-container">
-            <div class="winner-text">
-                <p class="p-para">{{ winner }} vinner ${{ pot }},</p>
-            </div>
-            <div class="winner-hand">
-                <p class="p-para">med handen: {{ winnerHand }}</p>
-            </div>
-            <br>
-            {% for card in winnerCards %}
-                <img class="winner-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
-            {% endfor %}
+    <div class="winner-container">
+        <div class="winner-text">
+            <p class="p-para">{{ winner }} vinner ${{ pot }},</p>
         </div>
-    {% else %}
-        <div class="winner-container">
-            <div class="winner-text">
-                <p class="p-para">{{ winner }} vinner {{ pot }} SEK,</p>
-            </div>
+        <div class="winner-hand">
+            <p class="p-para">med handen: {{ winnerHand }}</p>
         </div>
-    {% endif %}
+        <br>
+        {% for card in winnerCards %}
+            <img class="winner-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+        {% endfor %}
+    </div>
     <div class="p-button the-link">
         <a class="a-link" href="{{ restartUrl }}">Ny runda</a>
     </div>
