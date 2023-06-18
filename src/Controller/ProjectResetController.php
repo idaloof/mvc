@@ -50,7 +50,44 @@ class ProjectResetController extends AbstractController
         $pot = $winnerData[1];
 
         $messenger = "Texas";
-        $aMessage = $player . " vinner potten på " . $pot;
+        $aMessage = $player . " vinner potten på " . "$" . $pot;
+
+        $this->addMessage($messenger, $aMessage, $doctrine);
+
+        $messenger = "Texas";
+        $aMessage = "Ny runda, blinds ute!";
+
+        $this->addMessage($messenger, $aMessage, $doctrine);
+
+        $session->set('game', $game);
+
+        return $this->redirectToRoute('proj_pre_flop');
+    }
+
+    /* Proj Reset Round Tie Game Route */
+    #[Route("/proj/reset-round-tie", name: "proj_reset_round_tie")]
+    public function projResetRoundTie(
+        SessionInterface $session,
+        ManagerRegistry $doctrine
+    ): Response {
+        /**
+         * @var TexasGame $game
+         */
+        $game = $session->get('game');
+        
+        $winnerData = $game->setNewRoundTie();
+
+        $players = $winnerData[0];
+        $playerNames = "";
+
+        foreach ($players as $player) {
+            $playerNames .= $player->getName() . ", ";
+        }
+
+        $pot = $winnerData[1];
+
+        $messenger = "Texas";
+        $aMessage = $playerNames . "delar på potten " . "$" . $pot;
 
         $this->addMessage($messenger, $aMessage, $doctrine);
 
