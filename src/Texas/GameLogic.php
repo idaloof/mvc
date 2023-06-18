@@ -2,9 +2,7 @@
 
 /**
  * GameLogic class
- * This class is responsible for checking if round/game is over,
- * if game can move on to next stage and
- * if player is ready, and what
+ * This class is responsible for the game's logic.
  */
 
 namespace App\Texas;
@@ -251,5 +249,30 @@ class GameLogic
         }
 
         return true;
+    }
+
+    /**
+     * Gets multiple winners when game is tied.
+     *
+     * @param array<PlayerInterface> $players
+     *
+     * @return array<PlayerInterface>
+     */
+    public function getTiedWinners(array $players): array
+    {
+        /**
+         * @var array<PlayerInterface> $winners
+         */
+        $winners = [];
+
+        foreach ($players as $player) {
+            if ($player->getPlayerMoves()->hasFolded()) {
+                continue;
+            }
+
+            $winners[] = $player;
+        }
+
+        return $winners;
     }
 }
