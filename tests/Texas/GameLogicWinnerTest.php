@@ -106,10 +106,12 @@ class GameLogicWinnerTest extends TestCase
     {
         $players = $this->queue->getQueue();
 
-        $players[0]->getPlayerMoves()->setHasFolded();
+        $players[1]->getPlayerMoves()->setHasFolded();
 
-        for ($i = 1; $i < 3; $i++) {
-            $players[$i]->getHand()->setBestHandPoints(20);
+        for ($i = 0; $i < 3; $i++) {
+            if (!$players[$i]->getPlayerMoves()->hasFolded()) {
+                $players[$i]->getHand()->setBestHandPoints(20);
+            }
         }
 
         $res = $this->gameLogic->isGameTied($players);
