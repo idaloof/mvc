@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687097749">
-  <project timestamp="1687097749">
+<coverage generated="1687124764">
+  <project timestamp="1687124764">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -1464,8 +1464,8 @@
       <line num="165" type="stmt" count="5"/>
       <line num="173" type="method" name="clearPlayerBets" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="175" type="stmt" count="1"/>
-      <line num="183" type="method" name="getHand" visibility="public" complexity="1" crap="1" count="5"/>
-      <line num="185" type="stmt" count="5"/>
+      <line num="183" type="method" name="getHand" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="185" type="stmt" count="6"/>
       <line num="193" type="method" name="getPlayerMoves" visibility="public" complexity="1" crap="1" count="14"/>
       <line num="195" type="stmt" count="14"/>
       <line num="203" type="method" name="getPlayerData" visibility="public" complexity="1" crap="1" count="1"/>
