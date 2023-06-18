@@ -19,13 +19,13 @@ trait MessageTrait
      * @param string $aMessage
      * @param ManagerRegistry $doctrine
      *
-     * @return void
+     * @return bool
      */
     public function addMessage(
         string $messenger,
         string $aMessage,
         ManagerRegistry $doctrine
-    ): void {
+    ): bool {
         $entityManager = $doctrine->getManager();
 
         $message = new Messages();
@@ -40,5 +40,7 @@ trait MessageTrait
 
         $entityManager->persist($message);
         $entityManager->flush();
+
+        return true;
     }
 }
