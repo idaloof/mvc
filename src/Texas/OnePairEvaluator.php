@@ -44,7 +44,7 @@ class OnePairEvaluator extends CalculatePoints implements EvaluatorInterface
         $counts = array_count_values($values);
         $value = array_search(2, $counts);
 
-        $points += $value;
+        $points += $value * 23;
         $points += self::HAND_POINTS["One Pair"];
 
         return intval($points);
