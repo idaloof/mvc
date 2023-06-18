@@ -74,7 +74,7 @@ class ProjectResetController extends AbstractController
          * @var TexasGame $game
          */
         $game = $session->get('game');
-        
+
         $winnerData = $game->setNewRoundTie();
 
         $players = $winnerData[0];
