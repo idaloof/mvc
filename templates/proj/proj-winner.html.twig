@@ -32,8 +32,11 @@
             <img class="winner-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
         {% endfor %}
     </div>
-    <div class="p-button the-link">
-        <a class="a-link" href="{{ restartUrl }}">Ny runda</a>
-    </div>
+    <a href="{{ restartUrl }}" class="p-button the-link a-link">
+        Ny runda
+    </a>
+    <a href="{{ manageWalletUrl }}" class="p-button the-wallet-link a-link">
+        Plånbok
+    </a>
 </div>
 {% endblock %}
