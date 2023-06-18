@@ -1,0 +1,57 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+    <div class="proj-landing-container">
+        <div class="wallet-manage-container">
+            <div class="manage-wallet-forms">
+                <div class="p-form-container">
+                    <div class="p-form-header-container">
+                        <h2 class="p-form-header">Plånbok</h2>
+                    </div>
+                    <form class="p-wallet-form" action="{{ path('proj_wallet_fill') }}" method="post">
+                        <p>Plånbok just nu: ${{ wallet }}</p>
+                        <label class="p-label" for="wallet">Fyll din plånbok</label>
+                        <input
+                            class="p-input"
+                            type="number"
+                            required="required"
+                            id="wallet"
+                            name="wallet"
+                            min="100"
+                            max="{{10000 - wallet}}"
+                            step="100"
+                            placeholder="Hela hundratal, t.ex. 400, 1200..."
+                        >
+                        <input class="p-button" type="submit" value="Fyll plånbok">
+                    </form>
+                </div>
+                <div class="p-form-container">
+                    <div class="p-form-header-container">
+                        <h2 class="p-form-header">Spelsaldo</h2>
+                    </div>
+                    <form class="p-wallet-form" action="{{ path('proj_buyin_fill') }}" method="post">
+                        <p>Saldo just nu: ${{ buyIn }}</p>
+                        <label class="p-label" for="buy-in">Fyll ditt saldo</label>
+                        <input
+                            class="p-input"
+                            type="number"
+                            required="required"
+                            id="buy-in"
+                            name="buy-in"
+                            min="100"
+                            max="{{ wallet }}"
+                            step="100"
+                            placeholder="Hela hundratal, t.ex. 400, 1200..."
+                        >
+                        <input class="p-button" type="submit" value="Fyll saldo">
+                    </form>
+                </div>
+            </div>
+            <a href="{{ backUrl }}" class="p-button a-link back-button">
+                Tillbaka
+            </a>
+        </div>
+    </div>
+{% endblock %}
