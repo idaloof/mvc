@@ -6,8 +6,10 @@
 // }
 
 .proj-community-container {
-    grid-column: 4 / 8;
+    grid-column: 3 / 8;
     grid-row: 6 / 8;
+    justify-self: center;
+    align-self: center;
 }
 
 .community-cards {
