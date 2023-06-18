@@ -73,6 +73,8 @@ class ProjectWinnerController extends AbstractController
 
         $winners = $game->getWinnersTieGame();
 
+        $bestHand = $winners[0]->getHand()->getBestHandName();
+
         $winnerNames = "";
 
         foreach ($winners as $player) {
@@ -88,7 +90,8 @@ class ProjectWinnerController extends AbstractController
             'manageWalletUrl' => $this->generateUrl('proj_wallet_manage'),
             'community' => $communityImages,
             'pot' => $pot,
-            'winner' => $winnerNames
+            'winner' => $winnerNames,
+            'bestHand' => $bestHand
         ]);
     }
 }
