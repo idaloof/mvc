@@ -22,7 +22,12 @@
     </div>
     <div class="winner-container">
         <div class="winner-text">
-            <p class="p-para">{{ winner }} delar på ${{ pot }}!</p>
+            <p class="p-para">
+                {{ winner }} delar på ${{ pot }},
+            </p>
+            <p class="p-para">
+                med {{ bestHand }} på hand!
+            </p>
         </div>
     </div>
     <a href="{{ restartUrl }}" class="p-button the-link a-link">
