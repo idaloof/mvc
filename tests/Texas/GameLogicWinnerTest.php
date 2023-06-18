@@ -116,4 +116,20 @@ class GameLogicWinnerTest extends TestCase
 
         $this->assertTrue($res);
     }
+
+    /**
+     * Verify that GameLogic object returns correct bool.
+     */
+    public function testGetTieWinners() : void
+    {
+        $players = $this->queue->getQueue();
+
+        $players[0]->getPlayerMoves()->setHasFolded();
+
+        $exp = 2;
+
+        $res = count($this->gameLogic->getTiedWinners($players));
+
+        $this->assertEquals($exp, $res);
+    }
 }
