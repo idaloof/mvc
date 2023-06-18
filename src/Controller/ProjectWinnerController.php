@@ -42,6 +42,7 @@ class ProjectWinnerController extends AbstractController
         return $this->render('proj/proj-winner.html.twig', [
             'queuePlayers' => $queuePlayersData,
             'restartUrl' => $this->generateUrl('proj_reset_round'),
+            'manageWalletUrl' => $this->generateUrl('proj_wallet_manage'),
             'community' => $communityImages,
             'pot' => $pot,
             'winner' => $winnerName,
@@ -84,6 +85,7 @@ class ProjectWinnerController extends AbstractController
         return $this->render('proj/proj-winner-tie.html.twig', [
             'queuePlayers' => $queuePlayersData,
             'restartUrl' => $this->generateUrl('proj_reset_round_tie'),
+            'manageWalletUrl' => $this->generateUrl('proj_wallet_manage'),
             'community' => $communityImages,
             'pot' => $pot,
             'winner' => $winnerNames
