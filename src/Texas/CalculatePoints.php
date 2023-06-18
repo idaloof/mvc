@@ -26,15 +26,15 @@ abstract class CalculatePoints
     ];
 
     protected const HAND_POINTS = [
-        'High Card' => 100,
-        'One Pair' => 200,
-        'Two Pair' => 300,
-        'Three Of A Kind' => 400,
-        'Straight' => 500,
-        'Flush' => 600,
-        'Full House' => 700,
-        'Four Of A Kind' => 800,
-        'Straight Flush' => 900,
-        'Royal Straight Flush' => 1000
+        'High Card' => 10000,
+        'One Pair' => 20000,
+        'Two Pair' => 30000,
+        'Three Of A Kind' => 40000,
+        'Straight' => 50000,
+        'Flush' => 60000,
+        'Full House' => 70000,
+        'Four Of A Kind' => 80000,
+        'Straight Flush' => 90000,
+        'Royal Straight Flush' => 100000
     ];
 }
