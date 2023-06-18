@@ -30,7 +30,7 @@ class ProjectRiverController extends AbstractController
         }
 
         if ($game->isGameReadyForNextStage()) {
-            return $this->redirectToRoute('proj_winner');
+            return $this->redirectToRoute('proj_winner_init');
         }
 
         $queuePlayers = $game->getQueuePlayers();
