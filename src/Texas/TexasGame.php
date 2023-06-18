@@ -379,6 +379,49 @@ class TexasGame
     }
 
     /**
+     * Resets game property properties before new round when tie game.
+     *
+     * @return array<mixed>
+     */
+    public function setNewRoundTie(): array
+    {
+        $this->deck = new TexasDeck();
+        $this->deck->shuffleDeck();
+
+        $players = $this->queue->getQueue();
+
+        $winners = $this->getWinnersTieGame();
+        $pot = $this->getPot();
+
+        $count = count($winners);
+        $splitPot = intval($pot/$count);
+
+        foreach ($winners as $winner) {
+            $winner->increaseBuyIn($splitPot);
+        }
+
+        foreach ($players as $player) {
+            $player->clearPlayerBets();
+            $player->getPlayerMoves()->clearRoundMoves();
+            $player->getHand()->foldHand();
+            $player->getHand()->clearBestHandProperties();
+            if ($player->getPlayerMoves()->hasFolded()) {
+                $player->getPlayerMoves()->setHasFolded();
+            }
+        }
+
+        $this->table->clearPot();
+        $this->table->clearCommunityCards();
+
+        $this->queue->setQueueBeforeRoundStart();
+
+        $this->takeBlindsAndAddToPot();
+        $this->dealStartingCards();
+
+        return [$winners, $pot];
+    }
+
+    /**
      * Gets winner of the round.
      *
      * @return PlayerInterface Winner of the round.
@@ -515,5 +558,29 @@ class TexasGame
         }
 
         return $human;
+    }
+
+    /**
+     * Checks if game is tie.
+     *
+     * @return bool
+     */
+    public function isGameTied(): bool
+    {
+        $players = $this->getQueuePlayers();
+
+        return $this->gameLogic->isGameTied($players);
+    }
+
+    /**
+     * Returns winners when game is tie.
+     *
+     * @return array<PlayerInterface>
+     */
+    public function getWinnersTieGame(): array
+    {
+        $players = $this->getQueuePlayers();
+
+        return $this->gameLogic->getTiedWinners($players);
     }
 }
