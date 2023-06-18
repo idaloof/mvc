@@ -66,3 +66,15 @@
 .p-input:invalid {
     border: 2px solid #5b3b43;
 }
+
+.manage-wallet-forms {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.wallet-manage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
