@@ -53,6 +53,6 @@ class ProjectComPlayController extends AbstractController
 
         $session->set('communityImages', $community);
 
-        return $this->redirectToRoute('proj_winner');
+        return $this->redirectToRoute('proj_winner_init');
     }
 }
