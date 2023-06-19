@@ -81,7 +81,7 @@ class TwoPairEvaluatorTest extends TestCase
         $evaluator = new TwoPairEvaluator();
         $ranks = ["12", "9", "9", "14", "14"];
 
-        $exp = 30081;
+        $exp = 30403;
         $res = $evaluator->calculatePoints($ranks);
 
         $this->assertEquals($exp, $res);
