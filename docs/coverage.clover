@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687124764">
-  <project timestamp="1687124764">
+<coverage generated="1687199570">
+  <project timestamp="1687199570">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -1507,7 +1507,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TwoPairEvaluator.php">
       <class name="App\Texas\TwoPairEvaluator" namespace="global">
-        <metrics complexity="8" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
+        <metrics complexity="8" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="21" coveredelements="21"/>
       </class>
       <line num="21" type="method" name="evaluateHand" visibility="public" complexity="5" crap="5" count="7"/>
       <line num="23" type="stmt" count="7"/>
@@ -1523,12 +1523,15 @@
       <line num="49" type="stmt" count="1"/>
       <line num="50" type="stmt" count="1"/>
       <line num="52" type="stmt" count="1"/>
-      <line num="53" type="stmt" count="1"/>
       <line num="54" type="stmt" count="1"/>
-      <line num="58" type="stmt" count="1"/>
-      <line num="60" type="stmt" count="1"/>
-      <metrics loc="63" ncloc="43" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="16" elements="18" coveredelements="18"/>
+      <line num="55" type="stmt" count="1"/>
+      <line num="56" type="stmt" count="1"/>
+      <line num="57" type="stmt" count="1"/>
+      <line num="61" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="65" type="stmt" count="1"/>
+      <metrics loc="68" ncloc="48" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="21" coveredelements="21"/>
     </file>
-    <metrics files="38" loc="5209" ncloc="3178" classes="34" methods="259" coveredmethods="224" conditionals="0" coveredconditionals="0" statements="1050" coveredstatements="888" elements="1309" coveredelements="1112"/>
+    <metrics files="38" loc="5214" ncloc="3183" classes="34" methods="259" coveredmethods="224" conditionals="0" coveredconditionals="0" statements="1053" coveredstatements="891" elements="1312" coveredelements="1115"/>
   </project>
 </coverage>
