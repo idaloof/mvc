@@ -47,7 +47,7 @@ class ThreeOfAKindEvaluator extends CalculatePoints implements EvaluatorInterfac
         $counts = array_count_values($values);
         $rank = array_search(3, $counts);
 
-        $points += $rank;
+        $points += intval($rank) * 23;
         $points += self::HAND_POINTS["Three Of A Kind"];
 
         return intval($points);
