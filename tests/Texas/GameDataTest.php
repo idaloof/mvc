@@ -38,32 +38,6 @@ class GameDataTest extends TestCase
     }
 
     /**
-     * Verify that GameData sets and gets correct player hands.
-     */
-    public function testSetAndGetPlayerHands() : void
-    {
-        $playerHands = [
-            ["AH", "AS", "AH", "AD", "KH"],
-            ["AH", "AS", "AH", "AD", "KD"],
-            ["AH", "AS", "AH", "AD", "KS"]
-        ];
-
-        $this->gameData->setPlayerHands($playerHands);
-
-        $exp = 3;
-
-        $res = count($this->gameData->getPlayerHands());
-
-        $this->assertEquals($exp, $res);
-
-        $exp = "KD";
-
-        $res = $this->gameData->getPlayerHands()[1][4];
-
-        $this->assertEquals($exp, $res);
-    }
-
-    /**
      * Verify that GameData sets and gets correct game stage.
      */
     public function testSetAndGetGameStage() : void
@@ -73,20 +47,6 @@ class GameDataTest extends TestCase
         $exp = "flop";
 
         $res = $this->gameData->getGameStage();
-
-        $this->assertEquals($exp, $res);
-    }
-
-    /**
-     * Verify that GameData sets and gets correct initial buy-in.
-     */
-    public function testSetAndGetBuyIn() : void
-    {
-        $this->gameData->setInitialBuyIn(1000);
-
-        $exp = 1000;
-
-        $res = $this->gameData->getInitialBuyIn();
 
         $this->assertEquals($exp, $res);
     }
@@ -142,11 +102,13 @@ class GameDataTest extends TestCase
      */
     public function testSetAndGetWinnerPlayer() : void
     {
-        $this->gameData->setRoundWinner("Martin");
+        $player = new TexasPlayer("Martin", 20, 20);
+
+        $this->gameData->setRoundWinner($player);
 
         $exp = "Martin";
 
-        $res = $this->gameData->getRoundWinner();
+        $res = $this->gameData->getRoundWinner()->getName();
 
         $this->assertEquals($exp, $res);
     }
