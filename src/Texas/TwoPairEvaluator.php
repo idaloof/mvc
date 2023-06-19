@@ -49,11 +49,16 @@ class TwoPairEvaluator extends CalculatePoints implements EvaluatorInterface
         $counts = array_count_values($values);
         $uniqueCards = array_keys($counts);
 
+        $pairRanks = [];
+
         for ($i = 0; $i < 3; $i++) {
             if ($counts[$uniqueCards[$i]] === 2) {
                 $points += $uniqueCards[$i];
+                $pairRanks[] = $uniqueCards[$i];
             }
         }
+
+        $points += intval(max($pairRanks) * 23);
 
         $points += self::HAND_POINTS["Two Pair"];
 
