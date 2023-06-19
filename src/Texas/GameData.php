@@ -11,12 +11,12 @@ namespace App\Texas;
 class GameData
 {
     /**
-     * @var array<string> $players Players of the game.
+     * @var array<PlayerInterface> $players Players of the game.
      */
     private array $players = [];
 
     /**
-     * @var array<int, array<string>> $playerHands Players' best hands.
+     * @var array<int, array<Card>> $playerHands Players' best hands.
      */
     private array $playerHands = [];
 
@@ -26,34 +26,29 @@ class GameData
     private string $gameStage = "pre-flop";
 
     /**
-     * @var int $initialBuyIn The human player's initial buy-in.
-     */
-    private int $initialBuyIn;
-
-    /**
      * @var int $currentPot Current pot on the table.
      */
     private int $currentPot;
 
     /**
-     * @var array<string> $communityCards Current cards on the table.
+     * @var array<Card> $communityCards Current cards on the table.
      */
     private array $communityCards;
 
     /**
-     * @var string $roundWinner Player who won latest round.
+     * @var PlayerInterface $roundWinner Player who won latest round.
      */
-    private string $roundWinner;
+    private PlayerInterface $roundWinner;
 
     /**
-     * @var array<string> $winnerHand Hand of the player that won the latest round.
+     * @var array<Card> $winnerHand Hand of the player that won the latest round.
      */
     private array $winnerHand;
 
     /**
      * Gets players.
      *
-     * @return array<string> Array of players.
+     * @return array<PlayerInterface> Array of players.
      */
     public function getPlayers(): array
     {
@@ -63,35 +58,13 @@ class GameData
     /**
      * Sets players.
      *
-     * @param array<string> $players Array of players.
+     * @param array<PlayerInterface> $players Array of players.
      *
      * @return void
      */
     public function setPlayers(array $players): void
     {
         $this->players = $players;
-    }
-
-    /**
-     * Gets player hands.
-     *
-     * @return array<int, array<string>> Array of players' hands.
-     */
-    public function getPlayerHands(): array
-    {
-        return $this->playerHands;
-    }
-
-    /**
-     * Sets players' hands.
-     *
-     * @param array<int, array<string>> $hands Array of players's hands.
-     *
-     * @return void
-     */
-    public function setPlayerHands(array $hands): void
-    {
-        $this->playerHands = $hands;
     }
 
     /**
@@ -114,28 +87,6 @@ class GameData
     public function setGameStage(string $stage): void
     {
         $this->gameStage = $stage;
-    }
-
-    /**
-     * Gets initial buy-in.
-     *
-     * @return int Initial buy-in.
-     */
-    public function getInitialBuyIn(): int
-    {
-        return $this->initialBuyIn;
-    }
-
-    /**
-     * Sets initial buy-in.
-     *
-     * @param int $buyIn Initial buy-in.
-     *
-     * @return void
-     */
-    public function setInitialBuyIn(int $buyIn): void
-    {
-        $this->initialBuyIn = $buyIn;
     }
 
     /**
@@ -163,7 +114,7 @@ class GameData
     /**
      * Gets community cards.
      *
-     * @return array<string> Array of community cards.
+     * @return array<Card> Array of community cards.
      */
     public function getCommunityCards(): array
     {
@@ -173,7 +124,7 @@ class GameData
     /**
      * Sets community cards.
      *
-     * @param array<string> $cards Current community cards.
+     * @param array<Card> $cards Current community cards.
      *
      * @return void
      */
@@ -185,9 +136,9 @@ class GameData
     /**
      * Gets latest round winner.
      *
-     * @return string Name of latest round winner.
+     * @return PlayerInterface Name of latest round winner.
      */
-    public function getRoundWinner(): string
+    public function getRoundWinner(): PlayerInterface
     {
         return $this->roundWinner;
     }
@@ -195,11 +146,11 @@ class GameData
     /**
      * Sets round winner.
      *
-     * @param string $winner Latest round's winner.
+     * @param PlayerInterface $winner Latest round's winner.
      *
      * @return void
      */
-    public function setRoundWinner(string $winner): void
+    public function setRoundWinner(PlayerInterface $winner): void
     {
         $this->roundWinner = $winner;
     }
@@ -207,7 +158,7 @@ class GameData
     /**
      * Gets round winner's cards.
      *
-     * @return array<string> Array of round winner's card.
+     * @return array<Card> Array of round winner's card.
      */
     public function getRoundWinnerHand(): array
     {
@@ -217,7 +168,7 @@ class GameData
     /**
      * Sets round winner's hand.
      *
-     * @param array<string> $cards Latest round winner's hand.
+     * @param array<Card> $cards Latest round winner's hand.
      *
      * @return void
      */
