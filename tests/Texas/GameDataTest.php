@@ -28,11 +28,14 @@ class GameDataTest extends TestCase
      */
     public function testSetAndGetPlayers() : void
     {
-        $this->gameData->setPlayers(["Martin"]);
+        $player1 = new TexasPlayer("Martin", 20, 20);
+        $player2 = new TexasPlayer("Olf", 20, 20);
 
-        $exp = ["Martin"];
+        $this->gameData->setPlayers([$player1, $player2]);
 
-        $res = $this->gameData->getPlayers();
+        $exp = "Martin";
+
+        $res = $this->gameData->getPlayers()[0]->getName();
 
         $this->assertEquals($exp, $res);
     }
@@ -70,13 +73,17 @@ class GameDataTest extends TestCase
      */
     public function testSetAndGetCommunityCards() : void
     {
-        $cards = ["AH", "AS", "AH", "AD", "KH"];
+        $card1 = new Card("Ace of clubs", "AC", "C", "A", "14");
+        $card2 = new Card("Ace of clubs", "AC", "C", "A", "14");
+        $card3 = new Card("Ace of clubs", "AC", "C", "A", "14");
+
+        $cards = [$card1, $card2, $card3];
 
         $this->gameData->setCommunityCards($cards);
 
-        $exp = ["AH", "AS", "AH", "AD", "KH"];
+        $exp = 3;
 
-        $res = $this->gameData->getCommunityCards();
+        $res = count($this->gameData->getCommunityCards());
 
         $this->assertEquals($exp, $res);
     }
@@ -86,13 +93,19 @@ class GameDataTest extends TestCase
      */
     public function testSetAndGetWinnerHand() : void
     {
-        $cards = ["AH", "AS", "AH", "AD", "KH"];
+        $card1 = new Card("Ace of clubs", "AC", "C", "A", "14");
+        $card2 = new Card("Ace of clubs", "AC", "C", "A", "14");
+        $card3 = new Card("Ace of clubs", "AC", "C", "A", "14");
+        $card4 = new Card("Ace of clubs", "AC", "C", "A", "14");
+        $card5 = new Card("Ace of clubs", "AC", "C", "A", "14");
+
+        $cards = [$card1, $card2, $card3, $card4, $card5];
 
         $this->gameData->setRoundWinnerHand($cards);
 
-        $exp = ["AH", "AS", "AH", "AD", "KH"];
+        $exp = 5;
 
-        $res = $this->gameData->getRoundWinnerHand();
+        $res = count($this->gameData->getRoundWinnerHand());
 
         $this->assertEquals($exp, $res);
     }
