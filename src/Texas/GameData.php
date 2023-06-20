@@ -16,11 +16,6 @@ class GameData
     private array $players = [];
 
     /**
-     * @var array<int, array<Card>> $playerHands Players' best hands.
-     */
-    private array $playerHands = [];
-
-    /**
      * @var string $gameStage Current game stage.
      */
     private string $gameStage = "pre-flop";
