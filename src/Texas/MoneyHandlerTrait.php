@@ -34,7 +34,8 @@ trait MoneyHandlerTrait
 
                     $message = $playerName . " utökar sitt saldo med $" . $moneyToAdd;
 
-                    $this->addMessage("Texas", $message, $doctrine);
+                    $this->/** @scrutinizer ignore-call */
+                        addMessage("Texas", $message, $doctrine);
                 }
             }
         }
