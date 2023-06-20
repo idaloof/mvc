@@ -75,12 +75,29 @@ class GameData
     /**
      * Sets game stage.
      *
-     * @param string $stage Current game stage.
+     * @param int $nrOfCommunityCards
      *
      * @return void
      */
-    public function setGameStage(string $stage): void
+    public function setGameStage(int $nrOfCommunityCards): void
     {
+        $stage = "";
+
+        switch ($nrOfCommunityCards) {
+            case 3:
+                $stage = "flop";
+                break;
+            case 4:
+                $stage = "turn";
+                break;
+            case 5:
+                $stage = "river";
+                break;
+            default:
+                $stage = "pre-flop";
+                break;
+        }
+
         $this->gameStage = $stage;
     }
 
