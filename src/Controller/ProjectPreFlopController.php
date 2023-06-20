@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Repository\MessagesRepository;
 use App\Texas\MessageTrait;
-use App\Texas\MoneyHandler;
+use App\Texas\MoneyHandlerTrait;
 use App\Texas\TexasGame;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjectPreFlopController extends AbstractController
 {
     use MessageTrait;
-    use MoneyHandler;
+    use MoneyHandlerTrait;
     /* Proj PreFlop Route */
     #[Route("/proj/pre-flop", name: "proj_pre_flop")]
     public function projPreFlop(

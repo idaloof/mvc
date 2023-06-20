@@ -9,7 +9,7 @@ namespace App\Texas;
 
 use Doctrine\Persistence\ManagerRegistry;
 
-trait MoneyHandler
+trait MoneyHandlerTrait
 {
     /**
      * Adds money to com players' buy in if low on money.
