@@ -49,7 +49,14 @@ class HighCardEvaluatorTest extends TestCase
         $evaluator = new HighCardEvaluator();
         $values = ["9", "11", "12", "10", "14"];
 
-        $exp = 10056;
+        $exp = 1000000002263.176;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+
+        $values = ["2", "3", "13", "10", "14"];
+
+        $exp = 1000000002391.527;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

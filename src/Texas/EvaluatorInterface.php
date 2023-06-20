@@ -24,7 +24,7 @@ interface EvaluatorInterface
      *
      * @param array<string> $values      Values of player's 5 card combination.
      *
-     * @return int
+     * @return float
      */
-    public function calculatePoints(array $values): int;
+    public function calculatePoints(array $values): float;
 }

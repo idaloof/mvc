@@ -49,7 +49,14 @@ class FourOfAKindEvaluatorTest extends TestCase
         $evaluator = new FourOfAKindEvaluator();
         $values = ["12", "14", "14", "14", "14"];
 
-        $exp = 80082;
+        $exp = 8396857387057.054;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+
+        $values = ["10", "14", "14", "14", "14"];
+
+        $exp = 8396857386727.072;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
@@ -63,7 +70,7 @@ class FourOfAKindEvaluatorTest extends TestCase
         $evaluator = new FourOfAKindEvaluator();
         $values = ["12", "2", "2", "2", "2"];
 
-        $exp = 80022;
+        $exp = 8000000000458.653;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

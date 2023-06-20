@@ -77,7 +77,7 @@ class StraightFlushEvaluatorTest extends TestCase
 
         $values = ["13", "11", "12", "10", "14"];
 
-        $exp = 90060;
+        $exp = 9000000003035.861;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
@@ -94,7 +94,7 @@ class StraightFlushEvaluatorTest extends TestCase
 
         $values = ["2", "14", "5", "4", "3"];
 
-        $exp = 90015;
+        $exp = 9000000000000.463;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

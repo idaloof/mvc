@@ -76,7 +76,7 @@ class RoyalStraightFlushEvaluatorTest extends TestCase
         $flush = new FlushEvaluator();
         $evaluator = new RoyalStraightFlushEvaluator($straight, $flush);
 
-        $exp = 100000;
+        $exp = 10000000000000.0;
         $res = $evaluator->calculatePoints($ranks);
 
         $this->assertEquals($exp, $res);

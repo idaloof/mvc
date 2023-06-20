@@ -65,7 +65,14 @@ class StraightEvaluatorTest extends TestCase
         $evaluator = new StraightEvaluator();
         $values = ["13", "11", "12", "10", "14"];
 
-        $exp = 50060;
+        $exp = 5000000003035.86;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+
+        $values = ["13", "11", "12", "10", "9"];
+
+        $exp = 5000000001603.118;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
@@ -79,7 +86,7 @@ class StraightEvaluatorTest extends TestCase
         $evaluator = new StraightEvaluator();
         $values = ["2", "14", "5", "4", "3"];
 
-        $exp = 50015;
+        $exp = 5000000000000.463;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

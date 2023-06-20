@@ -203,11 +203,11 @@ class HandEvaluatorTest extends TestCase
         // Create a mock HandEvaluator object
         $evaluator1 = $this->createMock(EvaluatorInterface::class);
         $evaluator1->method('evaluateHand')->willReturn("One Pair");
-        $evaluator1->method('calculatePoints')->willReturn(10);
+        $evaluator1->method('calculatePoints')->willReturn(10.6);
 
         $evaluator2 = $this->createMock(EvaluatorInterface::class);
         $evaluator2->method('evaluateHand')->willReturn("High Card");
-        $evaluator2->method('calculatePoints')->willReturn(5);
+        $evaluator2->method('calculatePoints')->willReturn(5.5);
 
         // Create a mock Card object
         $card1 = $this->createMock(Card::class);
@@ -240,10 +240,10 @@ class HandEvaluatorTest extends TestCase
 
         // Assert the expected result
         $expected = [
-            [10, 'One Pair', $hand1],
-            [10, 'One Pair', $hand1],
-            [5, 'High Card', $hand2],
-            [5, 'High Card', $hand2],
+            [10.6, 'One Pair', $hand1],
+            [10.6, 'One Pair', $hand1],
+            [5.5, 'High Card', $hand2],
+            [5.5, 'High Card', $hand2],
         ];
 
         $this->assertEquals($expected, $result);

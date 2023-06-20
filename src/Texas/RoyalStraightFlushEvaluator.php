@@ -60,9 +60,9 @@ class RoyalStraightFlushEvaluator extends CalculatePoints implements EvaluatorIn
      *
      * @param array<string> $values
      *
-     * @return int Number of points obtained from hand.
+     * @return float Number of points obtained from hand.
      */
-    public function calculatePoints(array $values): int
+    public function calculatePoints(array $values): float
     {
         return self::HAND_POINTS["Royal Straight Flush"];
     }

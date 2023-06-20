@@ -113,8 +113,43 @@ class OnePairEvaluatorTest extends TestCase
         $evaluator = new OnePairEvaluator();
         $ranks = ["12", "14", "14", "13", "11"];
 
-        $exp = 20386;
+        $exp = 2396857388087.144;
         $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+
+        $ranks = ["12", "13", "14", "13", "11"];
+
+        $exp = 2163086597977.497;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+
+        $ranks = ["12", "13", "14", "2", "2"];
+
+        $exp = 2000000002750.174;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+
+        $ranks = ["5", "4", "2", "3", "3"];
+
+        $exp = 2000000003720.543;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that a evaluator returns correct points.
+     */
+    public function testCalculateKickerPoints() : void
+    {
+        $evaluator = new OnePairEvaluator();
+        $kickers = ["12", "13", "11"];
+
+        $exp = 1460.0712979999998;
+        $res = $evaluator->calculateKickerPoints($kickers);
 
         $this->assertEquals($exp, $res);
     }

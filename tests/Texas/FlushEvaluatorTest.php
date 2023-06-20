@@ -47,23 +47,16 @@ class FlushEvaluatorTest extends TestCase
     public function testEvaluateReturnPoints() : void
     {
         $evaluator = new FlushEvaluator();
-        $values = ["13", "11", "12", "10", "14"];
+        $values = ["2", "11", "12", "10", "14"];
 
-        $exp = 60060;
+        $exp = 6000000002220.13;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
-    }
 
-    /**
-     * Verify that a evaluator returns correct points.
-     */
-    public function testEvaluateReturnPointsSpecial() : void
-    {
-        $evaluator = new FlushEvaluator();
-        $values = ["2", "14", "5", "4", "3"];
+        $values = ["8", "11", "12", "9", "14"];
 
-        $exp = 60015;
+        $exp = 6000000002179.953;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

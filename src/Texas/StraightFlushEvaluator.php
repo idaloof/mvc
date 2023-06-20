@@ -60,23 +60,41 @@ class StraightFlushEvaluator extends CalculatePoints implements EvaluatorInterfa
      *
      * @param array<string> $values Values of the player's cards.
      *
-     * @return int                  Number of points obtained from hand.
+     * @return float                  Number of points obtained from hand.
      */
-    public function calculatePoints(array $values): int
+    public function calculatePoints(array $values): float
     {
         $points = 0;
-        $sumValues = intval(array_sum($values));
         sort($values);
 
         $specialArray = ["2", "3", "4", "5", "14"];
         if ($values === $specialArray) {
             $points += self::HAND_POINTS["Straight Flush"];
-            $points += 15;
+            $points += $this->calculateKickerPoints(["2", "3", "4", "5", "1"]);
             return $points;
         }
 
-        $points += $sumValues;
+        $points += $this->calculateKickerPoints($values);
         $points += self::HAND_POINTS["Straight Flush"];
+
+        return $points;
+    }
+
+    /**
+     * Calculates points for all kickers.
+     *
+     * @param array<string> $kickers
+     *
+     * @return float Points for all kickers.
+     */
+    public function calculateKickerPoints(array $kickers): float
+    {
+        $points = 0;
+
+        foreach ($kickers as $kicker) {
+            $kicker = intval($kicker);
+            $points += ($kicker**8) / 10**6;
+        }
 
         return $points;
     }

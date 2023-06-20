@@ -44,12 +44,19 @@ class FullHouseEvaluatorTest extends TestCase
     /**
      * Verify that evaluator returns correct points.
      */
-    public function testEvaluateReturnPointsAces() : void
+    public function testEvaluateReturnPoints() : void
     {
         $evaluator = new FullHouseEvaluator();
         $values = ["5", "14", "5", "14", "14"];
 
-        $exp = 70052;
+        $exp = 7396857386627.463;
+        $res = $evaluator->calculatePoints($values);
+
+        $this->assertEquals($exp, $res);
+
+        $values = ["12", "13", "12", "13", "13"];
+
+        $exp = 7163086596287.349;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);
@@ -63,7 +70,7 @@ class FullHouseEvaluatorTest extends TestCase
         $evaluator = new FullHouseEvaluator();
         $values = ["12", "12", "2", "2", "2"];
 
-        $exp = 70030;
+        $exp = 7000000000458.653;
         $res = $evaluator->calculatePoints($values);
 
         $this->assertEquals($exp, $res);

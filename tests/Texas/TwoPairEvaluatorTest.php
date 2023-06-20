@@ -74,15 +74,57 @@ class TwoPairEvaluatorTest extends TestCase
     }
 
     /**
-     * Verify that a evaluator returns correct points.
+     * Verify that an evaluator returns correct points.
      */
     public function testEvaluateReturnPoints() : void
     {
         $evaluator = new TwoPairEvaluator();
-        $ranks = ["12", "9", "9", "14", "14"];
+        $ranks = ["2", "3", "3", "14", "14"];
 
-        $exp = 30403;
+        $exp = 3396857390347.159;
         $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+
+        $ranks = ["11", "11", "13", "13", "12"];
+
+        $exp = 3185055594924.396;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+
+        $ranks = ["12", "12", "13", "13", "2"];
+
+        $exp = 3225499298995.159;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+
+        $ranks = ["2", "2", "9", "9", "3"];
+
+        $exp = 3001977006784.045;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+
+        $ranks = ["7", "7", "8", "8", "14"];
+
+        $exp = 3000577926823.348;
+        $res = $evaluator->calculatePoints($ranks);
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that an evaluator returns correct points.
+     */
+    public function testCalculateKickerPoints() : void
+    {
+        $evaluator = new TwoPairEvaluator();
+        $kickers = ["12", "13", "11"];
+
+        $exp = 1460.0712979999998;
+        $res = $evaluator->calculateKickerPoints($kickers);
 
         $this->assertEquals($exp, $res);
     }
