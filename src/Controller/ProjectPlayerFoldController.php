@@ -32,7 +32,14 @@ class ProjectPlayerFoldController extends AbstractController
          */
         $game = $session->get('game');
 
-        $player = $game->playerFolds();
+        $player = $game->dequeuePlayer();
+
+        $player->clearPlayerBets();
+        $player->getHand()->foldHand();
+        $player->getPlayerMoves()->setHasFolded();
+        $player->getHand()->clearBestHandProperties();
+
+        $game->enqueuePlayer($player);
 
         $playerMessage = $request->request->get('message');
 

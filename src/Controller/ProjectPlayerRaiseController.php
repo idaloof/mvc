@@ -37,7 +37,13 @@ class ProjectPlayerRaiseController extends AbstractController
          */
         $game = $session->get('game');
 
-        $player = $game->playerRaises($raiseAmount);
+        $player = $game->dequeuePlayer();
+
+        $player->addToBets($raiseAmount);
+        $player->decreaseBuyIn($raiseAmount);
+        $game->addMoneyToPot($raiseAmount);
+
+        $game->enqueuePlayer($player);
 
         $playerMessage = $request->request->get('message');
 

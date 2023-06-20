@@ -32,7 +32,9 @@ class ProjectPlayerCheckController extends AbstractController
          */
         $game = $session->get('game');
 
-        $player = $game->playerChecks();
+        $player = $game->dequeuePlayer();
+
+        $game->enqueuePlayer($player);
 
         $playerMessage = $request->request->get('message');
 
