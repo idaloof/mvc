@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\MessagesRepository;
 use App\Texas\MessageTrait;
+use App\Texas\MoneyHandler;
 use App\Texas\TexasGame;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProjectPreFlopController extends AbstractController
 {
     use MessageTrait;
+    use MoneyHandler;
     /* Proj PreFlop Route */
     #[Route("/proj/pre-flop", name: "proj_pre_flop")]
     public function projPreFlop(
@@ -41,19 +43,7 @@ class ProjectPreFlopController extends AbstractController
 
         $buyIn = $session->get('buyin');
 
-        foreach ($queuePlayers as $player) {
-            $playerName = $player->getName();
-            if ($playerName === "Stu" || $playerName === "Cleve") {
-                if ($player->getBuyIn() < 0.5 * $buyIn) {
-                    $moneyToAdd = $buyIn - $player->getBuyIn();
-                    $player->increaseBuyIn($moneyToAdd);
-
-                    $message = $playerName . " utökar sitt saldo med $" . $moneyToAdd;
-
-                    $this->addMessage("Texas", $message, $doctrine);
-                }
-            }
-        }
+        $this->fillComPlayersBuyIn($queuePlayers, $buyIn, $doctrine);
 
         $playerToAct = $game->getFirstPlayer();
 
