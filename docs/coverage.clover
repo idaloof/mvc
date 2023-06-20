@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687245306">
-  <project timestamp="1687245306">
+<coverage generated="1687245836">
+  <project timestamp="1687245836">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -356,12 +356,12 @@
       <class name="App\Texas\Card" namespace="global">
         <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="16" coveredelements="16"/>
       </class>
-      <line num="38" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="26"/>
-      <line num="40" type="stmt" count="26"/>
-      <line num="41" type="stmt" count="26"/>
-      <line num="42" type="stmt" count="26"/>
-      <line num="43" type="stmt" count="26"/>
-      <line num="44" type="stmt" count="26"/>
+      <line num="38" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="28"/>
+      <line num="40" type="stmt" count="28"/>
+      <line num="41" type="stmt" count="28"/>
+      <line num="42" type="stmt" count="28"/>
+      <line num="43" type="stmt" count="28"/>
+      <line num="44" type="stmt" count="28"/>
       <line num="59" type="method" name="getCardName" visibility="public" complexity="1" crap="1" count="8"/>
       <line num="61" type="stmt" count="8"/>
       <line num="70" type="method" name="getCardImage" visibility="public" complexity="1" crap="1" count="4"/>
@@ -1439,14 +1439,14 @@
       <class name="App\Texas\TexasPlayer" namespace="global">
         <metrics complexity="16" methods="16" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="48" coveredelements="48"/>
       </class>
-      <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="34"/>
-      <line num="39" type="stmt" count="34"/>
-      <line num="40" type="stmt" count="34"/>
-      <line num="41" type="stmt" count="34"/>
-      <line num="42" type="stmt" count="34"/>
-      <line num="43" type="stmt" count="34"/>
-      <line num="51" type="method" name="getName" visibility="public" complexity="1" crap="1" count="4"/>
-      <line num="53" type="stmt" count="4"/>
+      <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="35"/>
+      <line num="39" type="stmt" count="35"/>
+      <line num="40" type="stmt" count="35"/>
+      <line num="41" type="stmt" count="35"/>
+      <line num="42" type="stmt" count="35"/>
+      <line num="43" type="stmt" count="35"/>
+      <line num="51" type="method" name="getName" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="53" type="stmt" count="5"/>
       <line num="61" type="method" name="getRole" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="63" type="stmt" count="2"/>
       <line num="73" type="method" name="setRole" visibility="public" complexity="1" crap="1" count="4"/>
