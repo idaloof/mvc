@@ -513,35 +513,6 @@ class TexasGame
         return $this->gameLogic->getTiedWinners($players);
     }
 
-    /**
-     * Returns current game stage.
-     *
-     * @return string Current game stage.
-     */
-    public function getGameStage(): string
-    {
-        $count = count($this->getCommunityCards());
-
-        $stage = "";
-
-        switch ($count) {
-            case 3:
-                $stage = "flop";
-                break;
-            case 4:
-                $stage = "turn";
-                break;
-            case 5:
-                $stage = "river";
-                break;
-            default:
-                $stage = "pre-flop";
-                break;
-        }
-
-        return $stage;
-    }
-
 
     /**
      * Sets properties of game data object and returns the object.
@@ -551,7 +522,7 @@ class TexasGame
     public function setGameData(): GameData
     {
         $this->gameData->setPlayers($this->getQueuePlayers());
-        $this->gameData->setGameStage($this->getGameStage());
+        $this->gameData->setGameStage(count($this->getCommunityCards()));
         $this->gameData->setPot($this->getPot());
         $this->gameData->setCommunityCards($this->getCommunityCards());
 
