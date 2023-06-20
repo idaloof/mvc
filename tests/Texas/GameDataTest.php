@@ -45,9 +45,33 @@ class GameDataTest extends TestCase
      */
     public function testSetAndGetGameStage() : void
     {
-        $this->gameData->setGameStage("flop");
+        $this->gameData->setGameStage(3);
 
         $exp = "flop";
+
+        $res = $this->gameData->getGameStage();
+
+        $this->assertEquals($exp, $res);
+
+        $this->gameData->setGameStage(4);
+
+        $exp = "turn";
+
+        $res = $this->gameData->getGameStage();
+
+        $this->assertEquals($exp, $res);
+
+        $this->gameData->setGameStage(5);
+
+        $exp = "river";
+
+        $res = $this->gameData->getGameStage();
+
+        $this->assertEquals($exp, $res);
+
+        $this->gameData->setGameStage(0);
+
+        $exp = "pre-flop";
 
         $res = $this->gameData->getGameStage();
 
