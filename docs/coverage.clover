@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687245836">
-  <project timestamp="1687245836">
+<coverage generated="1687246461">
+  <project timestamp="1687246461">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -748,7 +748,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/GameData.php">
       <class name="App\Texas\GameData" namespace="global">
-        <metrics complexity="12" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="24" coveredelements="24"/>
+        <metrics complexity="16" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="36" coveredelements="36"/>
       </class>
       <line num="48" type="method" name="getPlayers" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="50" type="stmt" count="1"/>
@@ -756,25 +756,37 @@
       <line num="62" type="stmt" count="1"/>
       <line num="70" type="method" name="getGameStage" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="72" type="stmt" count="1"/>
-      <line num="82" type="method" name="setGameStage" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="82" type="method" name="setGameStage" visibility="public" complexity="5" crap="5" count="1"/>
       <line num="84" type="stmt" count="1"/>
-      <line num="92" type="method" name="getPot" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="87" type="stmt" count="1"/>
+      <line num="88" type="stmt" count="1"/>
+      <line num="89" type="stmt" count="1"/>
+      <line num="90" type="stmt" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="92" type="stmt" count="1"/>
+      <line num="93" type="stmt" count="1"/>
       <line num="94" type="stmt" count="1"/>
-      <line num="104" type="method" name="setPot" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="106" type="stmt" count="1"/>
-      <line num="114" type="method" name="getCommunityCards" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="116" type="stmt" count="1"/>
-      <line num="126" type="method" name="setCommunityCards" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="128" type="stmt" count="1"/>
-      <line num="136" type="method" name="getRoundWinner" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="138" type="stmt" count="1"/>
-      <line num="148" type="method" name="setRoundWinner" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="150" type="stmt" count="1"/>
-      <line num="158" type="method" name="getRoundWinnerHand" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="160" type="stmt" count="1"/>
-      <line num="170" type="method" name="setRoundWinnerHand" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="172" type="stmt" count="1"/>
-      <metrics loc="175" ncloc="80" classes="1" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="24" coveredelements="24"/>
+      <line num="95" type="stmt" count="1"/>
+      <line num="97" type="stmt" count="1"/>
+      <line num="98" type="stmt" count="1"/>
+      <line num="101" type="stmt" count="1"/>
+      <line num="109" type="method" name="getPot" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="111" type="stmt" count="1"/>
+      <line num="121" type="method" name="setPot" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="123" type="stmt" count="1"/>
+      <line num="131" type="method" name="getCommunityCards" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="133" type="stmt" count="1"/>
+      <line num="143" type="method" name="setCommunityCards" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="145" type="stmt" count="1"/>
+      <line num="153" type="method" name="getRoundWinner" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="155" type="stmt" count="1"/>
+      <line num="165" type="method" name="setRoundWinner" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="167" type="stmt" count="1"/>
+      <line num="175" type="method" name="getRoundWinnerHand" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="177" type="stmt" count="1"/>
+      <line num="187" type="method" name="setRoundWinnerHand" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="189" type="stmt" count="1"/>
+      <metrics loc="192" ncloc="97" classes="1" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="36" coveredelements="36"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/GameLogic.php">
       <class name="App\Texas\GameLogic" namespace="global">
@@ -947,8 +959,8 @@
       <line num="44" type="stmt" count="0"/>
       <metrics loc="47" ncloc="34" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="11" coveredelements="0"/>
     </file>
-    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/MoneyHandler.php">
-      <class name="App\Texas\MoneyHandler" namespace="global">
+    <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/MoneyHandlerTrait.php">
+      <class name="App\Texas\MoneyHandlerTrait" namespace="global">
         <metrics complexity="5" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="10" coveredelements="0"/>
       </class>
       <line num="23" type="method" name="fillComPlayersBuyIn" visibility="public" complexity="5" crap="30" count="0"/>
@@ -1209,7 +1221,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasGame.php">
       <class name="App\Texas\TexasGame" namespace="global">
-        <metrics complexity="50" methods="30" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="149" coveredstatements="0" elements="179" coveredelements="0"/>
+        <metrics complexity="45" methods="29" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="0" elements="164" coveredelements="0"/>
       </class>
       <line num="55" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="63" type="stmt" count="0"/>
@@ -1369,28 +1381,13 @@
       <line num="509" type="method" name="getWinnersTieGame" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="511" type="stmt" count="0"/>
       <line num="513" type="stmt" count="0"/>
-      <line num="521" type="method" name="getGameStage" visibility="public" complexity="5" crap="30" count="0"/>
-      <line num="523" type="stmt" count="0"/>
+      <line num="522" type="method" name="setGameData" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="524" type="stmt" count="0"/>
       <line num="525" type="stmt" count="0"/>
-      <line num="528" type="stmt" count="0"/>
+      <line num="526" type="stmt" count="0"/>
+      <line num="527" type="stmt" count="0"/>
       <line num="529" type="stmt" count="0"/>
-      <line num="530" type="stmt" count="0"/>
-      <line num="531" type="stmt" count="0"/>
-      <line num="532" type="stmt" count="0"/>
-      <line num="533" type="stmt" count="0"/>
-      <line num="534" type="stmt" count="0"/>
-      <line num="535" type="stmt" count="0"/>
-      <line num="536" type="stmt" count="0"/>
-      <line num="538" type="stmt" count="0"/>
-      <line num="539" type="stmt" count="0"/>
-      <line num="542" type="stmt" count="0"/>
-      <line num="551" type="method" name="setGameData" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="553" type="stmt" count="0"/>
-      <line num="554" type="stmt" count="0"/>
-      <line num="555" type="stmt" count="0"/>
-      <line num="556" type="stmt" count="0"/>
-      <line num="558" type="stmt" count="0"/>
-      <metrics loc="562" ncloc="366" classes="1" methods="30" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="149" coveredstatements="0" elements="179" coveredelements="0"/>
+      <metrics loc="533" ncloc="342" classes="1" methods="29" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="0" elements="164" coveredelements="0"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasHand.php">
       <class name="App\Texas\TexasHand" namespace="global">
@@ -1537,6 +1534,6 @@
       <line num="65" type="stmt" count="1"/>
       <metrics loc="68" ncloc="48" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="19" elements="21" coveredelements="21"/>
     </file>
-    <metrics files="39" loc="5180" ncloc="3180" classes="35" methods="254" coveredmethods="220" conditionals="0" coveredconditionals="0" statements="1057" coveredstatements="887" elements="1311" coveredelements="1107"/>
+    <metrics files="39" loc="5168" ncloc="3173" classes="35" methods="253" coveredmethods="220" conditionals="0" coveredconditionals="0" statements="1055" coveredstatements="899" elements="1308" coveredelements="1119"/>
   </project>
 </coverage>
