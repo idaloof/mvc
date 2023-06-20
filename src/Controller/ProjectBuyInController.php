@@ -73,6 +73,9 @@ class ProjectBuyInController extends AbstractController
         Request $request
     ): Response {
         if ($session->has('game')) {
+            /**
+             * @var int $money
+             */
             $money = $request->request->get('wallet');
 
             /**
@@ -100,6 +103,9 @@ class ProjectBuyInController extends AbstractController
         Request $request
     ): Response {
         if ($session->has('game')) {
+            /**
+             * @var int $money
+             */
             $money = $request->request->get('buy-in');
 
             /**
