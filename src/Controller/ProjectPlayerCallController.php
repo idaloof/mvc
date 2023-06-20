@@ -37,7 +37,13 @@ class ProjectPlayerCallController extends AbstractController
          */
         $game = $session->get('game');
 
-        $player = $game->playerCalls($callAmount);
+        $player = $game->dequeuePlayer();
+
+        $player->addToBets($callAmount);
+        $player->decreaseBuyIn($callAmount);
+        $game->addMoneyToPot($callAmount);
+
+        $game->enqueuePlayer($player);
 
         $playerMessage = $request->request->get('message');
 
