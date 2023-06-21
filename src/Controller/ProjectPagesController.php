@@ -35,4 +35,15 @@ class ProjectPagesController extends AbstractController
 
         return $this->render('proj/database.html.twig');
     }
+
+    /* Proj API Route */
+    #[Route("/proj/api", name: "proj_api")]
+    public function projApi(
+    ): Response {
+        $apiUrls = [
+            'cardRankUrl' => $this->generateUrl('proj_api_card_rank')
+        ];
+
+        return $this->render('proj/proj-api.html.twig', $apiUrls);
+    }
 }
