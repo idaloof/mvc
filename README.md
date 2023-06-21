@@ -30,7 +30,7 @@ Bygg applikationen
 
 För att bygga applikationen behöver du följande:
 
-* Kontrollera att du har PHP i din path:
+<strong>Kontrollera att du har PHP i din path:</strong>
 
 <code>$ php --version</code>
 
@@ -38,14 +38,34 @@ Om du inte har rätt version (lägre än 8), kan du lägga till PHP 8 i pathen:
 
 https://dbwebb.se/kunskap/lagg-php8-i-pathen
 
-* Kontrollera att du har composer (pakethanterare för PHP):
+<strong>Kontrollera att du har composer (pakethanterare för PHP):</strong>
 
 <code>$ composer --version</code>
 
-* Installera composer (pakethanterare för PHP) --> https://getcomposer.org/
+<strong>Installera composer (pakethanterare för PHP):</strong>
 
-* Klona repot med:
+https://getcomposer.org/
+
+<strong>Klona repot med:</strong>
+
 <code>$ git clone git@github.com:idaloof/mvc.git</code>
+
+<strong>Fyll på texas-databasen:</strong>
+
+Installera League Csv:
+<code>$ composer require league/csv:^9.0</code>
+
+Kör kommandot csv:import:
+<code>$ php bin/console csv:import</code>
+
+Koppla ditt repo till scrutinizer
+---------------------------------
+
+https://github.com/dbwebb-se/mvc/tree/main/example/scrutinizer
+
+Kör igång appen
+---------------
+<code>$ php -S localhost:8888 -t public</code>
 
 Badges
 ------
