@@ -13,13 +13,14 @@
 }
 
 .winner-container {
-    grid-column: 9 / 13;
+    grid-column: 9 / 12;
     grid-row: 5 / 9;
-    width: fit-content;
-    padding: $magic-number;
+    width: 100%;
+    padding: $magic-number * 0.3;
     background-color: antiquewhite;
     border-radius: 10px;
     animation: rainBorder 4s linear infinite;
+    text-align: center;
 }
 
 .winner-card {
@@ -48,4 +49,10 @@
     margin: 0;
     font-size: $base-font-size * 1.4;
     font-family: $proj-font-family-message-board-heading;
+}
+
+.winner-hand {
+    p {
+        margin-bottom: 0;
+    }
 }
