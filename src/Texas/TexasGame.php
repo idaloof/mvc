@@ -280,8 +280,7 @@ class TexasGame
         $players = $this->queue->getQueue();
 
         $winner = $this->gameLogic->getWinner($players);
-        $this->gameData->setRoundWinner($winner);
-        $this->gameData->setRoundWinnerHand($winner->getHand()->getBestHand());
+
         $pot = $this->getPot();
 
         $winner->increaseBuyIn($pot);
