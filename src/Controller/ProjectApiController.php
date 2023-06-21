@@ -127,8 +127,7 @@ class ProjectApiController extends AbstractController
     /* Proj API Game Data Route */
     #[Route("/proj/api/hand-data", name: "proj_api_hand_data", methods: ['POST'])]
     public function projApiHandData(
-        SessionInterface $session,
-        Request $request
+        SessionInterface $session
     ): JsonResponse {
         $data = [
             'notis' => "Inget spel startat."
