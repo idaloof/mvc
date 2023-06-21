@@ -30,7 +30,7 @@ class CardCombinator
                 return [$element];
             }, $cards);
         }
-        // var_dump($cards);
+
         $combinations = [];
         $count = count($cards);
 
@@ -44,7 +44,6 @@ class CardCombinator
             }
         }
 
-        // var_dump($combinations);
         return $combinations;
     }
 
@@ -57,7 +56,6 @@ class CardCombinator
      */
     public function setAndGetCombinations(array $cards): array
     {
-        // var_dump($cards);
         $this->combinations = $this->findCombinations($cards);
 
         return $this->combinations;
