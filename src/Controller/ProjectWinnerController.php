@@ -36,6 +36,11 @@ class ProjectWinnerController extends AbstractController
         $winnerHandName = $winner->getHand()->getBestHandName();
         $winnerCards = $winner->getHand()->getBestHandAsImages();
 
+        $gameData = $game->setGameData();
+
+        $gameData->setRoundWinner($winner);
+        $gameData->setRoundWinnerHand($winner->getHand()->getBestHand());
+
         $communityImages = $session->get('communityImages');
         $session->set('game', $game);
 
