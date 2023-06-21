@@ -59,20 +59,25 @@ class PreFlopRankingsRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-//    /**
-//     * @return PreFlopRankings[] Returns an array of PreFlopRankings objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * Finds two hole cards by ranking.
+     *
+     * @param int $rank
+     *
+     * @return PreFlopRankings[] Returns an array of PreFlopRankings objects
+     */
+   public function findByRank($rank): array
+   {
+       $entityManager = $this->getEntityManager();
+
+       $query = $entityManager->createQuery(
+           'SELECT b
+            FROM App\Entity\PreFlopRankings b
+            WHERE b.rank = :rank'
+       )->setParameter('rank', $rank);
+
+       return $query->getResult();
+   }
 
 //    public function findOneBySomeField($value): ?PreFlopRankings
 //    {
