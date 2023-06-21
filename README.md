@@ -1,5 +1,9 @@
 # GITHUB-repo för MVC-kursen
 
+[![Build Status](https://scrutinizer-ci.com/g/idaloof/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/idaloof/mvc/build-status/main)
+[![Code Coverage](https://scrutinizer-ci.com/g/idaloof/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/idaloof/mvc/?branch=main)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/idaloof/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/idaloof/mvc/?branch=main)
+
 Det här repot är en symfony-applikation som innehåller:
 
 * Information om BTH's MVC-kurs på distansprogrammet Webbprogrammering
@@ -42,7 +46,7 @@ https://dbwebb.se/kunskap/lagg-php8-i-pathen
 
 <code>$ composer --version</code>
 
-<strong>Installera composer (pakethanterare för PHP):</strong>
+Annars installerar du composer:
 
 https://getcomposer.org/
 
@@ -66,10 +70,3 @@ https://github.com/dbwebb-se/mvc/tree/main/example/scrutinizer
 Kör igång appen
 ---------------
 <code>$ php -S localhost:8888 -t public</code>
-
-Badges
-------
-
-[![Build Status](https://scrutinizer-ci.com/g/idaloof/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/idaloof/mvc/build-status/main)
-[![Code Coverage](https://scrutinizer-ci.com/g/idaloof/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/idaloof/mvc/?branch=main)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/idaloof/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/idaloof/mvc/?branch=main)
