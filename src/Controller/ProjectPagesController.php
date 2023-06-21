@@ -25,7 +25,7 @@ class ProjectPagesController extends AbstractController
     public function projAbout(
     ): Response {
 
-        return $this->render('proj/about.html.twig');
+        return $this->render('proj/proj-about.html.twig');
     }
 
     /* Proj Database Route */
