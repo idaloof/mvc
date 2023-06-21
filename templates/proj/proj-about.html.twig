@@ -1,0 +1,42 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+    <div class="proj-about-container">
+        <h3 class="h-about">Om projektet</h3>
+        <div class="about-text">
+            <p>
+                Hej!
+            </p>
+            <p>
+                Mitt projekt blev ett texas hold'em-spel: ett pokerspel som går ut på att slå
+                motståndarna antingen med den bästa femkorts-handen eller med magiska bluffar.
+            </p>
+            <p>
+                Är du nybörjare? Lugn. Du får hjälp av programmet att fastställa din bästa pokerhand.
+                Håll utkik i vänster nedre hörn när du spelar.
+            </p>
+            <p>
+                Du spelar mot två datorspelare, Stu och Cleve. En av dem spelar lite random medan den andra
+                gör sina drag utifrån en beräknad risknivå. Risknivån baseras på ett antal kriterier,
+                bland annat vilka kort den har på hand och vilka drag du har gjort.
+            </p>
+            <p>
+                En av tabellerna i
+                    <a href="{{ path('proj_database') }}">databasen</a>
+                innehåller samtliga starthänder (två kort). Dessa är rankade och används
+                av den smarta datorspelaren för att justera risknivån.
+            </p>
+            <p>
+                Försök avgöra vilken av dem som är den smarta spelaren.
+            </p>
+            <p>
+                Lycka till när du spelar!
+            </p>
+            <p>
+                Mvh Martin
+            </p>
+        </div>
+    </div>
+{% endblock %}
