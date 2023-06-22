@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MessagesRepository;
 use App\Texas\TexasGame;
 use App\Repository\PreFlopRankingsRepository;
 // use Doctrine\Persistence\ManagerRegistry;
@@ -124,55 +125,34 @@ class ProjectApiController extends AbstractController
         return $response;
     }
 
-    /* Proj API Game Data Route */
-    #[Route("/proj/api/hand-data", name: "proj_api_hand_data", methods: ['POST'])]
-    public function projApiHandData(
-        SessionInterface $session
+    /* Proj API Message Data Route */
+    #[Route("/proj/api/message-data", name: "proj_api_message_data", methods: ['POST'])]
+    public function projApiMessageData(
+        SessionInterface $session,
+        Request $request,
+        MessagesRepository $repo
     ): JsonResponse {
+        $nrOfMessages = intval($request->request->get('messages'));
+
         $data = [
             'notis' => "Inget spel startat."
         ];
 
         if ($session->has('game')) {
-            /**
-            * @var TexasGame $game
-            */
-            $game = $session->get('game');
-            $gameData = $game->setGameData();
-
-            $communityCardObjects = $gameData->getCommunityCards();
-            $communityCardNames = [];
-
-            foreach ($communityCardObjects as $card) {
-                $communityCardNames[] = $card->getCardName();
-            }
-
-            $roundWinner = $gameData->getRoundWinner()->getName();
-
-            $roundWinnerHandName = $gameData->getRoundWinner()->getHand()->getBestHandName();
-
-            $winnerCardObjects = $gameData->getRoundWinnerHand();
-
-            $winnerCardNames = [];
-
-            foreach ($winnerCardObjects as $card) {
-                $winnerCardNames[] = $card->getCardName();
-            }
-
-            $data = [
-                'gameStage' => $gameData->getGameStage(),
-                'pot' => $gameData->getPot(),
-                'communityCards' => $communityCardNames,
-                'roundWinner' => $roundWinner,
-                'winnerHand' => $winnerCardNames,
-                'winnerHandName' => $roundWinnerHandName
-            ];
+            $data = $repo->findLatestMessages($nrOfMessages);
         }
 
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+
+        $serializer = new Serializer([$normalizer], [$encoder]);
+
+        $data = $serializer->serialize(
+            $data,
+            'json',
+            ['json_encode_options' => JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE]
         );
-        return $response;
+
+        return new JsonResponse($data, 200, [], true);
     }
 }
