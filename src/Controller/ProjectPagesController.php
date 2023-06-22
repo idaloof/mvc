@@ -41,7 +41,10 @@ class ProjectPagesController extends AbstractController
     public function projApi(
     ): Response {
         $apiUrls = [
-            'cardRankUrl' => $this->generateUrl('proj_api_card_rank')
+            'cardRankUrl' => $this->generateUrl('proj_api_card_rank'),
+            'playerDataUrl' => $this->generateUrl('proj_api_player_data'),
+            'gameDataUrl' => $this->generateUrl('proj_api_game_data'),
+            'messageDataUrl' => $this->generateUrl('proj_api_message_data'),
         ];
 
         return $this->render('proj/proj-api.html.twig', $apiUrls);
