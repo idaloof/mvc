@@ -7,14 +7,14 @@
         <div class="dealer-chip-{{ player.name|lower }}-container">
                 <img
                     class="dealer-chip"
-                    src="{{ asset('../img/proj/dealer.png') }}"
+                    src="{{ asset('img/proj/dealer.png') }}"
                     width="50"
                 >
         </div>
     {% endif %}
     <div class="proj-card-{{ player.name|lower }}-container">
         {% for card in player.holeCards %}
-            <img class="hole-card" src="{{ asset('../img/cards/X.png') }}">
+            <img class="hole-card" src="{{ asset('img/cards/X.png') }}">
         {% endfor %}
     </div>
 </div>

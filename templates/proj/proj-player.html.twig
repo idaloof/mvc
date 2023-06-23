@@ -7,14 +7,14 @@
         <div class="dealer-chip-container">
                 <img
                     class="dealer-chip"
-                    src="{{ asset('../img/proj/dealer.png') }}"
+                    src="{{ asset('img/proj/dealer.png') }}"
                     width="50"
                 >
         </div>
     {% endif %}
     <div class="proj-card-container">
         {% for card in player.holeCards %}
-            <img class="hole-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            <img class="hole-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
         {% endfor %}
     </div>
 </div>
@@ -24,7 +24,7 @@
 <div class="best-hand-container">
     <div class="best-hand-cards">
         {% for card in player.bestHand %}
-            <img class="best-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            <img class="best-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
         {% endfor %}
     </div>
     <div class="best-hand-name">

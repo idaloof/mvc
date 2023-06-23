@@ -16,7 +16,7 @@
     <div class="proj-community-container">
         <div class="community-cards">
             {% for card in community %}
-                <img class="community-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+                <img class="community-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
             {% endfor %}
         </div>
     </div>
@@ -32,7 +32,7 @@
         </div>
         <br>
         {% for card in winnerCards %}
-            <img class="winner-card" src="{{ asset('../img/cards/' ~ card ~ '.png') }}">
+            <img class="winner-card" src="{{ asset('img/cards/' ~ card ~ '.png') }}">
         {% endfor %}
     </div>
     <a href="{{ restartUrl }}" class="p-button the-link a-link">
