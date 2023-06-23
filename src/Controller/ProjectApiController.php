@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use App\Repository\MessagesRepository;
+use App\Texas\CardCombinator;
+use App\Texas\HandEvaluator;
+use App\Texas\TexasDeck;
 use App\Texas\TexasGame;
+use App\Texas\TexasPlayer;
 use App\Repository\PreFlopRankingsRepository;
 // use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -149,6 +153,96 @@ class ProjectApiController extends AbstractController
 
         $data = $serializer->serialize(
             $data,
+            'json',
+            ['json_encode_options' => JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE]
+        );
+
+        return new JsonResponse($data, 200, [], true);
+    }
+
+    /* Proj API Combinations Route */
+    #[Route("/proj/api/combinations", name: "proj_api_combinations")]
+    public function projApiCombinations(
+        SessionInterface $session,
+        CardCombinator $combinator,
+        TexasDeck $deck,
+        HandEvaluator $evaluator
+    ): JsonResponse {
+        $deck->shuffleDeck();
+        $cards = $deck->drawMany(7);
+
+        $fromCommunity = false;
+
+        if ($session->has('game')) {
+            /**
+             * @var TexasGame $game
+             */
+            $game = $session->get('game');
+
+            $nrOfCommunityCards = count($game->getCommunityCards());
+
+            if ($nrOfCommunityCards === 5 && $game->setGameData()->getGameStage() === "river") {
+                /**
+                 * @var TexasPlayer $player
+                 */
+
+                $player = $game->getHuman();
+                $cards = $game->getCommunityCards();
+                foreach ($player->getHand()->getHoleCards() as $card) {
+                    $cards[] = $card;
+                }
+                $fromCommunity = true;
+            }
+        }
+
+        $randomCardNames = [];
+
+        foreach ($cards as $card) {
+            $randomCardNames[] = $card->getCardName();
+        }
+
+        $combinations = $combinator->setAndGetCombinations($cards);
+
+        $evalCombos = $evaluator->evaluateManyHands($combinations);
+
+        //$handData[] = [$handPoints, $handName, $hand];
+
+        $nrOfCombos = count($combinations);
+
+        $combosCardNames = [];
+
+        for ($i = 0; $i < $nrOfCombos; $i++) {
+            $singleCombo = $evalCombos[$i];
+            $singleComboNames = [];
+            foreach ($singleCombo[2] as $card) {
+                $singleComboNames[] = $card->getCardName();
+            }
+
+            $combosCardNames["Kombo " . ((int)$i+1)] = $singleComboNames;
+            $combosCardNames["Kombo " . ((int)$i+1)]["Pokerhand"] = $singleCombo[1];
+        }
+
+        $inData = [
+            'random7Cards' => $randomCardNames,
+            'numberOfCombos' => $nrOfCombos,
+            'combinations' => $combosCardNames
+        ];
+
+        if ($fromCommunity) {
+            $inData = [
+             'fromGame' => $randomCardNames,
+             'numberOfCombos' => $nrOfCombos,
+             'combinations' => $combosCardNames
+            ];
+        }
+
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+
+        $serializer = new Serializer([$normalizer], [$encoder]);
+
+        $data = $serializer->serialize(
+            $inData,
             'json',
             ['json_encode_options' => JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE]
         );
