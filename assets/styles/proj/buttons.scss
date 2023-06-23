@@ -36,3 +36,46 @@
     background-image: linear-gradient(#39648f, darken(#9ebee6, 5%));
     filter: grayscale(20%);
 }
+
+.api-button {
+    font-family: $proj-font-family-paragraph;
+    font-size: $base-font-size;
+    padding: 0.4rem 1rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    line-height: $base-line-height;
+    width: 50%;
+    border: 1px solid #333;
+    background-image: linear-gradient(#fff, darken(#fff, 30%));
+    margin-top: $magic-number * 0.3;
+}
+
+.rank-button {
+    background-image: linear-gradient(#39648f, darken(#9ebee6, 20%));
+    filter: grayscale(30%);
+    color: rgb(255, 233, 203);
+}
+
+.player-button {
+    background-image: linear-gradient(#6e5c26, darken(#e6cf9e, 20%));
+    filter: grayscale(30%);
+    color: rgb(255, 233, 203);
+}
+
+.game-button {
+    background-image: linear-gradient(#4e6e26, darken(rgb(186, 204, 156), 20%));
+    filter: grayscale(30%);
+    color: rgb(255, 233, 203);
+}
+
+.message-button {
+    background-image: linear-gradient(#6e2626, darken(#e6a69e, 20%));
+    filter: grayscale(30%);
+    color: rgb(255, 233, 203);
+}
+
+.combo-button {
+    background-image: linear-gradient(#2e266e, darken(#b79ee6, 20%));
+    filter: grayscale(40%);
+    color: rgb(255, 233, 203);
+}
