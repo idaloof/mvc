@@ -30,6 +30,8 @@ class HighCardEvaluator extends CalculatePoints implements EvaluatorInterface
             }
         }
 
+        // At this point, $count represents the number of pairs found in the hand.
+        // If $count is 0, it means there are no pairs, so "High Card" is returned.
         return ($count === 0) ? "High Card" : "";
     }
 
