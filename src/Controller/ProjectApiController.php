@@ -100,16 +100,19 @@ class ProjectApiController extends AbstractController
                 $communityCardNames[] = $card->getCardName();
             }
 
-            $roundWinner = $gameData->getRoundWinner()->getName();
-
-            $roundWinnerHandName = $gameData->getRoundWinner()->getHand()->getBestHandName();
-
-            $winnerCardObjects = $gameData->getRoundWinnerHand();
-
+            $roundWinner = "";
             $winnerCardNames = [];
+            $roundWinnerHandName = [];
 
-            foreach ($winnerCardObjects as $card) {
-                $winnerCardNames[] = $card->getCardName();
+            if ($gameData->getRoundWinner()) {
+                $roundWinner = $gameData->getRoundWinner()->getName();
+                $roundWinnerHandName = $gameData->getRoundWinner()->getHand()->getBestHandName();
+                $winnerCardObjects = $gameData->getRoundWinnerHand();
+                $winnerCardNames = [];
+
+                foreach ($winnerCardObjects as $card) {
+                    $winnerCardNames[] = $card->getCardName();
+                }
             }
 
             $data = [
