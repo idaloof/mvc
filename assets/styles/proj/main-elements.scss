@@ -21,7 +21,7 @@ html {
     padding: $magic-number;
     background-color: #28383d;
     box-shadow: none !important;
-    height: 66vh;
+    min-height: 66vh;
     flex: 1;
     border-top: $proj-border-header-footer;
     display: flex;
