@@ -33,7 +33,7 @@ class ProjectPagesController extends AbstractController
     public function projDatabase(
     ): Response {
 
-        return $this->render('proj/database.html.twig');
+        return $this->render('proj/proj-database.html.twig');
     }
 
     /* Proj API Route */
