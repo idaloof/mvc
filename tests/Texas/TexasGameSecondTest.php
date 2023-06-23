@@ -90,4 +90,44 @@ class TexasGameSecondTest extends TestCase
 
         $this->assertFalse($res);
     }
+
+    /**
+     * Verifies that method returns PlayerInterface.
+     */
+    public function testGetWinner() : void
+    {
+        $res = $this->game->getWinner();
+
+        $this->assertInstanceOf("App\Texas\PlayerInterFace", $res);
+    }
+
+    /**
+     * Verifies that method returns array.
+     */
+    public function testSetFlop(): void
+    {
+        $res = $this->game->setFlopAndGetImages();
+
+        $this->assertIsArray($res);
+    }
+
+    /**
+     * Verifies that method returns array.
+     */
+    public function testSetTurn(): void
+    {
+        $res = $this->game->setTurnAndGetImages();
+
+        $this->assertIsArray($res);
+    }
+
+    /**
+     * Verifies that method returns bool.
+     */
+    public function testIsWinnerByFold(): void
+    {
+        $res = $this->game->isWinnerByFold();
+
+        $this->assertFalse($res);
+    }
 }
