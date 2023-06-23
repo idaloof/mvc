@@ -1,0 +1,86 @@
+{% extends "proj_base.html.twig" %}
+
+{% block title %}MVC Project{% endblock %}
+
+{% block main %}
+    <div class="proj-database-container">
+        <h3 class="h-database">Databasen</h3>
+        <div class="proj-database-subcontainer">
+            <div class="database-er-image-container">
+                <img
+                    class="database-er-image"
+                    src="{{ asset('../img/proj/erProject.jpg') }}"
+                    width="400"
+                >
+            </div>
+            <div class="proj-database-text">
+                <h4 class="h-table">PRE FLOP RANKINGS</h4>
+                <p>
+                    Den här tabellen innehåller samtliga 169 startkort som en texas hold'em-spelare
+                    kan börja med, rankade efter hur bra de är.
+                    Varje rad har information om kortkombon (en sträng sammansatt av kortens förkortning),
+                    kombons ranking (samma som id) samt kombons typ (par, offsuit, suited). Laddas med en
+                    csv-fil med hjälp av kommandot <em>php bin/console csv:import</em> vid bygget av
+                    applikationen samt vid återställning av databasen.
+                </p>
+                <h4 class="h-table">MESSAGES</h4>
+                <p>
+                    Messages-tabellen är tom vid spelstart och fylls på så fort någonting händer i spelet,
+                    t.ex. när gemensamma kort läggs ut på bordet eller när en spelare gör ett drag.
+                    Varje rad i tabellen har information om när meddelandet lades in (created), vem meddelandet
+                    kommer från (messenger) samt vad hen vill förmedla (message).
+                    Tabellen används framförallt för att spelaren ska slippa gissa datorspelarnas senaste
+                    moves.
+                </p>
+                <h4 class="h-table">ÖVRIG INFO</h4>
+                <p>
+                    Det finns inga relationer mellan tabellerna och jag har inte gjort några enhetstester
+                    mot databasen.
+                </p>
+                <p>
+                    Jag valde att arbeta med SQLITE som databashanterare. Det var enkelt att köra igång under
+                    kursens gång och jag såg ingen direkt anledning till att testa någonting annat då databasen
+                    i det här fallet är väldigt simpel.
+                </p>
+                <p>
+                    Jag valde att arbeta med SQLITE som databashanterare. Det var enkelt att köra igång under
+                    kursens gång och jag såg ingen direkt anledning till att testa någonting annat då databasen
+                    i det här fallet är väldigt simpel.
+                </p>
+                <h4 class="h-table">JÄMFÖRELSE</h4>
+                <p>
+                    Att arbeta med ORM har varit relativt smärtfritt, tycker jag. Väldigt smidigt att direkt
+                    via consolen och doctrine-kommandon kunna skapa tabellerna. Nackdelen blir då att jag ändå
+                    måste skapa sql-kommandon för återställning av database, antingen hårdkodat
+                    i en controller eller via en fil.
+                </p>
+                <p>
+                    Jag valde att populera databasens ranking-tabell via en
+                    csv-fil och ett eget-skapat kommando csv:import, vilket kändes som en krångligare väg att göra
+                    det på än det sättet vi gick tillväga under databas-kursen, med enkla insert-kommandon i fil.
+                    Kan ju bara vara så att jag har valt en krånglig väg.
+                </p>
+                <p>
+                    En fördel med att arbeta med ORM är hur lätt det är att hämta data med hjälp av färdiga
+                    eller egenbyggda metoder i respektive entity-repo. Metoderna är som en blandning
+                    av metoderna vi byggde i JS och sql-koden vi skrev i fil i databaskursen. Det blir
+                    som ett mer lättillgängligt api.
+                </p>
+                <p>
+                    En nackdel, som jag upplevt det i alla fall, är möjligheten att återställa databasen. Det gick
+                    att med ett enkelt kommando skapa en backup-fil i mariaDB medan orm-återställningen har
+                    upplevts krångligare. Det har varit mer manuell handpåläggning.
+                </p>
+                <p>
+                    Nu med facit i hand är nog ORM inte lika simpelt och hjälpsamt som jag trodde från början.
+                    För att mina controllers inte skulle svämma över, kände jag att jag var tvungen att skapa
+                    en message-klass för att minimera koden i mina controllers. Message-klassen använder
+                    message-repot för att lägga till meddelanden i databastabellen.
+                </p>
+                <p>
+                    Allt som allt en rätt trevlig upplevelse ändå!
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
