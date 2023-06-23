@@ -26,9 +26,9 @@ class TexasHand
     private string $bestHandName = "";
 
     /**
-     * @var int             $bestHandPoints     Points of best hand.
+     * @var float             $bestHandPoints     Points of best hand.
      */
-    private int $bestHandPoints = 0;
+    private float $bestHandPoints = 0;
 
     /**
      * Gets player's hole cards.
@@ -169,9 +169,9 @@ class TexasHand
     /**
      * Gets points for best hand.
      *
-     * @return int Points for hand.
+     * @return float Points for hand.
      */
-    public function getBestHandPoints(): int
+    public function getBestHandPoints(): float
     {
         return $this->bestHandPoints;
     }
@@ -179,11 +179,11 @@ class TexasHand
     /**
      * Sets points for best hand.
      *
-     * @param int $handPoints Points for hand.
+     * @param float $handPoints Points for hand.
      *
      * @return void
      */
-    public function setBestHandPoints(int $handPoints): void
+    public function setBestHandPoints(float $handPoints): void
     {
         $this->bestHandPoints = $handPoints;
     }
