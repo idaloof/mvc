@@ -45,6 +45,7 @@ class ProjectPagesController extends AbstractController
             'playerDataUrl' => $this->generateUrl('proj_api_player_data'),
             'gameDataUrl' => $this->generateUrl('proj_api_game_data'),
             'messageDataUrl' => $this->generateUrl('proj_api_message_data'),
+            'combinationsUrl' => $this->generateUrl('proj_api_combinations'),
         ];
 
         return $this->render('proj/proj-api.html.twig', $apiUrls);
