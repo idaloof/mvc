@@ -6,26 +6,10 @@
 
 namespace App\Controller;
 
-use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 
 class ApiQuoteControllerTest extends TestCase
 {
-    /**
-     * Verifies that response status for QuoteController is ok
-     */
-    public function testApiControllerStatusCode() : void
-    {
-        $client = new Client([
-            'base_uri' => 'https://www.student.bth.se/~mafl22/dbwebb-kurser/mvc/me/report/public/',
-            'http_errors' => false
-        ]);
-
-        $response = $client->get('api/quote');
-
-        $this->assertEquals(200, $response->getStatusCode());
-    }
-
     /**
      * Verifies that response from api returns correct date
      */

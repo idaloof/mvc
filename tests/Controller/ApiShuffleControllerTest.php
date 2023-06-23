@@ -7,28 +7,12 @@
 namespace App\Controller;
 
 use App\Card\Deck;
-use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 class ApiShuffleControllerTest extends TestCase
 {
-    /**
-     * Verifies that response status for ShuffleController is ok
-     */
-    public function testApiControllerStatusCode() : void
-    {
-        $client = new Client([
-            'base_uri' => 'https://www.student.bth.se/~mafl22/dbwebb-kurser/mvc/me/report/public/',
-            'http_errors' => false
-        ]);
-
-        $response = $client->post('api/deck/shuffle');
-
-        $this->assertEquals(200, $response->getStatusCode());
-    }
-
     /**
      * Verifies that response from api returns a deck of cards
      */

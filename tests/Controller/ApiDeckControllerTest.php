@@ -8,28 +8,12 @@
 namespace App\Controller;
 
 use App\Controller\ApiDeckController;
-use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 class ApiDeckControllerTest extends TestCase
 {
-    /**
-     * Verifies that response status for DeckController is ok
-     */
-    public function testApiControllerStatusCode() : void
-    {
-        $client = new Client([
-            'base_uri' => 'https://www.student.bth.se/~mafl22/dbwebb-kurser/mvc/me/report/public/',
-            'http_errors' => false
-        ]);
-
-        $response = $client->get('api/deck');
-
-        $this->assertEquals(200, $response->getStatusCode());
-    }
-
     /**
      * Verifies that response from api returns data set with 52 cards and first card is ace of spades
      */
