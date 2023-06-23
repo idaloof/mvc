@@ -71,19 +71,21 @@ class TexasGame
     /**
      * Sets queue and player roles before game-start.
      *
-     * @return void
+     * @return array<PlayerInterface>
      */
-    public function setQueueAndRoles(): void
+    public function setQueueAndRoles(): array
     {
         $this->queue->setRolesBeforeGameStart();
+
+        return $this->queue->getQueue();
     }
 
     /**
      * Get blinds from players and increase pot with blind amounts.
      *
-     * @return void
+     * @return int
      */
-    public function takeBlindsAndAddToPot(): void
+    public function takeBlindsAndAddToPot(): int
     {
         $small = $this->table->getSmallBlind();
         $big = $this->table->getBigBlind();
@@ -95,14 +97,16 @@ class TexasGame
 
         $toPot = $big + $small;
         $this->table->addMoneyToPot($toPot);
+
+        return $this->table->getPot();
     }
 
     /**
      * Draws and deals two starting cards to each player.
      *
-     * @return void
+     * @return array<PlayerInterface>
      */
-    public function dealStartingCards(): void
+    public function dealStartingCards(): array
     {
         $players = $this->queue->getQueue();
         foreach ($players as $player) {
@@ -116,6 +120,8 @@ class TexasGame
 
             $player->getHand()->setHoleCards($cards);
         }
+
+        return $this->queue->getQueue();
     }
 
     /**
@@ -165,11 +171,13 @@ class TexasGame
      *
      * @param PlayerInterface $player Player to enqueue.
      *
-     * @return void
+     * @return PlayerInterface
      */
-    public function enqueuePlayer(PlayerInterface $player): void
+    public function enqueuePlayer(PlayerInterface $player): PlayerInterface
     {
         $this->queue->enqueue($player);
+
+        return $player;
     }
 
     /**
@@ -221,11 +229,13 @@ class TexasGame
      *
      * @param int $amount Money to add to pot.
      *
-     * @return void
+     * @return int
      */
-    public function addMoneyToPot(int $amount): void
+    public function addMoneyToPot(int $amount): int
     {
         $this->table->addMoneyToPot($amount);
+
+        return $this->table->getPot();
     }
 
     /**
