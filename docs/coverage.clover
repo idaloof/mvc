@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687297320">
-  <project timestamp="1687297320">
+<coverage generated="1687537644">
+  <project timestamp="1687537644">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -391,11 +391,11 @@
       <line num="40" type="stmt" count="3"/>
       <line num="42" type="stmt" count="3"/>
       <line num="43" type="stmt" count="3"/>
-      <line num="48" type="stmt" count="3"/>
-      <line num="58" type="method" name="setAndGetCombinations" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="47" type="stmt" count="3"/>
+      <line num="57" type="method" name="setAndGetCombinations" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="59" type="stmt" count="3"/>
       <line num="61" type="stmt" count="3"/>
-      <line num="63" type="stmt" count="3"/>
-      <metrics loc="66" ncloc="40" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="17" coveredelements="17"/>
+      <metrics loc="64" ncloc="41" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="15" elements="17" coveredelements="17"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/CardInterface.php">
       <metrics loc="22" ncloc="18" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -954,20 +954,20 @@
       <line num="27" type="stmt" count="5"/>
       <line num="28" type="stmt" count="5"/>
       <line num="29" type="stmt" count="2"/>
-      <line num="33" type="stmt" count="5"/>
-      <line num="43" type="method" name="calculatePoints" visibility="public" complexity="1" crap="1" count="3"/>
-      <line num="45" type="stmt" count="3"/>
+      <line num="35" type="stmt" count="5"/>
+      <line num="45" type="method" name="calculatePoints" visibility="public" complexity="1" crap="1" count="3"/>
       <line num="47" type="stmt" count="3"/>
-      <line num="48" type="stmt" count="3"/>
+      <line num="49" type="stmt" count="3"/>
       <line num="50" type="stmt" count="3"/>
-      <line num="51" type="stmt" count="3"/>
+      <line num="52" type="stmt" count="3"/>
       <line num="53" type="stmt" count="3"/>
-      <line num="63" type="method" name="calculateKickerPoints" visibility="public" complexity="2" crap="2" count="3"/>
-      <line num="65" type="stmt" count="3"/>
+      <line num="55" type="stmt" count="3"/>
+      <line num="65" type="method" name="calculateKickerPoints" visibility="public" complexity="2" crap="2" count="3"/>
       <line num="67" type="stmt" count="3"/>
-      <line num="68" type="stmt" count="3"/>
-      <line num="71" type="stmt" count="3"/>
-      <metrics loc="74" ncloc="47" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="20" coveredelements="20"/>
+      <line num="69" type="stmt" count="3"/>
+      <line num="70" type="stmt" count="3"/>
+      <line num="73" type="stmt" count="3"/>
+      <metrics loc="76" ncloc="47" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="17" elements="20" coveredelements="20"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/MessageTrait.php">
       <class name="App\Texas\MessageTrait" namespace="global">
@@ -1271,173 +1271,176 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasGame.php">
       <class name="App\Texas\TexasGame" namespace="global">
-        <metrics complexity="45" methods="29" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="0" elements="164" coveredelements="0"/>
+        <metrics complexity="45" methods="29" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="138" coveredstatements="40" elements="167" coveredelements="53"/>
       </class>
-      <line num="55" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="63" type="stmt" count="0"/>
-      <line num="64" type="stmt" count="0"/>
-      <line num="65" type="stmt" count="0"/>
-      <line num="66" type="stmt" count="0"/>
-      <line num="67" type="stmt" count="0"/>
-      <line num="68" type="stmt" count="0"/>
-      <line num="76" type="method" name="setQueueAndRoles" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="78" type="stmt" count="0"/>
-      <line num="86" type="method" name="takeBlindsAndAddToPot" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="88" type="stmt" count="0"/>
-      <line num="89" type="stmt" count="0"/>
-      <line num="91" type="stmt" count="0"/>
-      <line num="92" type="stmt" count="0"/>
-      <line num="93" type="stmt" count="0"/>
-      <line num="94" type="stmt" count="0"/>
-      <line num="96" type="stmt" count="0"/>
-      <line num="97" type="stmt" count="0"/>
-      <line num="105" type="method" name="dealStartingCards" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="107" type="stmt" count="0"/>
-      <line num="108" type="stmt" count="0"/>
-      <line num="109" type="stmt" count="0"/>
-      <line num="110" type="stmt" count="0"/>
-      <line num="111" type="stmt" count="0"/>
+      <line num="55" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="14"/>
+      <line num="63" type="stmt" count="14"/>
+      <line num="64" type="stmt" count="14"/>
+      <line num="65" type="stmt" count="14"/>
+      <line num="66" type="stmt" count="14"/>
+      <line num="67" type="stmt" count="14"/>
+      <line num="68" type="stmt" count="14"/>
+      <line num="76" type="method" name="setQueueAndRoles" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="78" type="stmt" count="1"/>
+      <line num="80" type="stmt" count="1"/>
+      <line num="88" type="method" name="takeBlindsAndAddToPot" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="90" type="stmt" count="1"/>
+      <line num="91" type="stmt" count="1"/>
+      <line num="93" type="stmt" count="1"/>
+      <line num="94" type="stmt" count="1"/>
+      <line num="95" type="stmt" count="1"/>
+      <line num="96" type="stmt" count="1"/>
+      <line num="98" type="stmt" count="1"/>
+      <line num="99" type="stmt" count="1"/>
+      <line num="101" type="stmt" count="1"/>
+      <line num="109" type="method" name="dealStartingCards" visibility="public" complexity="3" crap="5.67" count="1"/>
+      <line num="111" type="stmt" count="1"/>
+      <line num="112" type="stmt" count="1"/>
       <line num="113" type="stmt" count="0"/>
       <line num="114" type="stmt" count="0"/>
+      <line num="115" type="stmt" count="0"/>
       <line num="117" type="stmt" count="0"/>
-      <line num="126" type="method" name="getQueuePlayers" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="128" type="stmt" count="0"/>
-      <line num="138" type="method" name="getPossibleMoves" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="140" type="stmt" count="0"/>
-      <line num="142" type="stmt" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="146" type="stmt" count="0"/>
-      <line num="147" type="stmt" count="0"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="158" type="method" name="dequeuePlayer" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="160" type="stmt" count="0"/>
-      <line num="170" type="method" name="enqueuePlayer" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="172" type="stmt" count="0"/>
-      <line num="180" type="method" name="getFirstPlayer" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="182" type="stmt" count="0"/>
-      <line num="190" type="method" name="isRoundOver" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="192" type="stmt" count="0"/>
-      <line num="194" type="stmt" count="0"/>
-      <line num="202" type="method" name="getHighestCurrentBet" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="204" type="stmt" count="0"/>
-      <line num="206" type="stmt" count="0"/>
-      <line num="214" type="method" name="getPot" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="216" type="stmt" count="0"/>
-      <line num="226" type="method" name="addMoneyToPot" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="228" type="stmt" count="0"/>
-      <line num="236" type="method" name="getBigBlind" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="238" type="stmt" count="0"/>
-      <line num="246" type="method" name="isGameReadyForNextStage" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="248" type="stmt" count="0"/>
-      <line num="250" type="stmt" count="0"/>
-      <line num="258" type="method" name="setNextStage" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="260" type="stmt" count="0"/>
-      <line num="262" type="stmt" count="0"/>
-      <line num="263" type="stmt" count="0"/>
-      <line num="264" type="stmt" count="0"/>
-      <line num="267" type="stmt" count="0"/>
-      <line num="275" type="method" name="setNewRound" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="118" type="stmt" count="0"/>
+      <line num="121" type="stmt" count="0"/>
+      <line num="124" type="stmt" count="1"/>
+      <line num="132" type="method" name="getQueuePlayers" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="134" type="stmt" count="1"/>
+      <line num="144" type="method" name="getPossibleMoves" visibility="public" complexity="2" crap="2.02" count="1"/>
+      <line num="146" type="stmt" count="1"/>
+      <line num="148" type="stmt" count="1"/>
+      <line num="150" type="stmt" count="1"/>
+      <line num="152" type="stmt" count="1"/>
+      <line num="153" type="stmt" count="0"/>
+      <line num="156" type="stmt" count="1"/>
+      <line num="164" type="method" name="dequeuePlayer" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="166" type="stmt" count="1"/>
+      <line num="176" type="method" name="enqueuePlayer" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="178" type="stmt" count="1"/>
+      <line num="180" type="stmt" count="1"/>
+      <line num="188" type="method" name="getFirstPlayer" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="190" type="stmt" count="1"/>
+      <line num="198" type="method" name="isRoundOver" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="200" type="stmt" count="1"/>
+      <line num="202" type="stmt" count="1"/>
+      <line num="210" type="method" name="getHighestCurrentBet" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="212" type="stmt" count="1"/>
+      <line num="214" type="stmt" count="1"/>
+      <line num="222" type="method" name="getPot" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="224" type="stmt" count="1"/>
+      <line num="234" type="method" name="addMoneyToPot" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="236" type="stmt" count="1"/>
+      <line num="238" type="stmt" count="1"/>
+      <line num="246" type="method" name="getBigBlind" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="248" type="stmt" count="1"/>
+      <line num="256" type="method" name="isGameReadyForNextStage" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="258" type="stmt" count="1"/>
+      <line num="260" type="stmt" count="1"/>
+      <line num="268" type="method" name="setNextStage" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="270" type="stmt" count="0"/>
+      <line num="272" type="stmt" count="0"/>
+      <line num="273" type="stmt" count="0"/>
+      <line num="274" type="stmt" count="0"/>
       <line num="277" type="stmt" count="0"/>
-      <line num="278" type="stmt" count="0"/>
-      <line num="280" type="stmt" count="0"/>
-      <line num="282" type="stmt" count="0"/>
-      <line num="283" type="stmt" count="0"/>
-      <line num="284" type="stmt" count="0"/>
-      <line num="285" type="stmt" count="0"/>
+      <line num="285" type="method" name="setNewRound" visibility="public" complexity="3" crap="12" count="0"/>
       <line num="287" type="stmt" count="0"/>
-      <line num="289" type="stmt" count="0"/>
+      <line num="288" type="stmt" count="0"/>
       <line num="290" type="stmt" count="0"/>
-      <line num="291" type="stmt" count="0"/>
       <line num="292" type="stmt" count="0"/>
-      <line num="293" type="stmt" count="0"/>
       <line num="294" type="stmt" count="0"/>
-      <line num="295" type="stmt" count="0"/>
+      <line num="296" type="stmt" count="0"/>
+      <line num="298" type="stmt" count="0"/>
       <line num="299" type="stmt" count="0"/>
       <line num="300" type="stmt" count="0"/>
+      <line num="301" type="stmt" count="0"/>
       <line num="302" type="stmt" count="0"/>
+      <line num="303" type="stmt" count="0"/>
       <line num="304" type="stmt" count="0"/>
-      <line num="305" type="stmt" count="0"/>
-      <line num="307" type="stmt" count="0"/>
-      <line num="315" type="method" name="setNewRoundTie" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="317" type="stmt" count="0"/>
-      <line num="318" type="stmt" count="0"/>
-      <line num="320" type="stmt" count="0"/>
-      <line num="322" type="stmt" count="0"/>
-      <line num="323" type="stmt" count="0"/>
-      <line num="325" type="stmt" count="0"/>
+      <line num="308" type="stmt" count="0"/>
+      <line num="309" type="stmt" count="0"/>
+      <line num="311" type="stmt" count="0"/>
+      <line num="313" type="stmt" count="0"/>
+      <line num="314" type="stmt" count="0"/>
+      <line num="316" type="stmt" count="0"/>
+      <line num="324" type="method" name="setNewRoundTie" visibility="public" complexity="4" crap="20" count="0"/>
       <line num="326" type="stmt" count="0"/>
-      <line num="328" type="stmt" count="0"/>
+      <line num="327" type="stmt" count="0"/>
       <line num="329" type="stmt" count="0"/>
+      <line num="331" type="stmt" count="0"/>
       <line num="332" type="stmt" count="0"/>
-      <line num="333" type="stmt" count="0"/>
       <line num="334" type="stmt" count="0"/>
       <line num="335" type="stmt" count="0"/>
-      <line num="336" type="stmt" count="0"/>
       <line num="337" type="stmt" count="0"/>
       <line num="338" type="stmt" count="0"/>
+      <line num="341" type="stmt" count="0"/>
       <line num="342" type="stmt" count="0"/>
       <line num="343" type="stmt" count="0"/>
+      <line num="344" type="stmt" count="0"/>
       <line num="345" type="stmt" count="0"/>
+      <line num="346" type="stmt" count="0"/>
       <line num="347" type="stmt" count="0"/>
-      <line num="348" type="stmt" count="0"/>
-      <line num="350" type="stmt" count="0"/>
-      <line num="358" type="method" name="getWinner" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="360" type="stmt" count="0"/>
-      <line num="361" type="stmt" count="0"/>
-      <line num="363" type="stmt" count="0"/>
-      <line num="371" type="method" name="setFlopAndGetImages" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="373" type="stmt" count="0"/>
-      <line num="374" type="stmt" count="0"/>
-      <line num="375" type="stmt" count="0"/>
-      <line num="378" type="stmt" count="0"/>
-      <line num="386" type="method" name="setTurnAndGetImages" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="388" type="stmt" count="0"/>
-      <line num="389" type="stmt" count="0"/>
-      <line num="391" type="stmt" count="0"/>
-      <line num="399" type="method" name="isWinnerByFold" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="401" type="stmt" count="0"/>
-      <line num="403" type="stmt" count="0"/>
-      <line num="411" type="method" name="getAndSetBestHands" visibility="public" complexity="3" crap="12" count="0"/>
-      <line num="413" type="stmt" count="0"/>
-      <line num="415" type="stmt" count="0"/>
-      <line num="417" type="stmt" count="0"/>
-      <line num="418" type="stmt" count="0"/>
-      <line num="419" type="stmt" count="0"/>
-      <line num="420" type="stmt" count="0"/>
-      <line num="421" type="stmt" count="0"/>
-      <line num="423" type="stmt" count="0"/>
-      <line num="431" type="stmt" count="0"/>
+      <line num="351" type="stmt" count="0"/>
+      <line num="352" type="stmt" count="0"/>
+      <line num="354" type="stmt" count="0"/>
+      <line num="356" type="stmt" count="0"/>
+      <line num="357" type="stmt" count="0"/>
+      <line num="359" type="stmt" count="0"/>
+      <line num="367" type="method" name="getWinner" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="369" type="stmt" count="0"/>
+      <line num="370" type="stmt" count="0"/>
+      <line num="372" type="stmt" count="0"/>
+      <line num="380" type="method" name="setFlopAndGetImages" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="382" type="stmt" count="0"/>
+      <line num="383" type="stmt" count="0"/>
+      <line num="384" type="stmt" count="0"/>
+      <line num="387" type="stmt" count="0"/>
+      <line num="395" type="method" name="setTurnAndGetImages" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="397" type="stmt" count="0"/>
+      <line num="398" type="stmt" count="0"/>
+      <line num="400" type="stmt" count="0"/>
+      <line num="408" type="method" name="isWinnerByFold" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="410" type="stmt" count="0"/>
+      <line num="412" type="stmt" count="0"/>
+      <line num="420" type="method" name="getAndSetBestHands" visibility="public" complexity="3" crap="12" count="0"/>
+      <line num="422" type="stmt" count="0"/>
+      <line num="424" type="stmt" count="0"/>
+      <line num="426" type="stmt" count="0"/>
+      <line num="427" type="stmt" count="0"/>
+      <line num="428" type="stmt" count="0"/>
+      <line num="429" type="stmt" count="0"/>
+      <line num="430" type="stmt" count="0"/>
       <line num="432" type="stmt" count="0"/>
-      <line num="433" type="stmt" count="0"/>
-      <line num="435" type="stmt" count="0"/>
-      <line num="436" type="stmt" count="0"/>
-      <line num="437" type="stmt" count="0"/>
-      <line num="447" type="method" name="getPrePostFlop" visibility="public" complexity="2" crap="6" count="0"/>
-      <line num="449" type="stmt" count="0"/>
-      <line num="450" type="stmt" count="0"/>
-      <line num="453" type="stmt" count="0"/>
-      <line num="461" type="method" name="getCommunityCards" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="463" type="stmt" count="0"/>
-      <line num="471" type="method" name="getHuman" visibility="public" complexity="4" crap="20" count="0"/>
-      <line num="473" type="stmt" count="0"/>
-      <line num="478" type="stmt" count="0"/>
-      <line num="480" type="stmt" count="0"/>
-      <line num="481" type="stmt" count="0"/>
-      <line num="485" type="stmt" count="0"/>
+      <line num="440" type="stmt" count="0"/>
+      <line num="441" type="stmt" count="0"/>
+      <line num="442" type="stmt" count="0"/>
+      <line num="444" type="stmt" count="0"/>
+      <line num="445" type="stmt" count="0"/>
+      <line num="446" type="stmt" count="0"/>
+      <line num="456" type="method" name="getPrePostFlop" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="458" type="stmt" count="0"/>
+      <line num="459" type="stmt" count="0"/>
+      <line num="462" type="stmt" count="0"/>
+      <line num="470" type="method" name="getCommunityCards" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="472" type="stmt" count="0"/>
+      <line num="480" type="method" name="getHuman" visibility="public" complexity="4" crap="20" count="0"/>
+      <line num="482" type="stmt" count="0"/>
+      <line num="487" type="stmt" count="0"/>
       <line num="489" type="stmt" count="0"/>
-      <line num="497" type="method" name="isGameTied" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="499" type="stmt" count="0"/>
-      <line num="501" type="stmt" count="0"/>
-      <line num="509" type="method" name="getWinnersTieGame" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="511" type="stmt" count="0"/>
-      <line num="513" type="stmt" count="0"/>
-      <line num="522" type="method" name="setGameData" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="524" type="stmt" count="0"/>
-      <line num="525" type="stmt" count="0"/>
-      <line num="526" type="stmt" count="0"/>
-      <line num="527" type="stmt" count="0"/>
-      <line num="529" type="stmt" count="0"/>
-      <metrics loc="533" ncloc="342" classes="1" methods="29" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="135" coveredstatements="0" elements="164" coveredelements="0"/>
+      <line num="490" type="stmt" count="0"/>
+      <line num="494" type="stmt" count="0"/>
+      <line num="498" type="stmt" count="0"/>
+      <line num="506" type="method" name="isGameTied" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="508" type="stmt" count="0"/>
+      <line num="510" type="stmt" count="0"/>
+      <line num="518" type="method" name="getWinnersTieGame" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="520" type="stmt" count="0"/>
+      <line num="522" type="stmt" count="0"/>
+      <line num="531" type="method" name="setGameData" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="533" type="stmt" count="0"/>
+      <line num="534" type="stmt" count="0"/>
+      <line num="535" type="stmt" count="0"/>
+      <line num="536" type="stmt" count="0"/>
+      <line num="538" type="stmt" count="0"/>
+      <metrics loc="542" ncloc="351" classes="1" methods="29" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="138" coveredstatements="40" elements="167" coveredelements="53"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasHand.php">
       <class name="App\Texas\TexasHand" namespace="global">
@@ -1601,6 +1604,6 @@
       <line num="85" type="stmt" count="2"/>
       <metrics loc="88" ncloc="61" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="27" coveredelements="27"/>
     </file>
-    <metrics files="39" loc="5378" ncloc="3319" classes="35" methods="262" coveredmethods="229" conditionals="0" coveredconditionals="0" statements="1113" coveredstatements="956" elements="1375" coveredelements="1185"/>
+    <metrics files="39" loc="5387" ncloc="3329" classes="35" methods="262" coveredmethods="242" conditionals="0" coveredconditionals="0" statements="1116" coveredstatements="996" elements="1378" coveredelements="1238"/>
   </project>
 </coverage>
