@@ -185,11 +185,11 @@ class ComputerLogic
     /**
      * Adjusts Cleve's risk level for best hand (post flop).
      *
-     * @param int $points Player's hand points.
+     * @param float $points Player's hand points.
      *
      * @return int Risk adjustment.
      */
-    public function adjustRiskHandPoints(int $points): int
+    public function adjustRiskHandPoints(float $points): int
     {
         if ($points >= 400) {
             return 50;
