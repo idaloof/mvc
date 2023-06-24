@@ -2721,6 +2721,16 @@ Search.appendIndex(
             "summary": "Calculates\u0020points\u0020for\u0020all\u0020kickers.",
             "url": "classes/App-Texas-TwoPairEvaluator.html#method_calculateKickerPoints"
         },                {
+            "fqsen": "\\App\\Controller\\ProjectResetDatabaseController",
+            "name": "ProjectResetDatabaseController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectResetDatabaseController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjectResetDatabaseController\u003A\u003AjsonDeckShuffle\u0028\u0029",
+            "name": "jsonDeckShuffle",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectResetDatabaseController.html#method_jsonDeckShuffle"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
