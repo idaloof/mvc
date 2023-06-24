@@ -36,6 +36,9 @@ class ProjectApiController extends AbstractController
          */
         $cardCombo = $repo->findByRank($rank)[0];
 
+        /**
+         * @var string $cardNames
+         */
         $cardNames = $cardCombo->getCards();
 
         $cardCombo->setCards($cardNames[0] . " and " . $cardNames[1]);
