@@ -79,3 +79,22 @@
     filter: grayscale(40%);
     color: rgb(255, 233, 203);
 }
+
+.the-link {
+    grid-column: 9 / 10;
+    grid-row: 9 / 10;
+    width: 80px;
+    filter: grayscale(30%);
+    background-image: linear-gradient(#83afda, darken(#9ebee6, 20%));
+    font-family: $proj-font-family-tables;
+}
+
+.the-wallet-link {
+    grid-column: 10 / 12;
+    grid-row: 9 / 10;
+    width: 80px;
+    margin-left: 60px;
+    filter: grayscale(30%);
+    background-image: linear-gradient(#88b94c, darken(rgb(186, 204, 156), 20%));
+    font-family: $proj-font-family-tables;
+}

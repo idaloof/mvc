@@ -14,9 +14,9 @@
 
 .winner-container {
     grid-column: 9 / 12;
-    grid-row: 5 / 9;
-    width: 100%;
-    padding: $magic-number * 0.3;
+    grid-row: 4 / 9;
+    width: 81%;
+    padding: ($magic-number * 0.79);
     background-color: antiquewhite;
     border-radius: 10px;
     animation: rainBorder 4s linear infinite;
@@ -28,21 +28,9 @@
 }
 
 .a-link {
+    align-self: center;
     text-decoration: none;
     color: #000;
-}
-
-.the-link {
-    grid-column: 9 / 10;
-    grid-row: 9 / 10;
-    width: 80px;
-}
-
-.the-wallet-link {
-    grid-column: 10 / 12;
-    grid-row: 9 / 10;
-    width: 80px;
-    margin-left: 60px;
 }
 
 .winner-h3 {

@@ -5,9 +5,50 @@
     grid-row: 6 / 8;
     align-self: center;
     justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    width: 100%;
 }
 
 .pot-size {
     color: antiquewhite;
+    margin: 0;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-align: center;
+}
+
+.rotated {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 40px;
+    transform: rotate3d(1, 0, 0, 86.5deg);
+    align-self: center;
+}
+
+.pot-stacks {
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+    width: 60%;
+}
+
+.single-stack {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    margin-bottom: 20px;
+    width: 70%;
+}
+
+.chip-size {
+    position: relative;
+    text-align: center;
+    top: 35px;
+    color: antiquewhite;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: $base-font-size * 0.8;
 }

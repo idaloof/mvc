@@ -71,6 +71,7 @@ class ProjectFlopController extends AbstractController
         $minRaise = $game->getBigBlind();
 
         $session->set('game', $game);
+
         $communityImages = $session->get('communityImages');
 
         return $this->render('proj/proj-post-flop.html.twig', [
