@@ -1,0 +1,7 @@
+{% for label, messages in flashBag.peekAll() %}
+    {% for message in messages %}
+        <div id="proj-flash" class="flash-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}

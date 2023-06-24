@@ -11,5 +11,9 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+import removeFlash from './removeFlash';
+
+removeFlash();
+
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');

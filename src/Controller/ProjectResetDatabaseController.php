@@ -5,17 +5,20 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProjectResetDatabaseController extends AbstractController
 {
     #[Route("/proj/reset-database", name: 'proj_reset_database')]
     public function jsonDeckShuffle(
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        SessionInterface $session
     ): Response {
 
         // Reset the database and import data from the CSV file
 
+        $session->invalidate();
 
         // Delete contents of the 'messages' table
         $connection = $entityManager->getConnection();
@@ -30,6 +33,6 @@ class ProjectResetDatabaseController extends AbstractController
         exec('php bin/console csv:import');
 
         // Redirect back to the page where the reset button is
-        return $this->redirectToRoute('proj_api');
+        return $this->redirectToRoute('proj');
     }
 }

@@ -24,8 +24,12 @@
                 <input class="p-button" type="submit" value="Gå vidare">
             </form>
         </div>
-        <a class="p-button fold" href="{{ path('proj_reset_database') }}">
-            Återställ databas
+        <a class="p-button fold start" href="{{ path('proj_reset_database') }}">
+            Återställ databas och session
         </a>
+        <a class="p-button raise start" href="{{ currentGameUrl }}">
+            Pågående spel
+        </a>
+        {% include 'proj/flash.html.twig' %}
     </div>
 {% endblock %}

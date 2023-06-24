@@ -79,5 +79,8 @@ services:
         arguments:
             $evaluators: !tagged_iterator app.evaluator
 
+    # Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface:
+    #     alias: flash_bag
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
