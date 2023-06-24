@@ -104,7 +104,7 @@ class ProjectApiController extends AbstractController
             $winnerCardNames = [];
             $roundWinnerHandName = [];
 
-            if ($gameData->getRoundWinner()) {
+            if ((!empty($gameData->getRoundWinnerHand()))) {
                 $roundWinner = $gameData->getRoundWinner()->getName();
                 $roundWinnerHandName = $gameData->getRoundWinner()->getHand()->getBestHandName();
                 $winnerCardObjects = $gameData->getRoundWinnerHand();

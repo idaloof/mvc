@@ -54,30 +54,35 @@
     background-image: linear-gradient(#39648f, darken(#9ebee6, 20%));
     filter: grayscale(30%);
     color: rgb(255, 233, 203);
+    font-family: $proj-font-family-tables;
 }
 
 .player-button {
     background-image: linear-gradient(#6e5c26, darken(#e6cf9e, 20%));
     filter: grayscale(30%);
     color: rgb(255, 233, 203);
+    font-family: $proj-font-family-tables;
 }
 
 .game-button {
     background-image: linear-gradient(#4e6e26, darken(rgb(186, 204, 156), 20%));
     filter: grayscale(30%);
     color: rgb(255, 233, 203);
+    font-family: $proj-font-family-tables;
 }
 
 .message-button {
     background-image: linear-gradient(#6e2626, darken(#e6a69e, 20%));
     filter: grayscale(30%);
     color: rgb(255, 233, 203);
+    font-family: $proj-font-family-tables;
 }
 
 .combo-button {
     background-image: linear-gradient(#2e266e, darken(#b79ee6, 20%));
     filter: grayscale(40%);
     color: rgb(255, 233, 203);
+    font-family: $proj-font-family-tables;
 }
 
 .the-link {
