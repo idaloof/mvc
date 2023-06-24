@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Texas\Card;
 use App\Texas\TexasGame;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

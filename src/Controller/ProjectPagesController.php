@@ -17,7 +17,7 @@ class ProjectPagesController extends AbstractController
     ): Response {
         $session->invalidate();
 
-        return $this->render('proj/proj.html.twig');
+        return $this->render('proj/proj.html.twig', ['resetUrl' => $this->generateUrl('proj_reset_database')]);
     }
 
     /* Proj About Route */
