@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\PreFlopRankings;
 use App\Repository\MessagesRepository;
 use App\Texas\CardCombinator;
 use App\Texas\HandEvaluator;
@@ -30,7 +31,27 @@ class ProjectApiController extends AbstractController
     ): JsonResponse {
         $rank = intval($request->request->get("rank"));
 
-        $cardCombo = $repo->findByRank($rank);
+        /**
+         * @var PreFlopRankings $cardCombo
+         */
+        $cardCombo = $repo->findByRank($rank)[0];
+
+        $cardNames = $cardCombo->getCards();
+
+        $cardCombo->setCards($cardNames[0] . " and " . $cardNames[1]);
+
+        switch ($cardCombo->getType()) {
+            case 's':
+                $cardCombo->setType('suited');
+                break;
+            case 'o':
+                $cardCombo->setType('offsuit');
+                break;
+
+            default:
+                $cardCombo->setType('pair');
+                break;
+        }
 
         $encoder = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
