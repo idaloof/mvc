@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-06-24 15:36:56        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-06-24 23:59:30        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -358,7 +358,8 @@
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "\\App\\Texas\\FlashBag"
         ]
     },
     {
@@ -375,6 +376,13 @@
         "name": "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\App\\Texas\\FlashBag",
+        "size": 3000,
+        "relations": [
+            "\\Symfony\\Component\\HttpFoundation\\Session\\Flash\\FlashBagInterface"
+        ]
     },
     {
         "name": "\\App\\Controller\\ProjectWhatNextController",
@@ -468,7 +476,8 @@
         "relations": [
             "\\Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
             "\\Symfony\\Component\\HttpFoundation\\Response",
-            "\\Doctrine\\ORM\\EntityManagerInterface"
+            "\\Doctrine\\ORM\\EntityManagerInterface",
+            "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface"
         ]
     },
     {
@@ -1021,6 +1030,11 @@
             "\\App\\Texas\\StraightEvaluator",
             "\\App\\Texas\\FlushEvaluator"
         ]
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\Session\\Flash\\FlashBagInterface",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\App\\Texas\\RoyalStraightFlushEvaluator",

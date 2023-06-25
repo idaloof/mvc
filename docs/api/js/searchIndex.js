@@ -786,6 +786,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjectPagesController.html#method_proj"
         },                {
+            "fqsen": "\\App\\Controller\\ProjectPagesController\u003A\u003AprojAddFlash\u0028\u0029",
+            "name": "projAddFlash",
+            "summary": "",
+            "url": "classes/App-Controller-ProjectPagesController.html#method_projAddFlash"
+        },                {
             "fqsen": "\\App\\Controller\\ProjectPagesController\u003A\u003AprojAbout\u0028\u0029",
             "name": "projAbout",
             "summary": "",
@@ -2730,6 +2735,101 @@ Search.appendIndex(
             "name": "jsonDeckShuffle",
             "summary": "",
             "url": "classes/App-Controller-ProjectResetDatabaseController.html#method_jsonDeckShuffle"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag",
+            "name": "FlashBag",
+            "summary": "FlashBag\u0020flash\u0020message\u0020container.",
+            "url": "classes/App-Texas-FlashBag.html"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Texas-FlashBag.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "Sets\u0020name\u0020of\u0020object.",
+            "url": "classes/App-Texas-FlashBag.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Ainitialize\u0028\u0029",
+            "name": "initialize",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_initialize"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Aadd\u0028\u0029",
+            "name": "add",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_add"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Apeek\u0028\u0029",
+            "name": "peek",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_peek"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003ApeekAll\u0028\u0029",
+            "name": "peekAll",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_peekAll"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_get"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Aall\u0028\u0029",
+            "name": "all",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_all"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Aset\u0028\u0029",
+            "name": "set",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_set"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003AsetAll\u0028\u0029",
+            "name": "setAll",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_setAll"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Ahas\u0028\u0029",
+            "name": "has",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_has"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Akeys\u0028\u0029",
+            "name": "keys",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_keys"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003AgetStorageKey\u0028\u0029",
+            "name": "getStorageKey",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_getStorageKey"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003Aclear\u0028\u0029",
+            "name": "clear",
+            "summary": "\u007B\u0040inheritdoc\u007D",
+            "url": "classes/App-Texas-FlashBag.html#method_clear"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Texas-FlashBag.html#property_name"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003A\u0024flashes",
+            "name": "flashes",
+            "summary": "",
+            "url": "classes/App-Texas-FlashBag.html#property_flashes"
+        },                {
+            "fqsen": "\\App\\Texas\\FlashBag\u003A\u003A\u0024storageKey",
+            "name": "storageKey",
+            "summary": "",
+            "url": "classes/App-Texas-FlashBag.html#property_storageKey"
         },                {
             "fqsen": "\\",
             "name": "\\",
