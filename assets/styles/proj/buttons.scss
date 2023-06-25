@@ -36,8 +36,11 @@
 }
 
 .p-button.start {
-    width: 23%;
+    width: 17%;
     line-height: $base-line-height * 1.4;
+    color: #000;
+    font-family: $proj-font-family-paragraph;
+    font-size: $base-font-size * 0.8;
 }
 
 .p-button.check {
