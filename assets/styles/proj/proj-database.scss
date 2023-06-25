@@ -8,7 +8,7 @@
     padding: $magic-number;
     // width: 100%;
     min-height: 66vh;
-    border-radius: 10%;
+    border-radius: $proj-container-border-radius;
     box-shadow: $box-shadow-main;
     // background-color: #133c1c;
     border: $proj-border-header-footer;
