@@ -47,3 +47,8 @@
     animation: section 3s linear infinite;
     font-size: $base-font-size * 1.5;
 }
+
+.back-to-top {
+    position: fixed;
+    margin-top: 300px;
+}
