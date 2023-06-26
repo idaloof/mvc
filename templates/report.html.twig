@@ -316,12 +316,236 @@
                 </p>
             </section>
             <section id="kmom10">
-                <h2>Kmom10</h2>
-                <p>Text</p>
+                <h2>Kmom10/Projekt</h2>
+                <p>
+                    Hej!
+                </p>
+                <p>
+                    Här kommer min redovisningstext för projektet i mvc-kursen. Tack för ett bra läsår,
+                    ha en fortsatt fin sommar. Mvh Martin
+                </p>
+                <h3>Kraven 1-6</h3>
+                <p>
+                    KRAV 1-3
+                    <br><br>
+                    Som projekt i mvc-kursen har jag valt att göra ett texas hold'em-spel. Jag valde det spåret
+                    för att jag har spelat mycket texas hold'em. Jag ville försöka komma så nära den äkta
+                    spelkänslan som möjligt, om ens en bråkdel. I början var jag helt inställd på
+                    den populära all-in-varianten, men valde till slut limit hold'em. Enkelheten i limit-spelet,
+                    gjorde att jag kunde fokusera på andra, för mig viktigare, features.
+                    <br><br>
+                    Ett av projektets huvudfokus har varit att leverera en pricksäker jämförelse-mekanism som
+                    helst ska ha 0 luckor. Metoden som tar fram alla kombinationer av möjliga femkortshänder,
+                    metoderna som identifierar vilken pokerhand respektive kombination är och metoderna som
+                    beräknar poängen för en enskild kombination har varit centrala i just detta fokus. Varför har jag
+                    lagt ner mest tid på det här? Jo, för att syftet med spelet är att (ha kul och) vinna, vilket
+                    innebär att jag som spelare inte vill att vinst/förlust ska avgöras genom felaktigheter.
+                    <br><br>
+                    Jag har använt analysverktygen (metrics, scrutinizer) och gjort tester från första början
+                    för att skriva så "snygg" kod som möjligt. Från början hade jag ett bra flow i att skapa
+                    flera, mindre klasser och controllers, men känner nu i slutet att vissa av dem är alltför
+                    komplexa. TexasGame-klassen har återigen blivit ett äkta gudobjekt med 29 metoder.
+                    Samma utmaning som jag stötte på i black jack-spelet alltså, även om jag nu har
+                    en mer testvänlig kodbas.
+                    <br><br>
+                    I Scrutinizer får alla klasser och metoder betyget A, utom TexasGame-klassen som får B.
+                    Metrics visar gult och rött på många fler ställen. Jag har flera klasser, förutom TexasGame,
+                    som är riktigt tjocka och metoder som är för komplexa.
+                    <br><br>
+                    Mot slutet har jag också prioriterat bort testningen, framförallt i TexasGame-klassen. Jag landar
+                    på en kodtäckning på ca 90%, vilket enbart är baserat på Texas-mappen i src-katalogen.
+                    Däremot tycker att jag har kommit ytterligare en bit på vägen i att lära mig testning. Det var
+                    en välbehövlig fortsättning på det vi lärde oss i oopython.
+                    <br><br>
+                    Jag har för mitt projekt satsat på ett utseende baserat mestadels på projektinnehållet.
+                    Header-bildens färger har jag använt som grund. Jag tycker att bilden innehåller de dova
+                    och mörka färgerna som jag förknippar med texas hold'em. Dessa har jag försökt
+                    återanvända på sidan för att få en helhet.
+                    <br><br>
+                    Jag har jobbat med SASS, vilket har gjort styling-arbetet i projektet till
+                    en lättsammare arbetsuppgift. Mina style-sheets är uppdelade i två kategorier:
+                    element-specifika och sidospecifika. Det har gjort sökandet effektivare. Möjligheten
+                    att jobba med variabler är en annan anledning till varför jag valde SASS.
+                    <br><br>
+                </p>
+                <p>
+                    KRAV 4
+                    <br><br>
+                    Jag hade API:et i åtanke när jag jobbade med projektet. Jag ville att det skulle vara lätt
+                    att visa spel- och spelardata till exempel. Därför finns till exempel game data-klassen och
+                    getPlayerData-metoden i spelarklasserna.
+                    <br><br>
+                    Mitt JSON API för projektet landade i fem stycken välutvalda endpoints.
+                    <br><br>
+                    Två av mina endpoints, api/game-data och api/player-data, hämtar data från spelet med hjälp
+                    av ovannämnda klass och dess metoder och getPlayerData-metoden.
+                    <br><br>
+                    Två andra endpoints, api/card-rank och api/message-data, är POST-routes som jobbar
+                    mot projektets databastabeller. Ena tabellen innehåller alla 169 kombinationer av startkort.
+                    Den andra innehåller alla meddelanden från pågående spel.
+                    <br><br>
+                    För att nå dessa endpoints, får användaren fylla i:
+                    1. Valfri kortranking (1-169) för två startkort
+                    eller
+                    2. Valfritt antal meddelanden (1-10) från pågående spel.
+                    <br><br>
+                    Den femte endpointen jobbar mot CardCombinator-klassen och HandEvaluator-klassen.
+                    Om det finns ett pågående spel där rivern är ute, går det att använda endpointen för att
+                    se ens samtliga 21 kombinationer av femkortshänder som kan bildas med ens
+                    två kort på hand och de fem gemensamma korten på bordet.
+                    Kombinationerna är sorterade så att den starkaste handen är högst upp.
+                    Här avslöjas även vad respektive kombination är för pokerhand (ett par, två par, osv..).
+                    <br><br>
+                    Om det inte finns ett spel igång som är framme vid rivern (alla fem kort på bordet), visar
+                    endpointen alla 21 kombinationer för sju random-kort.
+                    <br><br>
+                </p>
+                <p>
+                    KRAV 5
+                    <br><br>
+                    Jag valde att arbeta med SQLITE som databashanterare. Det var enkelt att köra igång under
+                    kursens gång och jag såg ingen direkt anledning till att testa någonting annat då databasen
+                    i det här fallet är väldigt simpel.
+                    <br><br>
+                    Projektets entities/tabeller är två till antalet. En rankingtabell för samtliga 169
+                    startkorts-kombinationer och en meddelandetabell som håller data för vad som händer
+                    under spelets gång.
+                    <br><br>
+                    Att arbeta med ORM har varit relativt smärtfritt, tycker jag. Väldigt smidigt att direkt via
+                    consolen och doctrine-kommandon kunna skapa tabellerna. Nackdelen blir då att jag ändå måste
+                    skapa sql-kommandon för återställning av databasen, antingen hårdkodat i en controller eller
+                    via en fil.
+                    <br><br>
+                    Jag valde att populera databasens kortranking-tabell via en csv-fil och ett eget-skapat kommando
+                    csv:import, vilket kändes som en krångligare väg att göra det på än det sättet vi gick tillväga
+                    under databas-kursen, med enkla insert-kommandon i fil.
+                    <br><br>
+                    En fördel med att arbeta med ORM är hur lätt det är att hämta data med hjälp av färdiga eller
+                    egenbyggda metoder i respektive entity-repo. Metoderna är som en blandning av metoderna vi
+                    byggde i JS och sql-koden vi skrev i fil i databaskursen. Det blir som ett mer
+                    lättillgängligt api.
+                    <br><br>
+                </p>
+                <p>
+                    KRAV 6
+                    <br><br>
+                    Detta med avancerat är väl subjektivt, så det blir spännande att se vad rättaren tycker.
+                    Här kommer mina avancerade features, även om de tekniskt sett skulle kunna räknas som del
+                    av baskraven.
+                    <br><br>
+                    1. Kortkombinationer:
+                    <br>Jag är tacksam för att ha jobbat med rekursiva metoder i oopython-
+                    kursen. Tveksamt om jag hade kommit på att skriva min kombinations-metod på det sättet annars.
+                    Metoden används för att hitta samtliga kombinationer som spelarna kan få med sina två kort på hand
+                    och tre-fem gemensamma kort på bordet. Metoden anropas med två argument. Det första en array
+                    med kort-objekt och den andra antalet kort i varje kombination (satt till 5 som default).
+                    <br><br>
+                    Kombinationerna används för att fastställa spelarnas
+                    bästa hand: dels för att kunna utse en vinnare, dels som en service till spelaren som blir visad
+                    sin bästa hand under spelets gång och dels för att ha en endpoint med intressant data.
+                    <br><br>
+                    2. Beräkning av handpoäng:
+                    <br>Varje evaluatorklass som implementerar EvaluatorInterface måste
+                    tillhandahålla en poäng-metod. Metoderna använder sig av konstanterna i en abstrakt klass.
+                    Jag placerade konstanterna i den abstrakta klassen för att samtliga evaluatorklasser
+                    behöver ha samma information. Då blev det också lättare att bara ändra på ett ställe, för
+                    det fick jag göra ända in i slutet. Till en början trodde jag att jag hade kommit
+                    på ett bra poängsystem, där varje hand får en grundpoäng för pokerhanden (ett par, två par, osv..).
+                    Men när jag fyllde ut mina tester med fler case, kunde jag se att poängberäkningen inte
+                    tog hänsyn till alla parametrar i en pokerhand. Till exempel kunde en hand med par i treor
+                    förlora mot en hand med par i tvåor, för att handen med tvåorna hade starkare kickers
+                    (övriga kort). Eller om två spelare har samma par till exempel, så ska spelaren med högst
+                    kickers vinna.
+                    <br><br>
+                    Därför fick jag justera upp grundpoängen för varje hand till biljonklassen och
+                    för varje evaluator skapa en ny metod som beräknar värdet av varje kicker. Här behövde
+                    jag se till att värdet av ett kort alltid måste överstiga värdet av samtliga lägre kort.
+                    Jag behövde också skapa en algoritm i poängmetoden som på något sätt ökar poängen för
+                    värdekorten (paren, trissen, fyrtalet osv.) på så vis att poängen för kickerkorten aldrig
+                    kan trumfa värdekorten.
+                    <br><br>
+                    Det tog lång tid och tog och timmar av testning för att hitta rätt.
+                    Nu beräknas poängen korrekt och rätt hand ska alltid vinna.
+                    <br><br>
+                    3. Den smarta datorspelaren:
+                    <br>Den sista avancerade featuren som jag vill ta upp är den smarta
+                    datorspelaren. Den kan tyckas vara del av baskraven. Jag tycker dock att den är avancerad,
+                    dels för att det ligger många tankar och mycket kodning bakom och för att
+                    den tar sina beslut utfrån ett antal olika kriterier. Det är även lätt att justera
+                    kalkylerna som adderar ihop till riksbenägenheten. 
+                    <br><br>
+                    Den smarta datorspelarens riskbenägenhet tar hänsyn till vilka startkort den har,
+                    genom att hämta rankingen för sina två startkort från databastabellen.
+                    Den har koll på dina senaste moves och justerar risknivån därefter. Om du till
+                    exempel checkar och sen höjer i samma spelstadie (t.ex. pre-flop), sänks
+                    spelarens riskbenägenhet. Om du bara checkar/synar, höjs riskbenägenheten. Kort på hand
+                    och vilken femkortshand spelaren har väger dock lite tyngre. Den tar även hänsyn till
+                    förhållandet mellan big blind och pot. Ju mindre andel av potten en big blind är desto
+                    högre blir riskbenägheten.
+                    <br><br>
+                </p>
+                <h3>Genomförandet av projektet</h3>
+                <p>
+                    Jag valde att inte lämna in innan deadline den här gången, då jag ville prova på att
+                    koda utan tidspress. Det har jag velat länge och tycker att det var helt rätt beslut.
+                    Jag har suttit i princip varje dag sedan inlämningen av kmom06, så det har tagit sin tid.
+                </p>
+                <p>
+                    Den största huvudbryn har varit hur jag ska kunna minimera antalet redirects
+                    när användaren har foldat och spelet kastas runt mellan datorspelarnas olika vägar
+                    genom olika controllers och routes. Även om användaren landar rätt till slut
+                    (i Chrome, ej FireFox), känns det aldrig bra att mellanlanda på en sida som klagar
+                    på för många redirects.
+                    <br><br>
+                    Ett alternativ hade varit att göra router-metoderna tjockare och färre. Jag valde inte
+                    det alternativet. Istället låter jag spelet spelas klart när användaren lägger sig.
+                    Användaren skickas direkt till en sida där vinnaren mellan datorspelarna är utsedd
+                    och presenteras. Den enda skillnaden mellan alternativen är att potterna har olika
+                    storlek.
+                    <br><br>
+                </p>
+                <p>
+                    Det har varit många sådana beslut att ta och jag tycker att jag har lyckats få till ett
+                    ok spel. Jag har fastnat vid något tillfälle och hamnat på minus.. Ja, det går att hamna
+                    minus. Datorspelarna får dock autopåfyllning. Så spelet har inget faktiskt slut...
+                    <br><br>
+                    Jag hade aldrig kunnat skapa ett texas hold'em-spel på den tid jag hade innan
+                    deadline. Inte ett som jag hade varit nöjd med i alla fall. Det känns som att fler har valt
+                    att låta något av projekten hänga på över sommaren. Jag är glad att jag gjorde det.
+                    <br><br>
+                </p>
+                <h3>Tankar om kursen</h3>
+                <p>
+                    Kursen var den svåraste hittills, framförallt var projektet en utmaning att få ihop.
+                    Kursen knyter ihop första läsåret på ett bra sätt. Jag känner att jag under kursens gång har fått
+                    användning av mycket av det jag har lärt mig under året. Nu fick vi däremot göra det i ett
+                    ramverk. Det finns likheter med webtec-kursen, vilket är tacksamt. Jag har fått repetera
+                    CRUD och designmönstret MVC. Dessutom gjorde designkursen ett gott intryck på mig. Jag har
+                    haft god användning av det jag lärde mig där också.
+                <br><br>
+                    Tips till programansvarig: lär ut css grid och/eller css flex första läsperioden. Lätt det bästa
+                    jag lärt mig under året.
+                </p>
+                <p>
+                    Det har varit informativa artiklar i kursmaterialet och bra hänvisningar till andra
+                    källor.
+                </p>
+                <p>
+                    Mikaels förinspelade föreläsningar har varit en bra start på kursmomenten.
+                    Tisdagsföreläsningen tar upp det viktigaste i kursmomentet och Mikael går igenom
+                    övningarna i bra takt.
+                </p>
+                <p>
+                    Hjälp finns alltid att få på Discord.
+                    Alla kurskamrater som hjälper till ska ha en eloge.
+                </p>
+                <p>
+                    Jag är nöjd och har lärt mig mycket!
+                </p>
+                <p>
+                    Mvh Martin
+                </p>
             </section>
-            <a href="{{ path('report') }}#header">
-                <h3>Upp till toppen</h3>
-            </a>
         </div>
         <div class="report-links">
             <h3 class="sections">Avsnitt</h3>
@@ -334,6 +558,9 @@
                 <a href="{{ path('report') }}#kmom06">kmom06</a>
                 <a href="{{ path('report') }}#kmom10">kmom10</a>
             </div>
+            <a class="back-to-top" href="{{ path('report') }}#header">
+                <h3>Upp till toppen</h3>
+            </a>
         </div>
     </div>
 {% endblock %}
