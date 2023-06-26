@@ -172,7 +172,10 @@ class ComputerStu extends ComputerLogic implements PlayerInterface
             'hasFolded' => $this->moves->hasFolded(),
             'bets' => $this->bets,
             'holeCards' => $this->getHand()->getHoleCardsAsStrings(),
-            'move' => $this->getPlayerMoves()->getLatestMove()
+            'move' => $this->getPlayerMoves()->getLatestMove(),
+            'bestHand' => $this->getHand()->getBestHandAsImages(),
+            'bestHandName' => $this->getHand()->getBestHandName(),
+            'bestHandPoints' => $this->getHand()->getBestHandPoints()
         ];
 
         return $playerData;

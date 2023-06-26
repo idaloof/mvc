@@ -141,6 +141,16 @@ class TexasHand
      */
     public function setBestHand(array $cards): void
     {
+        usort($cards, function(Card $a, Card $b) {
+            if ($a->getCardValue() > $b->getCardValue()) {
+                return -1;
+            } elseif ($a->getCardValue() < $b->getCardValue()) {
+                return 1;
+            }
+
+            return 0;
+        });
+
         $this->bestHand = $cards;
     }
 

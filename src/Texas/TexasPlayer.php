@@ -212,7 +212,8 @@ class TexasPlayer implements PlayerInterface
             'holeCards' => $this->getHand()->getHoleCardsAsStrings(),
             'move' => $this->getPlayerMoves()->getLatestMove(),
             'bestHand' => $this->getHand()->getBestHandAsImages(),
-            'bestHandName' => $this->getHand()->getBestHandName()
+            'bestHandName' => $this->getHand()->getBestHandName(),
+            'bestHandPoints' => $this->getHand()->getBestHandPoints()
         ];
 
         return $playerData;
