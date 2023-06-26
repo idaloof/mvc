@@ -11,7 +11,7 @@
                     <figcaption class="proj-api-fig">Hitta startkort utifrån deras ranking 1-169.</figcaption>
                     <form id="cardrank-form" class="api-form" method="post" action="{{ cardRankUrl }}">
                         <button class="api-button rank-button" type="submit">Sök</button>
-                        <input class="api-input" type="number" name="rank" min="1" max="169">
+                        <input class="api-input" type="number" required="required" name="rank" min="1" max="169">
                     </form>
                 </div>
                 <div class="api-forms container2">
@@ -32,7 +32,7 @@
                     <figcaption class="proj-api-fig">Sök efter valt antal meddelanden från spelet.</figcaption>
                     <form id="messagedata-form" class="api-form" method="post" action="{{ messageDataUrl }}">
                         <button class="api-button message-button" type="submit">Sök</button>
-                        <input class="api-input" type="number" name="messages" min="1" max="20">
+                        <input class="api-input" type="number" required="required" name="messages" min="1" max="20">
                     </form>
                 </div>
             </div>
