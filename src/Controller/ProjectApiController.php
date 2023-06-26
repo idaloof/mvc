@@ -41,7 +41,7 @@ class ProjectApiController extends AbstractController
          */
         $cardNames = $cardCombo->getCards();
 
-        $cardCombo->setCards($cardNames[0] . " and " . $cardNames[1]);
+        $cardCombo->setCards($cardNames[0] . " och " . $cardNames[1]);
 
         switch ($cardCombo->getType()) {
             case 's':
