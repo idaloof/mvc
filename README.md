@@ -6,10 +6,9 @@
 
 Det här repot är en symfony-applikation som innehåller:
 
-* Information om BTH's MVC-kurs på distansprogrammet Webbprogrammering
 * Två kortspel: black jack och texas hold'em
-* Ett digitalt bibliotek med möjligheten att lägga till och ta bort böcker
-* API-endpoints för kortlek och spel
+* Ett biblioteksapp med möjligheten att lägga till och ta bort böcker
+* API-endpoints för kortlek, biblioteket och spel
 
 Symfony är ett php-ramverk som underlättar för användare att bygga applikationer. Med Symfony
 får användaren en färdig struktur att bygga i samt möjligheten att på ett enkelt sätt koppla
