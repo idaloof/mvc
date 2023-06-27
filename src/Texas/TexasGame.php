@@ -110,12 +110,10 @@ class TexasGame
     {
         $players = $this->queue->getQueue();
         foreach ($players as $player) {
-            $card1 = $this->deck->drawSingle();
-            $card2 = $this->deck->drawSingle();
-            $cards = [$card2, $card1];
+            $cards = $this->deck->drawMany(2);
 
-            if (intval($card2->getCardValue()) < intval($card1->getCardValue())) {
-                $cards = [$card1, $card2];
+            if (intval($cards[1]->getCardValue()) > intval($cards[0]->getCardValue())) {
+                $cards = [$cards[1], $cards[0]];
             }
 
             $player->getHand()->setHoleCards($cards);
@@ -143,7 +141,7 @@ class TexasGame
      */
     public function getPossibleMoves(PlayerInterface $player): int
     {
-        $players = $this->queue->getQueue();
+        $players = $this->getQueuePlayers();
 
         $playerBet = $player->getBets();
 
@@ -263,9 +261,9 @@ class TexasGame
     /**
      * Resets game property properties before next stage.
      *
-     * @return void
+     * @return array<PlayerInterface>
      */
-    public function setNextStage(): void
+    public function setNextStage(): array
     {
         $players = $this->queue->getQueue();
 
@@ -275,6 +273,8 @@ class TexasGame
         }
 
         $this->queue->shiftPlayersBeforeNextStage();
+
+        return $players;
     }
 
     /**
@@ -415,9 +415,9 @@ class TexasGame
     /**
      * Finds and sets player's best hand, name and points.
      *
-     * @return void
+     * @return string
      */
-    public function getAndSetBestHands(): void
+    public function getAndSetBestHands(): string
     {
         $communityCards = $this->getCommunityCards();
 
@@ -446,6 +446,8 @@ class TexasGame
                 $player->getHand()->setBestHandPoints($bestHandPoints);
             }
         }
+
+        return "ok";
     }
 
     /**
