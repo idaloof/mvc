@@ -38,6 +38,7 @@ class TexasGameFirstTest extends TestCase
         $table = $this->getMockBuilder(Table::class)
             ->disableOriginalConstructor()
             ->getMock();
+
         $this->game = new TexasGame($deck, $handEvaluator, $gameLogic, $gameData, $queue, $table);
     }
 
@@ -68,7 +69,73 @@ class TexasGameFirstTest extends TestCase
      */
     public function testDealStartingCards(): void
     {
-        $res = $this->game->dealStartingCards();
+        $card1 = $this->getMockBuilder(Card::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $card1
+            ->method('getCardValue')
+            ->willReturn(
+                "10"
+            );
+
+        $card2 = $this->getMockBuilder(Card::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $card2
+            ->method('getCardValue')
+            ->willReturn(
+                "14"
+            );
+
+        $deck = $this->getMockBuilder(TexasDeck::class)
+            ->onlyMethods(['drawMany'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $deck
+            ->method('drawMany')
+            ->willReturn([
+                $card1,
+                $card2
+            ]);
+
+        $queue = $this->getMockBuilder(Queue::class)
+            ->onlyMethods(['getQueue'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $queue
+            ->method('getQueue')
+            ->willReturn([
+                new TexasPlayer("Martin", 20, 20),
+                new TexasPlayer("Stu", 20, 20)
+            ]);
+
+        $handEvaluator = $this->getMockBuilder(HandEvaluator::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $gameLogic= $this->getMockBuilder(GameLogic::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $gameData = $this->getMockBuilder(GameData::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $table = $this->getMockBuilder(Table::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $game = new TexasGame(
+            $deck,
+            $handEvaluator,
+            $gameLogic,
+            $gameData,
+            $queue,
+            $table
+        );
+
+        // $this->game->method('getBets')->willReturn(14);
+        $res = $game->dealStartingCards();
 
         $this->assertIsArray($res);
     }
