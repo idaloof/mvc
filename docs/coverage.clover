@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687651103">
-  <project timestamp="1687651103">
+<coverage generated="1687865481">
+  <project timestamp="1687865481">
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Card/Bank.php">
       <class name="App\Card\Bank" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
@@ -368,8 +368,8 @@
       <line num="72" type="stmt" count="4"/>
       <line num="81" type="method" name="getCardSuit" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="83" type="stmt" count="4"/>
-      <line num="92" type="method" name="getCardValue" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="94" type="stmt" count="1"/>
+      <line num="92" type="method" name="getCardValue" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="94" type="stmt" count="4"/>
       <line num="103" type="method" name="getCardRank" visibility="public" complexity="1" crap="1" count="4"/>
       <line num="105" type="stmt" count="4"/>
       <metrics loc="108" ncloc="56" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="16" coveredelements="16"/>
@@ -628,7 +628,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/ComputerStu.php">
       <class name="App\Texas\ComputerStu" namespace="global">
-        <metrics complexity="15" methods="15" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="49" coveredelements="49"/>
+        <metrics complexity="15" methods="15" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="52" coveredelements="52"/>
       </class>
       <line num="35" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="41"/>
       <line num="37" type="stmt" count="41"/>
@@ -667,19 +667,22 @@
       <line num="174" type="stmt" count="1"/>
       <line num="175" type="stmt" count="1"/>
       <line num="176" type="stmt" count="1"/>
+      <line num="177" type="stmt" count="1"/>
       <line num="178" type="stmt" count="1"/>
-      <line num="188" type="method" name="setAndGetMove" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="193" type="stmt" count="2"/>
-      <line num="195" type="stmt" count="2"/>
-      <line num="207" type="method" name="setStuMoveAndReturnIt" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="209" type="stmt" count="1"/>
-      <line num="210" type="stmt" count="1"/>
+      <line num="179" type="stmt" count="1"/>
+      <line num="181" type="stmt" count="1"/>
+      <line num="191" type="method" name="setAndGetMove" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="196" type="stmt" count="2"/>
+      <line num="198" type="stmt" count="2"/>
+      <line num="210" type="method" name="setStuMoveAndReturnIt" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="212" type="stmt" count="1"/>
       <line num="213" type="stmt" count="1"/>
-      <line num="214" type="stmt" count="1"/>
       <line num="215" type="stmt" count="1"/>
       <line num="216" type="stmt" count="1"/>
-      <metrics loc="219" ncloc="116" classes="1" methods="15" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="49" coveredelements="49"/>
+      <line num="217" type="stmt" count="1"/>
+      <line num="218" type="stmt" count="1"/>
+      <line num="219" type="stmt" count="1"/>
+      <metrics loc="222" ncloc="119" classes="1" methods="15" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="52" coveredelements="52"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/EvaluatorInterface.php">
       <metrics loc="31" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -1486,7 +1489,7 @@
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasHand.php">
       <class name="App\Texas\TexasHand" namespace="global">
-        <metrics complexity="16" methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="37" coveredelements="37"/>
+        <metrics complexity="18" methods="13" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="30" elements="44" coveredelements="42"/>
       </class>
       <line num="38" type="method" name="getHoleCards" visibility="public" complexity="1" crap="1" count="2"/>
       <line num="40" type="stmt" count="2"/>
@@ -1510,26 +1513,33 @@
       <line num="112" type="stmt" count="1"/>
       <line num="113" type="stmt" count="1"/>
       <line num="116" type="stmt" count="1"/>
-      <line num="124" type="method" name="getBestHandAsImages" visibility="public" complexity="2" crap="2" count="2"/>
-      <line num="126" type="stmt" count="2"/>
-      <line num="128" type="stmt" count="2"/>
+      <line num="124" type="method" name="getBestHandAsImages" visibility="public" complexity="2" crap="2" count="3"/>
+      <line num="126" type="stmt" count="3"/>
+      <line num="128" type="stmt" count="3"/>
       <line num="129" type="stmt" count="1"/>
-      <line num="132" type="stmt" count="2"/>
-      <line num="142" type="method" name="setBestHand" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="132" type="stmt" count="3"/>
+      <line num="142" type="method" name="setBestHand" visibility="public" complexity="3" crap="3.02" count="3"/>
       <line num="144" type="stmt" count="3"/>
-      <line num="152" type="method" name="getBestHandName" visibility="public" complexity="1" crap="1" count="2"/>
-      <line num="154" type="stmt" count="2"/>
-      <line num="164" type="method" name="setBestHandName" visibility="public" complexity="1" crap="1" count="1"/>
-      <line num="166" type="stmt" count="1"/>
-      <line num="174" type="method" name="getBestHandPoints" visibility="public" complexity="1" crap="1" count="6"/>
-      <line num="176" type="stmt" count="6"/>
-      <line num="186" type="method" name="setBestHandPoints" visibility="public" complexity="1" crap="1" count="4"/>
-      <line num="188" type="stmt" count="4"/>
-      <metrics loc="191" ncloc="101" classes="1" methods="13" coveredmethods="13" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="37" coveredelements="37"/>
+      <line num="145" type="stmt" count="3"/>
+      <line num="146" type="stmt" count="3"/>
+      <line num="147" type="stmt" count="3"/>
+      <line num="148" type="stmt" count="3"/>
+      <line num="151" type="stmt" count="0"/>
+      <line num="152" type="stmt" count="3"/>
+      <line num="154" type="stmt" count="3"/>
+      <line num="162" type="method" name="getBestHandName" visibility="public" complexity="1" crap="1" count="3"/>
+      <line num="164" type="stmt" count="3"/>
+      <line num="174" type="method" name="setBestHandName" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="176" type="stmt" count="1"/>
+      <line num="184" type="method" name="getBestHandPoints" visibility="public" complexity="1" crap="1" count="8"/>
+      <line num="186" type="stmt" count="8"/>
+      <line num="196" type="method" name="setBestHandPoints" visibility="public" complexity="1" crap="1" count="4"/>
+      <line num="198" type="stmt" count="4"/>
+      <metrics loc="201" ncloc="111" classes="1" methods="13" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="30" elements="44" coveredelements="42"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/TexasPlayer.php">
       <class name="App\Texas\TexasPlayer" namespace="global">
-        <metrics complexity="16" methods="16" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="48" coveredelements="48"/>
+        <metrics complexity="16" methods="16" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="33" elements="49" coveredelements="49"/>
       </class>
       <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="35"/>
       <line num="39" type="stmt" count="35"/>
@@ -1578,8 +1588,9 @@
       <line num="214" type="stmt" count="1"/>
       <line num="215" type="stmt" count="1"/>
       <line num="216" type="stmt" count="1"/>
-      <line num="218" type="stmt" count="1"/>
-      <metrics loc="221" ncloc="114" classes="1" methods="16" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="32" coveredstatements="32" elements="48" coveredelements="48"/>
+      <line num="217" type="stmt" count="1"/>
+      <line num="219" type="stmt" count="1"/>
+      <metrics loc="222" ncloc="115" classes="1" methods="16" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="33" coveredstatements="33" elements="49" coveredelements="49"/>
     </file>
     <file name="/Users/martin/dbwebb-kurser/mvc/me/report/src/Texas/ThreeOfAKindEvaluator.php">
       <class name="App\Texas\ThreeOfAKindEvaluator" namespace="global">
@@ -1646,6 +1657,6 @@
       <line num="85" type="stmt" count="2"/>
       <metrics loc="88" ncloc="61" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="27" coveredelements="27"/>
     </file>
-    <metrics files="40" loc="5595" ncloc="3430" classes="36" methods="277" coveredmethods="246" conditionals="0" coveredconditionals="0" statements="1137" coveredstatements="1008" elements="1414" coveredelements="1254"/>
+    <metrics files="40" loc="5609" ncloc="3444" classes="36" methods="277" coveredmethods="245" conditionals="0" coveredconditionals="0" statements="1148" coveredstatements="1018" elements="1425" coveredelements="1263"/>
   </project>
 </coverage>

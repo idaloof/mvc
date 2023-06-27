@@ -74,7 +74,7 @@ class TexasHandTest extends TestCase
 
         $cards = $hand->getBestHand();
 
-        $exp = '9♦';
+        $exp = 'T♥';
 
         $res = $cards[2]->getCardName();
 
@@ -97,7 +97,7 @@ class TexasHandTest extends TestCase
 
         $hand->setBestHand($this->fullHand);
 
-        $exp = ["A♠", "8♥", "9♦", "K♣", "T♥"];
+        $exp = ["A♠", "K♣", "T♥", "9♦", "8♥"];
 
         $res = $hand->getBestHandAsString();
 
@@ -175,7 +175,7 @@ class TexasHandTest extends TestCase
 
         $hand->setBestHand($this->fullHand);
 
-        $exp = ["AS", "8H", "9D", "KC", "TH"];
+        $exp = ["AS", "KC", "TH", "9D", "8H"];
 
         $res = $hand->getBestHandAsImages();
 

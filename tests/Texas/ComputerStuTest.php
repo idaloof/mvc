@@ -147,7 +147,10 @@ class ComputerStuTest extends TestCase
             'hasFolded' => false,
             'bets' => 0,
             'holeCards' => [],
-            'move' => ''
+            'move' => '',
+            'bestHand' => [],
+            'bestHandName' => '',
+            'bestHandPoints' => 0.0
         ];
 
         $res = $this->player->getPlayerData();

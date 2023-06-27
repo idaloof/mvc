@@ -177,7 +177,8 @@ class TexasPlayerTest extends TestCase
             'wallet' => 20,
             'move' => '',
             'bestHand' => [],
-            'bestHandName' => ""
+            'bestHandName' => "",
+            'bestHandPoints' => 0.0
         ];
 
         $res = $this->player->getPlayerData();
