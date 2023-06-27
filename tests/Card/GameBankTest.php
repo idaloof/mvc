@@ -29,7 +29,10 @@ class GameBankTest extends TestCase
         $deck->shuffleDeck(3); // Let's me know that the first three cards are A, 8 and 9.
 
         $human          = new Player($humanHand, $humanPoints);
+        $human->setPlayerDefinitivePoints();
+
         $bank           = new Bank($bankHand, $bankPoints);
+        $bank->setPlayerDefinitivePoints();
         $rules          = new Rules();
         $this->game     = new Game($deck, $human, $bank, $rules);
     }
@@ -129,6 +132,37 @@ class GameBankTest extends TestCase
 
         $exp = "Yes.";
         $res = $state["winnerDecided"];
+
+        $this->assertEquals($exp, $res);
+    }
+
+    /**
+     * Verify that method returns array.
+     */
+    public function testGetGameStandings() : void
+    {
+        $this->game->setTurn("bank");
+        $this->game->setTurn("bank");
+        $this->game->setTurn("bank");
+        $this->game->setTurn("bank");
+
+        $res = $this->game->getGameStandings();
+
+        $this->assertIsArray($res);
+    }
+
+    /**
+     * Verify that if statement is reached.
+     */
+    public function testDecideWinnerEqual(): void
+    {
+        $this->game->decideWinner();
+
+        $state = $this->game->getGameState();
+
+        $exp = 0;
+
+        $res = $state["humanPoints"];
 
         $this->assertEquals($exp, $res);
     }
