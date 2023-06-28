@@ -1,3 +1,7 @@
+<!--
+    * This twig represents the computer players' info grids.
+-->
+
 <div class="{{ player.name|lower }}-container">
     <div class="{{ player.name|lower }}-head">
         <p class="underline">{{ player.name }}</p>
@@ -19,5 +23,18 @@
     </div>
 </div>
 <div class="{{ player.name|lower }}-bet-container">
-    <p class="smaller">Insats: ${{ player.bets }}</p>
+    <div class="bet-size-container">
+        <p class="smaller">${{ player.bets }}</p>
+    </div>
+    <div class="{{ player.name|lower }}-chip-container">
+        {% if player.bets > 0 %}
+            {% for i in 1 .. (player.bets / chipSize) %}
+                <img
+                    class="rotated"
+                    src="{{ asset('img/proj/poker4.jpg') }}"
+                    style='top: -{{ (((i + 5) * 4) - 20) ~ "px" }}';
+                >
+            {% endfor %}
+        {% endif %}
+    </div>
 </div>

@@ -85,7 +85,8 @@ class ProjectRiverController extends AbstractController
             'checkUrl' => $this->generateUrl('proj_player_check'),
             'foldUrl' => $this->generateUrl('proj_player_fold'),
             'community' => $communityImages,
-            'pot' => $pot
+            'pot' => $pot,
+            'chipSize' => $minRaise / 2
         ]);
     }
 }

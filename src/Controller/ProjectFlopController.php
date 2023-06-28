@@ -53,9 +53,11 @@ class ProjectFlopController extends AbstractController
         }
 
         $queuePlayersData = [];
+        $allBets = 0;
 
         foreach ($queuePlayers as $player) {
             $queuePlayersData[] = $player->getPlayerData();
+            $allBets += $player->getBets();
         }
 
         $messages = $repository->findAll();
@@ -85,7 +87,8 @@ class ProjectFlopController extends AbstractController
             'checkUrl' => $this->generateUrl('proj_player_check'),
             'foldUrl' => $this->generateUrl('proj_player_fold'),
             'community' => $communityImages,
-            'pot' => $pot
+            'pot' => $pot - $allBets,
+            'chipSize' => $minRaise / 2
         ]);
     }
 }

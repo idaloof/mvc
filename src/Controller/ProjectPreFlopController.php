@@ -90,6 +90,7 @@ class ProjectPreFlopController extends AbstractController
             'messages' => $messages,
             'moves' => $possibleMoves,
             'call' => $callSize,
+            'chipSize' => $minRaise / 2,
             'minRaise' => $minRaise,
             'pot' => $pot,
             'callUrl' => $this->generateUrl('proj_player_call'),

@@ -13,24 +13,39 @@
 }
 
 .player-bet-container {
-    grid-column: 4 / 7;
-    grid-row: 8 / 9;
-    height: fit-content;
-    align-self: last baseline;
-    justify-self: center;
+    grid-column: 5 / 7;
+    grid-row: 8 / 12;
+    position: relative;
+    width: 100%;
     color: antiquewhite;
     display: flex;
     flex-direction: row;
-    height: fit-content;
+    align-items: flex-start;
+    height: 50%;
+    padding-top: 50px;
+
+    .bet-size-container {
+        width: 30%;
+        height: 100%;
+    }
 
     .smaller {
         font-size: $base-font-size * 0.8;
         margin: 0;
+        // width: 30%;
+        // margin-top: 8px;
     }
+}
+
+.player-chip-container {
+    position: relative;
+    width: 30%;
+    height: 100%;
 }
 
 // HUMAN CONTAINER CONTENT
 .humanplayer-head {
+    position: relative;
     grid-column: 3 / 10;
     grid-row: 3 / 5;
     width: 100px;

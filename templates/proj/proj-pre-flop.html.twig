@@ -15,20 +15,7 @@
     {% endfor %}
     {% include 'proj/proj-message.html.twig' %}
     <div class="proj-pot-container">
-        <div class="pot-stacks">
-            {% for k in 1 .. 2 %}
-                <div class="single-stack">
-                    {% for i in 0 .. k * 2 %}
-                            <img
-                                class="rotated"
-                                src="{{ asset('img/proj/poker' ~ k ~ '.jpg') }}"
-                                style='top: -{{ ((i + 2) * 4) ~ "px" }}';
-                            >
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
-        <p class="pot-size">Pott: ${{ pot }}</p>
+        <p class="pot-size">Pott: $0</p>
     </div>
     {% include 'proj/proj-action-buttons.html.twig' %}
 </div>
