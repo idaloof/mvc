@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Texas\Card;
 use App\Texas\TexasGame;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,6 +18,10 @@ class ProjectWinnerController extends AbstractController
         /**
          * @var TexasGame $game
          */
+
+        $session->set('forward-route', 'proj_reset_round');
+        $session->set('back-route', 'proj_winner');
+
         $game = $session->get('game');
 
         $queuePlayers = $game->getQueuePlayers();
@@ -62,6 +65,9 @@ class ProjectWinnerController extends AbstractController
     public function projWinnerTie(
         SessionInterface $session
     ): Response {
+        $session->set('forward-route', 'proj_reset_round_tie');
+        $session->set('back-route', 'proj_winner_tie');
+
         /**
          * @var TexasGame $game
          */
